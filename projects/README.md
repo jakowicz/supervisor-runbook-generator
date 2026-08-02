@@ -1,16 +1,17 @@
 # Generated projects
 
-Each completed F-series factory run creates one slugged workspace here. The
-factory is run with the normal Supervisor collection command; there is no
-special `generate-runbooks` command.
+Each `supervisor initial` run creates one named workspace here and writes its
+project-specific `INITIAL.md`. The factory is run with the normal Supervisor
+collection command; there is no special `generate-runbooks` command.
 
 ```zsh
-./supervisor/.venv/bin/supervisor-run --run-all --runbooks-dir runbooks
+supervisor-run --project <project-name>
 ```
 
 Each project workspace contains:
 
 - `PROJECT_BRIEF.md`: normalized source brief;
+- `INITIAL.md`: the user-created source brief supplied to `supervisor-run`;
 - `specification/`: canonical requirements, platform, experience, and domain
   specifications;
 - `planning/`: the complete work checklist, dependency graph, and plan for
@@ -25,10 +26,10 @@ Each project workspace contains:
 The relationship is deliberately layered:
 
 ```text
-runbooks/INITIAL.md
-  → repository F001–F016 factory files
-  → projects/<slug>/authoring-runbooks/B....md
-  → projects/<slug>/runbooks/R....md
+projects/<project-name>/INITIAL.md
+  → repository F001–F016 factory files (with --project <project-name>)
+  → projects/<project-name>/authoring-runbooks/B....md
+  → projects/<project-name>/runbooks/R....md
 ```
 
 The F-series files are reusable source factory instructions. They create the
@@ -48,3 +49,10 @@ scales to hundreds or thousands of R-series files without oversized prompts or
 a separate manual run. The parent collection explicitly registers its generated
 child collections, so the originating `--run-all` invocation follows them
 automatically.
+
+`supervisor-run --project <project-name>` is the normal way to start or resume
+one project. It reads that workspace's `INITIAL.md`, runs the factory source
+collection, follows only child collections belonging to that workspace, and
+stores factory task state in `projects/<project-name>/.supervisor/factory.sqlite3`.
+Accepted tasks are skipped on later invocations; the first unfinished task is
+resumed using its existing collection state.

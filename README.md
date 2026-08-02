@@ -33,29 +33,32 @@ supervisor-run --help
 From the repository root, there are only two actions required to start a
 factory run.
 
-1. Create `runbooks/INITIAL.md` with the interactive brief wizard. It asks for
-   the product type, target systems, users, requirements, constraints,
-   references, and open decisions. Responsive web and PWA support are included
-   by default.
+1. Create a named project workspace and its
+   `projects/<project-name>/INITIAL.md` brief with the interactive wizard. It
+   asks for the project name, product type, target systems, users,
+   requirements, constraints, references, and open decisions. Responsive web
+   and PWA support are included by default.
 
 ```zsh
 supervisor initial --force
 ```
 
-   `--force` deliberately replaces the current `runbooks/INITIAL.md`; omit it
-   if you want the command to refuse to overwrite an existing brief.
+   `--force` deliberately replaces an existing brief with the same project
+   name; omit it if you want the command to refuse to overwrite it.
 
-2. Review the generated [runbooks/INITIAL.md](runbooks/INITIAL.md), make any
-   edits you want, then run the Supervisor once:
+2. Review the generated `projects/<project-name>/INITIAL.md`, make any edits
+   you want, then run that named project:
 
 ```zsh
-supervisor-run --run-all --runbooks-dir runbooks
+supervisor-run --project <project-name>
 ```
 
-The Supervisor reads `INITIAL.md` first, runs the F-series, then automatically
-follows the generated B-series and R-series files. The F-series creates a new
-workspace under `projects/<project-slug>/`. That workspace contains its
-normalized brief, specification, complete work checklist, generated B-series
+`--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
+automatically follows the generated B-series and R-series files. It keeps the
+factory's durable task history in `projects/<project-name>/.supervisor/`, so a
+later `supervisor-run --project <project-name>` resumes at the first unfinished
+task and does not rerun accepted tasks. That workspace contains its normalized
+brief, specification, complete work checklist, generated B-series
 runbook-writing files, R-series product-work runbooks, and handoff
 documentation.
 
@@ -66,7 +69,7 @@ product feature or a required technology.
 
 | Series | Created by | Where it lives | What it does |
 | --- | --- | --- | --- |
-| `INITIAL.md` | You or `supervisor initial` | `runbooks/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
+| `INITIAL.md` | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
 | `F001`–`F016` | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
 | `B0001`, `B0002`, … | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” simply means it has a hard limit: one B task may write no more than seven R files. |
 | `R0001`, `R0002`, … | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, or documenting the requested product. |
@@ -139,7 +142,7 @@ project `.env` without overwriting existing values.
 
 | Path | Purpose |
 | --- | --- |
-| [runbooks/](runbooks/) | The F-series factory collection and the initial brief. |
+| [runbooks/](runbooks/) | The reusable F-series factory collection. |
 | [projects/](projects/) | Generated, project-scoped specifications and runbook collections. |
 | [supervisor/](supervisor/) | Reusable evidence-gated orchestration submodule. |
 

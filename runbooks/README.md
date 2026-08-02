@@ -8,7 +8,6 @@ configuration.
 
 | File | Purpose |
 | --- | --- |
-| [INITIAL.md](INITIAL.md) | Product brief template and shared source of truth. This is user input, not an implementation runbook. |
 | [F001.md](F001.md)–[F016.md](F016.md) | **F-series factory runbooks.** They turn the brief into a generated project's detailed plan, complete work checklist, and B-series runbook-writing files. |
 | [TEMPLATE.md](TEMPLATE.md) | Required structure for a normal manually written runbook: goal, steps, success checks, and evidence. |
 
@@ -35,18 +34,19 @@ establish quality and handoff material.
 
 ## Run the collection
 
-From the repository root, complete `INITIAL.md` (or use `supervisor initial`),
-then run:
+From the repository root, create a named project brief with `supervisor initial`,
+review `projects/<project-name>/INITIAL.md`, then run:
 
 ```zsh
-./supervisor/.venv/bin/supervisor-run --run-all --runbooks-dir runbooks
+supervisor-run --project <project-name>
 ```
 
-`--run-initial` runs only `F001`, which is useful for checking that the brief
-can be normalized before committing to the full factory. `--run-all` reads
-`INITIAL.md`, runs every F-series factory stage, then dynamically follows the
-registered B-series and R-series collections. It stops only for a real failure
-or explicit review gate.
+`--run-initial` runs only `F001`, which is useful for checking that the named
+brief can be normalized before committing to the full factory. `--project`
+reads that workspace's `INITIAL.md`, runs every F-series factory stage, then
+dynamically follows its registered B-series and R-series collections. It keeps
+state inside the named workspace and stops only for a real failure or explicit
+review gate.
 
 Generated runbook state is kept beside each generated collection in
 `.supervisor/supervisor.sqlite3`, keeping IDs such as `R0001` isolated between
