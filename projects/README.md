@@ -13,10 +13,35 @@ Each project workspace contains:
 - `PROJECT_BRIEF.md`: normalized source brief;
 - `specification/`: canonical requirements, platform, experience, and domain
   specifications;
-- `planning/`: implementation catalogue, dependency graph, and batch manifest;
-- `authoring-runbooks/`: B-series tasks that author bounded R-series contracts;
-- `runbooks/`: generated R-series implementation and verification contracts;
+- `planning/`: the complete work checklist, dependency graph, and plan for
+  creating the R files in manageable batches;
+- `authoring-runbooks/`: generated B-series runbook-writing files. Each writes
+  no more than seven R-series files; B files write Markdown instructions, not
+  product code;
+- `runbooks/`: generated R-series files: detailed instructions for the actual
+  implementation and verification work;
 - `.supervisor/`: isolated run state for the generated collections.
 
-The parent collection explicitly registers its generated child collections, so
-the originating `--run-all` invocation follows them automatically.
+The relationship is deliberately layered:
+
+```text
+runbooks/INITIAL.md
+  → repository F001–F016 factory files
+  → projects/<slug>/authoring-runbooks/B....md
+  → projects/<slug>/runbooks/R....md
+```
+
+The F-series files are reusable source factory instructions. They create the
+project folder, specification, complete work checklist, and first B-series
+files. A B-series file is a *runbook writer*: it takes one small part of that
+checklist and writes no more than seven R-series Markdown files. “Bounded” is
+only that size limit. It does not build the application. An R-series file is a
+*product-work instruction*: it contains the detailed steps and success evidence
+for one small piece of real product work.
+
+For a very large product, a B dispatcher file creates more B-series runbook
+writers for the remaining areas of the checklist. This is how the collection
+scales to hundreds or thousands of R-series files without oversized prompts or
+a separate manual run. The parent collection explicitly registers its generated
+child collections, so the originating `--run-all` invocation follows them
+automatically.

@@ -9,20 +9,54 @@ developer tool, service, document system, or any other product, the factory
 first discovers the product domains and creates a canonical specification. It
 then builds a scalable collection of detailed implementation runbooks.
 
-## What it produces
+## What the F, B, and R series mean
+
+The letters describe *which layer of work a runbook belongs to*, rather than a
+product feature or a required technology.
+
+| Series | Created by | Where it lives | What it does |
+| --- | --- | --- | --- |
+| `INITIAL.md` | You or `supervisor initial` | `runbooks/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
+| `F001`–`F016` | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
+| `B0001`, `B0002`, … | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” simply means it has a hard limit: one B task may write no more than seven R files. |
+| `R0001`, `R0002`, … | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, or documenting the requested product. |
+
+In short:
 
 ```text
-INITIAL.md
-  → F001–F016: discovery, specification, requirements, catalogue, and factory
-  → B-series: bounded runbook-authoring tasks
-  → R-series: detailed implementation and verification runbooks
+your brief → F-series factory → B-series runbook writers → R-series product work
 ```
 
-The B-series prevents context limits from reducing quality: each authoring task
-creates no more than seven R-series implementation runbooks. The Supervisor
-discovers later B-series waves and registered child collections automatically,
-so one `--run-all` invocation continues until the generated collection reaches
-its final audit or a real review gate.
+The hierarchy stops there: F creates the plan and the B files, B writes R files,
+and R files describe the real implementation or verification work. For example,
+a B file for an RPG's combat area might write up to seven R files: basic combat,
+damage calculation, enemies, abilities, battle UI, balancing, and tests. For a
+large product, more B files are created for the next areas instead of making one
+agent write thousands of R files at once. The Supervisor finds those later B
+files and the R files automatically, so one `--run-all` invocation continues
+until the generated collection reaches its final audit or a real review gate.
+
+### Terms used in this repository
+
+| Term | Meaning here |
+| --- | --- |
+| **Runbook** | A Markdown work instruction with scope, steps, dependencies, and evidence required to mark it complete. |
+| **Runbook-writing task / authoring task** | A runbook whose output is more runbook Markdown files. It does not write application code. B-series files are these tasks. |
+| **Bounded** | Deliberately limited in size. A B-series task writes a maximum of seven R-series files. |
+| **Catalogue** | The complete checklist of product work that must eventually be covered: features, technical foundations, content, quality, release work, and dependencies. |
+| **Collection** | A folder of runbooks that Supervisor can run. The root F collection creates child B and R collections for one generated project. |
+| **Dispatcher** | A B-series file whose only job is to create the next B-series files when more parts of the catalogue still need R runbooks. |
+| **Contract** | The required shape of a runbook: its goal, inputs, steps, acceptance criteria, and evidence. It is not a legal agreement or an API contract. |
+
+The F-series has these broad responsibilities:
+
+| Factory stages | Responsibility |
+| --- | --- |
+| `F001`–`F004` | Normalize the brief and discover the product, platform, technical, and experience domains that matter for this particular request. |
+| `F005`–`F010` | Break those domains into delivery areas, dependencies, quality requirements, and small pieces of work that will each become R files. |
+| `F011`–`F013` | Produce the detailed specification, a check that nothing important is missing, the complete work checklist (catalogue), and the plan for writing R files in batches. |
+| `F014` | Create and register the first B-series runbook-writing files for the generated project. |
+| `F015`–`F016` | Define quality gates, validate the factory output, and prepare handoff material. |
 
 ## Start a factory run
 
@@ -41,8 +75,9 @@ Review [runbooks/INITIAL.md](runbooks/INITIAL.md), then run the collection once:
 ```
 
 The F-series creates a new workspace under `projects/<project-slug>/`. That
-workspace contains its normalized brief, specification, catalogue, generated
-authoring collection, implementation runbooks, and handoff documentation.
+workspace contains its normalized brief, specification, complete work checklist,
+generated B-series runbook-writing files, R-series product-work runbooks, and
+handoff documentation.
 
 ## The product brief drives the result
 
