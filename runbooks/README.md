@@ -33,10 +33,16 @@ layer, before R-series product work is run.
 The generated project's `planning/implementation-catalogue-index.json` also
 contains `IMP-*` **implementation catalogue records**. These are stable
 planning/traceability entries, not runbooks and not another name for R files.
-The normal chain is `specification → IMP record → B writer → R runbook`.
-An IMP record may map to one or several R files, or wait for a dependency, so
-`IMP-0007` and `R0007` intentionally have independent IDs. Each generated R
-file records the relevant IMP IDs in its `source_catalogue_ids` front matter.
+The normal chain is `REQ/NFR requirement → specification → IMP record → B
+writer → R runbook`. `REQ-*` means a functional requirement (a behaviour or
+capability); `NFR-*` means a non-functional requirement (a quality or
+constraint such as accessibility, security, performance, or privacy). They
+live in `specification/requirements.md`, `requirements.json`, and the
+`traceability-matrix.md` for the generated project. An IMP record may map to
+one or several R files, or wait for a dependency, so `REQ-0007`, `NFR-0004`,
+`IMP-0007`, and `R0007` intentionally have independent IDs. Each generated R
+file records the relevant requirement IDs in `requirement_ids` and the relevant
+IMP IDs in `source_catalogue_ids` front matter.
 
 Every R-series file must make an explicit asset decision in its front matter:
 `asset_impact: required` with stable comma-separated `asset_ids`, or
@@ -54,8 +60,9 @@ provenance QA—before the coding stage. F004 creates an audio-direction and cue
 map only when the product actually needs music, sound effects, voice, or
 audible feedback.
 
-Every R-series file must also carry provenance metadata: `source_specifications`
-links to the smallest relevant canonical specification sections,
+Every R-series file must also carry traceability and provenance metadata:
+`requirement_ids` identifies the `REQ-*` and `NFR-*` requirements it fulfils or
+verifies; `source_specifications` links to the smallest relevant canonical specification sections,
 `source_catalogue_ids` identifies its implementation-catalogue records,
 `authoring_batch` names its B-series writer, and `factory_stages` records the
 F-series stages that established the requirement. This lets an implementation

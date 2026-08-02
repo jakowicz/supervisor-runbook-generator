@@ -110,6 +110,8 @@ and **R** means *Real product-work runbook*.
 | Series | Meaning | Created by | Where it lives | What it does |
 | --- | --- | --- | --- | --- |
 | `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
+| `REQ-0001`, `REQ-0002`, … | **Functional requirement** | F011 specification/traceability stage | `projects/<slug>/specification/requirements.md`, `requirements.json`, and `traceability-matrix.md` | A stable statement of behaviour or capability the product must provide. It is a requirement, not a runnable task. |
+| `NFR-0001`, `NFR-0002`, … | **Non-functional requirement** | F011 specification/traceability stage | `projects/<slug>/specification/requirements.md`, `requirements.json`, and `traceability-matrix.md` | A stable quality or constraint requirement—such as performance, accessibility, security, reliability, privacy, compatibility, or observability. It is not a runnable task. |
 | `IMP-0001`, `IMP-0002`, … | **Implementation catalogue record** | The F-series planning stages and later D dispatchers | `projects/<slug>/planning/implementation-catalogue-index.json` and the authoring manifest/ledger | **Planning and traceability records, not runnable runbooks.** Each record captures a needed piece of work, its requirements, dependencies, ownership, verification, and asset assessment before it is allocated to a B writer. |
 | `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
 | `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
@@ -124,13 +126,14 @@ your brief → F-series factory → B-series runbook writers → R-series produc
                                   ↑ C checkpoints and D dispatchers coordinate authoring only
 ```
 
-The stable planning chain is `specification → IMP catalogue record → B writer
-→ R runbook`. `IMP-0007` is therefore not another name for `R0007`: the first
-is an implementation-planning record, while the second is an executable piece
-of product work. Their numbers are intentionally independent. One IMP record
-may be split into several R files, combined with related IMP records into one R
-file, or held until its dependencies are ready. An R file records that mapping
-in `source_catalogue_ids`.
+The stable planning chain is `REQ/NFR requirement → specification → IMP
+catalogue record → B writer → R runbook`. `REQ-0007` is a functional behaviour
+requirement; `NFR-0004` is a quality/constraint requirement. Neither is another
+name for `IMP-0007` or `R0007`. `IMP-0007` is a planning record, while `R0007`
+is an executable piece of product work. Their numbers are intentionally
+independent. One IMP record may be split into several R files, combined with
+related IMP records into one R file, or held until its dependencies are ready.
+An R file records that mapping in `requirement_ids` and `source_catalogue_ids`.
 
 The hierarchy stops there: F creates the plan and the B files, B writes R files,
 and R files describe the real implementation or verification work. For example,
@@ -169,6 +172,9 @@ available for targeted lookup.
 Each generated R file must declare this provenance in its front matter:
 
 ```yaml
+requirement_ids:
+  - REQ-0007
+  - NFR-0004
 source_specifications: specification/03-technical-contract.md#save-state
 source_catalogue_ids: IMP-SAVE-001
 authoring_batch: B0007
@@ -177,6 +183,7 @@ factory_stages: F003,F005,F012,F013
 
 These fields answer different questions:
 
+- `requirement_ids` — which functional (`REQ-*`) and quality/constraint (`NFR-*`) requirements the task fulfils or verifies.
 - `source_specifications` — which canonical requirement sections explain the work.
 - `source_catalogue_ids` — which planned implementation records the task covers.
 - `authoring_batch` — which bounded B writer created this R task.
@@ -202,6 +209,8 @@ collection.
 | **Contract** | The required shape of a runbook: its goal, inputs, steps, acceptance criteria, and evidence. It is not a legal agreement or an API contract. |
 
 ### F-series factory stages, in detail
+| **Functional requirement (`REQ-*`)** | A stable statement of behaviour or capability the product must provide. Stored in the project’s `specification/requirements.md` and `requirements.json`, with coverage shown in `traceability-matrix.md`. |
+| **Non-functional requirement (`NFR-*`)** | A stable quality, safety, delivery, or operating constraint—such as performance, accessibility, security, reliability, privacy, or compatibility. Stored and traced alongside functional requirements. |
 
 | **Implementation catalogue record (`IMP-*`)** | One stable planned work record in `planning/implementation-catalogue-index.json` and the authoring manifest/ledger. It is allocated to an authoring batch before one or more R-series runbooks are written. It is not itself runnable. |
 The F-series is deliberately product-agnostic. It uses the brief to decide what
