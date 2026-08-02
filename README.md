@@ -115,6 +115,45 @@ agent write thousands of R files at once. The Supervisor finds those later B
 files and the R files automatically, so one `--run-all` invocation continues
 until the generated collection reaches its final audit or a real review gate.
 
+### How runbooks reference one another
+
+Runbooks do not pass the whole project history into every later prompt. They
+use a small, explicit chain of references, while the full workspace remains
+available for targeted lookup.
+
+| When | What is used | Why |
+| --- | --- | --- |
+| `F001` | `projects/<name>/INITIAL.md` | The user’s original brief is the source of truth. F001 normalizes it but never replaces it. |
+| `F002`–`F004` | `INITIAL.md`, `PROJECT_BRIEF.md`, and the relevant earlier specification chapters | These stages refine product/domain, technical, and experience decisions. They use the documents produced by earlier F stages—not every earlier F Markdown procedure. |
+| `F005`–`F010` | The canonical `specification/` chapters and earlier planning outputs | These stages translate established decisions into dependencies, delivery areas, authoring contracts, and a safe handoff. |
+| `F011`–`F013` | The canonical specification plus the delivery/contract planning outputs | These stages create the traceability system, implementation catalogue, dependency graph, and small B-series batches. |
+| `F014`–`F016` | The catalogue, authoring manifest, quality gate, and canonical specification | These stages create B writers, validate their intended R contracts, and register the child collections that Supervisor follows. |
+| A B-series writer | Its own F013 context packet: only the assigned catalogue records, relevant specification sections, target constraints, templates, and reserved IDs | It writes no more than seven R files without needing a huge prompt or unrelated product context. |
+| An R-series task | Its own objective, dependencies, acceptance criteria, and provenance metadata | It performs one small piece of product work. It can open the linked canonical files when it needs more detail. |
+
+Each generated R file must declare this provenance in its front matter:
+
+```yaml
+source_specifications: specification/03-technical-contract.md#save-state
+source_catalogue_ids: IMP-SAVE-001
+authoring_batch: B0007
+factory_stages: F003,F005,F012,F013
+```
+
+These fields answer different questions:
+
+- `source_specifications` — which canonical requirement sections explain the work.
+- `source_catalogue_ids` — which planned implementation records the task covers.
+- `authoring_batch` — which bounded B writer created this R task.
+- `factory_stages` — which F stages established the underlying requirement.
+
+The F and B references provide **provenance**, not a reason to use procedural
+factory Markdown as implementation requirements. The canonical specification
+and planning files remain the authoritative context. R-to-R dependencies define
+execution order; Supervisor also follows explicit `.supervisor-children/`
+registrations from the F collection to the B collection and then to the R
+collection.
+
 ### Terms used in this repository
 
 | Term | Meaning here |
