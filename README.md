@@ -53,6 +53,16 @@ supervisor initial --force
 supervisor-run --project <project-name>
 ```
 
+`--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
+automatically follows the generated B-series and R-series files. It keeps the
+factory's durable task history in `projects/<project-name>/.state/`, its
+versioned project configuration in `projects/<project-name>/.env`, and private
+credentials in ignored `projects/<project-name>/.secrets.env`, so a later
+`supervisor-run --project <project-name>` resumes at the first unfinished task
+and does not rerun accepted tasks. That workspace contains its normalized brief,
+specification, complete work checklist, generated B-series runbook-writing
+files, R-series product-work runbooks, and handoff documentation.
+
 ## Factory end-to-end test
 
 Run the opt-in real-agent factory acceptance test through the generator CLI:
@@ -88,16 +98,6 @@ supervisor projects
 Run `supervisor-run --project <project-name>` at any time to resume that
 project. Its SQLite task state makes accepted tasks skip safely and returns to
 the first unfinished task.
-
-`--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
-automatically follows the generated B-series and R-series files. It keeps the
-factory's durable task history in `projects/<project-name>/.state/`, its
-versioned project configuration in `projects/<project-name>/.env`, and private
-credentials in ignored `projects/<project-name>/.secrets.env`, so a later
-`supervisor-run --project <project-name>` resumes at the first unfinished task
-and does not rerun accepted tasks. That workspace contains its normalized brief,
-specification, complete work checklist, generated B-series runbook-writing
-files, R-series product-work runbooks, and handoff documentation.
 
 ## What the F, B, and R series mean
 
