@@ -119,6 +119,41 @@ and **R** means *Real product-work runbook*.
 | `D0001`, `D0002`, … | **Dispatcher** | The factory or an earlier dispatcher | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A D task expands one eligible planning chapter, allocates the next bounded B batches, and leaves one successor dispatcher if more catalogue work remains. It does not build the product or write R implementation files itself. |
 | `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
 
+### How the generated runbooks and records connect
+
+Solid arrows show files or records created by a stage. Dotted arrows show
+validation, scheduling, or traceability links rather than a task creating its
+source material.
+
+```mermaid
+flowchart TD
+    INITIAL["INITIAL.md\nsource brief"] --> F["F001–F016\nfactory runbooks"]
+
+    F --> SPEC["Canonical specification\nprojects/<name>/specification/"]
+    SPEC --> REQ["REQ-*\nfunctional requirements"]
+    SPEC --> NFR["NFR-*\nquality and constraint requirements"]
+    F --> IMP["IMP-*\nimplementation catalogue records\nprojects/<name>/planning/"]
+    REQ -. "covered by" .-> IMP
+    NFR -. "covered by" .-> IMP
+    SPEC -. "defines" .-> IMP
+
+    F --> B["B0001…\nbounded runbook writers\nauthoring-runbooks/"]
+    F --> C["C0001…\ncatalogue checkpoints\nauthoring-runbooks/"]
+    C -. "validates catalogue, IDs,\ndependencies, and batch limits" .-> IMP
+    C -. "permits next wave" .-> B
+
+    D["D0001…\ndispatchers\nauthoring-runbooks/"] -. "expands one eligible chapter\nand allocates a later wave" .-> IMP
+    D --> B
+    D -. "creates successor when needed" .-> D
+
+    B --> R["R0001…\nproduct-work runbooks\nrunbooks/"]
+    R -. "requirement_ids" .-> REQ
+    R -. "requirement_ids" .-> NFR
+    R -. "source_catalogue_ids" .-> IMP
+    R -. "source_specifications" .-> SPEC
+    R -. "authoring_batch" .-> B
+```
+
 In short:
 
 ```text
