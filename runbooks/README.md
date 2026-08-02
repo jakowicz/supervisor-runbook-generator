@@ -93,9 +93,10 @@ supervisor-run --project <project-name>
 `--run-initial` runs only `F001`, which is useful for checking that the named
 brief can be normalized before committing to the full factory. `--project`
 reads that workspace's `INITIAL.md`, runs every F-series factory stage, then
-dynamically follows its registered B-series and R-series collections. It keeps
-state inside the named workspace and stops only for a real failure or explicit
-review gate.
+dynamically follows its registered B-series collection. It stops once that
+collection has generated and structurally validated the R-series handoff under
+`projects/<project-name>/runbooks/`. A separate implementation supervisor owns
+running and accepting those R files.
 
 Generated runbook state is kept in the named workspace's `.state/` directory,
 keeping IDs such as `R0001` isolated between projects. The workspace also owns

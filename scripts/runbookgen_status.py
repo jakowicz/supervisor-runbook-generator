@@ -102,18 +102,14 @@ def main() -> None:
     ]
     r_ids = [path.stem for path in sorted((workspace / "runbooks").glob("R*.md"))]
     b_states = load_states(workspace / ".state" / "authoring-runbooks.sqlite3")
-    r_states = load_states(workspace / ".state" / "runbooks.sqlite3")
     b_collection_states = states_for(b_ids, b_states)
     control_states = states_for(control_ids, b_states)
-    r_collection_states = states_for(r_ids, r_states)
     active_collections = [
         ("factory", row) for row in states if process_is_running(row["active_pid"])
     ] + [
         ("B-series", row) for row in b_collection_states if process_is_running(row["active_pid"])
     ] + [
         ("authoring coordination", row) for row in control_states if process_is_running(row["active_pid"])
-    ] + [
-        ("R-series", row) for row in r_collection_states if process_is_running(row["active_pid"])
     ]
 
     print(f"Runbook generator status — {project_name}")
@@ -123,10 +119,7 @@ def main() -> None:
     print(f"B-series authoring tasks: {collection_progress(b_ids, b_collection_states)}")
     if control_ids:
         print(f"Authoring coordination tasks (C/D): {collection_progress(control_ids, control_states)}")
-    print(
-        "R-series product tasks: "
-        + collection_progress(r_ids, r_collection_states, creation_label="R files generated")
-    )
+    print(f"R-series implementation handoff: {len(r_ids)} R files generated · not run by this factory")
     if active_collections:
         print("Active:")
         for collection, row in active_collections:

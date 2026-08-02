@@ -54,38 +54,34 @@ supervisor-run --project <project-name>
 ```
 
 `--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
-automatically follows the generated B-series and R-series files. It keeps the
+automatically follows the generated B-series authoring collection. It keeps the
 factory's durable task history in `projects/<project-name>/.state/`, its
 versioned project configuration in `projects/<project-name>/.env`, and private
 credentials in ignored `projects/<project-name>/.secrets.env`, so a later
 `supervisor-run --project <project-name>` resumes at the first unfinished task
 and does not rerun accepted tasks. That workspace contains its normalized brief,
 specification, complete work checklist, generated B-series runbook-writing
-files, R-series product-work runbooks, and handoff documentation.
+files, R-series product-work handoff, and handoff documentation.
 
-### When generated R runbooks run and become accepted
+### Generated R runbooks are handed off, not run here
 
-You do not run generated R files manually in the normal workflow. Keep using:
+Keep using this command to run the factory and its B-series authors:
 
 ```zsh
 supervisor-run --project <project-name>
 ```
 
-After the B-series authoring collection is complete, Supervisor follows its
-explicit child-collection registration to `projects/<project-name>/runbooks/`.
-It then runs each generated R file in its declared dependency order. For every
-R task, Supervisor loads the project `.env`, runs the configured coding and
-conditional asset/audio/QA stages, checks the task's acceptance criteria and
-evidence, and records the outcome in
-`projects/<project-name>/.state/runbooks.sqlite3`.
+After the B-series authoring collection is complete, the factory stops. Its
+final deliverable is the generated R collection in
+`projects/<project-name>/runbooks/`; the factory never registers or executes it
+as a child collection.
 
 An R file is **generated** as soon as a B writer creates its Markdown file. It
-is **accepted** only after its configured execution pipeline and completion
-audit pass. If a task fails validation, lacks required evidence, or needs a
-human decision, it is not accepted; the run stops at that task and a later
-`supervisor-run --project <project-name>` resumes it safely. The exact stages
-are project policy from `.env`, so a Codex-only project and a project with test,
-browser, art, and audio lanes can have different acceptance pipelines.
+is not accepted by the runbook generator: a separate implementation supervisor
+will later run the R files, apply that implementation project's `.env` pipeline,
+collect evidence, and decide acceptance in its own durable state. This keeps
+the factory focused on producing excellent product-work instructions rather
+than also building the product.
 
 ## Factory end-to-end test
 
@@ -209,9 +205,9 @@ and R files describe the real implementation or verification work. For example,
 a B file for an RPG's combat area might write up to seven R files: basic combat,
 damage calculation, enemies, abilities, battle UI, balancing, and tests. For a
 large product, more B files are created for the next areas instead of making one
-agent write thousands of R files at once. The Supervisor finds those later B
-files and the R files automatically, so one `--run-all` invocation continues
-until the generated collection reaches its final audit or a real review gate.
+agent write thousands of R files at once. The factory automatically finds later
+B files and stops once the complete R handoff has been structurally validated.
+The separate implementation supervisor later runs the R files.
 
 `C` and `D` are deliberately less important to the application than F, B, and
 R. They are internal factory controls: C checks that the generated task plan is
@@ -233,7 +229,7 @@ available for targeted lookup.
 | `F002`–`F004` | `INITIAL.md`, `PROJECT_BRIEF.md`, and the relevant earlier specification chapters | These stages refine product/domain, technical, and experience decisions. They use the documents produced by earlier F stages—not every earlier F Markdown procedure. |
 | `F005`–`F010` | The canonical `specification/` chapters and earlier planning outputs | These stages translate established decisions into dependencies, delivery areas, authoring contracts, and a safe handoff. |
 | `F011`–`F013` | The canonical specification plus the delivery/contract planning outputs | These stages create the traceability system, implementation catalogue, dependency graph, and small B-series batches. |
-| `F014`–`F016` | The catalogue, authoring manifest, quality gate, and canonical specification | These stages create B writers, validate their intended R contracts, and register the child collections that Supervisor follows. |
+| `F014`–`F016` | The catalogue, authoring manifest, quality gate, and canonical specification | These stages create B writers, validate their intended R contracts, register the B child collection, and publish the R handoff for a separate implementation supervisor. |
 | A B-series writer | Its own F013 context packet: only the assigned catalogue records, relevant specification sections, target constraints, templates, and reserved IDs | It writes no more than seven R files without needing a huge prompt or unrelated product context. |
 | A C checkpoint or D dispatcher | The authoring manifest, catalogue, ledger, and only the relevant canonical specification chapter | It validates and schedules the authoring process; it is not product implementation context. |
 | An R-series task | Its own objective, dependencies, acceptance criteria, and provenance metadata | It performs one small piece of product work. It can open the linked canonical files when it needs more detail. |
@@ -261,9 +257,9 @@ These fields answer different questions:
 The F and B references provide **provenance**, not a reason to use procedural
 factory Markdown as implementation requirements. The canonical specification
 and planning files remain the authoritative context. R-to-R dependencies define
-execution order; Supervisor also follows explicit `.supervisor-children/`
-registrations from the F collection to the B collection and then to the R
-collection.
+execution order; this factory follows an explicit `.supervisor-children/`
+registration from the F collection to the B collection only. The resulting R
+collection is deliberately left for the separate implementation supervisor.
 
 ### Terms used in this repository
 
@@ -305,7 +301,7 @@ need kernel, hardware, security, installation, and system-management work.
 | `F013` | Divides that checklist into small, dependency-safe authoring batches that can scale from a handful to thousands of R files. | Batch plan and B-series dispatch strategy. |
 | `F014` | Creates and registers the first B-series runbook writers. **It does not create R files directly.** Each B file writes at most seven detailed R-series product-work runbooks; later dispatcher B files create more B files when needed. | `authoring-runbooks/B….md` files. |
 | `F015` | Checks that the B batches and their intended R contracts cover the catalogue, obey dependency ordering, and include `asset_impact` plus stable `asset_ids` wherever an R task needs assets. | Validated authoring batches and implementation-contract rules. |
-| `F016` | Publishes the project-scoped handoff: registers generated collections, records how Supervisor should continue, and leaves the workspace ready for durable resume. | Handoff documentation and registered B/R collections. |
+| `F016` | Publishes the project-scoped handoff: records how factory authoring resumes and hands the generated R collection to a separate implementation supervisor. | Handoff documentation, registered B collection, and R implementation handoff. |
 
 The division of responsibility is therefore:
 
