@@ -16,6 +16,7 @@ from pathlib import Path
 
 
 ID_PATTERNS = {
+    "game": re.compile(r"\bGAME-[A-Z0-9-]+\b"),
     "assets": re.compile(r"\bASSET-[A-Z0-9-]+\b"),
     "audio": re.compile(r"\bAUDIO-[A-Z0-9-]+\b"),
     "narrative": re.compile(r"\bNAR-[A-Z0-9-]+\b"),
@@ -79,17 +80,28 @@ def main() -> int:
         errors.append("creative_coverage must be an object")
         coverage = {}
     expected = {
+        "game": identifiers(specification / "02-game-design-bible.md", "game"),
         "assets": identifiers(specification / "04-asset-direction.md", "assets"),
         "audio": identifiers(specification / "04-audio-direction.md", "audio"),
         "narrative": identifiers(specification / "02-narrative-content-model.md", "narrative"),
     }
+    selected_modules: set[str] = set()
+    bible_json = specification / "02-game-design-bible.json"
+    if bible_json.is_file():
+        try:
+            payload = json.loads(bible_json.read_text(encoding="utf-8"))
+            selected_modules = set(values(payload.get("selected_modules"))) if isinstance(payload, dict) else set()
+        except json.JSONDecodeError:
+            errors.append("02-game-design-bible.json is not valid JSON")
     if (workspace / "INITIAL.md").is_file() and "Game" in (workspace / "INITIAL.md").read_text(encoding="utf-8"):
+        if not expected["game"]:
+            errors.append("game is missing stable GAME-* IDs in 02-game-design-bible.md")
         if not expected["assets"]:
             errors.append("game is missing stable ASSET-* IDs in 04-asset-direction.md")
         if not expected["audio"]:
             errors.append("game is missing stable AUDIO-* IDs in 04-audio-direction.md")
-        if not expected["narrative"]:
-            errors.append("game is missing stable NAR-* IDs in 02-narrative-content-model.md")
+        if "narrative" in selected_modules and not expected["narrative"]:
+            errors.append("narrative module is selected but 02-narrative-content-model.md has no stable NAR-* IDs")
     shards = {item.get("id") for item in catalogue.get("expansion_queue", []) if isinstance(item, dict)}
     for kind, expected_ids in expected.items():
         if not expected_ids:
@@ -138,7 +150,11 @@ def main() -> int:
                     errors.append(f"{kind} {item_id} allocated {contract.get('id')} but its R file is missing")
                     continue
                 meta = front_matter(r_path)
-                field = "asset_ids" if kind == "assets" else "audio_ids" if kind == "audio" else "narrative_ids"
+                field = (
+                    "game_design_ids" if kind == "game" else
+                    "asset_ids" if kind == "assets" else
+                    "audio_ids" if kind == "audio" else "narrative_ids"
+                )
                 impact = "asset_impact" if kind == "assets" else "audio_impact" if kind == "audio" else None
                 if impact and meta.get(impact) != "required":
                     errors.append(f"{contract.get('id')} must mark {impact}: required for {item_id}")
