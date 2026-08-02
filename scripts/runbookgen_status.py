@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import sqlite3
 from pathlib import Path
@@ -82,6 +83,26 @@ def main() -> None:
     project_name = arguments.project_option or arguments.project or os.getenv("E2E_PROJECT_NAME", "e2e-fantasy-quest")
     root = Path(__file__).resolve().parents[1]
     workspace = root / "projects" / project_name
+def reserved_r_outputs(workspace: Path, generated_ids: list[str]) -> tuple[int, list[str]]:
+    """Return manifest-reserved R IDs that B writers have not materialised yet."""
+    manifest = workspace / "planning" / "runbook-authoring-manifest.json"
+    if not manifest.is_file():
+        return 0, []
+    try:
+        payload = json.loads(manifest.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return 0, []
+    generated = set(generated_ids)
+    reserved = [
+        contract
+        for contract in payload.get("r_contracts", [])
+        if isinstance(contract, dict)
+        and isinstance(contract.get("id"), str)
+        and contract["id"] not in generated
+    ]
+    return len(reserved), sorted({str(contract.get("authoring_batch", "")) for contract in reserved if contract.get("authoring_batch")})
+
+
     database = workspace / ".state" / "factory.sqlite3"
     if not workspace.is_dir():
         available = sorted(path.name for path in (root / "projects").glob("*") if path.is_dir())
@@ -109,6 +130,7 @@ def main() -> None:
     ] + [
         ("B-series", row) for row in b_collection_states if process_is_running(row["active_pid"])
     ] + [
+    reserved_r_count, reserved_r_batches = reserved_r_outputs(workspace, r_ids)
         ("authoring coordination", row) for row in control_states if process_is_running(row["active_pid"])
     ]
 
@@ -119,7 +141,10 @@ def main() -> None:
     print(f"B-series authoring tasks: {collection_progress(b_ids, b_collection_states)}")
     if control_ids:
         print(f"Authoring coordination tasks (C/D): {collection_progress(control_ids, control_states)}")
-    print(f"R-series implementation handoff: {len(r_ids)} R files generated · not run by this factory")
+    r_summary = f"R-series implementation handoff: {len(r_ids)} R files generated"
+    if reserved_r_count:
+        r_summary += f" · {reserved_r_count} reserved for {'/'.join(reserved_r_batches)}"
+    print(r_summary + " · not run by this factory")
     if active_collections:
         print("Active:")
         for collection, row in active_collections:
