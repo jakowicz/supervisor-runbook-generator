@@ -50,13 +50,19 @@ def main() -> None:
     active = [row for row in states if process_is_running(row["active_pid"])]
     accepted = [row["task_id"] for row in states if row["status"] == "accepted"]
     pending = [row for row in states if row["status"] != "accepted"]
+    factory_ids = [path.stem for path in sorted((root / "runbooks").glob("F*.md"))]
+    recorded_ids = {row["task_id"] for row in states}
+    unstarted = [task_id for task_id in factory_ids if task_id not in recorded_ids]
     b_count = len(list((workspace / "authoring-runbooks").glob("B*.md")))
     r_count = len(list((workspace / "runbooks").glob("R*.md")))
 
     print(f"Runbook generator status — {project_name}")
     print(f"Workspace: {workspace}")
     print(f"State: {database}")
-    print(f"Factory tasks: {len(states)} recorded · {counts['accepted']} accepted · {len(pending)} pending")
+    print(
+        f"Factory tasks: {len(factory_ids)} total · {counts['accepted']} accepted · "
+        f"{len(pending) + len(unstarted)} pending ({len(unstarted)} not started)"
+    )
     print(f"Generated runbooks: {b_count} B-series writers · {r_count} R-series product tasks")
     if active:
         print("Active:")
@@ -66,6 +72,9 @@ def main() -> None:
         print("Next pending:")
         row = pending[0]
         print(f"- {row['task_id']} · {row['status']} · {row['next_action']} · {row['continuation_summary']}")
+    elif unstarted:
+        print("Next pending:")
+        print(f"- {unstarted[0]} · not started · run `supervisor-run --project {project_name}` to continue")
     else:
         print("Factory collection complete.")
     if accepted:
