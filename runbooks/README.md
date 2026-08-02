@@ -18,7 +18,17 @@ thousands of runbooks for a particular product.
 | --- | --- | --- |
 | F-series | The factory: understand the brief, identify the required domains, and design a complete delivery plan. | A workspace in `projects/<slug>/`, including its specification, work checklist, and B-series files. |
 | B-series | The runbook writers: write the next small set of implementation instructions. “Bounded” means one B file may write no more than seven R files. | Up to seven R-series files per B task; extra B files are created when more areas need coverage. |
+| C-series | Catalogue checkpoints: validate the authoring catalogue, allocations, dependencies, and limits before the next writing wave. | No product work. C files are internal coordination files in `projects/<slug>/authoring-runbooks/`. |
+| D-series | Dispatchers: expand one eligible planning chapter and create the next bounded B-series writing wave when more work remains. | More B-series authoring files, not R files or product work. D files live beside B/C files in `projects/<slug>/authoring-runbooks/`. |
 | R-series | The product-work instructions: describe one small, ordered piece of real work. | Source changes, tests, assets, documentation, or other deliverables required by that R file. |
+
+`C` means **Catalogue checkpoint** and `D` means **Dispatcher**. They are
+factory-internal coordination runbooks, so they are far less important to the
+application than the F/B/R chain: they neither define the product nor build it.
+They exist only to let a very large catalogue grow safely without duplicating,
+skipping, or overloading B-series writers. They share `authoring-runbooks/` and
+its durable state with B files because all three operate in the runbook-writing
+layer, before R-series product work is run.
 
 Every R-series file must make an explicit asset decision in its front matter:
 `asset_impact: required` with stable comma-separated `asset_ids`, or

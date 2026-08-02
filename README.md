@@ -99,24 +99,28 @@ Run `supervisor-run --project <project-name>` at any time to resume that
 project. Its SQLite task state makes accepted tasks skip safely and returns to
 the first unfinished task.
 
-## What the F, B, and R series mean
+## What the F, B, C, D, and R series mean
 
 These are this factory's names, not an industry-standard vocabulary. The letter
 describes *which layer of work a runbook belongs to*, rather than a product
 feature or a required technology: **F** means *Factory*, **B** means *Bounded
-authoring batch*, and **R** means *Real product-work runbook*.
+authoring batch*, **C** means *Catalogue checkpoint*, **D** means *Dispatcher*,
+and **R** means *Real product-work runbook*.
 
 | Series | Meaning | Created by | Where it lives | What it does |
 | --- | --- | --- | --- | --- |
 | `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
 | `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
 | `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
+| `C0001`, `C0002`, … | **Catalogue checkpoint** | The factory or an authoring dispatcher | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A C task validates the catalogue, manifest, IDs, dependency coverage, and batch limits before another writing wave proceeds. It creates no product code and normally creates no R files. |
+| `D0001`, `D0002`, … | **Dispatcher** | The factory or an earlier dispatcher | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A D task expands one eligible planning chapter, allocates the next bounded B batches, and leaves one successor dispatcher if more catalogue work remains. It does not build the product or write R implementation files itself. |
 | `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
 
 In short:
 
 ```text
 your brief → F-series factory → B-series runbook writers → R-series product work
+                                  ↑ C checkpoints and D dispatchers coordinate authoring only
 ```
 
 The hierarchy stops there: F creates the plan and the B files, B writes R files,
@@ -127,6 +131,14 @@ large product, more B files are created for the next areas instead of making one
 agent write thousands of R files at once. The Supervisor finds those later B
 files and the R files automatically, so one `--run-all` invocation continues
 until the generated collection reaches its final audit or a real review gate.
+
+`C` and `D` are deliberately less important to the application than F, B, and
+R. They are internal factory controls: C checks that the generated task plan is
+safe and complete; D schedules the next small writing wave for a very large
+plan. They live with B files because they use the same authoring state and
+operate before R product work exists. They should be visible in status so a
+paused factory can be understood, but they are not application features and do
+not become part of the generated app.
 
 ### How runbooks reference one another
 
@@ -142,6 +154,7 @@ available for targeted lookup.
 | `F011`–`F013` | The canonical specification plus the delivery/contract planning outputs | These stages create the traceability system, implementation catalogue, dependency graph, and small B-series batches. |
 | `F014`–`F016` | The catalogue, authoring manifest, quality gate, and canonical specification | These stages create B writers, validate their intended R contracts, and register the child collections that Supervisor follows. |
 | A B-series writer | Its own F013 context packet: only the assigned catalogue records, relevant specification sections, target constraints, templates, and reserved IDs | It writes no more than seven R files without needing a huge prompt or unrelated product context. |
+| A C checkpoint or D dispatcher | The authoring manifest, catalogue, ledger, and only the relevant canonical specification chapter | It validates and schedules the authoring process; it is not product implementation context. |
 | An R-series task | Its own objective, dependencies, acceptance criteria, and provenance metadata | It performs one small piece of product work. It can open the linked canonical files when it needs more detail. |
 
 Each generated R file must declare this provenance in its front matter:
