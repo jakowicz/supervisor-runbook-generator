@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import os
 import sqlite3
-from collections import Counter
 from pathlib import Path
 
 
@@ -47,9 +46,21 @@ def collection_progress(task_ids: list[str], states: list[sqlite3.Row]) -> str:
     """
     recorded = {row["task_id"] for row in states}
     accepted = sum(row["status"] == "accepted" for row in states)
-    pending = sum(row["status"] != "accepted" for row in states)
-    unstarted = sum(task_id not in recorded for task_id in task_ids)
-    return f"{len(task_ids)} total · {accepted} accepted · {pending + unstarted} pending ({unstarted} not started)"
+    active = [row for row in states if row["status"] != "accepted" and process_is_running(row["active_pid"])]
+    needs_attention = [
+        row
+        for row in states
+        if row["status"] != "accepted" and row not in active
+    ]
+    not_yet_run = sum(task_id not in recorded for task_id in task_ids)
+    parts = [f"{len(task_ids)} files created", f"{accepted} accepted"]
+    if active:
+        parts.append(f"{len(active)} running")
+    if needs_attention:
+        parts.append(f"{len(needs_attention)} needs attention")
+    if not_yet_run:
+        parts.append(f"{not_yet_run} not yet run")
+    return " · ".join(parts)
 
 
 def states_for(task_ids: list[str], states: list[sqlite3.Row]) -> list[sqlite3.Row]:
@@ -74,8 +85,6 @@ def main() -> None:
         raise SystemExit(f"No factory state yet: {database}\nRun: supervisor-run --project {project_name}")
 
     states = load_states(database)
-    counts = Counter(row["status"] for row in states)
-    active = [row for row in states if process_is_running(row["active_pid"])]
     accepted = [row["task_id"] for row in states if row["status"] == "accepted"]
     pending = [row for row in states if row["status"] != "accepted"]
     factory_ids = [path.stem for path in sorted((root / "runbooks").glob("F*.md"))]
