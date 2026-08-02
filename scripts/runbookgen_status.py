@@ -123,6 +123,10 @@ def main() -> None:
     factory_ids = [path.stem for path in sorted((root / "runbooks").glob("F*.md"))]
     recorded_ids = {row["task_id"] for row in states}
     unstarted = [task_id for task_id in factory_ids if task_id not in recorded_ids]
+    initial = workspace / "INITIAL.md"
+    is_game = initial.is_file() and "- [x] Game" in initial.read_text(encoding="utf-8")
+    f005_accepted = any(row["task_id"] == "F005" and row["status"] == "accepted" for row in states)
+    f014_accepted = any(row["task_id"] == "F014" and row["status"] == "accepted" for row in states)
     g_ids = [path.stem for path in sorted((workspace / "game-design-runbooks").glob("G*.md"))]
     b_ids = [path.stem for path in sorted((workspace / "authoring-runbooks").glob("B*.md"))]
     control_ids = [
@@ -154,10 +158,19 @@ def main() -> None:
     print("\n== Game design ==")
     if g_ids:
         print(f"- G design runbooks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
+    elif is_game and not f005_accepted:
+        print("- Not started yet — F005 creates the G-series design programme.")
+    elif is_game:
+        print("- Waiting for F005 output — game-design runbooks have not been created yet.")
     else:
-        print("- Not created yet (or not applicable for this product)")
+        print("- Not applicable for this product category.")
     print("\n== Runbook authoring ==")
     print(f"- B writers: {collection_progress(b_ids, b_collection_states, creation_label='B files created')}")
+    if not b_ids:
+        if is_game and not g_ids:
+            print("- Not started yet — B authoring begins after the G-series final audit and F014.")
+        elif not f014_accepted:
+            print("- Not started yet — F014 creates the first B-series authoring runbooks.")
     if control_ids:
         print(f"- C/D coordination: {collection_progress(control_ids, control_states, creation_label='coordination files created')}")
     print("\n== R-series handoff ==")
@@ -166,6 +179,8 @@ def main() -> None:
     if reserved_r_count:
         print(f"- {reserved_r_count} R files reserved for {'/'.join(reserved_r_batches)} to write")
     print("- R files are not run by this factory; a separate implementation supervisor owns them")
+    if not r_ids and not reserved_r_count:
+        print("- Not started yet — R runbooks are planned after F012–F014, then written by B-series authors.")
     print("\n== Current generator work ==")
     if active_collections:
         for collection, row in active_collections:
