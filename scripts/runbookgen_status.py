@@ -39,11 +39,23 @@ def load_states(database: Path) -> list[sqlite3.Row]:
 
 
 def collection_progress(task_ids: list[str], states: list[sqlite3.Row]) -> str:
+    """Summarise one named runbook collection.
+
+    A shared state database can hold several collections (for example, B-series
+    authoring batches and C/D-series coordination runbooks).  Callers must pass
+    only the states belonging to the collection being displayed.
+    """
     recorded = {row["task_id"] for row in states}
     accepted = sum(row["status"] == "accepted" for row in states)
     pending = sum(row["status"] != "accepted" for row in states)
     unstarted = sum(task_id not in recorded for task_id in task_ids)
     return f"{len(task_ids)} total · {accepted} accepted · {pending + unstarted} pending ({unstarted} not started)"
+
+
+def states_for(task_ids: list[str], states: list[sqlite3.Row]) -> list[sqlite3.Row]:
+    """Return durable task states that belong to ``task_ids`` only."""
+    identifiers = set(task_ids)
+    return [row for row in states if row["task_id"] in identifiers]
 
 
 def main() -> None:
@@ -70,23 +82,34 @@ def main() -> None:
     recorded_ids = {row["task_id"] for row in states}
     unstarted = [task_id for task_id in factory_ids if task_id not in recorded_ids]
     b_ids = [path.stem for path in sorted((workspace / "authoring-runbooks").glob("B*.md"))]
+    control_ids = [
+        path.stem
+        for path in sorted((workspace / "authoring-runbooks").glob("[CD]*.md"))
+    ]
     r_ids = [path.stem for path in sorted((workspace / "runbooks").glob("R*.md"))]
     b_states = load_states(workspace / ".state" / "authoring-runbooks.sqlite3")
     r_states = load_states(workspace / ".state" / "runbooks.sqlite3")
+    b_collection_states = states_for(b_ids, b_states)
+    control_states = states_for(control_ids, b_states)
+    r_collection_states = states_for(r_ids, r_states)
     active_collections = [
         ("factory", row) for row in states if process_is_running(row["active_pid"])
     ] + [
-        ("B-series", row) for row in b_states if process_is_running(row["active_pid"])
+        ("B-series", row) for row in b_collection_states if process_is_running(row["active_pid"])
     ] + [
-        ("R-series", row) for row in r_states if process_is_running(row["active_pid"])
+        ("authoring coordination", row) for row in control_states if process_is_running(row["active_pid"])
+    ] + [
+        ("R-series", row) for row in r_collection_states if process_is_running(row["active_pid"])
     ]
 
     print(f"Runbook generator status — {project_name}")
     print(f"Workspace: {workspace}")
     print(f"State: {database}")
     print(f"Factory tasks: {collection_progress(factory_ids, states)}")
-    print(f"B-series authoring tasks: {collection_progress(b_ids, b_states)}")
-    print(f"R-series product tasks: {collection_progress(r_ids, r_states)}")
+    print(f"B-series authoring tasks: {collection_progress(b_ids, b_collection_states)}")
+    if control_ids:
+        print(f"Authoring coordination tasks (C/D): {collection_progress(control_ids, control_states)}")
+    print(f"R-series product tasks: {collection_progress(r_ids, r_collection_states)}")
     if active_collections:
         print("Active:")
         for collection, row in active_collections:
