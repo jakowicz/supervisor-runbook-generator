@@ -91,7 +91,8 @@ Run the opt-in real-agent factory acceptance test through the generator CLI:
 scripts/runbookgen e2e
 ```
 
-It prompts you to choose from a few small example projects—two games, a todo
+It prompts you to choose from a few small example projects—three games (including
+a football-trivia game targeting Android and iOS), a todo
 app, text editor, mini OS utility, file-processing API, or internal helpdesk—
 then runs that project's factory and verifies a second run resumes accepted
 work. For unattended use, set a scenario explicitly:

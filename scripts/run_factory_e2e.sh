@@ -11,21 +11,23 @@ export PYTHONPATH="$root/supervisor${PYTHONPATH:+:$PYTHONPATH}"
 scenario="${E2E_SCENARIO:-}"
 if [[ -z "$scenario" && -t 0 && -t 1 ]]; then
   echo "Choose an E2E sample project:"
-  select choice in "Fantasy quest" "Arcade puzzle" "Todo app" "Text editor" "Mini OS utility" "File processing API" "Internal helpdesk"; do
+  select choice in "Fantasy quest" "Arcade puzzle" "Football trivia (Android and iOS)" "Todo app" "Text editor" "Mini OS utility" "File processing API" "Internal helpdesk"; do
     case "$REPLY" in
       1) scenario="fantasy-quest" ;;
       2) scenario="arcade-puzzle" ;;
-      3) scenario="todo-app" ;;
-      4) scenario="text-editor" ;;
-      5) scenario="mini-os" ;;
-      6) scenario="file-processing-api" ;;
-      7) scenario="internal-helpdesk" ;;
-      *) echo "Enter a number from 1 to 7." >&2; continue ;;
+      3) scenario="football-trivia" ;;
+      4) scenario="todo-app" ;;
+      5) scenario="text-editor" ;;
+      6) scenario="mini-os" ;;
+      7) scenario="file-processing-api" ;;
+      8) scenario="internal-helpdesk" ;;
+      *) echo "Enter a number from 1 to 8." >&2; continue ;;
     esac
     break
   done
 fi
 scenario="${scenario:-fantasy-quest}"
+game_characteristics=""
 
 case "$scenario" in
   fantasy-quest)
@@ -41,6 +43,14 @@ case "$scenario" in
     reference="Tetris for short, readable puzzle sessions and escalating challenge only"
     targets=""
     art_direction="Original high-contrast geometric arcade art with accessible colour choices and clear piece silhouettes"
+    ;;
+  football-trivia)
+    category="Game"
+    product="A feature-rich football trivia game for quick mobile sessions: themed rounds, multiple question formats, answer validation, scoring streaks, accessible feedback, local progress, and a curated first-release question bank."
+    reference="The Athletic quiz formats for football-topic breadth and QuizUp for short competitive trivia sessions only"
+    targets="Android phone,iPhone (iOS)"
+    game_characteristics="2D presentation,Single-player game,Puzzle, card, board, or turn-based game"
+    art_direction="Original modern football broadcast graphics, bold category colours, readable typography, and celebratory but accessible feedback"
     ;;
   todo-app)
     category="Consumer application"
@@ -79,7 +89,7 @@ case "$scenario" in
     ;;
   *)
     echo "Unknown E2E scenario: $scenario" >&2
-    echo "Choose one of: fantasy-quest, arcade-puzzle, todo-app, text-editor, mini-os, file-processing-api, internal-helpdesk." >&2
+    echo "Choose one of: fantasy-quest, arcade-puzzle, football-trivia, todo-app, text-editor, mini-os, file-processing-api, internal-helpdesk." >&2
     exit 2
     ;;
 esac
@@ -91,6 +101,7 @@ initial_command=(
   --product "$product" --reference "$reference"
 )
 [[ -n "$targets" ]] && initial_command+=(--targets "$targets")
+[[ -n "$game_characteristics" ]] && initial_command+=(--game-characteristics "$game_characteristics")
 [[ -n "$art_direction" ]] && initial_command+=(--art-direction "$art_direction")
 
 echo "E2E scenario: $scenario ($category) · project: $project_name"
