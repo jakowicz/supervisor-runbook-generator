@@ -76,17 +76,6 @@ R-series runbooks. It uses the configured real agents, validates the generated
 R-series files, and runs once more to confirm durable resume behaviour. The
 workspace remains under `projects/` for inspection.
 
-`--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
-automatically follows the generated B-series and R-series files. It keeps the
-factory's durable task history in `projects/<project-name>/.state/`, its
-versioned project configuration in `projects/<project-name>/.env`, and private
-credentials in ignored `projects/<project-name>/.secrets.env`, so a
-later `supervisor-run --project <project-name>` resumes at the first unfinished
-task and does not rerun accepted tasks. That workspace contains its normalized
-brief, specification, complete work checklist, generated B-series
-runbook-writing files, R-series product-work runbooks, and handoff
-documentation.
-
 ## See or resume project progress
 
 From the repository root, list every named workspace and its current phase,
@@ -99,6 +88,16 @@ supervisor projects
 Run `supervisor-run --project <project-name>` at any time to resume that
 project. Its SQLite task state makes accepted tasks skip safely and returns to
 the first unfinished task.
+
+`--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
+automatically follows the generated B-series and R-series files. It keeps the
+factory's durable task history in `projects/<project-name>/.state/`, its
+versioned project configuration in `projects/<project-name>/.env`, and private
+credentials in ignored `projects/<project-name>/.secrets.env`, so a later
+`supervisor-run --project <project-name>` resumes at the first unfinished task
+and does not rerun accepted tasks. That workspace contains its normalized brief,
+specification, complete work checklist, generated B-series runbook-writing
+files, R-series product-work runbooks, and handoff documentation.
 
 ## What the F, B, and R series mean
 
