@@ -37,7 +37,12 @@ def load_states(database: Path) -> list[sqlite3.Row]:
         connection.close()
 
 
-def collection_progress(task_ids: list[str], states: list[sqlite3.Row]) -> str:
+def collection_progress(
+    task_ids: list[str],
+    states: list[sqlite3.Row],
+    *,
+    creation_label: str = "files created",
+) -> str:
     """Summarise one named runbook collection.
 
     A shared state database can hold several collections (for example, B-series
@@ -53,7 +58,7 @@ def collection_progress(task_ids: list[str], states: list[sqlite3.Row]) -> str:
         if row["status"] != "accepted" and row not in active
     ]
     not_yet_run = sum(task_id not in recorded for task_id in task_ids)
-    parts = [f"{len(task_ids)} files created", f"{accepted} accepted"]
+    parts = [f"{len(task_ids)} {creation_label}", f"{accepted} accepted"]
     if active:
         parts.append(f"{len(active)} running")
     if needs_attention:
@@ -118,7 +123,10 @@ def main() -> None:
     print(f"B-series authoring tasks: {collection_progress(b_ids, b_collection_states)}")
     if control_ids:
         print(f"Authoring coordination tasks (C/D): {collection_progress(control_ids, control_states)}")
-    print(f"R-series product tasks: {collection_progress(r_ids, r_collection_states)}")
+    print(
+        "R-series product tasks: "
+        + collection_progress(r_ids, r_collection_states, creation_label="R files generated")
+    )
     if active_collections:
         print("Active:")
         for collection, row in active_collections:
