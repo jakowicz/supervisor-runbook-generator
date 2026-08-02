@@ -28,6 +28,37 @@ supervisor --help
 supervisor-run --help
 ```
 
+## Start a factory run
+
+From the repository root, there are only two actions required to start a
+factory run.
+
+1. Create `runbooks/INITIAL.md` with the interactive brief wizard. It asks for
+   the product type, target systems, users, requirements, constraints,
+   references, and open decisions. Responsive web and PWA support are included
+   by default.
+
+```zsh
+supervisor initial --force
+```
+
+   `--force` deliberately replaces the current `runbooks/INITIAL.md`; omit it
+   if you want the command to refuse to overwrite an existing brief.
+
+2. Review the generated [runbooks/INITIAL.md](runbooks/INITIAL.md), make any
+   edits you want, then run the Supervisor once:
+
+```zsh
+supervisor-run --run-all --runbooks-dir runbooks
+```
+
+The Supervisor reads `INITIAL.md` first, runs the F-series, then automatically
+follows the generated B-series and R-series files. The F-series creates a new
+workspace under `projects/<project-slug>/`. That workspace contains its
+normalized brief, specification, complete work checklist, generated B-series
+runbook-writing files, R-series product-work runbooks, and handoff
+documentation.
+
 ## What the F, B, and R series mean
 
 The letters describe *which layer of work a runbook belongs to*, rather than a
@@ -76,37 +107,6 @@ The F-series has these broad responsibilities:
 | `F011`–`F013` | Produce the detailed specification, a check that nothing important is missing, the complete work checklist (catalogue), and the plan for writing R files in batches. |
 | `F014` | Create and register the first B-series runbook-writing files for the generated project. **F014 does not create R files directly:** when Supervisor runs each B file, that B file writes up to seven R-series product-work runbooks. Later B dispatcher files create more B files when required. |
 | `F015`–`F016` | Define quality gates, validate the factory output, and prepare handoff material. |
-
-## Start a factory run
-
-From the repository root, there are only two actions required to start a
-factory run.
-
-1. Create `runbooks/INITIAL.md` with the interactive brief wizard. It asks for
-   the product type, target systems, users, requirements, constraints,
-   references, and open decisions. Responsive web and PWA support are included
-   by default.
-
-```zsh
-supervisor initial --force
-```
-
-   `--force` deliberately replaces the current `runbooks/INITIAL.md`; omit it
-   if you want the command to refuse to overwrite an existing brief.
-
-2. Review the generated [runbooks/INITIAL.md](runbooks/INITIAL.md), make any
-   edits you want, then run the Supervisor once:
-
-```zsh
-supervisor-run --run-all --runbooks-dir runbooks
-```
-
-The Supervisor reads `INITIAL.md` first, runs the F-series, then automatically
-follows the generated B-series and R-series files. The F-series creates a new
-workspace under `projects/<project-slug>/`. That workspace contains its
-normalized brief, specification, complete work checklist, generated B-series
-runbook-writing files, R-series product-work runbooks, and handoff
-documentation.
 
 ## The product brief drives the result
 
