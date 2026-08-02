@@ -17,6 +17,7 @@ thousands of runbooks for a particular product.
 | Series | Plain-English purpose | Output |
 | --- | --- | --- |
 | F-series | The factory: understand the brief, identify the required domains, and design a complete delivery plan. | A workspace in `projects/<slug>/`, including its specification, work checklist, and B-series files. |
+| G-series | Game-design work: create and review the original, game-specific bibles selected from the brief. | Detailed game bibles and a completed game-design manifest in `projects/<slug>/`. |
 | B-series | The runbook writers: write the next small set of implementation instructions. “Bounded” means one B file may write no more than seven R files. | Up to seven R-series files per B task; extra B files are created when more areas need coverage. |
 | C-series | Catalogue checkpoints: validate the authoring catalogue, allocations, dependencies, and limits before the next writing wave. | No product work. C files are internal coordination files in `projects/<slug>/authoring-runbooks/`. |
 | D-series | Dispatchers: expand one eligible planning chapter and create the next bounded B-series writing wave when more work remains. | More B-series authoring files, not R files or product work. D files live beside B/C files in `projects/<slug>/authoring-runbooks/`. |
@@ -29,6 +30,16 @@ They exist only to let a very large catalogue grow safely without duplicating,
 skipping, or overloading B-series writers. They share `authoring-runbooks/` and
 its durable state with B files because all three operate in the runbook-writing
 layer, before R-series product work is run.
+
+For games, `F005` creates a project-scoped `game-design-runbooks/` collection.
+`G0001` selects the detailed design work from the game's actual design signals,
+then dispatches small G-series waves and a final design audit. Supervisor treats
+this as a prerequisite collection: it completes G work before F006 can create
+implementation contracts. G files are not generic RPG tasks—an RPG might plan
+story, world, characters, bosses, quests, and jobs; football trivia might plan
+question sourcing, categories, adjudication, scoring, fairness, and editorial
+batches. The G manifest and production inventory are the evidence that B/R
+authoring may begin.
 
 The generated project's `planning/implementation-catalogue-index.json` also
 contains `IMP-*` **implementation catalogue records**. These are stable
