@@ -110,6 +110,7 @@ and **R** means *Real product-work runbook*.
 | Series | Meaning | Created by | Where it lives | What it does |
 | --- | --- | --- | --- | --- |
 | `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
+| `IMP-0001`, `IMP-0002`, … | **Implementation catalogue record** | The F-series planning stages and later D dispatchers | `projects/<slug>/planning/implementation-catalogue-index.json` and the authoring manifest/ledger | **Planning and traceability records, not runnable runbooks.** Each record captures a needed piece of work, its requirements, dependencies, ownership, verification, and asset assessment before it is allocated to a B writer. |
 | `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
 | `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
 | `C0001`, `C0002`, … | **Catalogue checkpoint** | The factory or an authoring dispatcher | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A C task validates the catalogue, manifest, IDs, dependency coverage, and batch limits before another writing wave proceeds. It creates no product code and normally creates no R files. |
@@ -122,6 +123,14 @@ In short:
 your brief → F-series factory → B-series runbook writers → R-series product work
                                   ↑ C checkpoints and D dispatchers coordinate authoring only
 ```
+
+The stable planning chain is `specification → IMP catalogue record → B writer
+→ R runbook`. `IMP-0007` is therefore not another name for `R0007`: the first
+is an implementation-planning record, while the second is an executable piece
+of product work. Their numbers are intentionally independent. One IMP record
+may be split into several R files, combined with related IMP records into one R
+file, or held until its dependencies are ready. An R file records that mapping
+in `source_catalogue_ids`.
 
 The hierarchy stops there: F creates the plan and the B files, B writes R files,
 and R files describe the real implementation or verification work. For example,
@@ -194,6 +203,7 @@ collection.
 
 ### F-series factory stages, in detail
 
+| **Implementation catalogue record (`IMP-*`)** | One stable planned work record in `planning/implementation-catalogue-index.json` and the authoring manifest/ledger. It is allocated to an authoring batch before one or more R-series runbooks are written. It is not itself runnable. |
 The F-series is deliberately product-agnostic. It uses the brief to decide what
 “complete” means for this particular product: an RPG may need story, systems,
 content, balancing, save state, and platform work; an IDE may need language

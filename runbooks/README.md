@@ -30,6 +30,14 @@ skipping, or overloading B-series writers. They share `authoring-runbooks/` and
 its durable state with B files because all three operate in the runbook-writing
 layer, before R-series product work is run.
 
+The generated project's `planning/implementation-catalogue-index.json` also
+contains `IMP-*` **implementation catalogue records**. These are stable
+planning/traceability entries, not runbooks and not another name for R files.
+The normal chain is `specification → IMP record → B writer → R runbook`.
+An IMP record may map to one or several R files, or wait for a dependency, so
+`IMP-0007` and `R0007` intentionally have independent IDs. Each generated R
+file records the relevant IMP IDs in its `source_catalogue_ids` front matter.
+
 Every R-series file must make an explicit asset decision in its front matter:
 `asset_impact: required` with stable comma-separated `asset_ids`, or
 `asset_impact: not_applicable` with a blank `asset_ids`. Asset-required files
