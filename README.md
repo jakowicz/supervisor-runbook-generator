@@ -63,6 +63,30 @@ and does not rerun accepted tasks. That workspace contains its normalized brief,
 specification, complete work checklist, generated B-series runbook-writing
 files, R-series product-work runbooks, and handoff documentation.
 
+### When generated R runbooks run and become accepted
+
+You do not run generated R files manually in the normal workflow. Keep using:
+
+```zsh
+supervisor-run --project <project-name>
+```
+
+After the B-series authoring collection is complete, Supervisor follows its
+explicit child-collection registration to `projects/<project-name>/runbooks/`.
+It then runs each generated R file in its declared dependency order. For every
+R task, Supervisor loads the project `.env`, runs the configured coding and
+conditional asset/audio/QA stages, checks the task's acceptance criteria and
+evidence, and records the outcome in
+`projects/<project-name>/.state/runbooks.sqlite3`.
+
+An R file is **generated** as soon as a B writer creates its Markdown file. It
+is **accepted** only after its configured execution pipeline and completion
+audit pass. If a task fails validation, lacks required evidence, or needs a
+human decision, it is not accepted; the run stops at that task and a later
+`supervisor-run --project <project-name>` resumes it safely. The exact stages
+are project policy from `.env`, so a Codex-only project and a project with test,
+browser, art, and audio lanes can have different acceptance pipelines.
+
 ## Factory end-to-end test
 
 Run the opt-in real-agent factory acceptance test through the generator CLI:
