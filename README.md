@@ -90,15 +90,17 @@ the first unfinished task.
 
 ## What the F, B, and R series mean
 
-The letters describe *which layer of work a runbook belongs to*, rather than a
-product feature or a required technology.
+These are this factory's names, not an industry-standard vocabulary. The letter
+describes *which layer of work a runbook belongs to*, rather than a product
+feature or a required technology: **F** means *Factory*, **B** means *Bounded
+authoring batch*, and **R** means *Real product-work runbook*.
 
-| Series | Created by | Where it lives | What it does |
-| --- | --- | --- | --- |
-| `INITIAL.md` | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
-| `F001`–`F016` | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
-| `B0001`, `B0002`, … | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” simply means it has a hard limit: one B task may write no more than seven R files. |
-| `R0001`, `R0002`, … | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
+| Series | Meaning | Created by | Where it lives | What it does |
+| --- | --- | --- | --- | --- |
+| `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
+| `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
+| `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
+| `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
 
 In short:
 
