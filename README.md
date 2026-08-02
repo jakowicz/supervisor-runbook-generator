@@ -55,7 +55,8 @@ supervisor-run --project <project-name>
 
 `--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
 automatically follows the generated B-series and R-series files. It keeps the
-factory's durable task history in `projects/<project-name>/.supervisor/`, so a
+factory's durable task history in `projects/<project-name>/.state/` and its
+private project configuration in `projects/<project-name>/.env`, so a
 later `supervisor-run --project <project-name>` resumes at the first unfinished
 task and does not rerun accepted tasks. That workspace contains its normalized
 brief, specification, complete work checklist, generated B-series

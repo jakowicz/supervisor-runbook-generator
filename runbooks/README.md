@@ -55,6 +55,7 @@ dynamically follows its registered B-series and R-series collections. It keeps
 state inside the named workspace and stops only for a real failure or explicit
 review gate.
 
-Generated runbook state is kept beside each generated collection in
-`.supervisor/supervisor.sqlite3`, keeping IDs such as `R0001` isolated between
-projects.
+Generated runbook state is kept in the named workspace's `.state/` directory,
+keeping IDs such as `R0001` isolated between projects. The workspace also owns
+its private `.env`, including its art direction and project-specific Supervisor
+configuration.
