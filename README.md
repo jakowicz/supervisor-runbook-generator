@@ -125,14 +125,14 @@ the first unfinished task.
 These are this factory's names, not an industry-standard vocabulary. The letter
 describes *which layer of work a runbook belongs to*, rather than a product
 feature or a required technology. In normal use, you only need to care about
-`INITIAL.md`, F, B, and R.
+`INITIAL.md`, F, G (for games), B, and R.
 
 ### Runbooks you normally use
 
 | Series | Meaning | Created by | Where it lives | What it does |
 | --- | --- | --- | --- | --- |
 | `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
-| `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
+| `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief and create the game-design programme (when needed), then the implementation-authoring plan. They do not build the requested product. |
 | `G0001`, `G0002`, … | **Game design** | F005 and later G dispatchers, for games only | `projects/<slug>/game-design-runbooks/` | **Game-specific design work.** G files create and review the detailed original game bibles selected from the brief—such as story, world, characters, bosses, question banks, scoring, or fairness—before implementation runbooks are authored. |
 | `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
 | `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
@@ -159,18 +159,21 @@ source material.
 
 ```mermaid
 flowchart TD
-    INITIAL["INITIAL.md\nsource brief"] --> F["F001–F016\nfactory runbooks"]
+    INITIAL["INITIAL.md\nsource brief"] --> F["F001–F005\nfactory discovery and planning"]
+    F --> G["G0001…\ngame-specific design bibles\ngame-design-runbooks/"]
+    G -. "accepted completion gate\nfor games" .-> POSTF["F006–F016\nfactory authoring plan"]
+    F -. "non-games" .-> POSTF
 
-    F --> SPEC["Canonical specification\nprojects/<name>/specification/"]
+    POSTF --> SPEC["Canonical specification\nprojects/<name>/specification/"]
     SPEC --> REQ["REQ-*\nfunctional requirements"]
     SPEC --> NFR["NFR-*\nquality and constraint requirements"]
-    F --> IMP["IMP-*\nimplementation catalogue records\nprojects/<name>/planning/"]
+    POSTF --> IMP["IMP-*\nimplementation catalogue records\nprojects/<name>/planning/"]
     REQ -. "covered by" .-> IMP
     NFR -. "covered by" .-> IMP
     SPEC -. "defines" .-> IMP
 
-    F --> B["B0001…\nbounded runbook writers\nauthoring-runbooks/"]
-    F --> C["C0001…\ncatalogue checkpoints\nauthoring-runbooks/"]
+    POSTF --> B["B0001…\nbounded runbook writers\nauthoring-runbooks/"]
+    POSTF --> C["C0001…\ncatalogue checkpoints\nauthoring-runbooks/"]
     C -. "validates catalogue, IDs,\ndependencies, and batch limits" .-> IMP
     C -. "permits next wave" .-> B
 
@@ -189,7 +192,7 @@ flowchart TD
 In short:
 
 ```text
-your brief → F-series factory → B-series runbook writers → R-series product work
+your brief → F-series factory → G-series game design (games only) → B-series runbook writers → R-series product work
                                   ↑ C checkpoints and D dispatchers coordinate authoring only
 ```
 
