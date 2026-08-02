@@ -62,6 +62,19 @@ brief, specification, complete work checklist, generated B-series
 runbook-writing files, R-series product-work runbooks, and handoff
 documentation.
 
+## See or resume project progress
+
+From the repository root, list every named workspace and its current phase,
+accepted/pending counts, next task, and exact resume command:
+
+```zsh
+supervisor projects
+```
+
+Run `supervisor-run --project <project-name>` at any time to resume that
+project. Its SQLite task state makes accepted tasks skip safely and returns to
+the first unfinished task.
+
 ## What the F, B, and R series mean
 
 The letters describe *which layer of work a runbook belongs to*, rather than a
