@@ -58,6 +58,40 @@ def is_game_workspace(workspace: Path) -> bool:
     return initial.is_file() and "Game" in initial.read_text(encoding="utf-8")
 
 
+def game_design_manifest_errors(workspace: Path, selected_modules: set[str], design_units: list[dict[str, object]]) -> list[str]:
+    """Validate the deterministic handoff from generated G design work."""
+    path = workspace / "planning" / "game-design-manifest.json"
+    if not path.is_file():
+        return ["game is missing planning/game-design-manifest.json"]
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return ["game-design-manifest.json is not valid JSON"]
+    if not isinstance(manifest, dict):
+        return ["game-design-manifest.json must be a JSON object"]
+    errors: list[str] = []
+    audit = manifest.get("final_audit")
+    if manifest.get("status") != "accepted":
+        errors.append("game-design manifest status must be accepted")
+    if not isinstance(audit, dict) or not isinstance(audit.get("task_id"), str) or not audit["task_id"].startswith("G") or audit.get("status") != "accepted":
+        errors.append("game-design manifest needs an accepted G-series final_audit")
+    modules = {item.get("module"): item for item in object_items(manifest.get("modules")) if isinstance(item.get("module"), str)}
+    for module in sorted(selected_modules):
+        entry = modules.get(module)
+        if not isinstance(entry, dict) or entry.get("status") != "accepted":
+            errors.append(f"game-design manifest has no accepted entry for selected module {module!r}")
+            continue
+        if not values(entry.get("design_output_paths")):
+            errors.append(f"game-design manifest module {module!r} has no design output")
+        covered = set(values(entry.get("game_design_ids")))
+        required = {str(unit["id"]) for unit in design_units if unit.get("module") == module and isinstance(unit.get("id"), str)}
+        if required and not required.issubset(covered):
+            errors.append(f"game-design manifest module {module!r} does not cover its GAME-* units")
+    if values(manifest.get("pending_modules")) or values(manifest.get("blocked_modules")):
+        errors.append("game-design manifest still has pending or blocked modules")
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project", nargs="?", help="Project name under projects/, or an absolute project workspace path. Defaults to the active Supervisor project.")
@@ -180,6 +214,7 @@ def main() -> int:
         for unit_id in sorted(unit_ids):
             if not inventory_by_design.get(unit_id):
                 errors.append(f"game design unit {unit_id} has no production-inventory entry")
+        errors.extend(game_design_manifest_errors(workspace, selected_modules, design_units))
     shards = {item.get("id") for item in catalogue.get("expansion_queue", []) if isinstance(item, dict)}
     for kind, expected_ids in expected.items():
         if not expected_ids:

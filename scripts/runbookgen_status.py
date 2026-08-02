@@ -123,6 +123,7 @@ def main() -> None:
     factory_ids = [path.stem for path in sorted((root / "runbooks").glob("F*.md"))]
     recorded_ids = {row["task_id"] for row in states}
     unstarted = [task_id for task_id in factory_ids if task_id not in recorded_ids]
+    g_ids = [path.stem for path in sorted((workspace / "game-design-runbooks").glob("G*.md"))]
     b_ids = [path.stem for path in sorted((workspace / "authoring-runbooks").glob("B*.md"))]
     control_ids = [
         path.stem
@@ -131,10 +132,14 @@ def main() -> None:
     r_ids = [path.stem for path in sorted((workspace / "runbooks").glob("R*.md"))]
     reserved_r_count, reserved_r_batches = reserved_r_outputs(workspace, r_ids)
     b_states = load_states(workspace / ".state" / "authoring-runbooks.sqlite3")
+    g_states = load_states(workspace / ".state" / "game-design-runbooks.sqlite3")
+    g_collection_states = states_for(g_ids, g_states)
     b_collection_states = states_for(b_ids, b_states)
     control_states = states_for(control_ids, b_states)
     active_collections = [
         ("factory", row) for row in states if process_is_running(row["active_pid"])
+    ] + [
+        ("G-series game design", row) for row in g_collection_states if process_is_running(row["active_pid"])
     ] + [
         ("B-series", row) for row in b_collection_states if process_is_running(row["active_pid"])
     ] + [
@@ -146,6 +151,11 @@ def main() -> None:
     print(f"State: {database}")
     print("\nFactory stages")
     print(f"- {collection_progress(factory_ids, states, creation_label='stages available')}")
+    print("\nGame design")
+    if g_ids:
+        print(f"- G design runbooks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
+    else:
+        print("- Not created yet (or not applicable for this product)")
     print("\nRunbook authoring")
     print(f"- B writers: {collection_progress(b_ids, b_collection_states, creation_label='B files created')}")
     if control_ids:
