@@ -133,7 +133,7 @@ feature or a required technology. In normal use, you only need to care about
 | --- | --- | --- | --- | --- |
 | `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
 | `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief and create the game-design programme (when needed), then the implementation-authoring plan. They do not build the requested product. |
-| `G0001`, `G0002`, … | **Game design** | F005 and later G dispatchers, for games only | `projects/<slug>/game-design-runbooks/` | **Game-specific design work.** G files create and review the detailed original game bibles selected from the brief—such as story, world, characters, bosses, question banks, scoring, or fairness—before implementation runbooks are authored. |
+| `G0001`, `G0002`, … | **Game design** | GB design-runbook writers, for games only | `projects/<slug>/game-design-runbooks/` | **Actual game-specific design work.** G files create and review detailed original game bibles—such as story, world, characters, bosses, question banks, scoring, or fairness—before implementation runbooks are authored. GB writers create at most seven G files each; GC checkpoints, GD dispatchers, and a final GQ audit scale and verify that work. |
 | `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
 | `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
 
@@ -160,7 +160,10 @@ source material.
 ```mermaid
 flowchart TD
     INITIAL["INITIAL.md\nsource brief"] --> F["F001–F005\nfactory discovery and planning"]
-    F --> G["G0001…\ngame-specific design bibles\ngame-design-runbooks/"]
+    F --> GD["GD0001…\ngame-design dispatcher\ngame-design-runbooks/"]
+    GD --> GB["GB0001…\nbounded G-runbook writers"]
+    GB --> G["G0001…\ngame-specific design bibles"]
+    GC["GC checkpoints / GQ audit"] -. "validates" .-> G
     G -. "accepted completion gate\nfor games" .-> POSTF["F006–F016\nfactory authoring plan"]
     F -. "non-games" .-> POSTF
 

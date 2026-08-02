@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sqlite3
 from pathlib import Path
 
@@ -127,7 +128,10 @@ def main() -> None:
     is_game = initial.is_file() and "- [x] Game" in initial.read_text(encoding="utf-8")
     f005_accepted = any(row["task_id"] == "F005" and row["status"] == "accepted" for row in states)
     f014_accepted = any(row["task_id"] == "F014" and row["status"] == "accepted" for row in states)
-    g_ids = [path.stem for path in sorted((workspace / "game-design-runbooks").glob("G*.md"))]
+    g_paths = sorted((workspace / "game-design-runbooks").glob("G*.md"))
+    g_ids = [path.stem for path in g_paths if re.fullmatch(r"G\d+", path.stem)]
+    gb_ids = [path.stem for path in g_paths if re.fullmatch(r"GB\d+", path.stem)]
+    g_control_ids = [path.stem for path in g_paths if re.fullmatch(r"G[CDQ]\d+", path.stem)]
     b_ids = [path.stem for path in sorted((workspace / "authoring-runbooks").glob("B*.md"))]
     control_ids = [
         path.stem
@@ -138,10 +142,16 @@ def main() -> None:
     b_states = load_states(workspace / ".state" / "authoring-runbooks.sqlite3")
     g_states = load_states(workspace / ".state" / "game-design-runbooks.sqlite3")
     g_collection_states = states_for(g_ids, g_states)
+    gb_collection_states = states_for(gb_ids, g_states)
+    g_control_states = states_for(g_control_ids, g_states)
     b_collection_states = states_for(b_ids, b_states)
     control_states = states_for(control_ids, b_states)
     active_collections = [
         ("factory", row) for row in states if process_is_running(row["active_pid"])
+    ] + [
+        ("GB design authoring", row) for row in gb_collection_states if process_is_running(row["active_pid"])
+    ] + [
+        ("G-series coordination", row) for row in g_control_states if process_is_running(row["active_pid"])
     ] + [
         ("G-series game design", row) for row in g_collection_states if process_is_running(row["active_pid"])
     ] + [
@@ -156,8 +166,11 @@ def main() -> None:
     print("\n== Factory stages ==")
     print(f"- {collection_progress(factory_ids, states, creation_label='stages available')}")
     print("\n== Game design ==")
-    if g_ids:
-        print(f"- G design runbooks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
+    if g_paths:
+        print(f"- G design tasks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
+        print(f"- GB writers: {collection_progress(gb_ids, gb_collection_states, creation_label='GB files created')}")
+        if g_control_ids:
+            print(f"- GC/GD/GQ coordination: {collection_progress(g_control_ids, g_control_states, creation_label='coordination files created')}")
     elif is_game and not f005_accepted:
         print("- Not started yet — F005 creates the G-series design programme.")
     elif is_game:
