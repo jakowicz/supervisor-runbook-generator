@@ -27,6 +27,14 @@ also describe asset purpose, variants, ownership, original-art constraints, and
 verification in an `## Asset assessment` section. This lets the Supervisor use
 its opt-in asset lane only where the product work genuinely needs it.
 
+Every R-series file must also carry provenance metadata: `source_specifications`
+links to the smallest relevant canonical specification sections,
+`source_catalogue_ids` identifies its implementation-catalogue records,
+`authoring_batch` names its B-series writer, and `factory_stages` records the
+F-series stages that established the requirement. This lets an implementation
+agent retrieve focused canonical context without treating procedural F/B files
+as its requirements source.
+
 For example, a game may eventually have R runbooks for story, combat, content,
 saves, and platform delivery; an IDE may have R runbooks for language services,
 editing, debugging, and extensions. The F-series derives those areas from the
