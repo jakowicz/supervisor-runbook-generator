@@ -9,6 +9,10 @@ case "$command" in
     shift
     exec "$root/scripts/run_factory_e2e.sh" "$@"
     ;;
+  status)
+    shift
+    exec python3 "$root/scripts/runbookgen_status.py" "$@"
+    ;;
   help|--help|-h|"")
     cat <<'EOF'
 Usage: runbookgen <command>
@@ -16,6 +20,9 @@ Usage: runbookgen <command>
 Commands:
   e2e    Create a scoped game project, run the real factory, validate 15–20
          generated R-series runbooks, then verify resume behaviour.
+  status [project-name]
+         Show the durable E2E/factory state, accepted and active tasks, and
+         generated B/R runbook counts. `--project <name>` also works.
 
 The e2e command uses the configured real Supervisor agents and leaves its
 generated project workspace under projects/ for inspection.
