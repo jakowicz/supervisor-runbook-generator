@@ -99,25 +99,35 @@ Run `supervisor-run --project <project-name>` at any time to resume that
 project. Its SQLite task state makes accepted tasks skip safely and returns to
 the first unfinished task.
 
-## What the F, B, C, D, and R series mean
+## What the runbook series mean
 
 These are this factory's names, not an industry-standard vocabulary. The letter
 describes *which layer of work a runbook belongs to*, rather than a product
-feature or a required technology: **F** means *Factory*, **B** means *Bounded
-authoring batch*, **C** means *Catalogue checkpoint*, **D** means *Dispatcher*,
-and **R** means *Real product-work runbook*.
+feature or a required technology. In normal use, you only need to care about
+`INITIAL.md`, F, B, and R.
+
+### Runbooks you normally use
 
 | Series | Meaning | Created by | Where it lives | What it does |
 | --- | --- | --- | --- | --- |
 | `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
+| `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
+| `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
+| `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
+
+### Internal planning and coordination
+
+These files and records let the factory safely scale to a large application.
+They are important to the generator, but not things you normally need to read
+or manage while building the product.
+
+| Internal ID | Meaning | Created by | Where it lives | What it does |
+| --- | --- | --- | --- | --- |
 | `REQ-0001`, `REQ-0002`, … | **Functional requirement** | F011 specification/traceability stage | `projects/<slug>/specification/requirements.md`, `requirements.json`, and `traceability-matrix.md` | A stable statement of behaviour or capability the product must provide. It is a requirement, not a runnable task. |
 | `NFR-0001`, `NFR-0002`, … | **Non-functional requirement** | F011 specification/traceability stage | `projects/<slug>/specification/requirements.md`, `requirements.json`, and `traceability-matrix.md` | A stable quality or constraint requirement—such as performance, accessibility, security, reliability, privacy, compatibility, or observability. It is not a runnable task. |
 | `IMP-0001`, `IMP-0002`, … | **Implementation catalogue record** | The F-series planning stages and later D dispatchers | `projects/<slug>/planning/implementation-catalogue-index.json` and the authoring manifest/ledger | **Planning and traceability records, not runnable runbooks.** Each record captures a needed piece of work, its requirements, dependencies, ownership, verification, and asset assessment before it is allocated to a B writer. |
-| `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief, write the detailed product plan, and create the files that will write the final implementation instructions. They do not build the requested product. |
-| `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
 | `C0001`, `C0002`, … | **Catalogue checkpoint** | The factory or an authoring dispatcher | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A C task validates the catalogue, manifest, IDs, dependency coverage, and batch limits before another writing wave proceeds. It creates no product code and normally creates no R files. |
 | `D0001`, `D0002`, … | **Dispatcher** | The factory or an earlier dispatcher | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A D task expands one eligible planning chapter, allocates the next bounded B batches, and leaves one successor dispatcher if more catalogue work remains. It does not build the product or write R implementation files itself. |
-| `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
 
 ### How the generated runbooks and records connect
 
