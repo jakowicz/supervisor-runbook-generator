@@ -31,9 +31,17 @@ def load_states(database: Path) -> list[sqlite3.Row]:
     connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
     connection.row_factory = sqlite3.Row
     try:
-        return connection.execute(
-            "SELECT task_id, status, active_pid, next_action, continuation_summary, updated_at FROM task_state ORDER BY task_id"
-        ).fetchall()
+        try:
+            return connection.execute(
+                "SELECT task_id, status, active_pid, next_action, continuation_summary, updated_at FROM task_state ORDER BY task_id"
+            ).fetchall()
+        except sqlite3.OperationalError as error:
+            # Child state databases are created before their first task is
+            # claimed. An empty SQLite file is therefore valid progress state,
+            # not a status-command failure.
+            if "no such table: task_state" in str(error):
+                return []
+            raise
     finally:
         connection.close()
 
@@ -75,14 +83,6 @@ def states_for(task_ids: list[str], states: list[sqlite3.Row]) -> list[sqlite3.R
     return [row for row in states if row["task_id"] in identifiers]
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Show read-only E2E factory progress for a generated project.")
-    parser.add_argument("project", nargs="?", help="Project name under projects/.")
-    parser.add_argument("--project", dest="project_option", help="Project name under projects/.")
-    arguments = parser.parse_args()
-    project_name = arguments.project_option or arguments.project or os.getenv("E2E_PROJECT_NAME", "e2e-fantasy-quest")
-    root = Path(__file__).resolve().parents[1]
-    workspace = root / "projects" / project_name
 def reserved_r_outputs(workspace: Path, generated_ids: list[str]) -> tuple[int, list[str]]:
     """Return manifest-reserved R IDs that B writers have not materialised yet."""
     manifest = workspace / "planning" / "runbook-authoring-manifest.json"
@@ -103,6 +103,14 @@ def reserved_r_outputs(workspace: Path, generated_ids: list[str]) -> tuple[int, 
     return len(reserved), sorted({str(contract.get("authoring_batch", "")) for contract in reserved if contract.get("authoring_batch")})
 
 
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Show read-only E2E factory progress for a generated project.")
+    parser.add_argument("project", nargs="?", help="Project name under projects/.")
+    parser.add_argument("--project", dest="project_option", help="Project name under projects/.")
+    arguments = parser.parse_args()
+    project_name = arguments.project_option or arguments.project or os.getenv("E2E_PROJECT_NAME", "e2e-fantasy-quest")
+    root = Path(__file__).resolve().parents[1]
+    workspace = root / "projects" / project_name
     database = workspace / ".state" / "factory.sqlite3"
     if not workspace.is_dir():
         available = sorted(path.name for path in (root / "projects").glob("*") if path.is_dir())
@@ -111,7 +119,6 @@ def reserved_r_outputs(workspace: Path, generated_ids: list[str]) -> tuple[int, 
         raise SystemExit(f"No factory state yet: {database}\nRun: supervisor-run --project {project_name}")
 
     states = load_states(database)
-    accepted = [row["task_id"] for row in states if row["status"] == "accepted"]
     pending = [row for row in states if row["status"] != "accepted"]
     factory_ids = [path.stem for path in sorted((root / "runbooks").glob("F*.md"))]
     recorded_ids = {row["task_id"] for row in states}
@@ -122,6 +129,7 @@ def reserved_r_outputs(workspace: Path, generated_ids: list[str]) -> tuple[int, 
         for path in sorted((workspace / "authoring-runbooks").glob("[CD]*.md"))
     ]
     r_ids = [path.stem for path in sorted((workspace / "runbooks").glob("R*.md"))]
+    reserved_r_count, reserved_r_batches = reserved_r_outputs(workspace, r_ids)
     b_states = load_states(workspace / ".state" / "authoring-runbooks.sqlite3")
     b_collection_states = states_for(b_ids, b_states)
     control_states = states_for(control_ids, b_states)
@@ -130,36 +138,42 @@ def reserved_r_outputs(workspace: Path, generated_ids: list[str]) -> tuple[int, 
     ] + [
         ("B-series", row) for row in b_collection_states if process_is_running(row["active_pid"])
     ] + [
-    reserved_r_count, reserved_r_batches = reserved_r_outputs(workspace, r_ids)
         ("authoring coordination", row) for row in control_states if process_is_running(row["active_pid"])
     ]
 
     print(f"Runbook generator status — {project_name}")
     print(f"Workspace: {workspace}")
     print(f"State: {database}")
-    print(f"Factory tasks: {collection_progress(factory_ids, states)}")
-    print(f"B-series authoring tasks: {collection_progress(b_ids, b_collection_states)}")
+    print("\nFactory stages")
+    print(f"- {collection_progress(factory_ids, states, creation_label='stages available')}")
+    print("\nRunbook authoring")
+    print(f"- B writers: {collection_progress(b_ids, b_collection_states, creation_label='B files created')}")
     if control_ids:
-        print(f"Authoring coordination tasks (C/D): {collection_progress(control_ids, control_states)}")
-    r_summary = f"R-series implementation handoff: {len(r_ids)} R files generated"
+        print(f"- C/D coordination: {collection_progress(control_ids, control_states, creation_label='coordination files created')}")
+    print("\nR-series handoff")
+    print(f"- {len(r_ids) + reserved_r_count} R runbooks planned in total")
+    print(f"- {len(r_ids)} R Markdown files generated")
     if reserved_r_count:
-        r_summary += f" · {reserved_r_count} reserved for {'/'.join(reserved_r_batches)}"
-    print(r_summary + " · not run by this factory")
+        print(f"- {reserved_r_count} R files reserved for {'/'.join(reserved_r_batches)} to write")
+    print("- R files are not run by this factory; a separate implementation supervisor owns them")
     if active_collections:
-        print("Active:")
+        print("\nActive now")
         for collection, row in active_collections:
             print(f"- {collection} · {row['task_id']} · pid {row['active_pid']} · {row['next_action']} · {row['continuation_summary']}")
     elif pending:
-        print("Next pending:")
+        print("\nFactory attention needed")
         row = pending[0]
         print(f"- {row['task_id']} · {row['status']} · {row['next_action']} · {row['continuation_summary']}")
     elif unstarted:
-        print("Next pending:")
+        print("\nFactory attention needed")
         print(f"- {unstarted[0]} · not started · run `supervisor-run --project {project_name}` to continue")
     else:
-        print("Factory collection complete.")
-    if accepted:
-        print("Accepted: " + ", ".join(accepted))
+        unaccepted_authoring = [row for row in [*b_collection_states, *control_states] if row["status"] != "accepted"]
+        unstarted_authoring = len(b_ids) + len(control_ids) - len({row["task_id"] for row in [*b_collection_states, *control_states]})
+        if unaccepted_authoring or unstarted_authoring:
+            print("\nNo generator worker is active; authoring work remains. Run `supervisor-run --project " + project_name + "` to continue.")
+        else:
+            print("\nFactory and authoring collections complete; the R-series handoff is ready.")
 
 
 if __name__ == "__main__":
