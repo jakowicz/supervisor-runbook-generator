@@ -9,6 +9,37 @@ developer tool, service, document system, or any other product, the factory
 first discovers the product domains and creates a canonical specification. It
 then builds a scalable collection of detailed implementation runbooks.
 
+## Install Supervisor
+
+Install the global Supervisor CLI once. It requires Python 3.10 or newer but
+does not require administrator access:
+
+```zsh
+curl -fsSL https://raw.githubusercontent.com/jakowicz/supervisor/main/scripts/install.sh -o /tmp/supervisor-install.sh
+bash /tmp/supervisor-install.sh
+```
+
+If the installer says `~/.local/bin` is not on your `PATH`, add the line it
+prints to your shell profile, then open a new terminal. Confirm the commands
+are available:
+
+```zsh
+supervisor --help
+supervisor-run --help
+```
+
+This repository includes its project configuration and pinned source version of
+Supervisor as the `supervisor/` Git submodule. After cloning this repository,
+fetch that submodule before running the factory:
+
+```zsh
+git submodule update --init --recursive
+```
+
+For global installation details, configuration, updates, agents, validation,
+and the full CLI reference, see the
+[Supervisor repository](https://github.com/jakowicz/supervisor).
+
 ## What the F, B, and R series mean
 
 The letters describe *which layer of work a runbook belongs to*, rather than a
@@ -57,37 +88,6 @@ The F-series has these broad responsibilities:
 | `F011`–`F013` | Produce the detailed specification, a check that nothing important is missing, the complete work checklist (catalogue), and the plan for writing R files in batches. |
 | `F014` | Create and register the first B-series runbook-writing files for the generated project. **F014 does not create R files directly:** when Supervisor runs each B file, that B file writes up to seven R-series product-work runbooks. Later B dispatcher files create more B files when required. |
 | `F015`–`F016` | Define quality gates, validate the factory output, and prepare handoff material. |
-
-## Install Supervisor
-
-Install the global Supervisor CLI once. It requires Python 3.10 or newer but
-does not require administrator access:
-
-```zsh
-curl -fsSL https://raw.githubusercontent.com/jakowicz/supervisor/main/scripts/install.sh -o /tmp/supervisor-install.sh
-bash /tmp/supervisor-install.sh
-```
-
-If the installer says `~/.local/bin` is not on your `PATH`, add the line it
-prints to your shell profile, then open a new terminal. Confirm the commands
-are available:
-
-```zsh
-supervisor --help
-supervisor-run --help
-```
-
-This repository includes its project configuration and pinned source version of
-Supervisor as the `supervisor/` Git submodule. After cloning this repository,
-fetch that submodule before running the factory:
-
-```zsh
-git submodule update --init --recursive
-```
-
-For global installation details, configuration, updates, agents, validation,
-and the full CLI reference, see the
-[Supervisor repository](https://github.com/jakowicz/supervisor).
 
 ## Start a factory run
 
