@@ -27,6 +27,15 @@ also describe asset purpose, variants, ownership, original-art constraints, and
 verification in an `## Asset assessment` section. This lets the Supervisor use
 its opt-in asset lane only where the product work genuinely needs it.
 
+Every R-series file also makes an explicit audio decision: `audio_impact:
+required` with stable `audio_ids`, a cue brief, duration, loop policy, and
+audio-style version; or `audio_impact: not_applicable` with the documented
+empty/default values. When required, Supervisor uses the independent local
+audio lane—cue director, ACE-Step 1.5 XL Turbo generator, then technical and
+provenance QA—before the coding stage. F004 creates an audio-direction and cue
+map only when the product actually needs music, sound effects, voice, or
+audible feedback.
+
 Every R-series file must also carry provenance metadata: `source_specifications`
 links to the smallest relevant canonical specification sections,
 `source_catalogue_ids` identifies its implementation-catalogue records,
@@ -66,4 +75,6 @@ review gate.
 Generated runbook state is kept in the named workspace's `.state/` directory,
 keeping IDs such as `R0001` isolated between projects. The workspace also owns
 its private `.env`, including its art direction and project-specific Supervisor
-configuration.
+configuration. For games, `supervisor initial` also asks for optional music and
+sound direction. Leaving it blank configures Gemma 4 12B to create an original
+direction and ACE-Step 1.5 XL Turbo as the local audio generator.

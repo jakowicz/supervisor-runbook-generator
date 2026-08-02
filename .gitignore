@@ -1,3 +1,4 @@
 /.state/
+/.local/
 **/.secrets.env
 /.codebase-memory/
