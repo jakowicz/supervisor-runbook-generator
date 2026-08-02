@@ -4,14 +4,22 @@ set -euo pipefail
 # Opt-in, real-agent acceptance test. It intentionally uses the configured
 # Supervisor/Codex pipeline and leaves its workspace behind for inspection.
 project_name="${E2E_PROJECT_NAME:-e2e-fantasy-quest}"
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+supervisor_cmd="${SUPERVISOR_COMMAND:-$root/supervisor/.venv/bin/supervisor}"
+supervisor_run_cmd="${SUPERVISOR_RUN_COMMAND:-$root/supervisor/.venv/bin/supervisor-run}"
+export PYTHONPATH="$root/supervisor${PYTHONPATH:+:$PYTHONPATH}"
 
-supervisor initial --non-interactive --force \
+"$supervisor_cmd" initial --non-interactive --force \
   --project-name "$project_name" --category Game \
   --product "A deliberately small offline 2D fantasy adventure, scoped to require roughly 18 implementation runbooks: exploration, one town, one dungeon, turn-based combat, inventory, quests, save/load, settings, and a short ending." \
   --reference "Final Fantasy V for party-based turn-based adventure scope only" \
   --art-direction "Original warm hand-painted fantasy, readable silhouettes, restrained palette"
 
-supervisor-run --project "$project_name"
+# This harness must be safe in a normal, dirty development worktree. The
+# generated files remain available for inspection; no task commits or pushes.
+"$root/supervisor/.venv/bin/python" -c "from pathlib import Path; from supervisor.manage import _set_env_values; _set_env_values(Path('projects/$project_name/.env'), {'SUPERVISOR_AUTO_COMMIT': 'false', 'SUPERVISOR_AUTO_PUSH': 'false'})"
+
+"$supervisor_run_cmd" --project "$project_name"
 
 project_root="projects/$project_name"
 python3 - "$project_root" <<'PY'
@@ -33,4 +41,4 @@ print(f'E2E PASS: {len(runbooks)} valid R-series runbooks in {root}')
 PY
 
 # A second invocation must use durable state rather than regenerating accepted work.
-supervisor-run --project "$project_name"
+"$supervisor_run_cmd" --project "$project_name"
