@@ -127,15 +127,39 @@ until the generated collection reaches its final audit or a real review gate.
 | **Dispatcher** | A B-series file whose only job is to create the next B-series files when more parts of the catalogue still need R runbooks. |
 | **Contract** | The required shape of a runbook: its goal, inputs, steps, acceptance criteria, and evidence. It is not a legal agreement or an API contract. |
 
-The F-series has these broad responsibilities:
+### F-series factory stages, in detail
 
-| Factory stages | Responsibility |
-| --- | --- |
-| `F001`–`F004` | Normalize the brief and discover the product, platform, technical, and experience domains that matter for this particular request. |
-| `F005`–`F010` | Break those domains into delivery areas, dependencies, quality requirements, and small pieces of work that will each become R files. |
-| `F011`–`F013` | Produce the detailed specification, a check that nothing important is missing, the complete work checklist (catalogue), and the plan for writing R files in batches. |
-| `F014` | Create and register the first B-series runbook-writing files for the generated project. **F014 does not create R files directly:** when Supervisor runs each B file, that B file writes up to seven R-series product-work runbooks. Later B dispatcher files create more B files when required. |
-| `F015`–`F016` | Define quality gates, validate the factory output, and prepare handoff material. |
+The F-series is deliberately product-agnostic. It uses the brief to decide what
+“complete” means for this particular product: an RPG may need story, systems,
+content, balancing, save state, and platform work; an IDE may need language
+services, debugging, extensions, and source control; an operating system may
+need kernel, hardware, security, installation, and system-management work.
+
+| Stage | What it establishes | Main output for later stages |
+| --- | --- | --- |
+| `F001` | Reads `INITIAL.md`, normalizes the requested outcome, distinguishes explicit requirements from safe assumptions and unanswered decisions, and discovers the product-specific system families. | `PROJECT_BRIEF.md` and the first domain-discovery specification. |
+| `F002` | Defines the domain model, key users or actors, journeys, feature areas, release slices, and the boundaries between first release and later work. | A product map that can be divided into independently buildable areas. |
+| `F003` | Defines the technical and quality foundations appropriate to the brief: architecture, data, integrations, privacy/trust, resilience, performance, observability, and testability. | Cross-cutting technical, data, trust, and quality contracts. |
+| `F004` | Defines the intended experience without copying a reference product: interaction principles, accessibility, localisation, visual/art direction where relevant, and platform adaptations. | Original experience, accessibility, and presentation constraints. |
+| `F005` | Turns the product map into a dependency graph: what must exist first, what can proceed in parallel, what needs shared contracts, and which work needs a review gate. | Dependency-ordered implementation map. |
+| `F006` | Defines the authoring contracts for platform foundations and core domain systems. | Reusable instructions for the foundation and domain portions of the catalogue. |
+| `F007` | Defines authoring contracts for user-facing features, workflows, gameplay/content, and experience quality. | Reusable instructions for feature and experience portions of the catalogue. |
+| `F008` | Defines authoring contracts for security/trust, operations, administration/tooling, release, support, and lifecycle work where the product needs them. | Reusable instructions for operational and release portions of the catalogue. |
+| `F009` | Audits the emerging catalogue against the brief, dependencies, targets, quality constraints, lifecycle, and omitted-but-necessary work. | A gap-checked catalogue with omissions, conflicts, and decisions recorded. |
+| `F010` | Resolves the specification-to-authoring handoff: stable scope boundaries, task granularity, acceptance evidence, and the inputs needed to write implementation runbooks. | Final authoring inputs; no product code is created. |
+| `F011` | Builds the canonical specification and requirements-traceability system, so every planned area can be traced back to the brief, a constraint, or a justified dependency. | Canonical specification and traceability records. |
+| `F012` | Builds the full implementation catalogue and its dependency graph, including foundations, features, content, assets, quality, operations, and release work as applicable. | The complete checklist from which R-series tasks will be written. |
+| `F013` | Divides that checklist into small, dependency-safe authoring batches that can scale from a handful to thousands of R files. | Batch plan and B-series dispatch strategy. |
+| `F014` | Creates and registers the first B-series runbook writers. **It does not create R files directly.** Each B file writes at most seven detailed R-series product-work runbooks; later dispatcher B files create more B files when needed. | `authoring-runbooks/B….md` files. |
+| `F015` | Checks that the B batches and their intended R contracts cover the catalogue, obey dependency ordering, and include `asset_impact` plus stable `asset_ids` wherever an R task needs assets. | Validated authoring batches and implementation-contract rules. |
+| `F016` | Publishes the project-scoped handoff: registers generated collections, records how Supervisor should continue, and leaves the workspace ready for durable resume. | Handoff documentation and registered B/R collections. |
+
+The division of responsibility is therefore:
+
+- `F001`–`F004`: understand and specify the particular product.
+- `F005`–`F010`: make its delivery work coherent, complete, and authorable.
+- `F011`–`F013`: turn that into a traceable catalogue and scalable batch plan.
+- `F014`–`F016`: create, validate, and hand off the B-series writers that produce R-series product work.
 
 ## The product brief drives the result
 
