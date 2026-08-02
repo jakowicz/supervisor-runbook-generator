@@ -74,6 +74,21 @@ saves, and platform delivery; an IDE may have R runbooks for language services,
 editing, debugging, and extensions. The F-series derives those areas from the
 brief rather than assuming either example.
 
+### How games remain genre-specific
+
+For a game, F001 first records evidence-based **game-design signals**—such as
+the primary player activity, session model, content source, and creative
+intensity—and proposes relevant and rejected design modules. F002 turns only
+the selected modules into a game-design bible. F005 then produces a concrete,
+machine-readable production inventory. This avoids treating a game as a fixed
+RPG template: an RPG can receive named party, world, boss, quest, and ability
+cards, while a football-trivia game receives question provenance, categories,
+difficulty, adjudication, scoring, modes, anti-repeat, and editorial-batch
+criteria. Finite content is defined as original named cards; large catalogues
+are defined by their grammar, quotas, validation, and bounded batches. F012 and
+F015 reject any selected module that reaches runbook authoring without owned
+production and validation work.
+
 `F001`–`F004` understand the brief and domains, `F005`–`F010` make the delivery
 map, `F011`–`F013` create and check the specification and work checklist, and
 `F014` creates the first B-series runbook-writing files. When Supervisor runs

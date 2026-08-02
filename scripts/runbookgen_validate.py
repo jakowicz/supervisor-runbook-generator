@@ -48,6 +48,16 @@ def values(value: object) -> list[str]:
     return []
 
 
+def object_items(value: object) -> list[dict[str, object]]:
+    """Return only JSON-object entries from a list-like field."""
+    return [item for item in value if isinstance(item, dict)] if isinstance(value, list) else []
+
+
+def is_game_workspace(workspace: Path) -> bool:
+    initial = workspace / "INITIAL.md"
+    return initial.is_file() and "Game" in initial.read_text(encoding="utf-8")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project", nargs="?", help="Project name under projects/, or an absolute project workspace path. Defaults to the active Supervisor project.")
@@ -86,14 +96,27 @@ def main() -> int:
         "narrative": identifiers(specification / "02-narrative-content-model.md", "narrative"),
     }
     selected_modules: set[str] = set()
+    design_units: list[dict[str, object]] = []
     bible_json = specification / "02-game-design-bible.json"
     if bible_json.is_file():
         try:
             payload = json.loads(bible_json.read_text(encoding="utf-8"))
-            selected_modules = set(values(payload.get("selected_modules"))) if isinstance(payload, dict) else set()
+            if not isinstance(payload, dict):
+                errors.append("02-game-design-bible.json must be a JSON object")
+            else:
+                selected_modules = set(values(payload.get("selected_modules")))
+                design_units = object_items(payload.get("design_units"))
+                if is_game_workspace(workspace) and not values(payload.get("game_archetypes")):
+                    errors.append("02-game-design-bible.json needs non-empty game_archetypes")
         except json.JSONDecodeError:
             errors.append("02-game-design-bible.json is not valid JSON")
-    if (workspace / "INITIAL.md").is_file() and "Game" in (workspace / "INITIAL.md").read_text(encoding="utf-8"):
+    if is_game_workspace(workspace):
+        if not bible_json.is_file():
+            errors.append("game is missing specification/02-game-design-bible.json")
+        if not selected_modules:
+            errors.append("game design bible needs at least one selected module")
+        if not design_units:
+            errors.append("game design bible needs non-empty design_units")
         if not expected["game"]:
             errors.append("game is missing stable GAME-* IDs in 02-game-design-bible.md")
         if not expected["assets"]:
@@ -102,6 +125,61 @@ def main() -> int:
             errors.append("game is missing stable AUDIO-* IDs in 04-audio-direction.md")
         if "narrative" in selected_modules and not expected["narrative"]:
             errors.append("narrative module is selected but 02-narrative-content-model.md has no stable NAR-* IDs")
+        units_by_module: dict[str, set[str]] = {}
+        unit_ids: set[str] = set()
+        for unit in design_units:
+            unit_id = unit.get("id")
+            module = unit.get("module")
+            if not isinstance(unit_id, str) or not ID_PATTERNS["game"].fullmatch(unit_id):
+                errors.append("each game design unit needs a stable GAME-* id")
+                continue
+            if not isinstance(module, str) or not module:
+                errors.append(f"game design unit {unit_id} needs a selected module")
+                continue
+            if module not in selected_modules:
+                errors.append(f"game design unit {unit_id} references unselected module {module}")
+            if not isinstance(unit.get("production_mode"), str) or not unit["production_mode"]:
+                errors.append(f"game design unit {unit_id} needs a production_mode")
+            unit_ids.add(unit_id)
+            units_by_module.setdefault(module, set()).add(unit_id)
+        for module in sorted(selected_modules):
+            if not units_by_module.get(module):
+                errors.append(f"selected game module {module!r} has no GAME-* design unit")
+        if expected["game"] != unit_ids:
+            errors.append("GAME-* IDs in 02-game-design-bible.md must exactly match JSON design_units")
+
+        inventory_path = workspace / "planning" / "game-production-inventory.json"
+        inventory: list[dict[str, object]] = []
+        if not inventory_path.is_file():
+            errors.append("game is missing planning/game-production-inventory.json")
+        else:
+            try:
+                inventory_payload = json.loads(inventory_path.read_text(encoding="utf-8"))
+                entries = inventory_payload.get("entries") if isinstance(inventory_payload, dict) else inventory_payload
+                inventory = object_items(entries)
+                if not inventory:
+                    errors.append("game-production-inventory.json needs non-empty entries")
+            except json.JSONDecodeError:
+                errors.append("game-production-inventory.json is not valid JSON")
+        inventory_by_design: dict[str, list[dict[str, object]]] = {}
+        for entry in inventory:
+            design_id = entry.get("game_design_id")
+            module = entry.get("module")
+            if not isinstance(design_id, str) or design_id not in unit_ids:
+                errors.append("each game-production-inventory entry needs a known game_design_id")
+                continue
+            if not isinstance(module, str) or module not in selected_modules:
+                errors.append(f"inventory entry for {design_id} needs a selected module")
+            if not isinstance(entry.get("production_kind"), str) or not entry["production_kind"]:
+                errors.append(f"inventory entry for {design_id} needs a production_kind")
+            if not entry.get("planned_quantity"):
+                errors.append(f"inventory entry for {design_id} needs a planned_quantity")
+            if not isinstance(entry.get("verification"), str) or not entry["verification"]:
+                errors.append(f"inventory entry for {design_id} needs verification")
+            inventory_by_design.setdefault(design_id, []).append(entry)
+        for unit_id in sorted(unit_ids):
+            if not inventory_by_design.get(unit_id):
+                errors.append(f"game design unit {unit_id} has no production-inventory entry")
     shards = {item.get("id") for item in catalogue.get("expansion_queue", []) if isinstance(item, dict)}
     for kind, expected_ids in expected.items():
         if not expected_ids:
