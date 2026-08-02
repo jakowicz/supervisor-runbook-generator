@@ -3,17 +3,98 @@ set -euo pipefail
 
 # Opt-in, real-agent acceptance test. It intentionally uses the configured
 # Supervisor/Codex pipeline and leaves its workspace behind for inspection.
-project_name="${E2E_PROJECT_NAME:-e2e-fantasy-quest}"
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 supervisor_cmd="${SUPERVISOR_COMMAND:-$root/supervisor/.venv/bin/supervisor}"
 supervisor_run_cmd="${SUPERVISOR_RUN_COMMAND:-$root/supervisor/.venv/bin/supervisor-run}"
 export PYTHONPATH="$root/supervisor${PYTHONPATH:+:$PYTHONPATH}"
 
-"$supervisor_cmd" initial --non-interactive --force \
-  --project-name "$project_name" --category Game \
-  --product "A deliberately small offline 2D fantasy adventure, scoped to require roughly 18 implementation runbooks: exploration, one town, one dungeon, turn-based combat, inventory, quests, save/load, settings, and a short ending." \
-  --reference "Final Fantasy V for party-based turn-based adventure scope only" \
-  --art-direction "Original warm hand-painted fantasy, readable silhouettes, restrained palette"
+scenario="${E2E_SCENARIO:-}"
+if [[ -z "$scenario" && -t 0 && -t 1 ]]; then
+  echo "Choose an E2E sample project:"
+  select choice in "Fantasy quest" "Arcade puzzle" "Todo app" "Text editor" "Mini OS utility" "File processing API" "Internal helpdesk"; do
+    case "$REPLY" in
+      1) scenario="fantasy-quest" ;;
+      2) scenario="arcade-puzzle" ;;
+      3) scenario="todo-app" ;;
+      4) scenario="text-editor" ;;
+      5) scenario="mini-os" ;;
+      6) scenario="file-processing-api" ;;
+      7) scenario="internal-helpdesk" ;;
+      *) echo "Enter a number from 1 to 7." >&2; continue ;;
+    esac
+    break
+  done
+fi
+scenario="${scenario:-fantasy-quest}"
+
+case "$scenario" in
+  fantasy-quest)
+    category="Game"
+    product="A deliberately small offline 2D fantasy adventure: one town, one dungeon, turn-based combat, inventory, quests, save/load, settings, and a short ending."
+    reference="Final Fantasy V for party-based turn-based adventure scope only"
+    targets=""
+    art_direction="Original warm hand-painted fantasy, readable silhouettes, restrained palette"
+    ;;
+  arcade-puzzle)
+    category="Game"
+    product="A compact single-player arcade puzzle game with short rounds, clear controls, score tracking, accessibility settings, and local progress."
+    reference="Tetris for short, readable puzzle sessions and escalating challenge only"
+    targets=""
+    art_direction="Original high-contrast geometric arcade art with accessible colour choices and clear piece silhouettes"
+    ;;
+  todo-app)
+    category="Consumer application"
+    product="A small cross-device todo app for capturing tasks, grouping them into lists, completing work, and recovering safely from mistakes."
+    reference="Todoist for task capture, projects, priorities, and recurring work"
+    targets="iPhone (iOS),macOS"
+    art_direction=""
+    ;;
+  text-editor)
+    category="Document, planning, or content system"
+    product="A focused plain-text editor for drafting notes, organising documents, searching content, and exporting a finished file."
+    reference="Obsidian for local-first text editing, document organisation, and search"
+    targets="macOS,Windows"
+    art_direction=""
+    ;;
+  mini-os)
+    category="Operating-system or device utility"
+    product="A simulated mini operating-system control centre that lets users inspect device status, adjust safe settings, and follow recovery guidance."
+    reference="macOS Disk Utility for status presentation, guarded actions, and recovery-oriented workflows"
+    targets="macOS,Windows"
+    art_direction=""
+    ;;
+  file-processing-api)
+    category="Service, API, or background system"
+    product="An API and background service that accepts small data files, validates records, reports progress, and returns downloadable processing results."
+    reference="Stripe for clear API contracts, reliable asynchronous processing, and operational visibility"
+    targets="Backend API,Background workers / scheduled jobs,Admin or operations portal"
+    art_direction=""
+    ;;
+  internal-helpdesk)
+    category="Business / internal application"
+    product="An internal helpdesk for support staff to triage requests, assign owners, record resolutions, and review operational queues."
+    reference="Zendesk for ticket queues, assignment, statuses, and operational workflows"
+    targets="Admin or operations portal"
+    art_direction=""
+    ;;
+  *)
+    echo "Unknown E2E scenario: $scenario" >&2
+    echo "Choose one of: fantasy-quest, arcade-puzzle, todo-app, text-editor, mini-os, file-processing-api, internal-helpdesk." >&2
+    exit 2
+    ;;
+esac
+
+project_name="${E2E_PROJECT_NAME:-e2e-$scenario}"
+initial_command=(
+  "$supervisor_cmd" initial --non-interactive --force
+  --project-name "$project_name" --category "$category"
+  --product "$product" --reference "$reference"
+)
+[[ -n "$targets" ]] && initial_command+=(--targets "$targets")
+[[ -n "$art_direction" ]] && initial_command+=(--art-direction "$art_direction")
+
+echo "E2E scenario: $scenario ($category) · project: $project_name"
+"${initial_command[@]}"
 
 # This harness must be safe in a normal, dirty development worktree. The
 # generated files remain available for inspection; no task commits or pushes.
@@ -31,7 +112,7 @@ root = Path(sys.argv[1])
 assert (root / '.env').is_file(), 'missing project .env'
 assert (root / '.state').is_dir(), 'missing project .state'
 runbooks = sorted((root / 'runbooks').glob('R*.md'))
-assert 15 <= len(runbooks) <= 20, f'expected 15-20 R-series files; found {len(runbooks)}'
+assert runbooks, 'expected at least one generated R-series runbook'
 for path in runbooks:
     task = load_task(path)
     assert task.asset_impact in {'required', 'not_applicable'}

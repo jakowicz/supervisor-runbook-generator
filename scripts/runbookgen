@@ -18,8 +18,9 @@ case "$command" in
 Usage: runbookgen <command>
 
 Commands:
-  e2e    Create a scoped game project, run the real factory, validate 15–20
-         generated R-series runbooks, then verify resume behaviour.
+  e2e    Interactively choose an example project (or set E2E_SCENARIO), run
+         its real factory, validate generated R-series runbooks, then verify
+         resume behaviour.
   status [project-name]
          Show the durable E2E/factory state, accepted and active tasks, and
          generated B/R runbook counts. `--project <name>` also works.

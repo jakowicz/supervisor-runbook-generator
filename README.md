@@ -61,8 +61,20 @@ Run the opt-in real-agent factory acceptance test through the generator CLI:
 scripts/runbookgen e2e
 ```
 
-It creates a scoped game project, runs the factory, validates that it generated
-15–20 R-series runbooks, and verifies a second run resumes accepted work.
+It prompts you to choose from a few small example projects—two games, a todo
+app, text editor, mini OS utility, file-processing API, or internal helpdesk—
+then runs that project's factory and verifies a second run resumes accepted
+work. For unattended use, set a scenario explicitly:
+
+```zsh
+E2E_SCENARIO=todo-app scripts/runbookgen e2e
+```
+
+For example, the command above creates `projects/e2e-todo-app/`, then runs the
+F-series factory, its generated B-series authoring collection, and the resulting
+R-series runbooks. It uses the configured real agents, validates the generated
+R-series files, and runs once more to confirm durable resume behaviour. The
+workspace remains under `projects/` for inspection.
 
 `--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
 automatically follows the generated B-series and R-series files. It keeps the
