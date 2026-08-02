@@ -191,6 +191,26 @@ your brief → F-series factory → B-series runbook writers → R-series produc
                                   ↑ C checkpoints and D dispatchers coordinate authoring only
 ```
 
+### Game-design phase
+
+Games insert a mandatory project-scoped G-series phase before implementation
+authoring. It is intentionally generated from the selected game's own design
+signals, rather than a fixed RPG template.
+
+```text
+F001–F005: understand the game and create the G-design programme
+  → G-series: create detailed, game-specific bibles in bounded waves
+  → G final audit: prove design and production inventory are complete
+  → F006–F016: create implementation catalogue, B writers, then R runbooks
+```
+
+For example, an RPG may receive separate design work for story, world, party,
+bosses, enemies, quests, jobs, and progression. A football trivia game instead
+receives question-source, category, answer-adjudication, scoring, fairness,
+mode, anti-repeat, and editorial-content work. The factory does not proceed to
+the B/R implementation layer until the generated G collection's final audit is
+accepted.
+
 The stable planning chain is `REQ/NFR requirement → specification → IMP
 catalogue record → B writer → R runbook`. `REQ-0007` is a functional behaviour
 requirement; `NFR-0004` is a quality/constraint requirement. Neither is another
