@@ -28,18 +28,6 @@ supervisor --help
 supervisor-run --help
 ```
 
-This repository includes its project configuration and pinned source version of
-Supervisor as the `supervisor/` Git submodule. After cloning this repository,
-fetch that submodule before running the factory:
-
-```zsh
-git submodule update --init --recursive
-```
-
-For global installation details, configuration, updates, agents, validation,
-and the full CLI reference, see the
-[Supervisor repository](https://github.com/jakowicz/supervisor).
-
 ## What the F, B, and R series mean
 
 The letters describe *which layer of work a runbook belongs to*, rather than a
