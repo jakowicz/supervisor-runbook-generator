@@ -25,6 +25,27 @@ def process_is_running(pid: int | None) -> bool:
     return True
 
 
+def load_states(database: Path) -> list[sqlite3.Row]:
+    if not database.is_file():
+        return []
+    connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
+    connection.row_factory = sqlite3.Row
+    try:
+        return connection.execute(
+            "SELECT task_id, status, active_pid, next_action, continuation_summary, updated_at FROM task_state ORDER BY task_id"
+        ).fetchall()
+    finally:
+        connection.close()
+
+
+def collection_progress(task_ids: list[str], states: list[sqlite3.Row]) -> str:
+    recorded = {row["task_id"] for row in states}
+    accepted = sum(row["status"] == "accepted" for row in states)
+    pending = sum(row["status"] != "accepted" for row in states)
+    unstarted = sum(task_id not in recorded for task_id in task_ids)
+    return f"{len(task_ids)} total · {accepted} accepted · {pending + unstarted} pending ({unstarted} not started)"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Show read-only E2E factory progress for a generated project.")
     parser.add_argument("project", nargs="?", help="Project name under projects/.")
@@ -40,12 +61,7 @@ def main() -> None:
     if not database.is_file():
         raise SystemExit(f"No factory state yet: {database}\nRun: supervisor-run --project {project_name}")
 
-    connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
-    connection.row_factory = sqlite3.Row
-    states = connection.execute(
-        "SELECT task_id, status, active_pid, next_action, continuation_summary, updated_at FROM task_state ORDER BY task_id"
-    ).fetchall()
-    connection.close()
+    states = load_states(database)
     counts = Counter(row["status"] for row in states)
     active = [row for row in states if process_is_running(row["active_pid"])]
     accepted = [row["task_id"] for row in states if row["status"] == "accepted"]
@@ -53,21 +69,28 @@ def main() -> None:
     factory_ids = [path.stem for path in sorted((root / "runbooks").glob("F*.md"))]
     recorded_ids = {row["task_id"] for row in states}
     unstarted = [task_id for task_id in factory_ids if task_id not in recorded_ids]
-    b_count = len(list((workspace / "authoring-runbooks").glob("B*.md")))
-    r_count = len(list((workspace / "runbooks").glob("R*.md")))
+    b_ids = [path.stem for path in sorted((workspace / "authoring-runbooks").glob("B*.md"))]
+    r_ids = [path.stem for path in sorted((workspace / "runbooks").glob("R*.md"))]
+    b_states = load_states(workspace / ".state" / "authoring-runbooks.sqlite3")
+    r_states = load_states(workspace / ".state" / "runbooks.sqlite3")
+    active_collections = [
+        ("factory", row) for row in states if process_is_running(row["active_pid"])
+    ] + [
+        ("B-series", row) for row in b_states if process_is_running(row["active_pid"])
+    ] + [
+        ("R-series", row) for row in r_states if process_is_running(row["active_pid"])
+    ]
 
     print(f"Runbook generator status — {project_name}")
     print(f"Workspace: {workspace}")
     print(f"State: {database}")
-    print(
-        f"Factory tasks: {len(factory_ids)} total · {counts['accepted']} accepted · "
-        f"{len(pending) + len(unstarted)} pending ({len(unstarted)} not started)"
-    )
-    print(f"Generated runbooks: {b_count} B-series writers · {r_count} R-series product tasks")
-    if active:
+    print(f"Factory tasks: {collection_progress(factory_ids, states)}")
+    print(f"B-series authoring tasks: {collection_progress(b_ids, b_states)}")
+    print(f"R-series product tasks: {collection_progress(r_ids, r_states)}")
+    if active_collections:
         print("Active:")
-        for row in active:
-            print(f"- {row['task_id']} · pid {row['active_pid']} · {row['next_action']} · {row['continuation_summary']}")
+        for collection, row in active_collections:
+            print(f"- {collection} · {row['task_id']} · pid {row['active_pid']} · {row['next_action']} · {row['continuation_summary']}")
     elif pending:
         print("Next pending:")
         row = pending[0]
