@@ -53,6 +53,17 @@ supervisor initial --force
 supervisor-run --project <project-name>
 ```
 
+## Factory end-to-end test
+
+Run the opt-in real-agent factory acceptance test through the generator CLI:
+
+```zsh
+scripts/runbookgen e2e
+```
+
+It creates a scoped game project, runs the factory, validates that it generated
+15–20 R-series runbooks, and verifies a second run resumes accepted work.
+
 `--project` reads that project's `INITIAL.md`, runs the reusable F-series, then
 automatically follows the generated B-series and R-series files. It keeps the
 factory's durable task history in `projects/<project-name>/.state/`, its

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+command="${1:-}"
+
+case "$command" in
+  e2e)
+    shift
+    exec "$root/scripts/run_factory_e2e.sh" "$@"
+    ;;
+  help|--help|-h|"")
+    cat <<'EOF'
+Usage: runbookgen <command>
+
+Commands:
+  e2e    Create a scoped game project, run the real factory, validate 15–20
+         generated R-series runbooks, then verify resume behaviour.
+
+The e2e command uses the configured real Supervisor agents and leaves its
+generated project workspace under projects/ for inspection.
+EOF
+    ;;
+  *)
+    echo "Unknown runbookgen command: $command" >&2
+    echo "Run 'runbookgen help' for usage." >&2
+    exit 2
+    ;;
+esac
