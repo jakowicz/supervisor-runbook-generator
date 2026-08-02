@@ -149,35 +149,35 @@ def main() -> None:
     print(f"Runbook generator status — {project_name}")
     print(f"Workspace: {workspace}")
     print(f"State: {database}")
-    print("\nFactory stages")
+    print("\n== Factory stages ==")
     print(f"- {collection_progress(factory_ids, states, creation_label='stages available')}")
-    print("\nGame design")
+    print("\n== Game design ==")
     if g_ids:
         print(f"- G design runbooks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
     else:
         print("- Not created yet (or not applicable for this product)")
-    print("\nRunbook authoring")
+    print("\n== Runbook authoring ==")
     print(f"- B writers: {collection_progress(b_ids, b_collection_states, creation_label='B files created')}")
     if control_ids:
         print(f"- C/D coordination: {collection_progress(control_ids, control_states, creation_label='coordination files created')}")
-    print("\nR-series handoff")
+    print("\n== R-series handoff ==")
     print(f"- {len(r_ids) + reserved_r_count} R runbooks planned in total")
     print(f"- {len(r_ids)} R Markdown files generated")
     if reserved_r_count:
         print(f"- {reserved_r_count} R files reserved for {'/'.join(reserved_r_batches)} to write")
     print("- R files are not run by this factory; a separate implementation supervisor owns them")
-    print("\nCurrent generator work")
+    print("\n== Current generator work ==")
     if active_collections:
         for collection, row in active_collections:
             print(f"- {collection} · {row['task_id']} · pid {row['active_pid']} · {row['next_action']} · {row['continuation_summary']}")
     else:
         print("- None")
     if not active_collections and pending:
-        print("\nFactory attention needed")
+        print("\n== Factory attention needed ==")
         row = pending[0]
         print(f"- {row['task_id']} · {row['status']} · {row['next_action']} · {row['continuation_summary']}")
     elif not active_collections and unstarted:
-        print("\nFactory attention needed")
+        print("\n== Factory attention needed ==")
         print(f"- {unstarted[0]} · not started · run `supervisor-run --project {project_name}` to continue")
     elif not active_collections:
         unaccepted_authoring = [row for row in [*b_collection_states, *control_states] if row["status"] != "accepted"]
@@ -190,7 +190,7 @@ def main() -> None:
                 set(b_ids + control_ids) - {row["task_id"] for row in [*b_collection_states, *control_states]}
             )
             next_task = (pending_authoring or unstarted_ids or ["unknown"])[0]
-            print("\nNext authoring work")
+            print("\n== Next authoring work ==")
             print(f"- {next_task} · run `supervisor-run --project {project_name}` to continue")
         else:
             print("\nFactory and authoring collections complete; the R-series handoff is ready.")
