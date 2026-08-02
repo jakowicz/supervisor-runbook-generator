@@ -11,7 +11,6 @@ configuration.
 | [INITIAL.md](INITIAL.md) | Product brief template and shared source of truth. This is user input, not an implementation runbook. |
 | [F001.md](F001.md)–[F016.md](F016.md) | **F-series factory runbooks.** They turn the brief into a generated project's detailed plan, complete work checklist, and B-series runbook-writing files. |
 | [TEMPLATE.md](TEMPLATE.md) | Required structure for a normal manually written runbook: goal, steps, success checks, and evidence. |
-| [PRODUCT_BRIEF.template.md](PRODUCT_BRIEF.template.md) | Reusable non-interactive brief starting point. |
 
 This directory contains only the reusable factory source. It never contains the
 thousands of runbooks for a particular product.
@@ -28,8 +27,10 @@ editing, debugging, and extensions. The F-series derives those areas from the
 brief rather than assuming either example.
 
 `F001`–`F004` understand the brief and domains, `F005`–`F010` make the delivery
-map, `F011`–`F013` create and check the specification and work checklist,
-`F014` creates the first B-series runbook-writing files, and `F015`–`F016`
+map, `F011`–`F013` create and check the specification and work checklist, and
+`F014` creates the first B-series runbook-writing files. When Supervisor runs
+those B files, each one writes up to seven R-series product-work runbooks. If
+more R files are required, B dispatcher files create more B files. `F015`–`F016`
 establish quality and handoff material.
 
 ## Run the collection

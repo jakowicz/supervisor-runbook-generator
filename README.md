@@ -55,29 +55,59 @@ The F-series has these broad responsibilities:
 | `F001`–`F004` | Normalize the brief and discover the product, platform, technical, and experience domains that matter for this particular request. |
 | `F005`–`F010` | Break those domains into delivery areas, dependencies, quality requirements, and small pieces of work that will each become R files. |
 | `F011`–`F013` | Produce the detailed specification, a check that nothing important is missing, the complete work checklist (catalogue), and the plan for writing R files in batches. |
-| `F014` | Create and register the first B-series runbook-writing files for the generated project. |
+| `F014` | Create and register the first B-series runbook-writing files for the generated project. **F014 does not create R files directly:** when Supervisor runs each B file, that B file writes up to seven R-series product-work runbooks. Later B dispatcher files create more B files when required. |
 | `F015`–`F016` | Define quality gates, validate the factory output, and prepare handoff material. |
+
+## Install Supervisor
+
+This repository includes Supervisor as the `supervisor/` Git submodule. It
+requires Python 3.10 or newer. After cloning the repository, install the pinned
+Supervisor version used by this factory:
+
+```zsh
+git submodule update --init --recursive
+cd supervisor
+python3.11 -m venv .venv
+./.venv/bin/python -m pip install -e '.[dev]'
+cd ..
+```
+
+The commands below deliberately use `./supervisor/.venv/bin/...`, so they run
+that installed, project-pinned version. To install the Supervisor CLI globally
+for use in any project instead, follow the installation instructions in the
+[Supervisor repository](https://github.com/jakowicz/supervisor). That repository
+also explains configuration, agents, validation, updates, and all CLI commands.
 
 ## Start a factory run
 
-Create the initial brief interactively. The wizard selects product category and
-target systems, always includes responsive web and PWA support, and asks for
-users, constraints, platform requirements, references, and open decisions.
+From the repository root, there are only two actions required to start a
+factory run.
+
+1. Create `runbooks/INITIAL.md` with the interactive brief wizard. It asks for
+   the product type, target systems, users, requirements, constraints,
+   references, and open decisions. Responsive web and PWA support are included
+   by default.
 
 ```zsh
 ./supervisor/.venv/bin/supervisor initial --force
 ```
 
-Review [runbooks/INITIAL.md](runbooks/INITIAL.md), then run the collection once:
+   `--force` deliberately replaces the current `runbooks/INITIAL.md`; omit it
+   if you want the command to refuse to overwrite an existing brief.
+
+2. Review the generated [runbooks/INITIAL.md](runbooks/INITIAL.md), make any
+   edits you want, then run the Supervisor once:
 
 ```zsh
 ./supervisor/.venv/bin/supervisor-run --run-all --runbooks-dir runbooks
 ```
 
-The F-series creates a new workspace under `projects/<project-slug>/`. That
-workspace contains its normalized brief, specification, complete work checklist,
-generated B-series runbook-writing files, R-series product-work runbooks, and
-handoff documentation.
+The Supervisor reads `INITIAL.md` first, runs the F-series, then automatically
+follows the generated B-series and R-series files. The F-series creates a new
+workspace under `projects/<project-slug>/`. That workspace contains its
+normalized brief, specification, complete work checklist, generated B-series
+runbook-writing files, R-series product-work runbooks, and handoff
+documentation.
 
 ## The product brief drives the result
 
@@ -110,7 +140,7 @@ project `.env` without overwriting existing values.
 
 | Path | Purpose |
 | --- | --- |
-| [runbooks/](runbooks/) | The F-series factory collection, templates, and the initial brief. |
+| [runbooks/](runbooks/) | The F-series factory collection and the initial brief. |
 | [projects/](projects/) | Generated, project-scoped specifications and runbook collections. |
 | [supervisor/](supervisor/) | Reusable evidence-gated orchestration submodule. |
 

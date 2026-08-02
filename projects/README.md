@@ -39,6 +39,9 @@ only that size limit. It does not build the application. An R-series file is a
 *product-work instruction*: it contains the detailed steps and success evidence
 for one small piece of real product work.
 
+In other words, the step that creates the R files is not an F-series file:
+`F014` creates the first B files, then running each B file creates its R files.
+
 For a very large product, a B dispatcher file creates more B-series runbook
 writers for the remaining areas of the checklist. This is how the collection
 scales to hundreds or thousands of R-series files without oversized prompts or
