@@ -60,23 +60,34 @@ The F-series has these broad responsibilities:
 
 ## Install Supervisor
 
-This repository includes Supervisor as the `supervisor/` Git submodule. It
-requires Python 3.10 or newer. After cloning the repository, install the pinned
-Supervisor version used by this factory:
+Install the global Supervisor CLI once. It requires Python 3.10 or newer but
+does not require administrator access:
+
+```zsh
+curl -fsSL https://raw.githubusercontent.com/jakowicz/supervisor/main/scripts/install.sh -o /tmp/supervisor-install.sh
+bash /tmp/supervisor-install.sh
+```
+
+If the installer says `~/.local/bin` is not on your `PATH`, add the line it
+prints to your shell profile, then open a new terminal. Confirm the commands
+are available:
+
+```zsh
+supervisor --help
+supervisor-run --help
+```
+
+This repository includes its project configuration and pinned source version of
+Supervisor as the `supervisor/` Git submodule. After cloning this repository,
+fetch that submodule before running the factory:
 
 ```zsh
 git submodule update --init --recursive
-cd supervisor
-python3.11 -m venv .venv
-./.venv/bin/python -m pip install -e '.[dev]'
-cd ..
 ```
 
-The commands below deliberately use `./supervisor/.venv/bin/...`, so they run
-that installed, project-pinned version. To install the Supervisor CLI globally
-for use in any project instead, follow the installation instructions in the
-[Supervisor repository](https://github.com/jakowicz/supervisor). That repository
-also explains configuration, agents, validation, updates, and all CLI commands.
+For global installation details, configuration, updates, agents, validation,
+and the full CLI reference, see the
+[Supervisor repository](https://github.com/jakowicz/supervisor).
 
 ## Start a factory run
 
@@ -89,7 +100,7 @@ factory run.
    by default.
 
 ```zsh
-./supervisor/.venv/bin/supervisor initial --force
+supervisor initial --force
 ```
 
    `--force` deliberately replaces the current `runbooks/INITIAL.md`; omit it
@@ -99,7 +110,7 @@ factory run.
    edits you want, then run the Supervisor once:
 
 ```zsh
-./supervisor/.venv/bin/supervisor-run --run-all --runbooks-dir runbooks
+supervisor-run --run-all --runbooks-dir runbooks
 ```
 
 The Supervisor reads `INITIAL.md` first, runs the F-series, then automatically
