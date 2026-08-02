@@ -156,22 +156,32 @@ def main() -> None:
     if reserved_r_count:
         print(f"- {reserved_r_count} R files reserved for {'/'.join(reserved_r_batches)} to write")
     print("- R files are not run by this factory; a separate implementation supervisor owns them")
+    print("\nCurrent generator work")
     if active_collections:
-        print("\nActive now")
         for collection, row in active_collections:
             print(f"- {collection} · {row['task_id']} · pid {row['active_pid']} · {row['next_action']} · {row['continuation_summary']}")
-    elif pending:
+    else:
+        print("- None")
+    if not active_collections and pending:
         print("\nFactory attention needed")
         row = pending[0]
         print(f"- {row['task_id']} · {row['status']} · {row['next_action']} · {row['continuation_summary']}")
-    elif unstarted:
+    elif not active_collections and unstarted:
         print("\nFactory attention needed")
         print(f"- {unstarted[0]} · not started · run `supervisor-run --project {project_name}` to continue")
-    else:
+    elif not active_collections:
         unaccepted_authoring = [row for row in [*b_collection_states, *control_states] if row["status"] != "accepted"]
         unstarted_authoring = len(b_ids) + len(control_ids) - len({row["task_id"] for row in [*b_collection_states, *control_states]})
         if unaccepted_authoring or unstarted_authoring:
-            print("\nNo generator worker is active; authoring work remains. Run `supervisor-run --project " + project_name + "` to continue.")
+            pending_authoring = sorted(
+                row["task_id"] for row in unaccepted_authoring
+            )
+            unstarted_ids = sorted(
+                set(b_ids + control_ids) - {row["task_id"] for row in [*b_collection_states, *control_states]}
+            )
+            next_task = (pending_authoring or unstarted_ids or ["unknown"])[0]
+            print("\nNext authoring work")
+            print(f"- {next_task} · run `supervisor-run --project {project_name}` to continue")
         else:
             print("\nFactory and authoring collections complete; the R-series handoff is ready.")
 
