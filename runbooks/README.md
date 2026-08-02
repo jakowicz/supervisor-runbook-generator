@@ -20,6 +20,13 @@ thousands of runbooks for a particular product.
 | B-series | The runbook writers: write the next small set of implementation instructions. “Bounded” means one B file may write no more than seven R files. | Up to seven R-series files per B task; extra B files are created when more areas need coverage. |
 | R-series | The product-work instructions: describe one small, ordered piece of real work. | Source changes, tests, assets, documentation, or other deliverables required by that R file. |
 
+Every R-series file must make an explicit asset decision in its front matter:
+`asset_impact: required` with stable comma-separated `asset_ids`, or
+`asset_impact: not_applicable` with a blank `asset_ids`. Asset-required files
+also describe asset purpose, variants, ownership, original-art constraints, and
+verification in an `## Asset assessment` section. This lets the Supervisor use
+its opt-in asset lane only where the product work genuinely needs it.
+
 For example, a game may eventually have R runbooks for story, combat, content,
 saves, and platform delivery; an IDE may have R runbooks for language services,
 editing, debugging, and extensions. The F-series derives those areas from the
