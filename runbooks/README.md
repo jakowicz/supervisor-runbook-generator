@@ -8,7 +8,7 @@ configuration.
 
 | File | Purpose |
 | --- | --- |
-| [F001.md](F001.md)–[F016.md](F016.md) | **F-series factory runbooks.** They turn the brief into a generated project's detailed plan, complete work checklist, and B-series runbook-writing files. |
+| [F001.md](F001.md)–[F016.md](F016.md) | **F-series factory runbooks.** They turn the brief into a generated project's detailed plan, complete work checklist, game-design programme when required, and implementation-authoring controls. |
 | [TEMPLATE.md](TEMPLATE.md) | Required structure for a normal manually written runbook: goal, steps, success checks, and evidence. |
 
 This directory contains only the reusable factory source. It never contains the
@@ -16,9 +16,9 @@ thousands of runbooks for a particular product.
 
 | Series | Plain-English purpose | Output |
 | --- | --- | --- |
-| F-series | The factory: understand the brief, identify the required domains, and design a complete delivery plan. | A workspace in `projects/<slug>/`, including its specification, work checklist, and B-series files. |
+| F-series | The factory: understand the brief, identify the required domains, and design a complete delivery plan. | A workspace in `projects/<slug>/`, including its specification, work checklist, game-design programme when needed, and implementation-authoring controls. |
 | GB-series | The bounded game-design runbook writers: each `GB` task writes the next small set of `G` files for a game. | Up to five G-series design runbooks per GB task; later GB tasks are dispatched when more design coverage is needed. |
-| G-series | The actual game-design work: `G` tasks create/review original game-specific bibles; `GC`, `GD`, and `GQ` check, dispatch, and audit the programme. | Detailed game bibles and a completed game-design manifest in `projects/<slug>/`. |
+| G-series | The actual game-design work: `G` tasks create/review original game-specific bibles. `GC` checkpoints validate waves, `GD` dispatchers create GB batches, and `GQ` is the final audit. | Detailed game bibles and a completed game-design manifest in `projects/<slug>/`. |
 | B-series | The runbook writers: write the next small set of implementation instructions. “Bounded” means one B file may write no more than five R files. | Up to five R-series files per B task; extra B files are created when more areas need coverage. |
 | C-series | Catalogue checkpoints: validate the authoring catalogue, allocations, dependencies, and limits before the next writing wave. | No product work. C files are internal coordination files in `projects/<slug>/authoring-runbooks/`. |
 | D-series | Dispatchers: expand one eligible planning chapter and create the next bounded B-series writing wave when more work remains. | More B-series authoring files, not R files or product work. D files live beside B/C files in `projects/<slug>/authoring-runbooks/`. |
@@ -30,13 +30,13 @@ create no more than **five G files**, and a `B` writer can create no more than
 game or application can scale without making any one model call responsible
 for an unwieldy collection.
 
-`C` means **Catalogue checkpoint** and `D` means **Dispatcher**. They are
-factory-internal coordination runbooks, so they are far less important to the
-application than the F/B/R chain: they neither define the product nor build it.
-They exist only to let a very large catalogue grow safely without duplicating,
-skipping, or overloading B-series writers. They share `authoring-runbooks/` and
-its durable state with B files because all three operate in the runbook-writing
-layer, before R-series product work is run.
+`GC` means **game-design checkpoint**, `GD` means **game-design dispatcher**,
+and `GQ` means **game-design final audit**. `C` means **catalogue checkpoint**
+and `D` means **implementation-runbook dispatcher**. They are factory-internal
+coordination runbooks, so they are far less important to the application than
+the F/GB/G/B/R chain: they neither define the product nor build it. They exist
+only to let a very large design or implementation catalogue grow safely without
+duplicating, skipping, or overloading a GB or B writer.
 
 For games, `F005` creates a project-scoped `game-design-runbooks/` collection.
 `GD0001` selects the detailed design work from the game's actual design signals,
@@ -109,12 +109,14 @@ are defined by their grammar, quotas, validation, and bounded batches. F012 and
 F015 reject any selected module that reaches runbook authoring without owned
 production and validation work.
 
-`F001`–`F004` understand the brief and domains, `F005`–`F010` make the delivery
-map, `F011`–`F013` create and check the specification and work checklist, and
-`F014` creates the first B-series runbook-writing files. When Supervisor runs
-those B files, each one writes up to five R-series product-work runbooks. If
-more R files are required, B dispatcher files create more B files. `F015`–`F016`
-establish quality and handoff material.
+`F001`–`F004` understand the brief and domains. For a game, `F005` creates
+`GD0001` and the mandatory G programme; GD dispatches GB writers, GB writes G
+files, and GC/GQ prove the programme complete before F006 can begin.
+`F006`–`F013` create and check the specification and implementation catalogue.
+`F014` creates the bootstrap C/D controls, not B files directly. D dispatches
+B writers, each B writer writes up to five R-series product-work runbooks, and
+later D waves create more B writers when required. `F015`–`F016` establish
+quality and handoff material.
 
 ## Run the collection
 
@@ -127,11 +129,12 @@ supervisor-run --project <project-name>
 
 `--run-initial` runs only `F001`, which is useful for checking that the named
 brief can be normalized before committing to the full factory. `--project`
-reads that workspace's `INITIAL.md`, runs every F-series factory stage, then
-dynamically follows its registered B-series collection. It stops once that
-collection has generated and structurally validated the R-series handoff under
-`projects/<project-name>/runbooks/`. A separate implementation supervisor owns
-running and accepting those R files.
+reads that workspace's `INITIAL.md`, runs the F-series, and dynamically follows
+the registered child collection. For games, it completes the F005-created G
+collection before F006; after F014, it follows the C/D/B implementation-authoring
+loop. It stops once that loop has generated and structurally validated the
+R-series handoff under `projects/<project-name>/runbooks/`. A separate
+implementation supervisor owns running and accepting those R files.
 
 Generated runbook state is kept in the named workspace's `.state/` directory,
 keeping IDs such as `R0001` isolated between projects. The workspace also owns
