@@ -140,17 +140,29 @@ repair_factory_failure() {
   local repair_id
   repair_id="E2E$((9000 + attempt))"
   echo "E2E REPAIR $attempt · sending captured factory failure to Codex" >&2
-  SUPERVISOR_AUTO_COMMIT=false \
-  SUPERVISOR_AUTO_PUSH=false \
-  SUPERVISOR_DATABASE_PATH="/tmp/runbookgen-e2e-repair-${project_name}-${attempt}.sqlite3" \
-  SUPERVISOR_TEST_COMMANDS='["git diff --check"]' \
-  "$supervisor_run_cmd" \
-    --task-id "$repair_id" \
-    --title "Repair runbook-generator factory E2E failure" \
-    --objective "The factory E2E for projects/$project_name stopped incomplete or failed its final assertion. Work in this repository using the terminal. Inspect the factory, Supervisor, and generated project evidence; fix the root cause rather than weakening the checks; then run the focused terminal validation that demonstrates the repair. Captured failure output follows:\n\n${evidence:0:12000}" \
-    --acceptance "The captured E2E failure has a concrete root-cause fix." \
-    --acceptance "Focused terminal validation for the fix passes." \
+  local -a repair_command=(
+    env
+    SUPERVISOR_AUTO_COMMIT=false
+    SUPERVISOR_AUTO_PUSH=false
+    "SUPERVISOR_DATABASE_PATH=/tmp/runbookgen-e2e-repair-${project_name}-${attempt}.sqlite3"
+    'SUPERVISOR_TEST_COMMANDS=["git diff --check"]'
+    "$supervisor_run_cmd"
+    --task-id "$repair_id"
+    --title "Repair runbook-generator factory E2E failure"
+    --objective "The factory E2E for projects/$project_name stopped incomplete or failed its final assertion. Work in this repository using the terminal. Inspect the factory, Supervisor, and generated project evidence; fix the root cause rather than weakening the checks; then run the focused terminal validation that demonstrates the repair. Captured failure output follows:\n\n${evidence:0:12000}"
+    --acceptance "The captured E2E failure has a concrete root-cause fix."
+    --acceptance "Focused terminal validation for the fix passes."
     --acceptance "The factory can be retried without discarding accepted work."
+  )
+
+  # A repair is intentionally visible by default on a developer Mac.  This
+  # makes its Codex work, terminal checks, and final result inspectable.  CI or
+  # a headless session can explicitly opt out with this variable.
+  if [[ "${RUNBOOKGEN_VISIBLE_REPAIR_TERMINAL:-true}" == "true" ]]; then
+    "$root/supervisor/scripts/open-visible-terminal.sh" --cwd "$root" --wait -- "${repair_command[@]}"
+  else
+    "${repair_command[@]}"
+  fi
 }
 
 # A factory task normally repairs its own terminal failure through Supervisor.

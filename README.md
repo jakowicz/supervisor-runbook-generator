@@ -126,6 +126,21 @@ focused terminal check, and the harness retries the existing project without
 discarding accepted work. It makes at most two automatic E2E repair attempts;
 set `E2E_REPAIR_ATTEMPTS` to change that limit.
 
+### Visible repair terminals
+
+On macOS, each automatic E2E repair opens a visible iTerm2 tab (or falls back
+to Terminal.app) and waits for that repair command to finish before retrying
+the same project. This makes Codex's diagnosis and its terminal verification
+easy to inspect. To use the same behaviour for a manual resume:
+
+```zsh
+supervisor/scripts/open-visible-terminal.sh --cwd "$PWD" --wait -- \
+  ./supervisor/.venv/bin/supervisor-run --project football-trivia-e2e
+```
+
+Set `RUNBOOKGEN_VISIBLE_REPAIR_TERMINAL=false` only for a headless or CI run;
+the repair still occurs, but in the calling shell rather than a visible tab.
+
 ## See or resume project progress
 
 From the repository root, list every named workspace and its current phase,
