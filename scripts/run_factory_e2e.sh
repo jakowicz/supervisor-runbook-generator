@@ -113,6 +113,12 @@ echo "E2E scenario: $scenario ($category) · project: $project_name"
 
 "$supervisor_run_cmd" --project "$project_name"
 
+# The regular per-task validator permits an in-progress G design manifest so
+# GD/GB/G/GC authoring can proceed. At the end of an E2E run, require the
+# completed GQ handoff as well as generated R contracts.
+python3 "$root/scripts/runbookgen_validate.py" "$project_name" \
+  --require-game-design-complete --require-r-series
+
 project_root="projects/$project_name"
 python3 - "$project_root" <<'PY'
 import sys

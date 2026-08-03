@@ -96,6 +96,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("project", nargs="?", help="Project name under projects/, or an absolute project workspace path. Defaults to the active Supervisor project.")
     parser.add_argument("--require-r-series", action="store_true", help="Require every creative item to have a generated, required-media R contract.")
+    parser.add_argument(
+        "--require-game-design-complete",
+        action="store_true",
+        help="Require an accepted game-design manifest and final GQ audit. Use only after the G collection is meant to be complete.",
+    )
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     project_value = args.project
@@ -214,7 +219,14 @@ def main() -> int:
         for unit_id in sorted(unit_ids):
             if not inventory_by_design.get(unit_id):
                 errors.append(f"game design unit {unit_id} has no production-inventory entry")
-        errors.extend(game_design_manifest_errors(workspace, selected_modules, design_units))
+        # This validator can be configured as an every-task Supervisor test.
+        # GD/GB/G/GC tasks must therefore be able to validate their own
+        # intermediate evidence while the canonical manifest remains pending.
+        # The Supervisor prerequisite gate enforces completion before F006;
+        # callers such as the final E2E assertion opt into the same strict
+        # manifest check explicitly.
+        if args.require_game_design_complete:
+            errors.extend(game_design_manifest_errors(workspace, selected_modules, design_units))
     shards = {item.get("id") for item in catalogue.get("expansion_queue", []) if isinstance(item, dict)}
     for kind, expected_ids in expected.items():
         if not expected_ids:
