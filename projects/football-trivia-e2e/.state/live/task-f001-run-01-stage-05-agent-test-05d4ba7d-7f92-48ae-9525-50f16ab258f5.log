@@ -1,0 +1,16 @@
+Task: F001 — Discover product context and normalize the product brief
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F001.
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 3 declared
+assets: 3 declared
+audio: 3 declared
+narrative: 0 declared
+PASS: every declared creative item has an owned implementation route.
+

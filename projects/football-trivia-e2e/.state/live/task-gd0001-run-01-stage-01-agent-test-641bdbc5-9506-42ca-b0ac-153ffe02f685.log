@@ -1,0 +1,16 @@
+Task: GD0001 — Dispatch bounded football-trivia game-design programme
+Stage: test
+Status: repairable_failure
+Summary: Independent test worker failed: python3 scripts/runbookgen_validate.py
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — projects
+game: 0 declared
+assets: 0 declared
+audio: 0 declared
+narrative: 0 declared
+ERROR: missing planning/implementation-catalogue-index.json
+

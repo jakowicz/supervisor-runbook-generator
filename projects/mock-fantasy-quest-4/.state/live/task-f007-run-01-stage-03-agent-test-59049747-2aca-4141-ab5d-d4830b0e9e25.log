@@ -1,0 +1,8 @@
+Task: F007 — Define feature and experience authoring contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F007.
+
+===== Test output =====
+$ git diff --check
+

@@ -1,0 +1,8 @@
+Task: B0010 — Author accessibility, recovery, and evidence implementation contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for B0010.
+
+===== Test output =====
+$ git diff --check
+

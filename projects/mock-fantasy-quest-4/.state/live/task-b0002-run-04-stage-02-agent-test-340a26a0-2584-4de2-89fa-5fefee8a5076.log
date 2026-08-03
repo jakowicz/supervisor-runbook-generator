@@ -1,0 +1,8 @@
+Task: B0002 — Author shared seams and deterministic harness contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for B0002.
+
+===== Test output =====
+$ git diff --check
+

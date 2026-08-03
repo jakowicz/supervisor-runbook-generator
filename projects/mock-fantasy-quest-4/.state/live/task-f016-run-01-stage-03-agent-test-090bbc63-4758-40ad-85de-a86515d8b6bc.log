@@ -1,0 +1,8 @@
+Task: F016 — Publish the project-scoped runbook factory handoff
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F016.
+
+===== Test output =====
+$ git diff --check
+

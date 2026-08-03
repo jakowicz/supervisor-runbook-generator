@@ -1,0 +1,10 @@
+2026-08-02T17:00:20.207665+00:00  RUN   d0002-02 · 7d6bffdd-bdc0-4910-9a4a-8ac8e37462e8 · Resume bounded implementation-runbook authoring dispatch after gate review
+2026-08-02T17:00:20.207868+00:00  RESUME D0002 · restored durable checkpoint for needs_user_review
+2026-08-02T17:00:20.207916+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-d0002-run-02-stage-00-agent-supervisor-7d6bffdd-bdc0-4910-9a4a-8ac8e37462e8.log
+2026-08-02T17:00:20.207966+00:00  START-ON codex · earlier stages intentionally skipped; normal downstream gates remain enabled
+2026-08-02T17:00:20.270543+00:00  START codex · Codex
+2026-08-02T17:00:50.355482+00:00  WAIT  codex · Codex is still running
+2026-08-02T17:01:20.405616+00:00  WAIT  codex · Codex is still running
+2026-08-02T17:01:47.951598+00:00  EVENT codex · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-d0002-run-02-stage-01-agent-codex-7d6bffdd-bdc0-4910-9a4a-8ac8e37462e8.log
+2026-08-02T17:01:48.023332+00:00  DONE  codex · needs_user_review → user_review · D0002 dispatch stopped before allocations because accepted R0005 asset/provenance wording conflicts with the authoritative manifest; resolving which immutable record governs requires owner review.
+2026-08-02T17:01:58.445007+00:00  NOT ACCEPTED · D0002 requires user review · report stored in SQLite and /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/reports/7d6bffdd-bdc0-4910-9a4a-8ac8e37462e8.md

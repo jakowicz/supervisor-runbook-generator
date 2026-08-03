@@ -1,0 +1,8 @@
+Task: F011 — Build the canonical specification and requirements traceability system
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F011.
+
+===== Test output =====
+$ git diff --check
+

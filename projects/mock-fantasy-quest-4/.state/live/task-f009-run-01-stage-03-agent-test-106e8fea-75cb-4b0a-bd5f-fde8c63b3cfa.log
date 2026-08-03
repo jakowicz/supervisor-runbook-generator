@@ -1,0 +1,8 @@
+Task: F009 — Audit the implementation-contract catalogue for completeness
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F009.
+
+===== Test output =====
+$ git diff --check
+

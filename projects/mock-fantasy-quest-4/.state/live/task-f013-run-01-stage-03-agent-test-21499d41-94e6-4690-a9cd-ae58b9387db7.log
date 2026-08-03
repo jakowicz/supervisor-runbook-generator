@@ -1,0 +1,8 @@
+Task: F013 — Plan scalable runbook-authoring batches
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F013.
+
+===== Test output =====
+$ git diff --check
+

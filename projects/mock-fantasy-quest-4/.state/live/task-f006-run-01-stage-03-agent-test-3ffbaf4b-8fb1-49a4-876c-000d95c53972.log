@@ -1,0 +1,8 @@
+Task: F006 — Define foundation and domain authoring contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F006.
+
+===== Test output =====
+$ git diff --check
+

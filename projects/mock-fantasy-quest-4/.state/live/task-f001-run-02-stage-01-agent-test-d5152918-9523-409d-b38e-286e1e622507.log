@@ -1,0 +1,8 @@
+Task: F001 — Discover product context and normalize the product brief
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F001.
+
+===== Test output =====
+$ git diff --check
+

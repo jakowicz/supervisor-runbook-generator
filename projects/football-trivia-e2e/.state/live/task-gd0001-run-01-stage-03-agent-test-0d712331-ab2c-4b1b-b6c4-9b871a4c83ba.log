@@ -1,0 +1,21 @@
+Task: GD0001 — Dispatch bounded football-trivia game-design programme
+Stage: test
+Status: repairable_failure
+Summary: Independent test worker failed: python3 scripts/runbookgen_validate.py
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 12 declared
+assets: 12 declared
+audio: 9 declared
+narrative: 0 declared
+ERROR: game-design manifest status must be accepted
+ERROR: game-design manifest needs an accepted G-series final_audit
+ERROR: game-design manifest has no accepted entry for selected module 'accessible-recoverable-multitarget-experience'
+ERROR: game-design manifest has no accepted entry for selected module 'quiz-content-and-editorial-integrity'
+ERROR: game-design manifest has no accepted entry for selected module 'round-score-and-progress-rules'
+ERROR: game-design manifest still has pending or blocked modules
+

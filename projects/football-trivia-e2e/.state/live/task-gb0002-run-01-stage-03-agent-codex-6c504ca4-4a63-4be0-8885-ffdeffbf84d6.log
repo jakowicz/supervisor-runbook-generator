@@ -1,0 +1,1135 @@
+[stderr] Reading additional input from stdin...
+[stderr] 2026-08-03T00:40:14.586091Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+[stderr] 2026-08-03T00:40:14.586113Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+[stderr] 2026-08-03T00:40:14.586375Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+[stderr] 2026-08-03T00:40:14.587158Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+[stderr] 2026-08-03T00:40:14.588125Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+[stderr] 2026-08-03T00:40:14.589385Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+[stderr] OpenAI Codex v0.145.0
+[stderr] --------
+[stderr] workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] model: gpt-5.6-terra
+[stderr] provider: openai
+[stderr] approval: on-request
+[stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[stderr] reasoning effort: medium
+[stderr] reasoning summaries: none
+[stderr] session id: 019fc510-67ce-78e0-9a78-e2c4aca5b8b0
+[stderr] --------
+[stderr] user
+[stderr] You are the coding worker for one isolated runbook task.
+[stderr] 
+[stderr] Work only in the repository passed as your working directory. Do not publish,
+[stderr] deploy, access secrets, make payments, or change product scope. Stop and report
+[stderr] needs_user_review if the task is destructive, unclear, or requires authority.
+[stderr] Implement only the task below, run relevant checks, and then output exactly one
+[stderr] JSON object conforming to the WorkerResult contract. A status of pass means the
+[stderr] change is ready for independent test and visual review; it is not self-approval.
+[stderr] 
+[stderr] Task:
+[stderr] {
+[stderr]   "task_id": "GB0002",
+[stderr]   "title": "Author round and progression design runbooks",
+[stderr]   "objective": "Create only G0003 and G0004 for GAME-005\u2013008 and GPI-008\u2013011: named tutorial cards, standard-round lifecycle, scoring, streak, result, and save-boundary evidence.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+[stderr]   "acceptance_criteria": [
+[stderr]     "No more than five G tasks are created and each declares `design_authoring_batch: GB0002`."
+[stderr]   ],
+[stderr]   "risk_level": "normal",
+[stderr]   "sequence": 2,
+[stderr]   "dependencies": [
+[stderr]     "GD0001"
+[stderr]   ],
+[stderr]   "prerequisite_collections": [],
+[stderr]   "browser_impact": "not_applicable",
+[stderr]   "playwright_specs": [],
+[stderr]   "asset_impact": "not_applicable",
+[stderr]   "asset_brief": "",
+[stderr]   "asset_ids": [],
+[stderr]   "visual_style_version": "",
+[stderr]   "audio_impact": "not_applicable",
+[stderr]   "audio_brief": "",
+[stderr]   "audio_ids": [],
+[stderr]   "audio_duration_seconds": 0,
+[stderr]   "audio_loop": "not_applicable",
+[stderr]   "audio_style_version": "",
+[stderr]   "source_specifications": [
+[stderr]     "specification/02-game-design-bible.md",
+[stderr]     "specification/02-game-design-bible.json",
+[stderr]     "specification/01-creative-direction.md"
+[stderr]   ],
+[stderr]   "source_catalogue_ids": [
+[stderr]     "GAME-005",
+[stderr]     "GAME-006",
+[stderr]     "GAME-007",
+[stderr]     "GAME-008",
+[stderr]     "GPI-008",
+[stderr]     "GPI-009",
+[stderr]     "GPI-010",
+[stderr]     "GPI-011"
+[stderr]   ],
+[stderr]   "authoring_batch": "",
+[stderr]   "design_authoring_batch": "",
+[stderr]   "factory_stages": [],
+[stderr]   "execution_mode": "implementation",
+[stderr]   "continuation_context": ""
+[stderr] }
+[stderr] 
+[stderr] Continuation checkpoint (only when present):
+[stderr] No prior checkpoint: inspect the current repository before making changes.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+[stderr] `dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+[stderr] can write SDK caches outside the worktree and are deliberately owned by the
+[stderr] supervisor's independent precheck/test stages. When the continuation evidence
+[stderr] names a concrete source or test failure, repair that evidence in the worktree,
+[stderr] run only safe focused checks, and return `pass` for the deterministic stage to
+[stderr] validate. Never return a failure solely because an SDK command needs approval.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] Efficient investigation rules (especially important for local models):
+[stderr] - Start with the Codebase Memory MCP for architecture and targeted symbols.
+[stderr] - Do not use whole-file reads for Dart, test, lock, generated, or log files.
+[stderr]   Use targeted symbol snippets or `run_shell_command` with `rg` and
+[stderr]   `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+[stderr] - Inspect only files directly relevant to the acceptance criteria. Do not
+[stderr]   browse unrelated Playwright, automation, or configuration files merely to
+[stderr]   learn the repository layout.
+[stderr] - After the focused investigation, implement and run the smallest relevant
+[stderr]   checks. Do not continue exploratory tool calls once the implementation path
+[stderr]   is clear.
+[stderr] - If a tool reports a missing file, treat it as non-blocking and continue with
+[stderr]   the repository evidence you already have.
+[stderr] 
+[stderr] Completion protocol:
+[stderr] - Your final action MUST be the `structured_output` tool supplied by
+[stderr]   `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+[stderr]   response.
+[stderr] - Use native nested JSON values in that tool call: `evidence` and
+[stderr]   `documentation` are objects, while `acceptance_results` is an array. Never
+[stderr]   put JSON text inside quotes for any of those fields.
+[stderr] - If a check cannot run, return a structured `repairable_failure` or
+[stderr]   `needs_user_review` result immediately with the exact reason. Never wait
+[stderr]   silently for a tool or model request to recover.
+[stderr] 
+[stderr] 
+[stderr] Your final WorkerResult must include all of the following:
+[stderr] - `acceptance_results`: one entry for every task acceptance criterion, in the
+[stderr]   same order. Copy each criterion text verbatim from the task, with pass/fail/
+[stderr]   not_verified status and concrete evidence;
+[stderr] - `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+[stderr]   why they were or were not changed;
+[stderr] - `test_result`: exact checks you ran and their outcomes;
+[stderr] - `known_limitations`: remaining gaps or an empty list.
+[stderr] 
+[stderr] Do not claim `pass` if a criterion is unverified. Update user-facing README or
+[stderr] developer documentation whenever the change affects behaviour, setup, commands,
+[stderr] architecture, design, or progress. If no documentation change is needed, state
+[stderr] the reviewed files and explain why.
+[stderr] 
+[stderr] For `final_verification`, the independent `test`, `browser`, and visual-review
+[stderr] stages are the required verification gates. After repairing every concrete
+[stderr] source/test failure supplied in this prompt, return `pass` so those gates run.
+[stderr] Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+[stderr] left to the independent test stage. Return `needs_user_review` only for a real
+[stderr] authority, safety, or irreducibly ambiguous product decision.
+[stderr] 
+[stderr] For browser-impacting work, create or update a task-specific Playwright spec in
+[stderr] `supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+[stderr] and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+[stderr] work, explain in `browser_coverage` why no task-specific browser spec changed.
+[stderr] 
+[stderr] Visual baseline rule:
+[stderr] - When the continuation evidence names a golden, snapshot, or visual-regression
+[stderr]   failure, inspect the supplied master/test/diff artifacts before changing any
+[stderr]   baseline. Work out whether the new render is the intended result of this
+[stderr]   task, and check that it has no clipping, overlap, or lost meaning.
+[stderr] - If it is intentional, regenerate only the affected approved baselines using
+[stderr]   the repository's documented command, update stale visual/browser checks when
+[stderr]   their prior expectation is no longer correct, and rerun the relevant suite.
+[stderr] - If it is not intentional, fix the product or test setup instead. Never mask
+[stderr]   a real visual regression by blindly accepting a changed screenshot.
+[stderr] 
+[stderr] Failure-repair protocol:
+[stderr] - When the continuation checkpoint says that a Supervisor terminal stage
+[stderr]   failed, treat its captured command and output as the starting evidence. Do
+[stderr]   not merely describe a possible fix.
+[stderr] - Use the terminal in this project worktree to inspect, repair, and rerun the
+[stderr]   same focused check whenever that command is safe in your sandbox. Include
+[stderr]   the command and result in `test_result`.
+[stderr] - If that exact command needs an SDK, browser, or approval outside this
+[stderr]   worker's sandbox, repair the demonstrated issue but do not replace the
+[stderr]   independent validation. Return `pass` only when the worktree is ready for
+[stderr]   Supervisor to rerun its configured terminal command after your repair.
+[stderr] 
+[stderr] warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+[stderr] codex
+[stderr] {"status":"pass","summary":"I’ll locate the existing G-task/runbook conventions and author only the requested G0003 and G0004 records, then run a focused structural check.","changed_files":[],"test_result":"","evidence":{"agent_log":"Started focused repository investigation.","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] mcp: codebase-memory-mcp/get_architecture started
+[stderr] mcp: codebase-memory-mcp/get_architecture (failed)
+[stderr] user cancelled MCP tool call
+[stderr] exec
+[stderr] /bin/zsh -lc "rg -l 'G000[0-9]|GAME-005|GPI-008|design_authoring_batch' . --glob '"'!**/.git/**'"'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] ./supervisor/supervisor/cli.py
+[stderr] ./supervisor/supervisor/runbooks.py
+[stderr] ./supervisor/supervisor/models.py
+[stderr] ./supervisor/tests/test_cli_resume.py
+[stderr] ./README.md
+[stderr] ./projects/football-trivia-e2e/specification/02-game-design-bible.md
+[stderr] ./runbooks/F005.md
+[stderr] ./projects/football-trivia-e2e/specification/02-game-design-bible.json
+[stderr] ./projects/football-trivia-e2e/specification/01-game-identity.md
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/GC0001.md
+[stderr] ./projects/football-trivia-e2e/specification/03-technical-contract.md
+[stderr] ./projects/football-trivia-e2e/planning/05-delivery-map.md
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/G0004.md
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/GD0001.md
+[stderr] ./projects/football-trivia-e2e/planning/implementation-catalogue-index.json
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/G0001.md
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/G0002.md
+[stderr] ./supervisor/tests/test_runbooks.py
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/G0003.md
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+[stderr] ./projects/football-trivia-e2e/planning/game-production-inventory.json
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/GB0001.md
+[stderr] ./projects/football-trivia-e2e/game-design-runbooks/GB0002.md
+[stderr] ./projects/football-trivia-e2e/planning/game-production-inventory.md
+[stderr] ./projects/football-trivia-e2e/planning/game-design-manifest.json
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "git status --short && sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/G0003.md && sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/G0004.md && sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/GB0002.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr]  M .env
+[stderr]  M supervisor
+[stderr] ?? projects/final-fantasy/
+[stderr] ?? projects/football-trivia-e2e/
+[stderr] ?? projects/mock-fantasy-quest-4/
+[stderr] ?? runbooks/.supervisor-children/
+[stderr] ---
+[stderr] task_id: G0003
+[stderr] sequence: 3
+[stderr] dependencies: GB0002,G0002
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-005,GAME-006,GPI-008,GPI-009
+[stderr] title: Define tutorial and standard-round bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0002
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-005–006/GPI-008–009: TUT-01–05, mixed 10-card round selection, optional timer, offline lifecycle, interruption and shortage behaviour.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/round-lifecycle-bible.md`: named First Whistle cards and transitions, Mixed Fixture selection/shortage fixtures, optional-off timer, offline pause/resume lifecycle, and accessibility review.
+[stderr] 
+[stderr] Do not invent a campaign, live/ranked mode, code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Every named tutorial card and round transition has a deterministic fixture.
+[stderr] ---
+[stderr] task_id: G0004
+[stderr] sequence: 3
+[stderr] dependencies: G0003
+[stderr] source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+[stderr] source_catalogue_ids: GAME-007,GAME-008,GPI-010,GPI-011
+[stderr] title: Define scoring and results bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0002
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-007–008/GPI-010–011: 100-point capped-streak table, feedback equivalents, result states, milestone idempotence, and 18 edge/lifecycle fixtures.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/score-streak-and-results-bible.md`: score/streak rule table, 18 recovery/result fixtures, idempotent milestones, and text, non-colour, captioned/mute audio-equivalent feedback requirements.
+[stderr] 
+[stderr] Do not create implementation code or B/R runbooks, and do not accept the manifest.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Wrong, blank, timeout, and abandon remain recoverable and do not create duplicate completion.
+[stderr] ---
+[stderr] task_id: GB0002
+[stderr] sequence: 2
+[stderr] dependencies: GD0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-005,GAME-006,GAME-007,GAME-008,GPI-008,GPI-009,GPI-010,GPI-011
+[stderr] title: Author round and progression design runbooks
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Create only G0003 and G0004 for GAME-005–008 and GPI-008–011: named tutorial cards, standard-round lifecycle, scoring, streak, result, and save-boundary evidence.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `G0003.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/round-lifecycle-bible.md`.
+[stderr] - `G0004.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/score-streak-and-results-bible.md`.
+[stderr] 
+[stderr] Do not create code, B/R runbooks, RPG/match-simulation systems, live/ranked/social modes, or a final audit.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "for f in projects/football-trivia-e2e/game-design-runbooks/G*.md; do printf '%s ' \""'${f:t}"; rg -q '"'"'^design_authoring_batch: GB0002$'"' \""'$f" && printf '"'batch\\n' || printf 'NO-BATCH\\n'; done
+[stderr] sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0001.md
+[stderr] sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0002.md
+[stderr] sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] rg -n -C 3 'GAME-005|GAME-006|GAME-007|GAME-008|GPI-008|GPI-009|GPI-010|GPI-011' projects/football-trivia-e2e/specification/02-game-design-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] G0001.md NO-BATCH
+[stderr] G0002.md NO-BATCH
+[stderr] G0003.md batch
+[stderr] G0004.md batch
+[stderr] G0005.md NO-BATCH
+[stderr] GB0001.md NO-BATCH
+[stderr] GB0002.md NO-BATCH
+[stderr] GB0003.md NO-BATCH
+[stderr] GC0001.md NO-BATCH
+[stderr] GD0001.md NO-BATCH
+[stderr] ---
+[stderr] task_id: G0001
+[stderr] sequence: 3
+[stderr] dependencies: GB0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-001,GAME-002,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005
+[stderr] title: Define original football question-card and catalogue bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0001
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted detailed evidence for GAME-001–002/GPI-001–005: card grammar, answer/explanation/provenance/accessibility fields, and four named 12-card QB-A batches with exact format/difficulty/topic quotas and two-review workflow.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/question-card-and-qba-catalogue-bible.md`: original question-card grammar and four named QB-A editorial batches, including permitted sources, factual and accessibility/copy reviews, provenance, version/withdrawal fields, quotas, and non-copying expression evidence.
+[stderr] 
+[stderr] Do not author product code, implementation B/R runbooks, copied questions or reference-product expression. This task does not accept the manifest.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - The finite 48-card first-release catalogue is bounded, original, and independently quota/provenance verifiable.
+[stderr] ---
+[stderr] task_id: G0002
+[stderr] sequence: 3
+[stderr] dependencies: G0001
+[stderr] source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+[stderr] source_catalogue_ids: GAME-003,GAME-004,GPI-006,GPI-007
+[stderr] title: Define fair adjudication and editorial lifecycle bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0001
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-003–004/GPI-006–007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/adjudication-and-freshness-bible.md`: deterministic select/true-false/ordered/typed-answer rules, 20 fixtures, contested-fact withdrawal/provenance review states, and a seeded anti-repeat/shortage rule.
+[stderr] 
+[stderr] No fuzzy guessing, implementation code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Rules never guess answers and every catalogue-state transition is reproducible.
+[stderr] ---
+[stderr] task_id: G0005
+[stderr] sequence: 3
+[stderr] dependencies: GB0003,G0004
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+[stderr] title: Define accessible recovery and target parity bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0003
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-009–012/GPI-012–015: four input mappings, captions/contrast/text/motion equivalents, four recovery states, offline/update notices, and web/PWA/Android/iOS parity and certification matrix.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/accessibility-recovery-and-target-parity-bible.md`: four input mappings, accessible feedback equivalents, recovery/offline/update states, and web/PWA/Android/iOS rule/content/save parity matrix.
+[stderr] 
+[stderr] Do not create target-exclusive content, mandatory accounts/sync, code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Each meaning has a non-audio, non-colour equivalent and target adaptations cannot alter shared rules or saves.
+[stderr] 36-cue families: prompt arrival, correct, incorrect, streak rise, and saved state;
+[stderr] 37-each has a mute/volume path and no cue conveys information unavailable in text.
+[stderr] 38-
+[stderr] 39:### Round, score, and progress rules — `GAME-005` to `GAME-008`
+[stderr] 40-
+[stderr] 41-**Player outcome:** complete a clear, fair themed round and understand a local
+[stderr] 42-milestone. **Entities:** `RoundDefinition`, `RoundRun`, `QuestionAttempt`,
+[stderr] --
+[stderr] 45-
+[stderr] 46-| Unit | Design card / rule | First-release boundary and acceptance |
+[stderr] 47-| --- | --- | --- |
+[stderr] 48:| GAME-005 | **Round “First Whistle.”** Tutorial round contains 5 fixed, original tutorial cards (`TUT-01`–`TUT-05`) covering selecting, typing, feedback, explanation, and pause/save. It is intentionally non-timed. | This is the complete first useful journey. Completion creates/updates local milestone `first_whistle_complete`; it cannot require account, network, purchase, or deferred content. Test: a new local profile can complete it offline and resume after app restart. |
+[stderr] 49:| GAME-006 | **Round “Mixed Fixture.”** A 10-card themed round draws from one selected category or the Kickoff Mix, with no more than two adjacent cards sharing format or difficulty. The player may pause; a displayed timer mode is optional and defaults off. | First release ships one tutorial and one configurable standard round template, no ranked/daily/live/event modes. Test: deterministic seed produces ten eligible cards and valid format alternation or records the shortage. |
+[stderr] 50:| GAME-007 | **Scoring and streak.** Correct = 100 points; a consecutive-correct streak of 3+ adds 25 points to each later correct answer, capped at +100. Incorrect, timeout (only if enabled), blank submission, or abandon resets the active streak; score never decreases. Explanation is available after resolution. | No paid boosts, leaderboard, social comparison, or opaque difficulty multiplier. Test: table-driven sequence proves cap, reset, and per-attempt result; a retry is a new run, not an overwrite of history. |
+[stderr] 51:| GAME-008 | **Result and return.** Results show answered/correct, score, best active-session streak, category, and next action: replay, choose theme, or exit. Progress is local milestones and aggregate history only, not RPG levels. | An interrupted run persists at a safe boundary before the next unresolved question. Completed result is idempotent: reopening cannot award twice. Test: complete/reopen, abandon/resume, corrupted draft, and delete-history paths are specified. |
+[stderr] 52-
+[stderr] 53:**Dependencies:** GAME-005 needs published tutorial cards and persistence;
+[stderr] 54:GAME-006 needs GAME-001–004; GAME-007 consumes adjudication events; GAME-008
+[stderr] 55-consumes score events and save/recovery. Visual family is bold category panels,
+[stderr] 56-neutral answer controls, and non-colour success/error indicators; audio is
+[stderr] 57-supportive, optional, and captioned.
+[stderr] --
+[stderr] 91-| Units | First-release journeys | Implementation domains |
+[stderr] 92-| --- | --- | --- |
+[stderr] 93-| GAME-001–004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |
+[stderr] 94:| GAME-005–008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |
+[stderr] 95-| GAME-009–012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |
+[stderr] 96-
+[stderr] 97-The machine-readable `implementation_map` in the companion JSON maps every
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"The requested runbooks are already present in the working tree and match the GB0002 scope. I’m checking their metadata against the catalogue and the runbook parser without touching unrelated batches.","changed_files":[],"test_result":"","evidence":{"agent_log":"Located existing G0003/G0004 and confirmed their source IDs and batch metadata.","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/specification/02-game-design-bible.md"],"updated_files":[],"summary":"The runbooks are themselves the requested design documentation; no additional README change is applicable."},"known_limitations":[],"browser_coverage":"Domain-only design-runbook work; no browser spec applies.","recommended_next_step":"complete"}
+[stderr] exec
+[stderr] /bin/zsh -lc "rg -n -C 3 'parse_runbook|front.?matter|task_id|design_authoring_batch' supervisor/supervisor/runbooks.py supervisor/tests/test_runbooks.py README.md
+[stderr] rg -n 'GAME-005|GAME-006|GAME-007|GAME-008|GPI-008|GPI-009|GPI-010|GPI-011' projects/football-trivia-e2e/planning/implementation-catalogue-index.json" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] README.md-298-| A C checkpoint or D dispatcher | The authoring manifest, catalogue, ledger, and only the relevant canonical specification chapter | It validates and schedules the authoring process; it is not product implementation context. |
+[stderr] README.md-299-| An R-series task | Its own objective, dependencies, acceptance criteria, and provenance metadata | It performs one small piece of product work. It can open the linked canonical files when it needs more detail. |
+[stderr] README.md-300-
+[stderr] README.md:301:Each generated R file must declare this provenance in its front matter:
+[stderr] README.md-302-
+[stderr] README.md-303-```yaml
+[stderr] README.md-304-requirement_ids:
+[stderr] --
+[stderr] supervisor/supervisor/runbooks.py-28-        if not separator:
+[stderr] supervisor/supervisor/runbooks.py-29-            raise ValueError(f"Invalid runbook metadata line: {line}")
+[stderr] supervisor/supervisor/runbooks.py-30-        metadata[key.strip()] = value.strip()
+[stderr] supervisor/supervisor/runbooks.py:31:    required = {"task_id", "sequence", "title", "browser_impact", "playwright_spec"}
+[stderr] supervisor/supervisor/runbooks.py-32-    missing = required - metadata.keys()
+[stderr] supervisor/supervisor/runbooks.py-33-    if missing:
+[stderr] supervisor/supervisor/runbooks.py-34-        raise ValueError(f"{path} is missing metadata: {', '.join(sorted(missing))}")
+[stderr] supervisor/supervisor/runbooks.py:35:    is_r_series = re.fullmatch(r"R\d+", metadata["task_id"]) is not None
+[stderr] supervisor/supervisor/runbooks.py:36:    is_game_design_task = re.fullmatch(r"G\d+", metadata["task_id"]) is not None
+[stderr] supervisor/supervisor/runbooks.py-37-    if is_r_series:
+[stderr] supervisor/supervisor/runbooks.py-38-        dependencies = [value.strip() for value in metadata.get("dependencies", "").split(",") if value.strip()]
+[stderr] supervisor/supervisor/runbooks.py-39-        if len(dependencies) != len(set(dependencies)) or any(not re.fullmatch(r"R\d+", dependency) for dependency in dependencies):
+[stderr] supervisor/supervisor/runbooks.py-40-            raise ValueError(f"{path} has invalid dependencies; use comma-separated R-series IDs.")
+[stderr] supervisor/supervisor/runbooks.py:41:        if metadata["task_id"] in dependencies:
+[stderr] supervisor/supervisor/runbooks.py-42-            raise ValueError(f"{path} cannot depend on itself.")
+[stderr] supervisor/supervisor/runbooks.py-43-        provenance_metadata = {"source_specifications", "source_catalogue_ids", "authoring_batch", "factory_stages"}
+[stderr] supervisor/supervisor/runbooks.py-44-        missing_provenance_metadata = provenance_metadata - metadata.keys()
+[stderr] --
+[stderr] supervisor/supervisor/runbooks.py-94-        elif declared_audio or metadata["audio_brief"].strip() or metadata["audio_duration_seconds"].strip() not in {"", "0"} or metadata["audio_loop"] not in {"", "not_applicable"}:
+[stderr] supervisor/supervisor/runbooks.py-95-            raise ValueError(f"{path} declares audio fields but audio_impact is not_applicable.")
+[stderr] supervisor/supervisor/runbooks.py-96-    if is_game_design_task:
+[stderr] supervisor/supervisor/runbooks.py:97:        batch = metadata.get("design_authoring_batch", "")
+[stderr] supervisor/supervisor/runbooks.py-98-        if not re.fullmatch(r"GB\d+", batch):
+[stderr] supervisor/supervisor/runbooks.py:99:            raise ValueError(f"{path} is a G-series design task and must declare design_authoring_batch such as GB0001.")
+[stderr] supervisor/supervisor/runbooks.py-100-    criteria: list[str] = []
+[stderr] supervisor/supervisor/runbooks.py-101-    current: list[str] = []
+[stderr] supervisor/supervisor/runbooks.py-102-    for line in _section(document, "Acceptance criteria").splitlines():
+[stderr] --
+[stderr] supervisor/supervisor/runbooks.py-113-    if not criteria:
+[stderr] supervisor/supervisor/runbooks.py-114-        raise ValueError(f"{path} has no acceptance criteria.")
+[stderr] supervisor/supervisor/runbooks.py-115-    return Task(
+[stderr] supervisor/supervisor/runbooks.py:116:        task_id=metadata["task_id"],
+[stderr] supervisor/supervisor/runbooks.py-117-        title=metadata["title"],
+[stderr] supervisor/supervisor/runbooks.py-118-        sequence=int(metadata["sequence"]),
+[stderr] supervisor/supervisor/runbooks.py-119-        dependencies=[value.strip() for value in metadata.get("dependencies", "").split(",") if value.strip()],
+[stderr] --
+[stderr] supervisor/supervisor/runbooks.py-135-        source_specifications=[value.strip() for value in metadata.get("source_specifications", "").split(",") if value.strip()],
+[stderr] supervisor/supervisor/runbooks.py-136-        source_catalogue_ids=[value.strip() for value in metadata.get("source_catalogue_ids", "").split(",") if value.strip()],
+[stderr] supervisor/supervisor/runbooks.py-137-        authoring_batch=metadata.get("authoring_batch", ""),
+[stderr] supervisor/supervisor/runbooks.py:138:        design_authoring_batch=metadata.get("design_authoring_batch", ""),
+[stderr] supervisor/supervisor/runbooks.py-139-        factory_stages=[value.strip() for value in metadata.get("factory_stages", "").split(",") if value.strip()],
+[stderr] supervisor/supervisor/runbooks.py-140-    )
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-8-def test_d005_runbook_loads_the_persistence_contract():
+[stderr] supervisor/tests/test_runbooks.py-9-    root = Path(__file__).resolve().parents[2]
+[stderr] supervisor/tests/test_runbooks.py-10-    task = load_task(root / "runbooks" / "D005.md")
+[stderr] supervisor/tests/test_runbooks.py:11:    assert task.task_id == "D005"
+[stderr] supervisor/tests/test_runbooks.py-12-    assert task.sequence == 5
+[stderr] supervisor/tests/test_runbooks.py-13-    assert "persistence" in task.objective.lower()
+[stderr] supervisor/tests/test_runbooks.py-14-    assert task.playwright_specs == ["tests/changes/d005-settings-restore.spec.cjs"]
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-19-    root = Path(__file__).resolve().parents[2]
+[stderr] supervisor/tests/test_runbooks.py-20-    for path in (root / "runbooks").glob("D*.md"):
+[stderr] supervisor/tests/test_runbooks.py-21-        task = load_task(path)
+[stderr] supervisor/tests/test_runbooks.py:22:        assert task.task_id == path.stem
+[stderr] supervisor/tests/test_runbooks.py-23-        if task.browser_impact == "required":
+[stderr] supervisor/tests/test_runbooks.py-24-            assert task.playwright_specs
+[stderr] supervisor/tests/test_runbooks.py-25-        else:
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-41-def test_runbook_accepts_opt_in_asset_metadata(tmp_path):
+[stderr] supervisor/tests/test_runbooks.py-42-    path = tmp_path / "R0002.md"
+[stderr] supervisor/tests/test_runbooks.py-43-    path.write_text(
+[stderr] supervisor/tests/test_runbooks.py:44:        "---\ntask_id: R0002\nsequence: 1\ntitle: Gate\nbrowser_impact: not_applicable\nplaywright_spec: \n"
+[stderr] supervisor/tests/test_runbooks.py-45-            "asset_impact: required\nasset_brief: docs/art/briefs/gate.md\nasset_ids: gate,gate_build\nvisual_style_version: project-v1\naudio_impact: not_applicable\naudio_ids: \naudio_brief: \naudio_duration_seconds: 0\naudio_loop: not_applicable\naudio_style_version: \nsource_specifications: specification/04-experience-contract.md#gate\nsource_catalogue_ids: IMP-WORLD-001\nauthoring_batch: B0001\nfactory_stages: F004,F012,F013\n---\n"
+[stderr] supervisor/tests/test_runbooks.py-46-        "# R0002\n\n## Objective\n\nMake a gate.\n\n## Acceptance criteria\n\n- It is original.\n",
+[stderr] supervisor/tests/test_runbooks.py-47-        encoding="utf-8",
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-57-def test_r_series_runbook_must_explicitly_assess_assets(tmp_path):
+[stderr] supervisor/tests/test_runbooks.py-58-    path = tmp_path / "R0001.md"
+[stderr] supervisor/tests/test_runbooks.py-59-    path.write_text(
+[stderr] supervisor/tests/test_runbooks.py:60:        "---\ntask_id: R0001\nsequence: 1\ntitle: Missing asset assessment\nbrowser_impact: not_applicable\nplaywright_spec:\nsource_specifications: specification/02-feature-model.md#loop\nsource_catalogue_ids: IMP-LOOP-001\nauthoring_batch: B0001\nfactory_stages: F002,F012,F013\n---\n"
+[stderr] supervisor/tests/test_runbooks.py-61-        "## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+[stderr] supervisor/tests/test_runbooks.py-62-        encoding="utf-8",
+[stderr] supervisor/tests/test_runbooks.py-63-    )
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-69-def test_r_series_runbook_must_declare_provenance(tmp_path):
+[stderr] supervisor/tests/test_runbooks.py-70-    path = tmp_path / "R0001.md"
+[stderr] supervisor/tests/test_runbooks.py-71-    path.write_text(
+[stderr] supervisor/tests/test_runbooks.py:72:        "---\ntask_id: R0001\nsequence: 1\ntitle: Missing provenance\nbrowser_impact: not_applicable\nplaywright_spec:\nasset_impact: not_applicable\nasset_ids:\n---\n"
+[stderr] supervisor/tests/test_runbooks.py-73-        "## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+[stderr] supervisor/tests/test_runbooks.py-74-        encoding="utf-8",
+[stderr] supervisor/tests/test_runbooks.py-75-    )
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-81-def test_r_series_asset_task_requires_stable_asset_ids(tmp_path):
+[stderr] supervisor/tests/test_runbooks.py-82-    path = tmp_path / "R0001.md"
+[stderr] supervisor/tests/test_runbooks.py-83-    path.write_text(
+[stderr] supervisor/tests/test_runbooks.py:84:        "---\ntask_id: R0001\nsequence: 1\ntitle: Asset work\nbrowser_impact: not_applicable\nplaywright_spec:\nasset_impact: required\nasset_ids:\nsource_specifications: specification/04-experience-contract.md#gate\nsource_catalogue_ids: IMP-WORLD-001\nauthoring_batch: B0001\nfactory_stages: F004,F012,F013\n---\n"
+[stderr] supervisor/tests/test_runbooks.py-85-        "## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+[stderr] supervisor/tests/test_runbooks.py-86-        encoding="utf-8",
+[stderr] supervisor/tests/test_runbooks.py-87-    )
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-93-def test_r_series_dependencies_are_loaded_as_execution_gates(tmp_path):
+[stderr] supervisor/tests/test_runbooks.py-94-    path = tmp_path / "R0002.md"
+[stderr] supervisor/tests/test_runbooks.py-95-    path.write_text(
+[stderr] supervisor/tests/test_runbooks.py:96:        "---\ntask_id: R0002\nsequence: 2\ntitle: Dependency task\nbrowser_impact: not_applicable\nplaywright_spec:\ndependencies: R0001,R0003\nsource_specifications: specification/02-feature-model.md#loop\nsource_catalogue_ids: IMP-LOOP-002\nauthoring_batch: B0001\nfactory_stages: F002,F012,F013\nasset_impact: not_applicable\nasset_ids:\naudio_impact: not_applicable\naudio_ids:\naudio_brief:\naudio_duration_seconds: 0\naudio_loop: not_applicable\naudio_style_version:\n---\n\n## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+[stderr] supervisor/tests/test_runbooks.py-97-        encoding="utf-8",
+[stderr] supervisor/tests/test_runbooks.py-98-    )
+[stderr] supervisor/tests/test_runbooks.py-99-
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-103-def test_r_series_dependencies_reject_invalid_ids(tmp_path):
+[stderr] supervisor/tests/test_runbooks.py-104-    path = tmp_path / "R0002.md"
+[stderr] supervisor/tests/test_runbooks.py-105-    path.write_text(
+[stderr] supervisor/tests/test_runbooks.py:106:        "---\ntask_id: R0002\nsequence: 2\ntitle: Invalid dependency\nbrowser_impact: not_applicable\nplaywright_spec:\ndependencies: R0001,not-a-task\nsource_specifications: specification/02-feature-model.md#loop\nsource_catalogue_ids: IMP-LOOP-002\nauthoring_batch: B0001\nfactory_stages: F002,F012,F013\nasset_impact: not_applicable\nasset_ids:\naudio_impact: not_applicable\naudio_ids:\naudio_brief:\naudio_duration_seconds: 0\naudio_loop: not_applicable\naudio_style_version:\n---\n\n## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+[stderr] supervisor/tests/test_runbooks.py-107-        encoding="utf-8",
+[stderr] supervisor/tests/test_runbooks.py-108-    )
+[stderr] supervisor/tests/test_runbooks.py-109-
+[stderr] --
+[stderr] supervisor/tests/test_runbooks.py-114-def test_g_series_design_task_requires_a_gb_authoring_batch(tmp_path):
+[stderr] supervisor/tests/test_runbooks.py-115-    path = tmp_path / "G0001.md"
+[stderr] supervisor/tests/test_runbooks.py-116-    path.write_text(
+[stderr] supervisor/tests/test_runbooks.py:117:        "---\ntask_id: G0001\nsequence: 1\ntitle: Trivia categories\nbrowser_impact: not_applicable\nplaywright_spec:\n"
+[stderr] supervisor/tests/test_runbooks.py:118:        "design_authoring_batch: GB0001\n---\n\n## Objective\n\nDesign categories.\n\n## Acceptance criteria\n\n- Categories are complete.\n",
+[stderr] supervisor/tests/test_runbooks.py-119-        encoding="utf-8",
+[stderr] supervisor/tests/test_runbooks.py-120-    )
+[stderr] supervisor/tests/test_runbooks.py:121:    assert load_task(path).design_authoring_batch == "GB0001"
+[stderr] supervisor/tests/test_runbooks.py-122-
+[stderr] supervisor/tests/test_runbooks.py:123:    path.write_text(path.read_text(encoding="utf-8").replace("design_authoring_batch: GB0001\n", ""), encoding="utf-8")
+[stderr] supervisor/tests/test_runbooks.py:124:    with pytest.raises(ValueError, match="design_authoring_batch"):
+[stderr] supervisor/tests/test_runbooks.py-125-        load_task(path)
+[stderr] 6:    {"id": "IMP-FT-001", "title": "Implement curated quiz content and round rules", "creative_coverage_ids": ["GAME-001", "GAME-002", "GAME-003", "GAME-004", "GAME-005", "GAME-006", "GAME-007", "GAME-008", "ASSET-QZ-001", "ASSET-QZ-002", "ASSET-FBK-001", "ASSET-FBK-002", "ASSET-FBK-003", "ASSET-FBK-004", "AUDIO-MUS-001", "AUDIO-QZ-001", "AUDIO-QZ-002", "AUDIO-QZ-003", "AUDIO-QZ-004", "AUDIO-RES-001"], "status": "planned"},
+[stderr] 16:      "GAME-005": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+[stderr] 17:      "GAME-006": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+[stderr] 18:      "GAME-007": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+[stderr] 19:      "GAME-008": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c 'from pathlib import Path; from supervisor.runbooks import load_task; root=Path(\"projects/football-trivia-e2e/game-design-runbooks\"); tasks=[load_task(root / f\"G{i:04d}.md\") for i in (3,4)]; assert [t.task_id for t in tasks] == [\"G0003\", \"G0004\"]; assert all(t.design_authoring_batch == \"GB0002\" for t in tasks); assert tasks[0].source_catalogue_ids == [\"GAME-005\", \"GAME-006\", \"GPI-008\", \"GPI-009\"]; assert tasks[1].source_catalogue_ids == [\"GAME-007\", \"GAME-008\", \"GPI-010\", \"GPI-011\"]; all_g=[p for p in root.glob(\"G[0-9]*.md\")]; assert len(all_g) <= 5; print(f\"validated {len(tasks)} GB0002 tasks; {len(all_g)} total numbered G tasks\")'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] validated 2 GB0002 tasks; 5 total numbered G tasks
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005–008 and GPI-008–011 with the required batch metadata; no edits were needed.","changed_files":[],"test_result":"PASS: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c '...' loaded G0003/G0004 via supervisor.runbooks.load_task, verified both declare GB0002, verified their exact catalogue-ID partitions, and confirmed five total numbered G tasks.","evidence":{"agent_log":"Reviewed GB0002, G0003, G0004, the game-design bible, and the catalogue index. Existing unrelated dirty/untracked worktree content was preserved.","adapter_log":"","test_log":"validated 2 GB0002 tasks; 5 total numbered G tasks","browser_log":"Not applicable: this is domain-only design-runbook metadata.","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.","status":"pass","evidence":"The focused validation found exactly two GB0002-created G tasks (G0003 and G0004), both declaring design_authoring_batch: GB0002; there are five total numbered G tasks in the design-runbooks directory."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/implementation-catalogue-index.json"],"updated_files":[],"summary":"G0003 and G0004 are the requested design documentation and were already complete; no README or additional documentation change was needed."},"known_limitations":[],"browser_coverage":"No task-specific Playwright spec changed because this task only authors domain design runbooks and has browser_impact: not_applicable.","recommended_next_step":"complete"}
+[stderr] tokens used
+[stderr] 26,916
+[stdout] {"status":"pass","summary":"Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005–008 and GPI-008–011 with the required batch metadata; no edits were needed.","changed_files":[],"test_result":"PASS: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c '...' loaded G0003/G0004 via supervisor.runbooks.load_task, verified both declare GB0002, verified their exact catalogue-ID partitions, and confirmed five total numbered G tasks.","evidence":{"agent_log":"Reviewed GB0002, G0003, G0004, the game-design bible, and the catalogue index. Existing unrelated dirty/untracked worktree content was preserved.","adapter_log":"","test_log":"validated 2 GB0002 tasks; 5 total numbered G tasks","browser_log":"Not applicable: this is domain-only design-runbook metadata.","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.","status":"pass","evidence":"The focused validation found exactly two GB0002-created G tasks (G0003 and G0004), both declaring design_authoring_batch: GB0002; there are five total numbered G tasks in the design-runbooks directory."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/implementation-catalogue-index.json"],"updated_files":[],"summary":"G0003 and G0004 are the requested design documentation and were already complete; no README or additional documentation change was needed."},"known_limitations":[],"browser_coverage":"No task-specific Playwright spec changed because this task only authors domain design runbooks and has browser_impact: not_applicable.","recommended_next_step":"complete"}
+
+===== SUPERVISOR RESULT =====
+Task: GB0002 — Author round and progression design runbooks
+Stage: codex
+Status: pass
+Summary: Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005–008 and GPI-008–011 with the required batch metadata; no edits were needed.
+
+===== Raw agent output =====
+{"status":"pass","summary":"Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005–008 and GPI-008–011 with the required batch metadata; no edits were needed.","changed_files":[],"test_result":"PASS: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c '...' loaded G0003/G0004 via supervisor.runbooks.load_task, verified both declare GB0002, verified their exact catalogue-ID partitions, and confirmed five total numbered G tasks.","evidence":{"agent_log":"Reviewed GB0002, G0003, G0004, the game-design bible, and the catalogue index. Existing unrelated dirty/untracked worktree content was preserved.","adapter_log":"","test_log":"validated 2 GB0002 tasks; 5 total numbered G tasks","browser_log":"Not applicable: this is domain-only design-runbook metadata.","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.","status":"pass","evidence":"The focused validation found exactly two GB0002-created G tasks (G0003 and G0004), both declaring design_authoring_batch: GB0002; there are five total numbered G tasks in the design-runbooks directory."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/implementation-catalogue-index.json"],"updated_files":[],"summary":"G0003 and G0004 are the requested design documentation and were already complete; no README or additional documentation change was needed."},"known_limitations":[],"browser_coverage":"No task-specific Playwright spec changed because this task only authors domain design runbooks and has browser_impact: not_applicable.","recommended_next_step":"complete"}
+Reading additional input from stdin...
+2026-08-03T00:40:14.586091Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-08-03T00:40:14.586113Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-08-03T00:40:14.586375Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+2026-08-03T00:40:14.587158Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+2026-08-03T00:40:14.588125Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+2026-08-03T00:40:14.589385Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+OpenAI Codex v0.145.0
+--------
+workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+model: gpt-5.6-terra
+provider: openai
+approval: on-request
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019fc510-67ce-78e0-9a78-e2c4aca5b8b0
+--------
+user
+You are the coding worker for one isolated runbook task.
+
+Work only in the repository passed as your working directory. Do not publish,
+deploy, access secrets, make payments, or change product scope. Stop and report
+needs_user_review if the task is destructive, unclear, or requires authority.
+Implement only the task below, run relevant checks, and then output exactly one
+JSON object conforming to the WorkerResult contract. A status of pass means the
+change is ready for independent test and visual review; it is not self-approval.
+
+Task:
+{
+  "task_id": "GB0002",
+  "title": "Author round and progression design runbooks",
+  "objective": "Create only G0003 and G0004 for GAME-005\u2013008 and GPI-008\u2013011: named tutorial cards, standard-round lifecycle, scoring, streak, result, and save-boundary evidence.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+  "acceptance_criteria": [
+    "No more than five G tasks are created and each declares `design_authoring_batch: GB0002`."
+  ],
+  "risk_level": "normal",
+  "sequence": 2,
+  "dependencies": [
+    "GD0001"
+  ],
+  "prerequisite_collections": [],
+  "browser_impact": "not_applicable",
+  "playwright_specs": [],
+  "asset_impact": "not_applicable",
+  "asset_brief": "",
+  "asset_ids": [],
+  "visual_style_version": "",
+  "audio_impact": "not_applicable",
+  "audio_brief": "",
+  "audio_ids": [],
+  "audio_duration_seconds": 0,
+  "audio_loop": "not_applicable",
+  "audio_style_version": "",
+  "source_specifications": [
+    "specification/02-game-design-bible.md",
+    "specification/02-game-design-bible.json",
+    "specification/01-creative-direction.md"
+  ],
+  "source_catalogue_ids": [
+    "GAME-005",
+    "GAME-006",
+    "GAME-007",
+    "GAME-008",
+    "GPI-008",
+    "GPI-009",
+    "GPI-010",
+    "GPI-011"
+  ],
+  "authoring_batch": "",
+  "design_authoring_batch": "",
+  "factory_stages": [],
+  "execution_mode": "implementation",
+  "continuation_context": ""
+}
+
+Continuation checkpoint (only when present):
+No prior checkpoint: inspect the current repository before making changes.
+
+
+
+This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+`dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+can write SDK caches outside the worktree and are deliberately owned by the
+supervisor's independent precheck/test stages. When the continuation evidence
+names a concrete source or test failure, repair that evidence in the worktree,
+run only safe focused checks, and return `pass` for the deterministic stage to
+validate. Never return a failure solely because an SDK command needs approval.
+
+
+
+Efficient investigation rules (especially important for local models):
+- Start with the Codebase Memory MCP for architecture and targeted symbols.
+- Do not use whole-file reads for Dart, test, lock, generated, or log files.
+  Use targeted symbol snippets or `run_shell_command` with `rg` and
+  `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+- Inspect only files directly relevant to the acceptance criteria. Do not
+  browse unrelated Playwright, automation, or configuration files merely to
+  learn the repository layout.
+- After the focused investigation, implement and run the smallest relevant
+  checks. Do not continue exploratory tool calls once the implementation path
+  is clear.
+- If a tool reports a missing file, treat it as non-blocking and continue with
+  the repository evidence you already have.
+
+Completion protocol:
+- Your final action MUST be the `structured_output` tool supplied by
+  `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+  response.
+- Use native nested JSON values in that tool call: `evidence` and
+  `documentation` are objects, while `acceptance_results` is an array. Never
+  put JSON text inside quotes for any of those fields.
+- If a check cannot run, return a structured `repairable_failure` or
+  `needs_user_review` result immediately with the exact reason. Never wait
+  silently for a tool or model request to recover.
+
+
+Your final WorkerResult must include all of the following:
+- `acceptance_results`: one entry for every task acceptance criterion, in the
+  same order. Copy each criterion text verbatim from the task, with pass/fail/
+  not_verified status and concrete evidence;
+- `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+  why they were or were not changed;
+- `test_result`: exact checks you ran and their outcomes;
+- `known_limitations`: remaining gaps or an empty list.
+
+Do not claim `pass` if a criterion is unverified. Update user-facing README or
+developer documentation whenever the change affects behaviour, setup, commands,
+architecture, design, or progress. If no documentation change is needed, state
+the reviewed files and explain why.
+
+For `final_verification`, the independent `test`, `browser`, and visual-review
+stages are the required verification gates. After repairing every concrete
+source/test failure supplied in this prompt, return `pass` so those gates run.
+Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+left to the independent test stage. Return `needs_user_review` only for a real
+authority, safety, or irreducibly ambiguous product decision.
+
+For browser-impacting work, create or update a task-specific Playwright spec in
+`supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+work, explain in `browser_coverage` why no task-specific browser spec changed.
+
+Visual baseline rule:
+- When the continuation evidence names a golden, snapshot, or visual-regression
+  failure, inspect the supplied master/test/diff artifacts before changing any
+  baseline. Work out whether the new render is the intended result of this
+  task, and check that it has no clipping, overlap, or lost meaning.
+- If it is intentional, regenerate only the affected approved baselines using
+  the repository's documented command, update stale visual/browser checks when
+  their prior expectation is no longer correct, and rerun the relevant suite.
+- If it is not intentional, fix the product or test setup instead. Never mask
+  a real visual regression by blindly accepting a changed screenshot.
+
+Failure-repair protocol:
+- When the continuation checkpoint says that a Supervisor terminal stage
+  failed, treat its captured command and output as the starting evidence. Do
+  not merely describe a possible fix.
+- Use the terminal in this project worktree to inspect, repair, and rerun the
+  same focused check whenever that command is safe in your sandbox. Include
+  the command and result in `test_result`.
+- If that exact command needs an SDK, browser, or approval outside this
+  worker's sandbox, repair the demonstrated issue but do not replace the
+  independent validation. Return `pass` only when the worktree is ready for
+  Supervisor to rerun its configured terminal command after your repair.
+
+warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+codex
+{"status":"pass","summary":"I’ll locate the existing G-task/runbook conventions and author only the requested G0003 and G0004 records, then run a focused structural check.","changed_files":[],"test_result":"","evidence":{"agent_log":"Started focused repository investigation.","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+mcp: codebase-memory-mcp/get_architecture started
+mcp: codebase-memory-mcp/get_architecture (failed)
+user cancelled MCP tool call
+exec
+/bin/zsh -lc "rg -l 'G000[0-9]|GAME-005|GPI-008|design_authoring_batch' . --glob '"'!**/.git/**'"'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+./supervisor/supervisor/cli.py
+./supervisor/supervisor/runbooks.py
+./supervisor/supervisor/models.py
+./supervisor/tests/test_cli_resume.py
+./README.md
+./projects/football-trivia-e2e/specification/02-game-design-bible.md
+./runbooks/F005.md
+./projects/football-trivia-e2e/specification/02-game-design-bible.json
+./projects/football-trivia-e2e/specification/01-game-identity.md
+./projects/football-trivia-e2e/game-design-runbooks/GC0001.md
+./projects/football-trivia-e2e/specification/03-technical-contract.md
+./projects/football-trivia-e2e/planning/05-delivery-map.md
+./projects/football-trivia-e2e/game-design-runbooks/G0004.md
+./projects/football-trivia-e2e/game-design-runbooks/G0005.md
+./projects/football-trivia-e2e/game-design-runbooks/GD0001.md
+./projects/football-trivia-e2e/planning/implementation-catalogue-index.json
+./projects/football-trivia-e2e/game-design-runbooks/G0001.md
+./projects/football-trivia-e2e/game-design-runbooks/G0002.md
+./supervisor/tests/test_runbooks.py
+./projects/football-trivia-e2e/game-design-runbooks/G0003.md
+./projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+./projects/football-trivia-e2e/planning/game-production-inventory.json
+./projects/football-trivia-e2e/game-design-runbooks/GB0001.md
+./projects/football-trivia-e2e/game-design-runbooks/GB0002.md
+./projects/football-trivia-e2e/planning/game-production-inventory.md
+./projects/football-trivia-e2e/planning/game-design-manifest.json
+
+exec
+/bin/zsh -lc "git status --short && sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/G0003.md && sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/G0004.md && sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/GB0002.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+ M .env
+ M supervisor
+?? projects/final-fantasy/
+?? projects/football-trivia-e2e/
+?? projects/mock-fantasy-quest-4/
+?? runbooks/.supervisor-children/
+---
+task_id: G0003
+sequence: 3
+dependencies: GB0002,G0002
+source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+source_catalogue_ids: GAME-005,GAME-006,GPI-008,GPI-009
+title: Define tutorial and standard-round bible
+browser_impact: not_applicable
+playwright_spec:
+design_authoring_batch: GB0002
+---
+
+## Objective
+
+Write accepted evidence for GAME-005–006/GPI-008–009: TUT-01–05, mixed 10-card round selection, optional timer, offline lifecycle, interruption and shortage behaviour.
+
+## Output list
+
+- `design-evidence/round-lifecycle-bible.md`: named First Whistle cards and transitions, Mixed Fixture selection/shortage fixtures, optional-off timer, offline pause/resume lifecycle, and accessibility review.
+
+Do not invent a campaign, live/ranked mode, code, B/R runbooks, or manifest acceptance.
+
+## Acceptance criteria
+
+- Every named tutorial card and round transition has a deterministic fixture.
+---
+task_id: G0004
+sequence: 3
+dependencies: G0003
+source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+source_catalogue_ids: GAME-007,GAME-008,GPI-010,GPI-011
+title: Define scoring and results bible
+browser_impact: not_applicable
+playwright_spec:
+design_authoring_batch: GB0002
+---
+
+## Objective
+
+Write accepted evidence for GAME-007–008/GPI-010–011: 100-point capped-streak table, feedback equivalents, result states, milestone idempotence, and 18 edge/lifecycle fixtures.
+
+## Output list
+
+- `design-evidence/score-streak-and-results-bible.md`: score/streak rule table, 18 recovery/result fixtures, idempotent milestones, and text, non-colour, captioned/mute audio-equivalent feedback requirements.
+
+Do not create implementation code or B/R runbooks, and do not accept the manifest.
+
+## Acceptance criteria
+
+- Wrong, blank, timeout, and abandon remain recoverable and do not create duplicate completion.
+---
+task_id: GB0002
+sequence: 2
+dependencies: GD0001
+source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md
+source_catalogue_ids: GAME-005,GAME-006,GAME-007,GAME-008,GPI-008,GPI-009,GPI-010,GPI-011
+title: Author round and progression design runbooks
+browser_impact: not_applicable
+playwright_spec:
+---
+
+## Objective
+
+Create only G0003 and G0004 for GAME-005–008 and GPI-008–011: named tutorial cards, standard-round lifecycle, scoring, streak, result, and save-boundary evidence.
+
+## Output list
+
+- `G0003.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/round-lifecycle-bible.md`.
+- `G0004.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/score-streak-and-results-bible.md`.
+
+Do not create code, B/R runbooks, RPG/match-simulation systems, live/ranked/social modes, or a final audit.
+
+## Acceptance criteria
+
+- No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.
+
+exec
+/bin/zsh -lc "for f in projects/football-trivia-e2e/game-design-runbooks/G*.md; do printf '%s ' \""'${f:t}"; rg -q '"'"'^design_authoring_batch: GB0002$'"' \""'$f" && printf '"'batch\\n' || printf 'NO-BATCH\\n'; done
+sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0001.md
+sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0002.md
+sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+rg -n -C 3 'GAME-005|GAME-006|GAME-007|GAME-008|GPI-008|GPI-009|GPI-010|GPI-011' projects/football-trivia-e2e/specification/02-game-design-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+G0001.md NO-BATCH
+G0002.md NO-BATCH
+G0003.md batch
+G0004.md batch
+G0005.md NO-BATCH
+GB0001.md NO-BATCH
+GB0002.md NO-BATCH
+GB0003.md NO-BATCH
+GC0001.md NO-BATCH
+GD0001.md NO-BATCH
+---
+task_id: G0001
+sequence: 3
+dependencies: GB0001
+source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+source_catalogue_ids: GAME-001,GAME-002,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005
+title: Define original football question-card and catalogue bible
+browser_impact: not_applicable
+playwright_spec:
+design_authoring_batch: GB0001
+---
+
+## Objective
+
+Write accepted detailed evidence for GAME-001–002/GPI-001–005: card grammar, answer/explanation/provenance/accessibility fields, and four named 12-card QB-A batches with exact format/difficulty/topic quotas and two-review workflow.
+
+## Output list
+
+- `design-evidence/question-card-and-qba-catalogue-bible.md`: original question-card grammar and four named QB-A editorial batches, including permitted sources, factual and accessibility/copy reviews, provenance, version/withdrawal fields, quotas, and non-copying expression evidence.
+
+Do not author product code, implementation B/R runbooks, copied questions or reference-product expression. This task does not accept the manifest.
+
+## Acceptance criteria
+
+- The finite 48-card first-release catalogue is bounded, original, and independently quota/provenance verifiable.
+---
+task_id: G0002
+sequence: 3
+dependencies: G0001
+source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+source_catalogue_ids: GAME-003,GAME-004,GPI-006,GPI-007
+title: Define fair adjudication and editorial lifecycle bible
+browser_impact: not_applicable
+playwright_spec:
+design_authoring_batch: GB0001
+---
+
+## Objective
+
+Write accepted evidence for GAME-003–004/GPI-006–007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.
+
+## Output list
+
+- `design-evidence/adjudication-and-freshness-bible.md`: deterministic select/true-false/ordered/typed-answer rules, 20 fixtures, contested-fact withdrawal/provenance review states, and a seeded anti-repeat/shortage rule.
+
+No fuzzy guessing, implementation code, B/R runbooks, or manifest acceptance.
+
+## Acceptance criteria
+
+- Rules never guess answers and every catalogue-state transition is reproducible.
+---
+task_id: G0005
+sequence: 3
+dependencies: GB0003,G0004
+source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+title: Define accessible recovery and target parity bible
+browser_impact: not_applicable
+playwright_spec:
+design_authoring_batch: GB0003
+---
+
+## Objective
+
+Write accepted evidence for GAME-009–012/GPI-012–015: four input mappings, captions/contrast/text/motion equivalents, four recovery states, offline/update notices, and web/PWA/Android/iOS parity and certification matrix.
+
+## Output list
+
+- `design-evidence/accessibility-recovery-and-target-parity-bible.md`: four input mappings, accessible feedback equivalents, recovery/offline/update states, and web/PWA/Android/iOS rule/content/save parity matrix.
+
+Do not create target-exclusive content, mandatory accounts/sync, code, B/R runbooks, or manifest acceptance.
+
+## Acceptance criteria
+
+- Each meaning has a non-audio, non-colour equivalent and target adaptations cannot alter shared rules or saves.
+36-cue families: prompt arrival, correct, incorrect, streak rise, and saved state;
+37-each has a mute/volume path and no cue conveys information unavailable in text.
+38-
+39:### Round, score, and progress rules — `GAME-005` to `GAME-008`
+40-
+41-**Player outcome:** complete a clear, fair themed round and understand a local
+42-milestone. **Entities:** `RoundDefinition`, `RoundRun`, `QuestionAttempt`,
+--
+45-
+46-| Unit | Design card / rule | First-release boundary and acceptance |
+47-| --- | --- | --- |
+48:| GAME-005 | **Round “First Whistle.”** Tutorial round contains 5 fixed, original tutorial cards (`TUT-01`–`TUT-05`) covering selecting, typing, feedback, explanation, and pause/save. It is intentionally non-timed. | This is the complete first useful journey. Completion creates/updates local milestone `first_whistle_complete`; it cannot require account, network, purchase, or deferred content. Test: a new local profile can complete it offline and resume after app restart. |
+49:| GAME-006 | **Round “Mixed Fixture.”** A 10-card themed round draws from one selected category or the Kickoff Mix, with no more than two adjacent cards sharing format or difficulty. The player may pause; a displayed timer mode is optional and defaults off. | First release ships one tutorial and one configurable standard round template, no ranked/daily/live/event modes. Test: deterministic seed produces ten eligible cards and valid format alternation or records the shortage. |
+50:| GAME-007 | **Scoring and streak.** Correct = 100 points; a consecutive-correct streak of 3+ adds 25 points to each later correct answer, capped at +100. Incorrect, timeout (only if enabled), blank submission, or abandon resets the active streak; score never decreases. Explanation is available after resolution. | No paid boosts, leaderboard, social comparison, or opaque difficulty multiplier. Test: table-driven sequence proves cap, reset, and per-attempt result; a retry is a new run, not an overwrite of history. |
+51:| GAME-008 | **Result and return.** Results show answered/correct, score, best active-session streak, category, and next action: replay, choose theme, or exit. Progress is local milestones and aggregate history only, not RPG levels. | An interrupted run persists at a safe boundary before the next unresolved question. Completed result is idempotent: reopening cannot award twice. Test: complete/reopen, abandon/resume, corrupted draft, and delete-history paths are specified. |
+52-
+53:**Dependencies:** GAME-005 needs published tutorial cards and persistence;
+54:GAME-006 needs GAME-001–004; GAME-007 consumes adjudication events; GAME-008
+55-consumes score events and save/recovery. Visual family is bold category panels,
+56-neutral answer controls, and non-colour success/error indicators; audio is
+57-supportive, optional, and captioned.
+--
+91-| Units | First-release journeys | Implementation domains |
+92-| --- | --- | --- |
+93-| GAME-001–004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |
+94:| GAME-005–008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |
+95-| GAME-009–012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |
+96-
+97-The machine-readable `implementation_map` in the companion JSON maps every
+
+codex
+{"status":"pass","summary":"The requested runbooks are already present in the working tree and match the GB0002 scope. I’m checking their metadata against the catalogue and the runbook parser without touching unrelated batches.","changed_files":[],"test_result":"","evidence":{"agent_log":"Located existing G0003/G0004 and confirmed their source IDs and batch metadata.","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/specification/02-game-design-bible.md"],"updated_files":[],"summary":"The runbooks are themselves the requested design documentation; no additional README change is applicable."},"known_limitations":[],"browser_coverage":"Domain-only design-runbook work; no browser spec applies.","recommended_next_step":"complete"}
+exec
+/bin/zsh -lc "rg -n -C 3 'parse_runbook|front.?matter|task_id|design_authoring_batch' supervisor/supervisor/runbooks.py supervisor/tests/test_runbooks.py README.md
+rg -n 'GAME-005|GAME-006|GAME-007|GAME-008|GPI-008|GPI-009|GPI-010|GPI-011' projects/football-trivia-e2e/planning/implementation-catalogue-index.json" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+README.md-298-| A C checkpoint or D dispatcher | The authoring manifest, catalogue, ledger, and only the relevant canonical specification chapter | It validates and schedules the authoring process; it is not product implementation context. |
+README.md-299-| An R-series task | Its own objective, dependencies, acceptance criteria, and provenance metadata | It performs one small piece of product work. It can open the linked canonical files when it needs more detail. |
+README.md-300-
+README.md:301:Each generated R file must declare this provenance in its front matter:
+README.md-302-
+README.md-303-```yaml
+README.md-304-requirement_ids:
+--
+supervisor/supervisor/runbooks.py-28-        if not separator:
+supervisor/supervisor/runbooks.py-29-            raise ValueError(f"Invalid runbook metadata line: {line}")
+supervisor/supervisor/runbooks.py-30-        metadata[key.strip()] = value.strip()
+supervisor/supervisor/runbooks.py:31:    required = {"task_id", "sequence", "title", "browser_impact", "playwright_spec"}
+supervisor/supervisor/runbooks.py-32-    missing = required - metadata.keys()
+supervisor/supervisor/runbooks.py-33-    if missing:
+supervisor/supervisor/runbooks.py-34-        raise ValueError(f"{path} is missing metadata: {', '.join(sorted(missing))}")
+supervisor/supervisor/runbooks.py:35:    is_r_series = re.fullmatch(r"R\d+", metadata["task_id"]) is not None
+supervisor/supervisor/runbooks.py:36:    is_game_design_task = re.fullmatch(r"G\d+", metadata["task_id"]) is not None
+supervisor/supervisor/runbooks.py-37-    if is_r_series:
+supervisor/supervisor/runbooks.py-38-        dependencies = [value.strip() for value in metadata.get("dependencies", "").split(",") if value.strip()]
+supervisor/supervisor/runbooks.py-39-        if len(dependencies) != len(set(dependencies)) or any(not re.fullmatch(r"R\d+", dependency) for dependency in dependencies):
+supervisor/supervisor/runbooks.py-40-            raise ValueError(f"{path} has invalid dependencies; use comma-separated R-series IDs.")
+supervisor/supervisor/runbooks.py:41:        if metadata["task_id"] in dependencies:
+supervisor/supervisor/runbooks.py-42-            raise ValueError(f"{path} cannot depend on itself.")
+supervisor/supervisor/runbooks.py-43-        provenance_metadata = {"source_specifications", "source_catalogue_ids", "authoring_batch", "factory_stages"}
+supervisor/supervisor/runbooks.py-44-        missing_provenance_metadata = provenance_metadata - metadata.keys()
+--
+supervisor/supervisor/runbooks.py-94-        elif declared_audio or metadata["audio_brief"].strip() or metadata["audio_duration_seconds"].strip() not in {"", "0"} or metadata["audio_loop"] not in {"", "not_applicable"}:
+supervisor/supervisor/runbooks.py-95-            raise ValueError(f"{path} declares audio fields but audio_impact is not_applicable.")
+supervisor/supervisor/runbooks.py-96-    if is_game_design_task:
+supervisor/supervisor/runbooks.py:97:        batch = metadata.get("design_authoring_batch", "")
+supervisor/supervisor/runbooks.py-98-        if not re.fullmatch(r"GB\d+", batch):
+supervisor/supervisor/runbooks.py:99:            raise ValueError(f"{path} is a G-series design task and must declare design_authoring_batch such as GB0001.")
+supervisor/supervisor/runbooks.py-100-    criteria: list[str] = []
+supervisor/supervisor/runbooks.py-101-    current: list[str] = []
+supervisor/supervisor/runbooks.py-102-    for line in _section(document, "Acceptance criteria").splitlines():
+--
+supervisor/supervisor/runbooks.py-113-    if not criteria:
+supervisor/supervisor/runbooks.py-114-        raise ValueError(f"{path} has no acceptance criteria.")
+supervisor/supervisor/runbooks.py-115-    return Task(
+supervisor/supervisor/runbooks.py:116:        task_id=metadata["task_id"],
+supervisor/supervisor/runbooks.py-117-        title=metadata["title"],
+supervisor/supervisor/runbooks.py-118-        sequence=int(metadata["sequence"]),
+supervisor/supervisor/runbooks.py-119-        dependencies=[value.strip() for value in metadata.get("dependencies", "").split(",") if value.strip()],
+--
+supervisor/supervisor/runbooks.py-135-        source_specifications=[value.strip() for value in metadata.get("source_specifications", "").split(",") if value.strip()],
+supervisor/supervisor/runbooks.py-136-        source_catalogue_ids=[value.strip() for value in metadata.get("source_catalogue_ids", "").split(",") if value.strip()],
+supervisor/supervisor/runbooks.py-137-        authoring_batch=metadata.get("authoring_batch", ""),
+supervisor/supervisor/runbooks.py:138:        design_authoring_batch=metadata.get("design_authoring_batch", ""),
+supervisor/supervisor/runbooks.py-139-        factory_stages=[value.strip() for value in metadata.get("factory_stages", "").split(",") if value.strip()],
+supervisor/supervisor/runbooks.py-140-    )
+--
+supervisor/tests/test_runbooks.py-8-def test_d005_runbook_loads_the_persistence_contract():
+supervisor/tests/test_runbooks.py-9-    root = Path(__file__).resolve().parents[2]
+supervisor/tests/test_runbooks.py-10-    task = load_task(root / "runbooks" / "D005.md")
+supervisor/tests/test_runbooks.py:11:    assert task.task_id == "D005"
+supervisor/tests/test_runbooks.py-12-    assert task.sequence == 5
+supervisor/tests/test_runbooks.py-13-    assert "persistence" in task.objective.lower()
+supervisor/tests/test_runbooks.py-14-    assert task.playwright_specs == ["tests/changes/d005-settings-restore.spec.cjs"]
+--
+supervisor/tests/test_runbooks.py-19-    root = Path(__file__).resolve().parents[2]
+supervisor/tests/test_runbooks.py-20-    for path in (root / "runbooks").glob("D*.md"):
+supervisor/tests/test_runbooks.py-21-        task = load_task(path)
+supervisor/tests/test_runbooks.py:22:        assert task.task_id == path.stem
+supervisor/tests/test_runbooks.py-23-        if task.browser_impact == "required":
+supervisor/tests/test_runbooks.py-24-            assert task.playwright_specs
+supervisor/tests/test_runbooks.py-25-        else:
+--
+supervisor/tests/test_runbooks.py-41-def test_runbook_accepts_opt_in_asset_metadata(tmp_path):
+supervisor/tests/test_runbooks.py-42-    path = tmp_path / "R0002.md"
+supervisor/tests/test_runbooks.py-43-    path.write_text(
+supervisor/tests/test_runbooks.py:44:        "---\ntask_id: R0002\nsequence: 1\ntitle: Gate\nbrowser_impact: not_applicable\nplaywright_spec: \n"
+supervisor/tests/test_runbooks.py-45-            "asset_impact: required\nasset_brief: docs/art/briefs/gate.md\nasset_ids: gate,gate_build\nvisual_style_version: project-v1\naudio_impact: not_applicable\naudio_ids: \naudio_brief: \naudio_duration_seconds: 0\naudio_loop: not_applicable\naudio_style_version: \nsource_specifications: specification/04-experience-contract.md#gate\nsource_catalogue_ids: IMP-WORLD-001\nauthoring_batch: B0001\nfactory_stages: F004,F012,F013\n---\n"
+supervisor/tests/test_runbooks.py-46-        "# R0002\n\n## Objective\n\nMake a gate.\n\n## Acceptance criteria\n\n- It is original.\n",
+supervisor/tests/test_runbooks.py-47-        encoding="utf-8",
+--
+supervisor/tests/test_runbooks.py-57-def test_r_series_runbook_must_explicitly_assess_assets(tmp_path):
+supervisor/tests/test_runbooks.py-58-    path = tmp_path / "R0001.md"
+supervisor/tests/test_runbooks.py-59-    path.write_text(
+supervisor/tests/test_runbooks.py:60:        "---\ntask_id: R0001\nsequence: 1\ntitle: Missing asset assessment\nbrowser_impact: not_applicable\nplaywright_spec:\nsource_specifications: specification/02-feature-model.md#loop\nsource_catalogue_ids: IMP-LOOP-001\nauthoring_batch: B0001\nfactory_stages: F002,F012,F013\n---\n"
+supervisor/tests/test_runbooks.py-61-        "## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+supervisor/tests/test_runbooks.py-62-        encoding="utf-8",
+supervisor/tests/test_runbooks.py-63-    )
+--
+supervisor/tests/test_runbooks.py-69-def test_r_series_runbook_must_declare_provenance(tmp_path):
+supervisor/tests/test_runbooks.py-70-    path = tmp_path / "R0001.md"
+supervisor/tests/test_runbooks.py-71-    path.write_text(
+supervisor/tests/test_runbooks.py:72:        "---\ntask_id: R0001\nsequence: 1\ntitle: Missing provenance\nbrowser_impact: not_applicable\nplaywright_spec:\nasset_impact: not_applicable\nasset_ids:\n---\n"
+supervisor/tests/test_runbooks.py-73-        "## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+supervisor/tests/test_runbooks.py-74-        encoding="utf-8",
+supervisor/tests/test_runbooks.py-75-    )
+--
+supervisor/tests/test_runbooks.py-81-def test_r_series_asset_task_requires_stable_asset_ids(tmp_path):
+supervisor/tests/test_runbooks.py-82-    path = tmp_path / "R0001.md"
+supervisor/tests/test_runbooks.py-83-    path.write_text(
+supervisor/tests/test_runbooks.py:84:        "---\ntask_id: R0001\nsequence: 1\ntitle: Asset work\nbrowser_impact: not_applicable\nplaywright_spec:\nasset_impact: required\nasset_ids:\nsource_specifications: specification/04-experience-contract.md#gate\nsource_catalogue_ids: IMP-WORLD-001\nauthoring_batch: B0001\nfactory_stages: F004,F012,F013\n---\n"
+supervisor/tests/test_runbooks.py-85-        "## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+supervisor/tests/test_runbooks.py-86-        encoding="utf-8",
+supervisor/tests/test_runbooks.py-87-    )
+--
+supervisor/tests/test_runbooks.py-93-def test_r_series_dependencies_are_loaded_as_execution_gates(tmp_path):
+supervisor/tests/test_runbooks.py-94-    path = tmp_path / "R0002.md"
+supervisor/tests/test_runbooks.py-95-    path.write_text(
+supervisor/tests/test_runbooks.py:96:        "---\ntask_id: R0002\nsequence: 2\ntitle: Dependency task\nbrowser_impact: not_applicable\nplaywright_spec:\ndependencies: R0001,R0003\nsource_specifications: specification/02-feature-model.md#loop\nsource_catalogue_ids: IMP-LOOP-002\nauthoring_batch: B0001\nfactory_stages: F002,F012,F013\nasset_impact: not_applicable\nasset_ids:\naudio_impact: not_applicable\naudio_ids:\naudio_brief:\naudio_duration_seconds: 0\naudio_loop: not_applicable\naudio_style_version:\n---\n\n## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+supervisor/tests/test_runbooks.py-97-        encoding="utf-8",
+supervisor/tests/test_runbooks.py-98-    )
+supervisor/tests/test_runbooks.py-99-
+--
+supervisor/tests/test_runbooks.py-103-def test_r_series_dependencies_reject_invalid_ids(tmp_path):
+supervisor/tests/test_runbooks.py-104-    path = tmp_path / "R0002.md"
+supervisor/tests/test_runbooks.py-105-    path.write_text(
+supervisor/tests/test_runbooks.py:106:        "---\ntask_id: R0002\nsequence: 2\ntitle: Invalid dependency\nbrowser_impact: not_applicable\nplaywright_spec:\ndependencies: R0001,not-a-task\nsource_specifications: specification/02-feature-model.md#loop\nsource_catalogue_ids: IMP-LOOP-002\nauthoring_batch: B0001\nfactory_stages: F002,F012,F013\nasset_impact: not_applicable\nasset_ids:\naudio_impact: not_applicable\naudio_ids:\naudio_brief:\naudio_duration_seconds: 0\naudio_loop: not_applicable\naudio_style_version:\n---\n\n## Objective\n\nDo the work.\n\n## Acceptance criteria\n\n- The work is done.\n",
+supervisor/tests/test_runbooks.py-107-        encoding="utf-8",
+supervisor/tests/test_runbooks.py-108-    )
+supervisor/tests/test_runbooks.py-109-
+--
+supervisor/tests/test_runbooks.py-114-def test_g_series_design_task_requires_a_gb_authoring_batch(tmp_path):
+supervisor/tests/test_runbooks.py-115-    path = tmp_path / "G0001.md"
+supervisor/tests/test_runbooks.py-116-    path.write_text(
+supervisor/tests/test_runbooks.py:117:        "---\ntask_id: G0001\nsequence: 1\ntitle: Trivia categories\nbrowser_impact: not_applicable\nplaywright_spec:\n"
+supervisor/tests/test_runbooks.py:118:        "design_authoring_batch: GB0001\n---\n\n## Objective\n\nDesign categories.\n\n## Acceptance criteria\n\n- Categories are complete.\n",
+supervisor/tests/test_runbooks.py-119-        encoding="utf-8",
+supervisor/tests/test_runbooks.py-120-    )
+supervisor/tests/test_runbooks.py:121:    assert load_task(path).design_authoring_batch == "GB0001"
+supervisor/tests/test_runbooks.py-122-
+supervisor/tests/test_runbooks.py:123:    path.write_text(path.read_text(encoding="utf-8").replace("design_authoring_batch: GB0001\n", ""), encoding="utf-8")
+supervisor/tests/test_runbooks.py:124:    with pytest.raises(ValueError, match="design_authoring_batch"):
+supervisor/tests/test_runbooks.py-125-        load_task(path)
+6:    {"id": "IMP-FT-001", "title": "Implement curated quiz content and round rules", "creative_coverage_ids": ["GAME-001", "GAME-002", "GAME-003", "GAME-004", "GAME-005", "GAME-006", "GAME-007", "GAME-008", "ASSET-QZ-001", "ASSET-QZ-002", "ASSET-FBK-001", "ASSET-FBK-002", "ASSET-FBK-003", "ASSET-FBK-004", "AUDIO-MUS-001", "AUDIO-QZ-001", "AUDIO-QZ-002", "AUDIO-QZ-003", "AUDIO-QZ-004", "AUDIO-RES-001"], "status": "planned"},
+16:      "GAME-005": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+17:      "GAME-006": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+18:      "GAME-007": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+19:      "GAME-008": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+
+exec
+/bin/zsh -lc "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c 'from pathlib import Path; from supervisor.runbooks import load_task; root=Path(\"projects/football-trivia-e2e/game-design-runbooks\"); tasks=[load_task(root / f\"G{i:04d}.md\") for i in (3,4)]; assert [t.task_id for t in tasks] == [\"G0003\", \"G0004\"]; assert all(t.design_authoring_batch == \"GB0002\" for t in tasks); assert tasks[0].source_catalogue_ids == [\"GAME-005\", \"GAME-006\", \"GPI-008\", \"GPI-009\"]; assert tasks[1].source_catalogue_ids == [\"GAME-007\", \"GAME-008\", \"GPI-010\", \"GPI-011\"]; all_g=[p for p in root.glob(\"G[0-9]*.md\")]; assert len(all_g) <= 5; print(f\"validated {len(tasks)} GB0002 tasks; {len(all_g)} total numbered G tasks\")'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+validated 2 GB0002 tasks; 5 total numbered G tasks
+
+codex
+{"status":"pass","summary":"Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005–008 and GPI-008–011 with the required batch metadata; no edits were needed.","changed_files":[],"test_result":"PASS: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c '...' loaded G0003/G0004 via supervisor.runbooks.load_task, verified both declare GB0002, verified their exact catalogue-ID partitions, and confirmed five total numbered G tasks.","evidence":{"agent_log":"Reviewed GB0002, G0003, G0004, the game-design bible, and the catalogue index. Existing unrelated dirty/untracked worktree content was preserved.","adapter_log":"","test_log":"validated 2 GB0002 tasks; 5 total numbered G tasks","browser_log":"Not applicable: this is domain-only design-runbook metadata.","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.","status":"pass","evidence":"The focused validation found exactly two GB0002-created G tasks (G0003 and G0004), both declaring design_authoring_batch: GB0002; there are five total numbered G tasks in the design-runbooks directory."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/implementation-catalogue-index.json"],"updated_files":[],"summary":"G0003 and G0004 are the requested design documentation and were already complete; no README or additional documentation change was needed."},"known_limitations":[],"browser_coverage":"No task-specific Playwright spec changed because this task only authors domain design runbooks and has browser_impact: not_applicable.","recommended_next_step":"complete"}
+tokens used
+26,916
+
+
+===== Adapter output =====
+{"status": "pass", "summary": "Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005\u2013008 and GPI-008\u2013011 with the required batch metadata; no edits were needed.", "changed_files": [], "test_result": "PASS: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c '...' loaded G0003/G0004 via supervisor.runbooks.load_task, verified both declare GB0002, verified their exact catalogue-ID partitions, and confirmed five total numbered G tasks.", "evidence": {"agent_log": "{\"status\":\"pass\",\"summary\":\"Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005\u2013008 and GPI-008\u2013011 with the required batch metadata; no edits were needed.\",\"changed_files\":[],\"test_result\":\"PASS: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c '...' loaded G0003/G0004 via supervisor.runbooks.load_task, verified both declare GB0002, verified their exact catalogue-ID partitions, and confirmed five total numbered G tasks.\",\"evidence\":{\"agent_log\":\"Reviewed GB0002, G0003, G0004, the game-design bible, and the catalogue index. Existing unrelated dirty/untracked worktree content was preserved.\",\"adapter_log\":\"\",\"test_log\":\"validated 2 GB0002 tasks; 5 total numbered G tasks\",\"browser_log\":\"Not applicable: this is domain-only design-runbook metadata.\",\"screenshots\":[]},\"acceptance_results\":[{\"criterion\":\"No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.\",\"status\":\"pass\",\"evidence\":\"The focused validation found exactly two GB0002-created G tasks (G0003 and G0004), both declaring design_authoring_batch: GB0002; there are five total numbered G tasks in the design-runbooks directory.\"}],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/game-design-runbooks/GB0002.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0003.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0004.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.md\",\"projects/football-trivia-e2e/planning/implementation-catalogue-index.json\"],\"updated_files\":[],\"summary\":\"G0003 and G0004 are the requested design documentation and were already complete; no README or additional documentation change was needed.\"},\"known_limitations\":[],\"browser_coverage\":\"No task-specific Playwright spec changed because this task only authors domain design runbooks and has browser_impact: not_applicable.\",\"recommended_next_step\":\"complete\"}\nReading additional input from stdin...\n2026-08-03T00:40:14.586091Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/\n2026-08-03T00:40:14.586113Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/\n2026-08-03T00:40:14.586375Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json\n2026-08-03T00:40:14.587158Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json\n2026-08-03T00:40:14.588125Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json\n2026-08-03T00:40:14.589385Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json\nOpenAI Codex v0.145.0\n--------\nworkdir: /Users/simon/Dev/github/jakowicz/runbook-generator\nmodel: gpt-5.6-terra\nprovider: openai\napproval: on-request\nsandbox: workspace-write [workdir, /tmp, $TMPDIR]\nreasoning effort: medium\nreasoning summaries: none\nsession id: 019fc510-67ce-78e0-9a78-e2c4aca5b8b0\n--------\nuser\nYou are the coding worker for one isolated runbook task.\n\nWork only in the repository passed as your working directory. Do not publish,\ndeploy, access secrets, make payments, or change product scope. Stop and report\nneeds_user_review if the task is destructive, unclear, or requires authority.\nImplement only the task below, run relevant checks, and then output exactly one\nJSON object conforming to the WorkerResult contract. A status of pass means the\nchange is ready for independent test and visual review; it is not self-approval.\n\nTask:\n{\n  \"task_id\": \"GB0002\",\n  \"title\": \"Author round and progression design runbooks\",\n  \"objective\": \"Create only G0003 and G0004 for GAME-005\\u2013008 and GPI-008\\u2013011: named tutorial cards, standard-round lifecycle, scoring, streak, result, and save-boundary evidence.\\n\\nInitial project brief:\\n# Product brief \\u2014 football-trivia-e2e\\n\\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\\nits scope; it records unknowns and contradictions instead of choosing them.\\n\\n## Problem, category, users, and outcome\\n\\nCasual adult football followers need a satisfying way to test and extend their\\nknowledge in a few mobile-friendly minutes. This is an original 2D,\\nsingle-player football-trivia puzzle with themed rounds, varied question\\nformats, answer validation, score/streak feedback, local progress, and a\\ncurated question bank.\\n\\nThe first useful session succeeds when a player completes an onboarding round,\\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\\nThis is the quiz equivalent of the source's generic \\u201cfirst battle\\u201d text; a\\nliteral battle/campaign is a decision, not assumed scope.\\n\\n## First-release and roadmap scope\\n\\nFirst release: playable themed rounds; tutorial; question formats and answer\\nrules; accessible feedback; scoring/streaks; anti-repetition; local\\nprogress/save/load/resume/recovery; settings/accessibility; original\\naudio/visual feedback; curated, reviewed, versioned question content; content\\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\\nlive operations, and purchases are decision-gated, not automatic dependencies.\\n\\nSuccess is measurable when a new player can complete onboarding, play an\\nauthored round, get deterministic answer/score feedback, save and restore\\nconfirmed progress, and recover from interruption or a safe update without\\nsilent loss on every selected target. Every shipped question has category,\\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\\nmetadata. Bank size, completion cadence, and performance thresholds are open.\\n\\nDeferred: live/seasonal events, player-created/shared content, advanced\\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\\nparty, quest, combat, boss, or literal battle systems.\\n\\n## Target systems\\n\\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\\n| --- | --- | --- | --- | --- |\\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\\n\\nUse a shared core with necessary platform adaptations only. Remote\\naccount-linked state may use a safe local cache where approved, and must not\\nsilently discard confirmed single-player progress.\\n\\n## Constraints, assumptions, and reference boundary\\n\\nExplicit constraints: accessible controls/text/captions/visual settings;\\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\\nrequirements; and original expression. Safe assumptions: independently authored\\ncontent/UI/art/audio; editorial fact review; locally available approved content\\nsupports a basic session; outages are clear; and diagnostics minimise personal\\ndata. No stack, vendor, backend, account, retention, or licensing choice is\\napproved by these assumptions.\\n\\n| Reference | Allowed functional learning | Prohibited |\\n| --- | --- | --- |\\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\\n\\n## Human approval decisions\\n\\n1. Is generic \\u201cstory/campaign\\u201d and \\u201cfirst battle\\u201d text real scope, or should a\\n   lightweight themed quiz journey replace it?\\n2. For account identity, multiplayer safety, live operations, and purchases:\\n   choose release-critical, optional connected enhancement, or deferred.\\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\\n   outage, safety/moderation, age/region, refund/entitlement policies if any\\n   connected or commerce feature ships.\\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\\n   update/crash provider/cost model, and Android/iOS packaging path.\\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\\n   adjudication, languages, and exact accessibility/audio scope.\",\n  \"acceptance_criteria\": [\n    \"No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.\"\n  ],\n  \"risk_level\": \"normal\",\n  \"sequence\": 2,\n  \"dependencies\": [\n    \"GD0001\"\n  ],\n  \"prerequisite_collections\": [],\n  \"browser_impact\": \"not_applicable\",\n  \"playwright_specs\": [],\n  \"asset_impact\": \"not_applicable\",\n  \"asset_brief\": \"\",\n  \"asset_ids\": [],\n  \"visual_style_version\": \"\",\n  \"audio_impact\": \"not_applicable\",\n  \"audio_brief\": \"\",\n  \"audio_ids\": [],\n  \"audio_duration_seconds\": 0,\n  \"audio_loop\": \"not_applicable\",\n  \"audio_style_version\": \"\",\n  \"source_specifications\": [\n    \"specification/02-game-design-bible.md\",\n    \"specification/02-game-design-bible.json\",\n    \"specification/01-creative-direction.md\"\n  ],\n  \"source_catalogue_ids\": [\n    \"GAME-005\",\n    \"GAME-006\",\n    \"GAME-007\",\n    \"GAME-008\",\n    \"GPI-008\",\n    \"GPI-009\",\n    \"GPI-010\",\n    \"GPI-011\"\n  ],\n  \"authoring_batch\": \"\",\n  \"design_authoring_batch\": \"\",\n  \"factory_stages\": [],\n  \"execution_mode\": \"implementation\",\n  \"continuation_context\": \"\"\n}\n\nContinuation checkpoint (only when present):\nNo prior checkpoint: inspect the current repository before making changes.\n\n\n\nThis Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,\n`dart`, SDK/bootstrap tooling, or request an approval escalation: those tools\ncan write SDK caches outside the worktree and are deliberately owned by the\nsupervisor's independent precheck/test stages. When the continuation evidence\nnames a concrete source or test failure, repair that evidence in the worktree,\nrun only safe focused checks, and return `pass` for the deterministic stage to\nvalidate. Never return a failure solely because an SDK command needs approval.\n\n\n\nEfficient investigation rules (especially important for local models):\n- Start with the Codebase Memory MCP for architecture and targeted symbols.\n- Do not use whole-file reads for Dart, test, lock, generated, or log files.\n  Use targeted symbol snippets or `run_shell_command` with `rg` and\n  `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.\n- Inspect only files directly relevant to the acceptance criteria. Do not\n  browse unrelated Playwright, automation, or configuration files merely to\n  learn the repository layout.\n- After the focused investigation, implement and run the smallest relevant\n  checks. Do not continue exploratory tool calls once the implementation path\n  is clear.\n- If a tool reports a missing file, treat it as non-blocking and continue with\n  the repository evidence you already have.\n\nCompletion protocol:\n- Your final action MUST be the `structured_output` tool supplied by\n  `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON\n  response.\n- Use native nested JSON values in that tool call: `evidence` and\n  `documentation` are objects, while `acceptance_results` is an array. Never\n  put JSON text inside quotes for any of those fields.\n- If a check cannot run, return a structured `repairable_failure` or\n  `needs_user_review` result immediately with the exact reason. Never wait\n  silently for a tool or model request to recover.\n\n\nYour final WorkerResult must include all of the following:\n- `acceptance_results`: one entry for every task acceptance criterion, in the\n  same order. Copy each criterion text verbatim from the task, with pass/fail/\n  not_verified status and concrete evidence;\n- `documentation`: README/plan/ADR/runbook files reviewed, files updated, and\n  why they were or were not changed;\n- `test_result`: exact checks you ran and their outcomes;\n- `known_limitations`: remaining gaps or an empty list.\n\nDo not claim `pass` if a criterion is unverified. Update user-facing README or\ndeveloper documentation whenever the change affects behaviour, setup, commands,\narchitecture, design, or progress. If no documentation change is needed, state\nthe reviewed files and explain why.\n\nFor `final_verification`, the independent `test`, `browser`, and visual-review\nstages are the required verification gates. After repairing every concrete\nsource/test failure supplied in this prompt, return `pass` so those gates run.\nDo not return `needs_user_review` solely because Flutter/Dart was deliberately\nleft to the independent test stage. Return `needs_user_review` only for a real\nauthority, safety, or irreducibly ambiguous product decision.\n\nFor browser-impacting work, create or update a task-specific Playwright spec in\n`supervisor/browser/tests/changes/`, list it in `browser_coverage`,\nand revise stale checks. Keep `tests/smoke/` short and stable. For domain-only\nwork, explain in `browser_coverage` why no task-specific browser spec changed.\n\nVisual baseline rule:\n- When the continuation evidence names a golden, snapshot, or visual-regression\n  failure, inspect the supplied master/test/diff artifacts before changing any\n  baseline. Work out whether the new render is the intended result of this\n  task, and check that it has no clipping, overlap, or lost meaning.\n- If it is intentional, regenerate only the affected approved baselines using\n  the repository's documented command, update stale visual/browser checks when\n  their prior expectation is no longer correct, and rerun the relevant suite.\n- If it is not intentional, fix the product or test setup instead. Never mask\n  a real visual regression by blindly accepting a changed screenshot.\n\nFailure-repair protocol:\n- When the continuation checkpoint says that a Supervisor terminal stage\n  failed, treat its captured command and output as the starting evidence. Do\n  not merely describe a possible fix.\n- Use the terminal in this project worktree to inspect, repair, and rerun the\n  same focused check whenever that command is safe in your sandbox. Include\n  the command and result in `test_result`.\n- If that exact command needs an SDK, browser, or approval outside this\n  worker's sandbox, repair the demonstrated issue but do not replace the\n  independent validation. Return `pass` only when the worktree is ready for\n  Supervisor to rerun its configured terminal command after your repair.\n\nwarning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))\ncodex\n{\"status\":\"pass\",\"summary\":\"I\u2019ll locate the existing G-task/runbook conventions and author only the requested G0003 and G0004 records, then run a focused structural check.\",\"changed_files\":[],\"test_result\":\"\",\"evidence\":{\"agent_log\":\"Started focused repository investigation.\",\"adapter_log\":\"\",\"test_log\":\"\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[],\"documentation\":{\"reviewed_files\":[],\"updated_files\":[],\"summary\":\"\"},\"known_limitations\":[],\"browser_coverage\":\"\",\"recommended_next_step\":\"complete\"}\nmcp: codebase-memory-mcp/get_architecture started\nmcp: codebase-memory-mcp/get_architecture (failed)\nuser cancelled MCP tool call\nexec\n/bin/zsh -lc \"rg -l 'G000[0-9]|GAME-005|GPI-008|design_authoring_batch' . --glob '\"'!**/.git/**'\"'\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\n./supervisor/supervisor/cli.py\n./supervisor/supervisor/runbooks.py\n./supervisor/supervisor/models.py\n./supervisor/tests/test_cli_resume.py\n./README.md\n./projects/football-trivia-e2e/specification/02-game-design-bible.md\n./runbooks/F005.md\n./projects/football-trivia-e2e/specification/02-game-design-bible.json\n./projects/football-trivia-e2e/specification/01-game-identity.md\n./projects/football-trivia-e2e/game-design-runbooks/GC0001.md\n./projects/football-trivia-e2e/specification/03-technical-contract.md\n./projects/football-trivia-e2e/planning/05-delivery-map.md\n./projects/football-trivia-e2e/game-design-runbooks/G0004.md\n./projects/football-trivia-e2e/game-design-runbooks/G0005.md\n./projects/football-trivia-e2e/game-design-runbooks/GD0001.md\n./projects/football-trivia-e2e/planning/implementation-catalogue-index.json\n./projects/football-trivia-e2e/game-design-runbooks/G0001.md\n./projects/football-trivia-e2e/game-design-runbooks/G0002.md\n./supervisor/tests/test_runbooks.py\n./projects/football-trivia-e2e/game-design-runbooks/G0003.md\n./projects/football-trivia-e2e/game-design-runbooks/GB0003.md\n./projects/football-trivia-e2e/planning/game-production-inventory.json\n./projects/football-trivia-e2e/game-design-runbooks/GB0001.md\n./projects/football-trivia-e2e/game-design-runbooks/GB0002.md\n./projects/football-trivia-e2e/planning/game-production-inventory.md\n./projects/football-trivia-e2e/planning/game-design-manifest.json\n\nexec\n/bin/zsh -lc \"git status --short && sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/G0003.md && sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/G0004.md && sed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/GB0002.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\n M .env\n M supervisor\n?? projects/final-fantasy/\n?? projects/football-trivia-e2e/\n?? projects/mock-fantasy-quest-4/\n?? runbooks/.supervisor-children/\n---\ntask_id: G0003\nsequence: 3\ndependencies: GB0002,G0002\nsource_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md\nsource_catalogue_ids: GAME-005,GAME-006,GPI-008,GPI-009\ntitle: Define tutorial and standard-round bible\nbrowser_impact: not_applicable\nplaywright_spec:\ndesign_authoring_batch: GB0002\n---\n\n## Objective\n\nWrite accepted evidence for GAME-005\u2013006/GPI-008\u2013009: TUT-01\u201305, mixed 10-card round selection, optional timer, offline lifecycle, interruption and shortage behaviour.\n\n## Output list\n\n- `design-evidence/round-lifecycle-bible.md`: named First Whistle cards and transitions, Mixed Fixture selection/shortage fixtures, optional-off timer, offline pause/resume lifecycle, and accessibility review.\n\nDo not invent a campaign, live/ranked mode, code, B/R runbooks, or manifest acceptance.\n\n## Acceptance criteria\n\n- Every named tutorial card and round transition has a deterministic fixture.\n---\ntask_id: G0004\nsequence: 3\ndependencies: G0003\nsource_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md\nsource_catalogue_ids: GAME-007,GAME-008,GPI-010,GPI-011\ntitle: Define scoring and results bible\nbrowser_impact: not_applicable\nplaywright_spec:\ndesign_authoring_batch: GB0002\n---\n\n## Objective\n\nWrite accepted evidence for GAME-007\u2013008/GPI-010\u2013011: 100-point capped-streak table, feedback equivalents, result states, milestone idempotence, and 18 edge/lifecycle fixtures.\n\n## Output list\n\n- `design-evidence/score-streak-and-results-bible.md`: score/streak rule table, 18 recovery/result fixtures, idempotent milestones, and text, non-colour, captioned/mute audio-equivalent feedback requirements.\n\nDo not create implementation code or B/R runbooks, and do not accept the manifest.\n\n## Acceptance criteria\n\n- Wrong, blank, timeout, and abandon remain recoverable and do not create duplicate completion.\n---\ntask_id: GB0002\nsequence: 2\ndependencies: GD0001\nsource_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md\nsource_catalogue_ids: GAME-005,GAME-006,GAME-007,GAME-008,GPI-008,GPI-009,GPI-010,GPI-011\ntitle: Author round and progression design runbooks\nbrowser_impact: not_applicable\nplaywright_spec:\n---\n\n## Objective\n\nCreate only G0003 and G0004 for GAME-005\u2013008 and GPI-008\u2013011: named tutorial cards, standard-round lifecycle, scoring, streak, result, and save-boundary evidence.\n\n## Output list\n\n- `G0003.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/round-lifecycle-bible.md`.\n- `G0004.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/score-streak-and-results-bible.md`.\n\nDo not create code, B/R runbooks, RPG/match-simulation systems, live/ranked/social modes, or a final audit.\n\n## Acceptance criteria\n\n- No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.\n\nexec\n/bin/zsh -lc \"for f in projects/football-trivia-e2e/game-design-runbooks/G*.md; do printf '%s ' \\\"\"'${f:t}\"; rg -q '\"'\"'^design_authoring_batch: GB0002$'\"' \\\"\"'$f\" && printf '\"'batch\\\\n' || printf 'NO-BATCH\\\\n'; done\nsed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0001.md\nsed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0002.md\nsed -n '1,180p' projects/football-trivia-e2e/game-design-runbooks/G0005.md\nrg -n -C 3 'GAME-005|GAME-006|GAME-007|GAME-008|GPI-008|GPI-009|GPI-010|GPI-011' projects/football-trivia-e2e/specification/02-game-design-bible.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\nG0001.md NO-BATCH\nG0002.md NO-BATCH\nG0003.md batch\nG0004.md batch\nG0005.md NO-BATCH\nGB0001.md NO-BATCH\nGB0002.md NO-BATCH\nGB0003.md NO-BATCH\nGC0001.md NO-BATCH\nGD0001.md NO-BATCH\n---\ntask_id: G0001\nsequence: 3\ndependencies: GB0001\nsource_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md\nsource_catalogue_ids: GAME-001,GAME-002,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005\ntitle: Define original football question-card and catalogue bible\nbrowser_impact: not_applicable\nplaywright_spec:\ndesign_authoring_batch: GB0001\n---\n\n## Objective\n\nWrite accepted detailed evidence for GAME-001\u2013002/GPI-001\u2013005: card grammar, answer/explanation/provenance/accessibility fields, and four named 12-card QB-A batches with exact format/difficulty/topic quotas and two-review workflow.\n\n## Output list\n\n- `design-evidence/question-card-and-qba-catalogue-bible.md`: original question-card grammar and four named QB-A editorial batches, including permitted sources, factual and accessibility/copy reviews, provenance, version/withdrawal fields, quotas, and non-copying expression evidence.\n\nDo not author product code, implementation B/R runbooks, copied questions or reference-product expression. This task does not accept the manifest.\n\n## Acceptance criteria\n\n- The finite 48-card first-release catalogue is bounded, original, and independently quota/provenance verifiable.\n---\ntask_id: G0002\nsequence: 3\ndependencies: G0001\nsource_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md\nsource_catalogue_ids: GAME-003,GAME-004,GPI-006,GPI-007\ntitle: Define fair adjudication and editorial lifecycle bible\nbrowser_impact: not_applicable\nplaywright_spec:\ndesign_authoring_batch: GB0001\n---\n\n## Objective\n\nWrite accepted evidence for GAME-003\u2013004/GPI-006\u2013007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.\n\n## Output list\n\n- `design-evidence/adjudication-and-freshness-bible.md`: deterministic select/true-false/ordered/typed-answer rules, 20 fixtures, contested-fact withdrawal/provenance review states, and a seeded anti-repeat/shortage rule.\n\nNo fuzzy guessing, implementation code, B/R runbooks, or manifest acceptance.\n\n## Acceptance criteria\n\n- Rules never guess answers and every catalogue-state transition is reproducible.\n---\ntask_id: G0005\nsequence: 3\ndependencies: GB0003,G0004\nsource_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md\nsource_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015\ntitle: Define accessible recovery and target parity bible\nbrowser_impact: not_applicable\nplaywright_spec:\ndesign_authoring_batch: GB0003\n---\n\n## Objective\n\nWrite accepted evidence for GAME-009\u2013012/GPI-012\u2013015: four input mappings, captions/contrast/text/motion equivalents, four recovery states, offline/update notices, and web/PWA/Android/iOS parity and certification matrix.\n\n## Output list\n\n- `design-evidence/accessibility-recovery-and-target-parity-bible.md`: four input mappings, accessible feedback equivalents, recovery/offline/update states, and web/PWA/Android/iOS rule/content/save parity matrix.\n\nDo not create target-exclusive content, mandatory accounts/sync, code, B/R runbooks, or manifest acceptance.\n\n## Acceptance criteria\n\n- Each meaning has a non-audio, non-colour equivalent and target adaptations cannot alter shared rules or saves.\n36-cue families: prompt arrival, correct, incorrect, streak rise, and saved state;\n37-each has a mute/volume path and no cue conveys information unavailable in text.\n38-\n39:### Round, score, and progress rules \u2014 `GAME-005` to `GAME-008`\n40-\n41-**Player outcome:** complete a clear, fair themed round and understand a local\n42-milestone. **Entities:** `RoundDefinition`, `RoundRun`, `QuestionAttempt`,\n--\n45-\n46-| Unit | Design card / rule | First-release boundary and acceptance |\n47-| --- | --- | --- |\n48:| GAME-005 | **Round \u201cFirst Whistle.\u201d** Tutorial round contains 5 fixed, original tutorial cards (`TUT-01`\u2013`TUT-05`) covering selecting, typing, feedback, explanation, and pause/save. It is intentionally non-timed. | This is the complete first useful journey. Completion creates/updates local milestone `first_whistle_complete`; it cannot require account, network, purchase, or deferred content. Test: a new local profile can complete it offline and resume after app restart. |\n49:| GAME-006 | **Round \u201cMixed Fixture.\u201d** A 10-card themed round draws from one selected category or the Kickoff Mix, with no more than two adjacent cards sharing format or difficulty. The player may pause; a displayed timer mode is optional and defaults off. | First release ships one tutorial and one configurable standard round template, no ranked/daily/live/event modes. Test: deterministic seed produces ten eligible cards and valid format alternation or records the shortage. |\n50:| GAME-007 | **Scoring and streak.** Correct = 100 points; a consecutive-correct streak of 3+ adds 25 points to each later correct answer, capped at +100. Incorrect, timeout (only if enabled), blank submission, or abandon resets the active streak; score never decreases. Explanation is available after resolution. | No paid boosts, leaderboard, social comparison, or opaque difficulty multiplier. Test: table-driven sequence proves cap, reset, and per-attempt result; a retry is a new run, not an overwrite of history. |\n51:| GAME-008 | **Result and return.** Results show answered/correct, score, best active-session streak, category, and next action: replay, choose theme, or exit. Progress is local milestones and aggregate history only, not RPG levels. | An interrupted run persists at a safe boundary before the next unresolved question. Completed result is idempotent: reopening cannot award twice. Test: complete/reopen, abandon/resume, corrupted draft, and delete-history paths are specified. |\n52-\n53:**Dependencies:** GAME-005 needs published tutorial cards and persistence;\n54:GAME-006 needs GAME-001\u2013004; GAME-007 consumes adjudication events; GAME-008\n55-consumes score events and save/recovery. Visual family is bold category panels,\n56-neutral answer controls, and non-colour success/error indicators; audio is\n57-supportive, optional, and captioned.\n--\n91-| Units | First-release journeys | Implementation domains |\n92-| --- | --- | --- |\n93-| GAME-001\u2013004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |\n94:| GAME-005\u2013008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |\n95-| GAME-009\u2013012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |\n96-\n97-The machine-readable `implementation_map` in the companion JSON maps every\n\ncodex\n{\"status\":\"pass\",\"summary\":\"The requested runbooks are already present in the working tree and match the GB0002 scope. I\u2019m checking their metadata against the catalogue and the runbook parser without touching unrelated batches.\",\"changed_files\":[],\"test_result\":\"\",\"evidence\":{\"agent_log\":\"Located existing G0003/G0004 and confirmed their source IDs and batch metadata.\",\"adapter_log\":\"\",\"test_log\":\"\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/game-design-runbooks/GB0002.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0003.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0004.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.md\"],\"updated_files\":[],\"summary\":\"The runbooks are themselves the requested design documentation; no additional README change is applicable.\"},\"known_limitations\":[],\"browser_coverage\":\"Domain-only design-runbook work; no browser spec applies.\",\"recommended_next_step\":\"complete\"}\nexec\n/bin/zsh -lc \"rg -n -C 3 'parse_runbook|front.?matter|task_id|design_authoring_batch' supervisor/supervisor/runbooks.py supervisor/tests/test_runbooks.py README.md\nrg -n 'GAME-005|GAME-006|GAME-007|GAME-008|GPI-008|GPI-009|GPI-010|GPI-011' projects/football-trivia-e2e/planning/implementation-catalogue-index.json\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\nREADME.md-298-| A C checkpoint or D dispatcher | The authoring manifest, catalogue, ledger, and only the relevant canonical specification chapter | It validates and schedules the authoring process; it is not product implementation context. |\nREADME.md-299-| An R-series task | Its own objective, dependencies, acceptance criteria, and provenance metadata | It performs one small piece of product work. It can open the linked canonical files when it needs more detail. |\nREADME.md-300-\nREADME.md:301:Each generated R file must declare this provenance in its front matter:\nREADME.md-302-\nREADME.md-303-```yaml\nREADME.md-304-requirement_ids:\n--\nsupervisor/supervisor/runbooks.py-28-        if not separator:\nsupervisor/supervisor/runbooks.py-29-            raise ValueError(f\"Invalid runbook metadata line: {line}\")\nsupervisor/supervisor/runbooks.py-30-        metadata[key.strip()] = value.strip()\nsupervisor/supervisor/runbooks.py:31:    required = {\"task_id\", \"sequence\", \"title\", \"browser_impact\", \"playwright_spec\"}\nsupervisor/supervisor/runbooks.py-32-    missing = required - metadata.keys()\nsupervisor/supervisor/runbooks.py-33-    if missing:\nsupervisor/supervisor/runbooks.py-34-        raise ValueError(f\"{path} is missing metadata: {', '.join(sorted(missing))}\")\nsupervisor/supervisor/runbooks.py:35:    is_r_series = re.fullmatch(r\"R\\d+\", metadata[\"task_id\"]) is not None\nsupervisor/supervisor/runbooks.py:36:    is_game_design_task = re.fullmatch(r\"G\\d+\", metadata[\"task_id\"]) is not None\nsupervisor/supervisor/runbooks.py-37-    if is_r_series:\nsupervisor/supervisor/runbooks.py-38-        dependencies = [value.strip() for value in metadata.get(\"dependencies\", \"\").split(\",\") if value.strip()]\nsupervisor/supervisor/runbooks.py-39-        if len(dependencies) != len(set(dependencies)) or any(not re.fullmatch(r\"R\\d+\", dependency) for dependency in dependencies):\nsupervisor/supervisor/runbooks.py-40-            raise ValueError(f\"{path} has invalid dependencies; use comma-separated R-series IDs.\")\nsupervisor/supervisor/runbooks.py:41:        if metadata[\"task_id\"] in dependencies:\nsupervisor/supervisor/runbooks.py-42-            raise ValueError(f\"{path} cannot depend on itself.\")\nsupervisor/supervisor/runbooks.py-43-        provenance_metadata = {\"source_specifications\", \"source_catalogue_ids\", \"authoring_batch\", \"factory_stages\"}\nsupervisor/supervisor/runbooks.py-44-        missing_provenance_metadata = provenance_metadata - metadata.keys()\n--\nsupervisor/supervisor/runbooks.py-94-        elif declared_audio or metadata[\"audio_brief\"].strip() or metadata[\"audio_duration_seconds\"].strip() not in {\"\", \"0\"} or metadata[\"audio_loop\"] not in {\"\", \"not_applicable\"}:\nsupervisor/supervisor/runbooks.py-95-            raise ValueError(f\"{path} declares audio fields but audio_impact is not_applicable.\")\nsupervisor/supervisor/runbooks.py-96-    if is_game_design_task:\nsupervisor/supervisor/runbooks.py:97:        batch = metadata.get(\"design_authoring_batch\", \"\")\nsupervisor/supervisor/runbooks.py-98-        if not re.fullmatch(r\"GB\\d+\", batch):\nsupervisor/supervisor/runbooks.py:99:            raise ValueError(f\"{path} is a G-series design task and must declare design_authoring_batch such as GB0001.\")\nsupervisor/supervisor/runbooks.py-100-    criteria: list[str] = []\nsupervisor/supervisor/runbooks.py-101-    current: list[str] = []\nsupervisor/supervisor/runbooks.py-102-    for line in _section(document, \"Acceptance criteria\").splitlines():\n--\nsupervisor/supervisor/runbooks.py-113-    if not criteria:\nsupervisor/supervisor/runbooks.py-114-        raise ValueError(f\"{path} has no acceptance criteria.\")\nsupervisor/supervisor/runbooks.py-115-    return Task(\nsupervisor/supervisor/runbooks.py:116:        task_id=metadata[\"task_id\"],\nsupervisor/supervisor/runbooks.py-117-        title=metadata[\"title\"],\nsupervisor/supervisor/runbooks.py-118-        sequence=int(metadata[\"sequence\"]),\nsupervisor/supervisor/runbooks.py-119-        dependencies=[value.strip() for value in metadata.get(\"dependencies\", \"\").split(\",\") if value.strip()],\n--\nsupervisor/supervisor/runbooks.py-135-        source_specifications=[value.strip() for value in metadata.get(\"source_specifications\", \"\").split(\",\") if value.strip()],\nsupervisor/supervisor/runbooks.py-136-        source_catalogue_ids=[value.strip() for value in metadata.get(\"source_catalogue_ids\", \"\").split(\",\") if value.strip()],\nsupervisor/supervisor/runbooks.py-137-        authoring_batch=metadata.get(\"authoring_batch\", \"\"),\nsupervisor/supervisor/runbooks.py:138:        design_authoring_batch=metadata.get(\"design_authoring_batch\", \"\"),\nsupervisor/supervisor/runbooks.py-139-        factory_stages=[value.strip() for value in metadata.get(\"factory_stages\", \"\").split(\",\") if value.strip()],\nsupervisor/supervisor/runbooks.py-140-    )\n--\nsupervisor/tests/test_runbooks.py-8-def test_d005_runbook_loads_the_persistence_contract():\nsupervisor/tests/test_runbooks.py-9-    root = Path(__file__).resolve().parents[2]\nsupervisor/tests/test_runbooks.py-10-    task = load_task(root / \"runbooks\" / \"D005.md\")\nsupervisor/tests/test_runbooks.py:11:    assert task.task_id == \"D005\"\nsupervisor/tests/test_runbooks.py-12-    assert task.sequence == 5\nsupervisor/tests/test_runbooks.py-13-    assert \"persistence\" in task.objective.lower()\nsupervisor/tests/test_runbooks.py-14-    assert task.playwright_specs == [\"tests/changes/d005-settings-restore.spec.cjs\"]\n--\nsupervisor/tests/test_runbooks.py-19-    root = Path(__file__).resolve().parents[2]\nsupervisor/tests/test_runbooks.py-20-    for path in (root / \"runbooks\").glob(\"D*.md\"):\nsupervisor/tests/test_runbooks.py-21-        task = load_task(path)\nsupervisor/tests/test_runbooks.py:22:        assert task.task_id == path.stem\nsupervisor/tests/test_runbooks.py-23-        if task.browser_impact == \"required\":\nsupervisor/tests/test_runbooks.py-24-            assert task.playwright_specs\nsupervisor/tests/test_runbooks.py-25-        else:\n--\nsupervisor/tests/test_runbooks.py-41-def test_runbook_accepts_opt_in_asset_metadata(tmp_path):\nsupervisor/tests/test_runbooks.py-42-    path = tmp_path / \"R0002.md\"\nsupervisor/tests/test_runbooks.py-43-    path.write_text(\nsupervisor/tests/test_runbooks.py:44:        \"---\\ntask_id: R0002\\nsequence: 1\\ntitle: Gate\\nbrowser_impact: not_applicable\\nplaywright_spec: \\n\"\nsupervisor/tests/test_runbooks.py-45-            \"asset_impact: required\\nasset_brief: docs/art/briefs/gate.md\\nasset_ids: gate,gate_build\\nvisual_style_version: project-v1\\naudio_impact: not_applicable\\naudio_ids: \\naudio_brief: \\naudio_duration_seconds: 0\\naudio_loop: not_applicable\\naudio_style_version: \\nsource_specifications: specification/04-experience-contract.md#gate\\nsource_catalogue_ids: IMP-WORLD-001\\nauthoring_batch: B0001\\nfactory_stages: F004,F012,F013\\n---\\n\"\nsupervisor/tests/test_runbooks.py-46-        \"# R0002\\n\\n## Objective\\n\\nMake a gate.\\n\\n## Acceptance criteria\\n\\n- It is original.\\n\",\nsupervisor/tests/test_runbooks.py-47-        encoding=\"utf-8\",\n--\nsupervisor/tests/test_runbooks.py-57-def test_r_series_runbook_must_explicitly_assess_assets(tmp_path):\nsupervisor/tests/test_runbooks.py-58-    path = tmp_path / \"R0001.md\"\nsupervisor/tests/test_runbooks.py-59-    path.write_text(\nsupervisor/tests/test_runbooks.py:60:        \"---\\ntask_id: R0001\\nsequence: 1\\ntitle: Missing asset assessment\\nbrowser_impact: not_applicable\\nplaywright_spec:\\nsource_specifications: specification/02-feature-model.md#loop\\nsource_catalogue_ids: IMP-LOOP-001\\nauthoring_batch: B0001\\nfactory_stages: F002,F012,F013\\n---\\n\"\nsupervisor/tests/test_runbooks.py-61-        \"## Objective\\n\\nDo the work.\\n\\n## Acceptance criteria\\n\\n- The work is done.\\n\",\nsupervisor/tests/test_runbooks.py-62-        encoding=\"utf-8\",\nsupervisor/tests/test_runbooks.py-63-    )\n--\nsupervisor/tests/test_runbooks.py-69-def test_r_series_runbook_must_declare_provenance(tmp_path):\nsupervisor/tests/test_runbooks.py-70-    path = tmp_path / \"R0001.md\"\nsupervisor/tests/test_runbooks.py-71-    path.write_text(\nsupervisor/tests/test_runbooks.py:72:        \"---\\ntask_id: R0001\\nsequence: 1\\ntitle: Missing provenance\\nbrowser_impact: not_applicable\\nplaywright_spec:\\nasset_impact: not_applicable\\nasset_ids:\\n---\\n\"\nsupervisor/tests/test_runbooks.py-73-        \"## Objective\\n\\nDo the work.\\n\\n## Acceptance criteria\\n\\n- The work is done.\\n\",\nsupervisor/tests/test_runbooks.py-74-        encoding=\"utf-8\",\nsupervisor/tests/test_runbooks.py-75-    )\n--\nsupervisor/tests/test_runbooks.py-81-def test_r_series_asset_task_requires_stable_asset_ids(tmp_path):\nsupervisor/tests/test_runbooks.py-82-    path = tmp_path / \"R0001.md\"\nsupervisor/tests/test_runbooks.py-83-    path.write_text(\nsupervisor/tests/test_runbooks.py:84:        \"---\\ntask_id: R0001\\nsequence: 1\\ntitle: Asset work\\nbrowser_impact: not_applicable\\nplaywright_spec:\\nasset_impact: required\\nasset_ids:\\nsource_specifications: specification/04-experience-contract.md#gate\\nsource_catalogue_ids: IMP-WORLD-001\\nauthoring_batch: B0001\\nfactory_stages: F004,F012,F013\\n---\\n\"\nsupervisor/tests/test_runbooks.py-85-        \"## Objective\\n\\nDo the work.\\n\\n## Acceptance criteria\\n\\n- The work is done.\\n\",\nsupervisor/tests/test_runbooks.py-86-        encoding=\"utf-8\",\nsupervisor/tests/test_runbooks.py-87-    )\n--\nsupervisor/tests/test_runbooks.py-93-def test_r_series_dependencies_are_loaded_as_execution_gates(tmp_path):\nsupervisor/tests/test_runbooks.py-94-    path = tmp_path / \"R0002.md\"\nsupervisor/tests/test_runbooks.py-95-    path.write_text(\nsupervisor/tests/test_runbooks.py:96:        \"---\\ntask_id: R0002\\nsequence: 2\\ntitle: Dependency task\\nbrowser_impact: not_applicable\\nplaywright_spec:\\ndependencies: R0001,R0003\\nsource_specifications: specification/02-feature-model.md#loop\\nsource_catalogue_ids: IMP-LOOP-002\\nauthoring_batch: B0001\\nfactory_stages: F002,F012,F013\\nasset_impact: not_applicable\\nasset_ids:\\naudio_impact: not_applicable\\naudio_ids:\\naudio_brief:\\naudio_duration_seconds: 0\\naudio_loop: not_applicable\\naudio_style_version:\\n---\\n\\n## Objective\\n\\nDo the work.\\n\\n## Acceptance criteria\\n\\n- The work is done.\\n\",\nsupervisor/tests/test_runbooks.py-97-        encoding=\"utf-8\",\nsupervisor/tests/test_runbooks.py-98-    )\nsupervisor/tests/test_runbooks.py-99-\n--\nsupervisor/tests/test_runbooks.py-103-def test_r_series_dependencies_reject_invalid_ids(tmp_path):\nsupervisor/tests/test_runbooks.py-104-    path = tmp_path / \"R0002.md\"\nsupervisor/tests/test_runbooks.py-105-    path.write_text(\nsupervisor/tests/test_runbooks.py:106:        \"---\\ntask_id: R0002\\nsequence: 2\\ntitle: Invalid dependency\\nbrowser_impact: not_applicable\\nplaywright_spec:\\ndependencies: R0001,not-a-task\\nsource_specifications: specification/02-feature-model.md#loop\\nsource_catalogue_ids: IMP-LOOP-002\\nauthoring_batch: B0001\\nfactory_stages: F002,F012,F013\\nasset_impact: not_applicable\\nasset_ids:\\naudio_impact: not_applicable\\naudio_ids:\\naudio_brief:\\naudio_duration_seconds: 0\\naudio_loop: not_applicable\\naudio_style_version:\\n---\\n\\n## Objective\\n\\nDo the work.\\n\\n## Acceptance criteria\\n\\n- The work is done.\\n\",\nsupervisor/tests/test_runbooks.py-107-        encoding=\"utf-8\",\nsupervisor/tests/test_runbooks.py-108-    )\nsupervisor/tests/test_runbooks.py-109-\n--\nsupervisor/tests/test_runbooks.py-114-def test_g_series_design_task_requires_a_gb_authoring_batch(tmp_path):\nsupervisor/tests/test_runbooks.py-115-    path = tmp_path / \"G0001.md\"\nsupervisor/tests/test_runbooks.py-116-    path.write_text(\nsupervisor/tests/test_runbooks.py:117:        \"---\\ntask_id: G0001\\nsequence: 1\\ntitle: Trivia categories\\nbrowser_impact: not_applicable\\nplaywright_spec:\\n\"\nsupervisor/tests/test_runbooks.py:118:        \"design_authoring_batch: GB0001\\n---\\n\\n## Objective\\n\\nDesign categories.\\n\\n## Acceptance criteria\\n\\n- Categories are complete.\\n\",\nsupervisor/tests/test_runbooks.py-119-        encoding=\"utf-8\",\nsupervisor/tests/test_runbooks.py-120-    )\nsupervisor/tests/test_runbooks.py:121:    assert load_task(path).design_authoring_batch == \"GB0001\"\nsupervisor/tests/test_runbooks.py-122-\nsupervisor/tests/test_runbooks.py:123:    path.write_text(path.read_text(encoding=\"utf-8\").replace(\"design_authoring_batch: GB0001\\n\", \"\"), encoding=\"utf-8\")\nsupervisor/tests/test_runbooks.py:124:    with pytest.raises(ValueError, match=\"design_authoring_batch\"):\nsupervisor/tests/test_runbooks.py-125-        load_task(path)\n6:    {\"id\": \"IMP-FT-001\", \"title\": \"Implement curated quiz content and round rules\", \"creative_coverage_ids\": [\"GAME-001\", \"GAME-002\", \"GAME-003\", \"GAME-004\", \"GAME-005\", \"GAME-006\", \"GAME-007\", \"GAME-008\", \"ASSET-QZ-001\", \"ASSET-QZ-002\", \"ASSET-FBK-001\", \"ASSET-FBK-002\", \"ASSET-FBK-003\", \"ASSET-FBK-004\", \"AUDIO-MUS-001\", \"AUDIO-QZ-001\", \"AUDIO-QZ-002\", \"AUDIO-QZ-003\", \"AUDIO-QZ-004\", \"AUDIO-RES-001\"], \"status\": \"planned\"},\n16:      \"GAME-005\": {\"imp_ids\": [\"IMP-FT-001\"], \"roles\": [\"creation\", \"integration\", \"QA\"], \"shard\": \"current\"},\n17:      \"GAME-006\": {\"imp_ids\": [\"IMP-FT-001\"], \"roles\": [\"creation\", \"integration\", \"QA\"], \"shard\": \"current\"},\n18:      \"GAME-007\": {\"imp_ids\": [\"IMP-FT-001\"], \"roles\": [\"creation\", \"integration\", \"QA\"], \"shard\": \"current\"},\n19:      \"GAME-008\": {\"imp_ids\": [\"IMP-FT-001\"], \"roles\": [\"creation\", \"integration\", \"QA\"], \"shard\": \"current\"},\n\nexec\n/bin/zsh -lc \"PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c 'from pathlib import Path; from supervisor.runbooks import load_task; root=Path(\\\"projects/football-trivia-e2e/game-design-runbooks\\\"); tasks=[load_task(root / f\\\"G{i:04d}.md\\\") for i in (3,4)]; assert [t.task_id for t in tasks] == [\\\"G0003\\\", \\\"G0004\\\"]; assert all(t.design_authoring_batch == \\\"GB0002\\\" for t in tasks); assert tasks[0].source_catalogue_ids == [\\\"GAME-005\\\", \\\"GAME-006\\\", \\\"GPI-008\\\", \\\"GPI-009\\\"]; assert tasks[1].source_catalogue_ids == [\\\"GAME-007\\\", \\\"GAME-008\\\", \\\"GPI-010\\\", \\\"GPI-011\\\"]; all_g=[p for p in root.glob(\\\"G[0-9]*.md\\\")]; assert len(all_g) <= 5; print(f\\\"validated {len(tasks)} GB0002 tasks; {len(all_g)} total numbered G tasks\\\")'\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\nvalidated 2 GB0002 tasks; 5 total numbered G tasks\n\ncodex\n{\"status\":\"pass\",\"summary\":\"Verified the existing GB0002 design runbooks G0003 and G0004 cover GAME-005\u2013008 and GPI-008\u2013011 with the required batch metadata; no edits were needed.\",\"changed_files\":[],\"test_result\":\"PASS: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=supervisor python3 -c '...' loaded G0003/G0004 via supervisor.runbooks.load_task, verified both declare GB0002, verified their exact catalogue-ID partitions, and confirmed five total numbered G tasks.\",\"evidence\":{\"agent_log\":\"Reviewed GB0002, G0003, G0004, the game-design bible, and the catalogue index. Existing unrelated dirty/untracked worktree content was preserved.\",\"adapter_log\":\"\",\"test_log\":\"validated 2 GB0002 tasks; 5 total numbered G tasks\",\"browser_log\":\"Not applicable: this is domain-only design-runbook metadata.\",\"screenshots\":[]},\"acceptance_results\":[{\"criterion\":\"No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.\",\"status\":\"pass\",\"evidence\":\"The focused validation found exactly two GB0002-created G tasks (G0003 and G0004), both declaring design_authoring_batch: GB0002; there are five total numbered G tasks in the design-runbooks directory.\"}],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/game-design-runbooks/GB0002.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0003.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0004.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.md\",\"projects/football-trivia-e2e/planning/implementation-catalogue-index.json\"],\"updated_files\":[],\"summary\":\"G0003 and G0004 are the requested design documentation and were already complete; no README or additional documentation change was needed.\"},\"known_limitations\":[],\"browser_coverage\":\"No task-specific Playwright spec changed because this task only authors domain design runbooks and has browser_impact: not_applicable.\",\"recommended_next_step\":\"complete\"}\ntokens used\n26,916\n", "adapter_log": "", "test_log": "validated 2 GB0002 tasks; 5 total numbered G tasks", "browser_log": "Not applicable: this is domain-only design-runbook metadata.", "screenshots": []}, "acceptance_results": [{"criterion": "No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.", "status": "pass", "evidence": "The focused validation found exactly two GB0002-created G tasks (G0003 and G0004), both declaring design_authoring_batch: GB0002; there are five total numbered G tasks in the design-runbooks directory."}], "documentation": {"reviewed_files": ["projects/football-trivia-e2e/game-design-runbooks/GB0002.md", "projects/football-trivia-e2e/game-design-runbooks/G0003.md", "projects/football-trivia-e2e/game-design-runbooks/G0004.md", "projects/football-trivia-e2e/specification/02-game-design-bible.md", "projects/football-trivia-e2e/planning/implementation-catalogue-index.json"], "updated_files": [], "summary": "G0003 and G0004 are the requested design documentation and were already complete; no README or additional documentation change was needed."}, "known_limitations": [], "browser_coverage": "No task-specific Playwright spec changed because this task only authors domain design runbooks and has browser_impact: not_applicable.", "recommended_next_step": "complete"}
+
+
+===== Test output =====
+validated 2 GB0002 tasks; 5 total numbered G tasks
+
+===== Browser output =====
+Not applicable: this is domain-only design-runbook metadata.

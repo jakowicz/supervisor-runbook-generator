@@ -1,0 +1,8 @@
+Task: F005 — Build the implementation dependency map
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F005.
+
+===== Test output =====
+$ git diff --check
+

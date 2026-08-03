@@ -1,0 +1,29 @@
+2026-08-02T17:27:41.161238+00:00  RUN   b0008-01 · bfc87570-fc4f-424c-9644-07630682c672 · Author campaign integration and original-content contracts
+2026-08-02T17:27:41.161349+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-00-agent-supervisor-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:27:41.213107+00:00  START prepare · Git baseline guard
+2026-08-02T17:27:41.214060+00:00  EVENT prepare · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-01-agent-prepare-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:27:41.228643+00:00  DONE  prepare · pass → codex · Auto-publish disabled; no clean-worktree preflight needed.
+2026-08-02T17:27:41.229226+00:00  START codex · Codex
+2026-08-02T17:28:11.318092+00:00  WAIT  codex · Codex is still running
+2026-08-02T17:28:41.366692+00:00  WAIT  codex · Codex is still running
+2026-08-02T17:29:11.414508+00:00  WAIT  codex · Codex is still running
+2026-08-02T17:29:41.448792+00:00  WAIT  codex · Codex is still running
+2026-08-02T17:30:11.489771+00:00  WAIT  codex · Codex is still running
+2026-08-02T17:30:35.218794+00:00  EVENT codex · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-02-agent-codex-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:30:35.272953+00:00  DONE  codex · pass → test · Created only R0017–R0020 for B0008; structural validation passes through B0008.
+2026-08-02T17:30:35.274029+00:00  START test · independent Flutter test worker
+2026-08-02T17:30:35.295127+00:00  EVENT test · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-03-agent-test-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:30:35.303008+00:00  DONE  test · pass → browser · Configured project checks passed for B0008.
+2026-08-02T17:30:35.303758+00:00  START browser · browser QA worker
+2026-08-02T17:30:35.304736+00:00  EVENT browser · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-04-agent-browser-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:30:35.311716+00:00  DONE  browser · pass → visual_review · Browser QA not applicable to this runbook.
+2026-08-02T17:30:35.312158+00:00  START visual_review · visual QA reviewer
+2026-08-02T17:30:35.313054+00:00  EVENT visual_review · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-05-agent-visual-review-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:30:35.320217+00:00  DONE  visual_review · pass → completion_audit · Visual review not applicable to this runbook.
+2026-08-02T17:30:35.320738+00:00  START completion_audit · completion-contract auditor
+2026-08-02T17:30:35.321881+00:00  EVENT completion_audit · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-06-agent-completion-audit-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:30:35.330943+00:00  DONE  completion_audit · pass → git_publish · Completion contract covers every acceptance criterion, documentation review, and coding-agent checks.
+2026-08-02T17:30:35.331549+00:00  START git_publish · Git publisher
+2026-08-02T17:30:35.332325+00:00  EVENT git_publish · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0008-run-01-stage-07-agent-git-publish-bfc87570-fc4f-424c-9644-07630682c672.log
+2026-08-02T17:30:35.339988+00:00  DONE  git_publish · pass → accept · All validation passed; auto-commit is disabled, so no Git commit was created.
+2026-08-02T17:30:35.370312+00:00  SUCCESS · B0008 accepted · report stored in SQLite and /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/reports/bfc87570-fc4f-424c-9644-07630682c672.md

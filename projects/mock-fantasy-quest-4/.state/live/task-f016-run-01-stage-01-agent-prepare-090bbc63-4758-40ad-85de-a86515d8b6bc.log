@@ -1,0 +1,4 @@
+Task: F016 — Publish the project-scoped runbook factory handoff
+Stage: prepare
+Status: pass
+Summary: Auto-publish disabled; no clean-worktree preflight needed.

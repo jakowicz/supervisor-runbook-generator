@@ -1,0 +1,1081 @@
+[stderr] OpenAI Codex v0.145.0
+[stderr] --------
+[stderr] workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] model: gpt-5.6-terra
+[stderr] provider: openai
+[stderr] approval: on-request
+[stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[stderr] reasoning effort: medium
+[stderr] reasoning summaries: none
+[stderr] session id: 019fc527-f880-7b53-a3f7-2c27d12cc345
+[stderr] --------
+[stderr] user
+[stderr] You are the coding worker for one isolated runbook task.
+[stderr] 
+[stderr] Work only in the repository passed as your working directory. Do not publish,
+[stderr] deploy, access secrets, make payments, or change product scope. Stop and report
+[stderr] needs_user_review if the task is destructive, unclear, or requires authority.
+[stderr] Implement only the task below, run relevant checks, and then output exactly one
+[stderr] JSON object conforming to the WorkerResult contract. A status of pass means the
+[stderr] change is ready for independent test and visual review; it is not self-approval.
+[stderr] 
+[stderr] Task:
+[stderr] {
+[stderr]   "task_id": "GC0001",
+[stderr]   "title": "Check game-design coverage and dependencies",
+[stderr]   "objective": "Validate each G's batch ownership against the owning GB output list, the five-G-per-GB cap, canonical selected-module/GAME/GPI coverage, and dependency closure. Inspect detailed output quality: original-expression and provenance evidence, sources and two reviews for all four QB-A batches, fair deterministic adjudication and anti-repeat rules, First Whistle/Mixed Fixture/score/streak/results rules, and asset/audio non-colour/non-audio accessibility equivalents. Compare with the manifest but do not accept it.\n\nIf any selected module or production entry lacks accepted detailed evidence, create exactly one `GD0002.md` bounded successor and retain exact pending/blocked reasons. Otherwise create `GQ0001.md`; that audit alone updates canonical bible/inventory, runs the dedicated manifest completion check, and accepts the manifest. Implementation coverage remains deferred until F012.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+[stderr]   "acceptance_criteria": [
+[stderr]     "Every selected module and inventory entry has accepted owned evidence."
+[stderr]   ],
+[stderr]   "risk_level": "normal",
+[stderr]   "sequence": 4,
+[stderr]   "dependencies": [
+[stderr]     "G0001",
+[stderr]     "G0002",
+[stderr]     "G0003",
+[stderr]     "G0004",
+[stderr]     "G0005"
+[stderr]   ],
+[stderr]   "prerequisite_collections": [],
+[stderr]   "browser_impact": "not_applicable",
+[stderr]   "playwright_specs": [],
+[stderr]   "asset_impact": "not_applicable",
+[stderr]   "asset_brief": "",
+[stderr]   "asset_ids": [],
+[stderr]   "visual_style_version": "",
+[stderr]   "audio_impact": "not_applicable",
+[stderr]   "audio_brief": "",
+[stderr]   "audio_ids": [],
+[stderr]   "audio_duration_seconds": 0,
+[stderr]   "audio_loop": "not_applicable",
+[stderr]   "audio_style_version": "",
+[stderr]   "source_specifications": [
+[stderr]     "specification/02-game-design-bible.md",
+[stderr]     "specification/02-game-design-bible.json",
+[stderr]     "planning/game-production-inventory.md",
+[stderr]     "planning/game-production-inventory.json",
+[stderr]     "planning/game-design-manifest.json"
+[stderr]   ],
+[stderr]   "source_catalogue_ids": [
+[stderr]     "GAME-001",
+[stderr]     "GAME-002",
+[stderr]     "GAME-003",
+[stderr]     "GAME-004",
+[stderr]     "GAME-005",
+[stderr]     "GAME-006",
+[stderr]     "GAME-007",
+[stderr]     "GAME-008",
+[stderr]     "GAME-009",
+[stderr]     "GAME-010",
+[stderr]     "GAME-011",
+[stderr]     "GAME-012",
+[stderr]     "GPI-001",
+[stderr]     "GPI-002",
+[stderr]     "GPI-003",
+[stderr]     "GPI-004",
+[stderr]     "GPI-005",
+[stderr]     "GPI-006",
+[stderr]     "GPI-007",
+[stderr]     "GPI-008",
+[stderr]     "GPI-009",
+[stderr]     "GPI-010",
+[stderr]     "GPI-011",
+[stderr]     "GPI-012",
+[stderr]     "GPI-013",
+[stderr]     "GPI-014",
+[stderr]     "GPI-015"
+[stderr]   ],
+[stderr]   "authoring_batch": "",
+[stderr]   "design_authoring_batch": "",
+[stderr]   "factory_stages": [],
+[stderr]   "execution_mode": "implementation",
+[stderr]   "continuation_context": ""
+[stderr] }
+[stderr] 
+[stderr] Continuation checkpoint (only when present):
+[stderr] No prior checkpoint: inspect the current repository before making changes.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+[stderr] `dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+[stderr] can write SDK caches outside the worktree and are deliberately owned by the
+[stderr] supervisor's independent precheck/test stages. When the continuation evidence
+[stderr] names a concrete source or test failure, repair that evidence in the worktree,
+[stderr] run only safe focused checks, and return `pass` for the deterministic stage to
+[stderr] validate. Never return a failure solely because an SDK command needs approval.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] Efficient investigation rules (especially important for local models):
+[stderr] - Start with the Codebase Memory MCP for architecture and targeted symbols.
+[stderr] - Do not use whole-file reads for Dart, test, lock, generated, or log files.
+[stderr]   Use targeted symbol snippets or `run_shell_command` with `rg` and
+[stderr]   `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+[stderr] - Inspect only files directly relevant to the acceptance criteria. Do not
+[stderr]   browse unrelated Playwright, automation, or configuration files merely to
+[stderr]   learn the repository layout.
+[stderr] - After the focused investigation, implement and run the smallest relevant
+[stderr]   checks. Do not continue exploratory tool calls once the implementation path
+[stderr]   is clear.
+[stderr] - If a tool reports a missing file, treat it as non-blocking and continue with
+[stderr]   the repository evidence you already have.
+[stderr] 
+[stderr] Completion protocol:
+[stderr] - Your final action MUST be the `structured_output` tool supplied by
+[stderr]   `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+[stderr]   response.
+[stderr] - Use native nested JSON values in that tool call: `evidence` and
+[stderr]   `documentation` are objects, while `acceptance_results` is an array. Never
+[stderr]   put JSON text inside quotes for any of those fields.
+[stderr] - If a check cannot run, return a structured `repairable_failure` or
+[stderr]   `needs_user_review` result immediately with the exact reason. Never wait
+[stderr]   silently for a tool or model request to recover.
+[stderr] 
+[stderr] 
+[stderr] Your final WorkerResult must include all of the following:
+[stderr] - `acceptance_results`: one entry for every task acceptance criterion, in the
+[stderr]   same order. Copy each criterion text verbatim from the task, with pass/fail/
+[stderr]   not_verified status and concrete evidence;
+[stderr] - `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+[stderr]   why they were or were not changed;
+[stderr] - `test_result`: exact checks you ran and their outcomes;
+[stderr] - `known_limitations`: remaining gaps or an empty list.
+[stderr] 
+[stderr] Do not claim `pass` if a criterion is unverified. Update user-facing README or
+[stderr] developer documentation whenever the change affects behaviour, setup, commands,
+[stderr] architecture, design, or progress. If no documentation change is needed, state
+[stderr] the reviewed files and explain why.
+[stderr] 
+[stderr] For `final_verification`, the independent `test`, `browser`, and visual-review
+[stderr] stages are the required verification gates. After repairing every concrete
+[stderr] source/test failure supplied in this prompt, return `pass` so those gates run.
+[stderr] Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+[stderr] left to the independent test stage. Return `needs_user_review` only for a real
+[stderr] authority, safety, or irreducibly ambiguous product decision.
+[stderr] 
+[stderr] For browser-impacting work, create or update a task-specific Playwright spec in
+[stderr] `supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+[stderr] and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+[stderr] work, explain in `browser_coverage` why no task-specific browser spec changed.
+[stderr] 
+[stderr] Visual baseline rule:
+[stderr] - When the continuation evidence names a golden, snapshot, or visual-regression
+[stderr]   failure, inspect the supplied master/test/diff artifacts before changing any
+[stderr]   baseline. Work out whether the new render is the intended result of this
+[stderr]   task, and check that it has no clipping, overlap, or lost meaning.
+[stderr] - If it is intentional, regenerate only the affected approved baselines using
+[stderr]   the repository's documented command, update stale visual/browser checks when
+[stderr]   their prior expectation is no longer correct, and rerun the relevant suite.
+[stderr] - If it is not intentional, fix the product or test setup instead. Never mask
+[stderr]   a real visual regression by blindly accepting a changed screenshot.
+[stderr] 
+[stderr] Failure-repair protocol:
+[stderr] - When the continuation checkpoint says that a Supervisor terminal stage
+[stderr]   failed, treat its captured command and output as the starting evidence. Do
+[stderr]   not merely describe a possible fix.
+[stderr] - Use the terminal in this project worktree to inspect, repair, and rerun the
+[stderr]   same focused check whenever that command is safe in your sandbox. Include
+[stderr]   the command and result in `test_result`.
+[stderr] - If that exact command needs an SDK, browser, or approval outside this
+[stderr]   worker's sandbox, repair the demonstrated issue but do not replace the
+[stderr]   independent validation. Return `pass` only when the worktree is ready for
+[stderr]   Supervisor to rerun its configured terminal command after your repair.
+[stderr] 
+[stderr] warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+[stderr] codex
+[stderr] {"status":"pass","summary":"I’ll audit the game-design batches and their canonical ownership evidence, then create only the required successor/audit file based on what is actually accepted.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] mcp: codebase-memory-mcp/get_architecture started
+[stderr] mcp: codebase-memory-mcp/get_architecture (failed)
+[stderr] user cancelled MCP tool call
+[stderr] exec
+[stderr] /bin/zsh -lc "rg --files -g 'G*.md' -g 'GB*.md' -g 'GD*.md' -g 'GQ*.md' -g '02-game-design-bible.*' -g 'game-production-inventory.*' -g 'game-design-manifest.json' -g 'INITIAL.md' -g 'README*'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] supervisor/README.md
+[stderr] README.md
+[stderr] runbooks/README.md
+[stderr] projects/README.md
+[stderr] projects/mock-fantasy-quest-4/README.md
+[stderr] projects/mock-fantasy-quest-4/specification/README.md
+[stderr] projects/mock-fantasy-quest-4/authoring-runbooks/INITIAL.md
+[stderr] projects/mock-fantasy-quest-4/INITIAL.md
+[stderr] projects/final-fantasy/INITIAL.md
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json
+[stderr] projects/football-trivia-e2e/planning/game-production-inventory.json
+[stderr] projects/football-trivia-e2e/planning/game-design-manifest.json
+[stderr] projects/football-trivia-e2e/planning/game-production-inventory.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0004.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0003.md
+[stderr] projects/football-trivia-e2e/INITIAL.md
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "git status --short && sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/GC0001.md && sed -n '1,260p' projects/football-trivia-e2e/game-design-runbooks/GD0002.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr]  M .env
+[stderr] ?? projects/final-fantasy/
+[stderr] ?? projects/football-trivia-e2e/
+[stderr] ?? projects/mock-fantasy-quest-4/
+[stderr] ?? runbooks/.supervisor-children/
+[stderr] ---
+[stderr] task_id: GC0001
+[stderr] sequence: 4
+[stderr] dependencies: G0001,G0002,G0003,G0004,G0005
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,planning/game-production-inventory.md,planning/game-production-inventory.json,planning/game-design-manifest.json
+[stderr] source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GAME-005,GAME-006,GAME-007,GAME-008,GAME-009,GAME-010,GAME-011,GAME-012,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007,GPI-008,GPI-009,GPI-010,GPI-011,GPI-012,GPI-013,GPI-014,GPI-015
+[stderr] title: Check game-design coverage and dependencies
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Validate each G's batch ownership against the owning GB output list, the five-G-per-GB cap, canonical selected-module/GAME/GPI coverage, and dependency closure. Inspect detailed output quality: original-expression and provenance evidence, sources and two reviews for all four QB-A batches, fair deterministic adjudication and anti-repeat rules, First Whistle/Mixed Fixture/score/streak/results rules, and asset/audio non-colour/non-audio accessibility equivalents. Compare with the manifest but do not accept it.
+[stderr] 
+[stderr] If any selected module or production entry lacks accepted detailed evidence, create exactly one `GD0002.md` bounded successor and retain exact pending/blocked reasons. Otherwise create `GQ0001.md`; that audit alone updates canonical bible/inventory, runs the dedicated manifest completion check, and accepts the manifest. Implementation coverage remains deferred until F012.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `../planning/game-design-manifest.json`: checkpoint findings only; never accepted by GC.
+[stderr] - Exactly one conditional output: `GD0002.md` for incomplete evidence or `GQ0001.md` for complete accepted evidence, never both.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Every selected module and inventory entry has accepted owned evidence.
+[stderr] ---
+[stderr] task_id: GD0002
+[stderr] sequence: 5
+[stderr] dependencies: GC0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,planning/game-production-inventory.md,planning/game-production-inventory.json,planning/game-design-manifest.json,design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/adjudication-and-freshness-bible.md
+[stderr] source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] title: Complete QB-A editorial acceptance evidence
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Close the one incomplete design-evidence boundary found by `GC0001`: the
+[stderr] finite QB-A catalogue has a grammar, source policy, quota tables, lifecycle,
+[stderr] adjudication, and anti-repeat fixtures, but `QB-A-01` through `QB-A-48` are
+[stderr] still `draft` and have only pending reviews. Create or review durable editorial
+[stderr] acceptance evidence for the existing four bounded batches only. Do not add
+[stderr] cards, change quiz scope, create code/B/R runbooks, or accept the manifest.
+[stderr] 
+[stderr] ## Exact pending reasons retained from GC0001
+[stderr] 
+[stderr] - `GPI-001`: the grammar requires a resolvable provenance record and two
+[stderr]   distinct accepted current-revision reviews, but it contains no completed
+[stderr]   card-level records for `QB-A-01`–`QB-A-48`.
+[stderr] - `GPI-002`, `GPI-003`, `GPI-004`, and `GPI-005`: each of the four named
+[stderr]   12-card QB-A batches is explicitly recorded as `status: draft`,
+[stderr]   `revision: 1`, with `PROV-<ID>` and two pending review records. No card may
+[stderr]   become eligible from those placeholders.
+[stderr] - `GAME-002`: the required original-expression, factual-source/provenance,
+[stderr]   factual/rights review, accessibility/copy review, and independent second
+[stderr]   review decisions have not been accepted for any current card revision.
+[stderr] - `GAME-004` and `GAME-006` retain their deterministic policy/fixture evidence,
+[stderr]   but their use of published catalogue candidates remains conditional until the
+[stderr]   preceding batch records are accepted.
+[stderr] 
+[stderr] There are no blocked product decisions in this wave. Implementation coverage
+[stderr] remains deferred until `F012`.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/qba-editorial-acceptance-register.md`: exactly 48
+[stderr]   card-level records for the existing `QB-A-01`–`QB-A-48`, grouped into the
+[stderr]   existing four named 12-card batches. Each record must identify the current
+[stderr]   revision, original-expression/non-copying decision, durable permitted source
+[stderr]   locator and checked date for every factual assertion, conflict/correction
+[stderr]   state, factual/rights review, accessibility/copy review, independent second
+[stderr]   review, and resulting lifecycle status.
+[stderr] - Update `design-evidence/question-card-and-qba-catalogue-bible.md` only as
+[stderr]   needed to point to the register and replace the explicitly pending catalogue
+[stderr]   state after all 48 records qualify. Preserve its existing quotas, IDs, and
+[stderr]   source policy.
+[stderr] 
+[stderr] The successor must leave rejected, unresolved, withdrawn, conflicted, or
+[stderr] incompletely reviewed cards ineligible and state the exact reason. It must not
+[stderr] set `planning/game-design-manifest.json` to accepted. A later `GQ` audit is the
+[stderr] only task allowed to run the dedicated completion check, update canonical
+[stderr] bible/inventory records, and accept that manifest.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - All 48 existing QB-A card revisions have independently inspectable
+[stderr]   original-expression, provenance, and two-distinct-review evidence, or every
+[stderr]   remaining ineligible card has its exact pending or blocked reason retained.
+[stderr] - The four existing batches remain finite at 12 cards each and no unreviewed
+[stderr]   record can enter selection.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc 'for f in projects/football-trivia-e2e/game-design-runbooks/GB000{1,2,3}.md projects/football-trivia-e2e/game-design-runbooks/G000{1,2,3,4,5}.md; do echo "### $f"; sed -n '"'1,170p' \""'$f"; done' in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/GB0001.md
+[stderr] ---
+[stderr] task_id: GB0001
+[stderr] sequence: 2
+[stderr] dependencies: GD0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] title: Author quiz editorial design runbooks
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Create only G0001 and G0002. Keep their ownership to GAME-001–004 and GPI-001–007; require original wording, factual source/review records, format/difficulty quotas, answer adjudication, and anti-repeat evidence.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `G0001.md` only; it must declare `design_authoring_batch: GB0001` and create/review `design-evidence/question-card-and-qba-catalogue-bible.md`.
+[stderr] - `G0002.md` only; it must declare `design_authoring_batch: GB0001` and create/review `design-evidence/adjudication-and-freshness-bible.md`.
+[stderr] 
+[stderr] Do not create code, B/R runbooks, copied questions/copy, or accept the manifest.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - No more than five G tasks are created and each declares `design_authoring_batch: GB0001`.
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/GB0002.md
+[stderr] ---
+[stderr] task_id: GB0002
+[stderr] sequence: 2
+[stderr] dependencies: GD0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-005,GAME-006,GAME-007,GAME-008,GPI-008,GPI-009,GPI-010,GPI-011
+[stderr] title: Author round and progression design runbooks
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Create only G0003 and G0004 for GAME-005–008 and GPI-008–011: named tutorial cards, standard-round lifecycle, scoring, streak, result, and save-boundary evidence.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `G0003.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/round-lifecycle-bible.md`.
+[stderr] - `G0004.md` only; it must declare `design_authoring_batch: GB0002` and create/review `design-evidence/score-streak-and-results-bible.md`.
+[stderr] 
+[stderr] Do not create code, B/R runbooks, RPG/match-simulation systems, live/ranked/social modes, or a final audit.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - No more than five G tasks are created and each declares `design_authoring_batch: GB0002`.
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+[stderr] ---
+[stderr] task_id: GB0003
+[stderr] sequence: 2
+[stderr] dependencies: GD0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+[stderr] title: Author accessibility and target design runbook
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Create only G0005 for GAME-009–012 and GPI-012–015: equivalent controls and feedback, recovery, offline/update messaging, and target parity/certification evidence.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `G0005.md` only; it must declare `design_authoring_batch: GB0003` and create/review `design-evidence/accessibility-recovery-and-target-parity-bible.md`.
+[stderr] 
+[stderr] Do not create code, B/R runbooks, target-exclusive rules, mandatory accounts, remote sync, or final audit.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/G0001.md
+[stderr] ---
+[stderr] task_id: G0001
+[stderr] sequence: 3
+[stderr] dependencies: GB0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-001,GAME-002,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005
+[stderr] title: Define original football question-card and catalogue bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0001
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted detailed evidence for GAME-001–002/GPI-001–005: card grammar, answer/explanation/provenance/accessibility fields, and four named 12-card QB-A batches with exact format/difficulty/topic quotas and two-review workflow.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/question-card-and-qba-catalogue-bible.md`: original question-card grammar and four named QB-A editorial batches, including permitted sources, factual and accessibility/copy reviews, provenance, version/withdrawal fields, quotas, and non-copying expression evidence.
+[stderr] 
+[stderr] Do not author product code, implementation B/R runbooks, copied questions or reference-product expression. This task does not accept the manifest.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - The finite 48-card first-release catalogue is bounded, original, and independently quota/provenance verifiable.
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/G0002.md
+[stderr] ---
+[stderr] task_id: G0002
+[stderr] sequence: 3
+[stderr] dependencies: G0001
+[stderr] source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+[stderr] source_catalogue_ids: GAME-003,GAME-004,GPI-006,GPI-007
+[stderr] title: Define fair adjudication and editorial lifecycle bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0001
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-003–004/GPI-006–007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/adjudication-and-freshness-bible.md`: deterministic select/true-false/ordered/typed-answer rules, 20 fixtures, contested-fact withdrawal/provenance review states, and a seeded anti-repeat/shortage rule.
+[stderr] 
+[stderr] No fuzzy guessing, implementation code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Rules never guess answers and every catalogue-state transition is reproducible.
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/G0003.md
+[stderr] ---
+[stderr] task_id: G0003
+[stderr] sequence: 3
+[stderr] dependencies: GB0002,G0002
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-005,GAME-006,GPI-008,GPI-009
+[stderr] title: Define tutorial and standard-round bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0002
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-005–006/GPI-008–009: TUT-01–05, mixed 10-card round selection, optional timer, offline lifecycle, interruption and shortage behaviour.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/round-lifecycle-bible.md`: named First Whistle cards and transitions, Mixed Fixture selection/shortage fixtures, optional-off timer, offline pause/resume lifecycle, and accessibility review.
+[stderr] 
+[stderr] Do not invent a campaign, live/ranked mode, code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Every named tutorial card and round transition has a deterministic fixture.
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/G0004.md
+[stderr] ---
+[stderr] task_id: G0004
+[stderr] sequence: 3
+[stderr] dependencies: G0003
+[stderr] source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+[stderr] source_catalogue_ids: GAME-007,GAME-008,GPI-010,GPI-011
+[stderr] title: Define scoring and results bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0002
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-007–008/GPI-010–011: 100-point capped-streak table, feedback equivalents, result states, milestone idempotence, and 18 edge/lifecycle fixtures.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/score-streak-and-results-bible.md`: score/streak rule table, 18 recovery/result fixtures, idempotent milestones, and text, non-colour, captioned/mute audio-equivalent feedback requirements.
+[stderr] 
+[stderr] Do not create implementation code or B/R runbooks, and do not accept the manifest.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Wrong, blank, timeout, and abandon remain recoverable and do not create duplicate completion.
+[stderr] ### projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] ---
+[stderr] task_id: G0005
+[stderr] sequence: 3
+[stderr] dependencies: GB0003,G0004
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+[stderr] title: Define accessible recovery and target parity bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0003
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-009–012/GPI-012–015: four input mappings, captions/contrast/text/motion equivalents, four recovery states, offline/update notices, and web/PWA/Android/iOS parity and certification matrix.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/accessibility-recovery-and-target-parity-bible.md`: four input mappings, accessible feedback equivalents, recovery/offline/update states, and web/PWA/Android/iOS rule/content/save parity matrix.
+[stderr] 
+[stderr] Do not create target-exclusive content, mandatory accounts/sync, code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Each meaning has a non-audio, non-colour equivalent and target adaptations cannot alter shared rules or saves.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc 'for f in projects/football-trivia-e2e/design-evidence/{question-card-and-qba-catalogue-bible,adjudication-and-freshness-bible,round-lifecycle-bible,score-streak-and-results-bible,accessibility-recovery-and-target-parity-bible}.md; do echo "### $f"; rg -n '"'"'^#|''^##|''^###|status:|QB-A-|accepted|pending|review|source|fixture|First Whistle|Mixed Fixture|non-colour|non-audio|provenance|original'"' \""'$f"; done' in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] ### projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md
+[stderr] 1:# Question-card and QB-A catalogue bible
+[stderr] 3:**Scope:** accepted design evidence for `GAME-001`, `GAME-002`, and
+[stderr] 8:## Release boundary and original-expression rule
+[stderr] 10:`QB-A` ("Kickoff Mix") is exactly the 48 stable IDs `QB-A-01` through
+[stderr] 11:`QB-A-48`, divided into four named 12-card batches. The IDs are permanent:
+[stderr] 13:not silently replaced. No other `QB-A-*` ID is in the first release.
+[stderr] 17:explanation from the stated facts; authors must not reproduce source wording,
+[stderr] 19:The declared sources verify facts only and grant no permission to copy their
+[stderr] 20:expression. A content record with uncertain source permission, attribution, or
+[stderr] 23:## `GPI-001`: card grammar and release record
+[stderr] 31:| `id`, `revision`, `batchId`, `status` | Stable ID, positive revision, one named batch, and lifecycle: `draft → fact_checked → accessibility_edited → second_reviewed → published`; alternatively `blocked` or `withdrawn`. Only `published` is eligible. |
+[stderr] 32:| `originalityRecord` | Author ID/creation date, independently-authored confirmation, and a non-copying check. It records inspiration boundaries, never reference-product text. |
+[stderr] 36:| `answerOptions` | Required only for select/true-false. Select has exactly four unique option IDs and one `correct`; true/false has canonical `true`/`false` IDs. Options are text-labelled and have non-colour selection/result states. |
+[stderr] 37:| `canonicalAnswer` and `acceptedAnswerRule` | Select/true-false use canonical option IDs; ordered pair specifies exactly two ordered canonical IDs; typed answer provides canonical display answer, normalised accepted aliases, and no fuzzy match. Empty aliases and aliases that could mean another answer are invalid. |
+[stderr] 39:| `accessibility` | `screenReaderPrompt`, `screenReaderOptions` where applicable, `answerStateText`, `explanationTextEquivalent`, reading-order/focus requirement, and text-size/contrast review. No visual or audio-only clue may be needed. |
+[stderr] 40:| `provenanceId`, `factualAssertions[]` | Links each assertion to permitted durable sources/research records, source locator, checked date, and conflict/correction history. All assertions must be supported. |
+[stderr] 41:| `reviews[]` | Two distinct completed reviews: factual/rights review and accessibility/copy review. Each carries reviewer ID/role, decision, date, findings, and revision reviewed. |
+[stderr] 52:## Provenance and two-review workflow
+[stderr] 54:Each inventory row references a source family below; the eventual card's
+[stderr] 55:`provenanceId` is `PROV-<card ID>` and must contain the precise page/document
+[stderr] 57:can leave `draft`. The source family is a research route, not a substituted
+[stderr] 58:source record.
+[stderr] 73:For each card revision, reviewer `R1` (factual/rights editor) verifies every
+[stderr] 74:assertion against the exact provenance locator, source permission and original
+[stderr] 77:screen-reader text, non-colour state wording, and localisation keys. R1's
+[stderr] 78:accepted decision moves the record to `fact_checked`; R2's accepted decision
+[stderr] 79:moves it to `second_reviewed`; only the release editor may then set
+[stderr] 81:sets `withdrawn` until both reviews approve a new revision. Reviewer identity,
+[stderr] 83:reviews mechanically rejectable.
+[stderr] 85:## `GPI-002`–`GPI-005`: bounded batch inventory
+[stderr] 89:`status: draft`, `revision: 1`, `provenanceId: PROV-<ID>`, and two pending
+[stderr] 90:review records; this evidence does not falsely mark research as completed.
+[stderr] 94:### `GPI-002` — QB-A World Tournament History (`QB-A-WORLD-01`)
+[stderr] 98:| QB-A-01 | FO | 1 | 2018 FIFA World Cup winner — France | FIFA World Cup | FIFA |
+[stderr] 99:| QB-A-02 | TF | 1 | 1966 FIFA World Cup host — England | FIFA World Cup | FIFA |
+[stderr] 100:| QB-A-03 | OP | 1 | Order 2008 and 2016 UEFA European champions — Spain, Portugal | UEFA European Championship | UEFA |
+[stderr] 101:| QB-A-04 | TA | 1 | 2021 Copa América winner — Argentina | Copa América | CONMEBOL |
+[stderr] 102:| QB-A-05 | FO | 2 | 1998 FIFA World Cup final venue — Stade de France | FIFA World Cup | FIFA |
+[stderr] 103:| QB-A-06 | TF | 2 | Japan won the 2011 AFC Asian Cup — true | AFC Asian Cup | AFC |
+[stderr] 104:| QB-A-07 | OP | 2 | Order 2011 and 2015 AFC Asian Cup winners — Japan, Australia | AFC Asian Cup | AFC |
+[stderr] 105:| QB-A-08 | TA | 2 | 2004 UEFA European Championship winner — Greece | UEFA European Championship | UEFA |
+[stderr] 106:| QB-A-09 | FO | 3 | 2019 AFC Asian Cup winner — Qatar | AFC Asian Cup | AFC |
+[stderr] 107:| QB-A-10 | TF | 3 | The 2007 Copa América final was Argentina v Brazil — true | Copa América | CONMEBOL |
+[stderr] 108:| QB-A-11 | OP | 3 | Order 1984 and 2000 UEFA European champions — France, France | UEFA European Championship | UEFA |
+[stderr] 109:| QB-A-12 | TA | 3 | 1991 Copa América winner — Argentina | Copa América | CONMEBOL |
+[stderr] 111:### `GPI-003` — QB-A Domestic League Moments (`QB-A-DOMESTIC-01`)
+[stderr] 115:| QB-A-13 | FO | 1 | 2015–16 Bundesliga champion — Bayern Munich | Bundesliga | DFL |
+[stderr] 116:| QB-A-14 | TF | 1 | Real Madrid won 2023–24 LALIGA — true | LALIGA | LALIGA |
+[stderr] 117:| QB-A-15 | OP | 1 | Order 2019–20 and 2020–21 Serie A champions — Juventus, Internazionale | Serie A | SERIEA |
+[stderr] 118:| QB-A-16 | TA | 1 | 2022–23 Ligue 1 champion — Paris Saint-Germain | Ligue 1 | LFP |
+[stderr] 119:| QB-A-17 | FO | 2 | Premier League’s first champion (1992–93) — Manchester United | Premier League | PL |
+[stderr] 120:| QB-A-18 | TF | 2 | Athletic Club won 2023–24 Copa del Rey — true | LALIGA | LALIGA |
+[stderr] 121:| QB-A-19 | OP | 2 | Order 1999–2000 and 2000–01 Serie A champions — Lazio, Roma | Serie A | SERIEA |
+[stderr] 122:| QB-A-20 | TA | 2 | 2003–04 Premier League unbeaten champions — Arsenal | Premier League | PL |
+[stderr] 123:| QB-A-21 | FO | 3 | 2023–24 LALIGA Pichichi winner — Artem Dovbyk | LALIGA | LALIGA |
+[stderr] 124:| QB-A-22 | TF | 3 | Napoli won 2022–23 Serie A — true | Serie A | SERIEA |
+[stderr] 125:| QB-A-23 | OP | 3 | Order 2011–12 and 2013–14 Bundesliga champions — Bayern Munich, Bayern Munich | Bundesliga | DFL |
+[stderr] 126:| QB-A-24 | TA | 3 | 2009–10 Serie A champions — Internazionale | Serie A | SERIEA |
+[stderr] 128:### `GPI-004` — QB-A Club, Manager, and Identity (`QB-A-CLUB-01`)
+[stderr] 132:| QB-A-25 | FO | 1 | Liverpool’s home stadium — Anfield | Liverpool | CLUB |
+[stderr] 133:| QB-A-26 | TF | 1 | FC Barcelona’s home stadium is Camp Nou — true | Barcelona | CLUB |
+[stderr] 134:| QB-A-27 | OP | 1 | Order AC Milan's 1999 and 2004 Serie A titles — 1999, 2004 | AC Milan / Serie A | CLUB + SERIEA |
+[stderr] 135:| QB-A-28 | TA | 1 | Liverpool manager for the 2019 UEFA Champions League win — Jürgen Klopp | Liverpool / UEFA Champions League | CLUB + UEFA |
+[stderr] 136:| QB-A-29 | FO | 2 | Barcelona manager for 2008–09 UEFA Champions League win — Pep Guardiola | Barcelona / UEFA Champions League | CLUB + UEFA |
+[stderr] 137:| QB-A-30 | TF | 2 | AC Milan won the 1994 UEFA Champions League final — true | AC Milan / UEFA Champions League | CLUB + UEFA |
+[stderr] 138:| QB-A-31 | OP | 2 | Order Liverpool's English top-flight titles in 1990 and 2020 — 1990, 2020 | Liverpool / English top flight | CLUB |
+[stderr] 139:| QB-A-32 | TA | 2 | AC Milan's home stadium — San Siro | AC Milan | CLUB |
+[stderr] 140:| QB-A-33 | FO | 3 | Barcelona’s 1992 European Cup final venue — Wembley Stadium | Barcelona / European Cup | CLUB + UEFA |
+[stderr] 141:| QB-A-34 | TF | 3 | Liverpool won the 2005 UEFA Champions League final — true | Liverpool / UEFA Champions League | CLUB + UEFA |
+[stderr] 142:| QB-A-35 | OP | 3 | Order Barcelona’s 2009 and 2011 UEFA Champions League wins — 2009, 2011 | Barcelona / UEFA Champions League | CLUB + UEFA |
+[stderr] 143:| QB-A-36 | TA | 3 | AC Milan manager for the 2004 Serie A title — Carlo Ancelotti | AC Milan / Serie A | CLUB + SERIEA |
+[stderr] 145:### `GPI-005` — QB-A Players and Records (`QB-A-PLAYER-01`)
+[stderr] 149:| QB-A-37 | FO | 1 | 2022 FIFA World Cup Golden Boot winner — Kylian Mbappé | FIFA World Cup | FIFA |
+[stderr] 150:| QB-A-38 | TF | 1 | Cristiano Ronaldo is Portugal men's most-capped player — true | Portugal national team | FIFA |
+[stderr] 151:| QB-A-39 | OP | 1 | Order Lionel Messi's 2009 and 2010 Ballon d'Or wins — 2009, 2010 | Ballon d'Or | FF |
+[stderr] 152:| QB-A-40 | TA | 1 | Premier League all-time top scorer (as official record) — Alan Shearer | Premier League | PL |
+[stderr] 153:| QB-A-41 | FO | 2 | 2018 FIFA World Cup Golden Ball winner — Luka Modrić | FIFA World Cup | FIFA |
+[stderr] 154:| QB-A-42 | TF | 2 | Lionel Messi won The Best FIFA Men's Player award for 2022 — true | The Best FIFA Football Awards | FIFA |
+[stderr] 155:| QB-A-43 | OP | 2 | Order Mohamed Salah's Premier League Golden Boots in 2018 and 2019 — 2018, 2019 | Premier League | PL |
+[stderr] 156:| QB-A-44 | TA | 2 | 2019–20 Premier League Golden Boot co-winner — Pierre-Emerick Aubameyang | Premier League | PL |
+[stderr] 157:| QB-A-45 | FO | 3 | 2006 FIFA World Cup Golden Boot winner — Miroslav Klose | FIFA World Cup | FIFA |
+[stderr] 158:| QB-A-46 | TF | 3 | Robert Lewandowski won The Best FIFA Men's Player award for 2020 — true | The Best FIFA Football Awards | FIFA |
+[stderr] 159:| QB-A-47 | OP | 3 | Order the 2018 and 2019 Ballon d'Or winners — Luka Modrić, Lionel Messi | Ballon d'Or | FF |
+[stderr] 160:| QB-A-48 | TA | 3 | Premier League single-season goal record holder (38-match season) — Erling Haaland | Premier League | PL |
+[stderr] 162:## Mechanical release checks
+[stderr] 165:from published card records and their provenance/review records:
+[stderr] 169:| ID/boundary | Exactly 48 unique IDs, exactly `QB-A-01…48`, exactly four named batches of 12; no extra QB-A card. |
+[stderr] 175:| Eligibility | Every card is `published`, has all grammar fields, a resolvable provenance record with a checked date, no unresolved conflict, two distinct accepted reviews of its current revision, and no withdrawal. |
+[stderr] 176:| Originality/accessibility | Every card has accepted originality and accessibility/copy review findings, required text equivalents, and no player-facing copied/source text. |
+[stderr] 179:review are completed. Thus it is bounded and independently auditable now, while
+[stderr] 181:provenance and both reviews are supplied.
+[stderr] ### projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] 1:# Adjudication and freshness bible
+[stderr] 3:**Scope:** accepted evidence for `GAME-003`, `GAME-004`, `GPI-006`, and
+[stderr] 8:## GPI-006 — answer adjudication
+[stderr] 27:### Typed-answer normalisation and aliases
+[stderr] 42:The key is comparison-only. An alias is accepted only if deliberately authored
+[stderr] 46:normalisation-version change creates a new revision, review, and validation; it
+[stderr] 52:explicitly configured and reviewed.
+[stderr] 54:### Twenty deterministic adjudication fixtures
+[stderr] 61:| ADJ-01 | Select, C=`france` | `france` | accepted / `canonical_match` |
+[stderr] 66:| ADJ-06 | True/false, C=`true` | `true` | accepted / `canonical_match` |
+[stderr] 71:| ADJ-11 | Ordered pair, C=`[japan,australia]` | `[japan,australia]` | accepted / `ordered_match` |
+[stderr] 73:| ADJ-13 | Ordered pair, C=`[france,france]` | `[france,france]` | accepted / `ordered_match` |
+[stderr] 76:| ADJ-16 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `  JURGEN---KLOPP ` | accepted / `normalised_canonical_match` |
+[stderr] 77:| ADJ-17 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `Klopp` | accepted / `normalised_alias_match` |
+[stderr] 79:| ADJ-19 | Typed, C=`Paris Saint-Germain`, aliases={`psg`} | `P.S.G.` | accepted / `normalised_alias_match` |
+[stderr] 84:guessed. An answer against `QB-A-28@r1` uses r1 values, never corrected r2.
+[stderr] 86:## GPI-007 — reproducible editorial lifecycle
+[stderr] 96:| `draft` | `submit_factual_check`: provenance, originality, accepted factual review | `fact_checked` | no |
+[stderr] 97:| `fact_checked` | `accept_accessibility_copy`: different reviewer, accepted revision review | `accessibility_edited` | no |
+[stderr] 98:| `accessibility_edited` | `accept_second_review`: distinct reviewer, grammar/alias validation | `second_reviewed` | no |
+[stderr] 99:| `second_reviewed` | `publish`: release editor, all release checks pass | `published` | yes |
+[stderr] 104:No other transition is allowed: no direct draft-to-published, self-review, or
+[stderr] 110:immediately. Withdrawal records `factual_correction`, `source_rights`,
+[stderr] 114:its presented revision. Only a corrected, newly reviewed revision may publish.
+[stderr] 116:## Seeded anti-repeat and shortage policy
+[stderr] 135:unfilled count exists. No clock, random source, network response, unpublished
+[stderr] 139:### Eight seeded selection fixtures
+[stderr] 142:rounds. Implementation fixtures calculate the specified SHA-256 ordering and
+[stderr] 156:## Release checks
+[stderr] 159:alias collision, current provenance, two distinct accepted reviews, and no
+[stderr] 160:effective withdrawal. The fixture suite requires exactly ADJ-01–ADJ-20 and
+[stderr] ### projects/football-trivia-e2e/design-evidence/round-lifecycle-bible.md
+[stderr] 1:# Round lifecycle bible
+[stderr] 3:**Scope:** accepted design evidence for `GAME-005`, `GAME-006`, `GPI-008`, and
+[stderr] 4:`GPI-009`. This defines a future-core contract and fixtures, not production
+[stderr] 6:by the run; no network response, wall clock, UI ordering, or random source can
+[stderr] 7:alter a fixture result.
+[stderr] 9:## GPI-008 — First Whistle tutorial
+[stderr] 11:`First Whistle` is a fixed five-card, non-timed onboarding round. It is
+[stderr] 15:published wording, answer IDs, provenance, and two reviews are governed by the
+[stderr] 21:| 2 / `TUT-02` | short typed answer | Enter a short answer and confirm; only configured canonical text/aliases are accepted. | A typed submission resolves through GAME-003 normalisation, shows canonical answer/explanation if rejected, and opens `TUT-03`. |
+[stderr] 22:| 3 / `TUT-03` | true/false | Recognise that feedback says whether the resolved answer was accepted. | Submission resolves once; feedback is available in text plus non-colour state, then opens `TUT-04`. |
+[stderr] 32:### Tutorial deterministic fixtures
+[stderr] 36:GAME-003 fixture supplies an immutable accepted/rejected attempt; the
+[stderr] 43:| `TUT-FX-03` | From TUT-03 submit an incorrect valid true/false value, resolve, continue. | `TUT-03 → TUT-04`; rejected text/non-colour feedback and canonical answer/explanation are recorded before continue. |
+[stderr] 50:## GPI-009 — Mixed Fixture selection
+[stderr] 52:`Mixed Fixture` starts with `(catalogueSnapshotId, selectionSeed, theme,
+[stderr] 71:### Seeded Mixed Fixture fixtures
+[stderr] 73:In these fixtures `ranked` is the ascending SHA-256 ordering already calculated
+[stderr] 88:## Optional timer and round lifecycle
+[stderr] 101:| `ready → active(card 1)` | Start accepted. | Freeze cards/revisions/package/rules/seed/timer mode into run snapshot. |
+[stderr] 109:### Lifecycle deterministic fixtures
+[stderr] 127:## Accessibility and release boundary
+[stderr] 140:answer rules remain subject to the editorial/provenance validation contracts.
+[stderr] ### projects/football-trivia-e2e/design-evidence/score-streak-and-results-bible.md
+[stderr] 1:# Score, streak, and results bible
+[stderr] 3:**Scope:** accepted design evidence for `GAME-007`, `GAME-008`, `GPI-010`, and
+[stderr] 11:## GPI-010 — score and streak contract
+[stderr] 22:is the source of a reopened feedback or result surface; the score is never
+[stderr] 47:### Equivalent feedback requirements
+[stderr] 53:| State | Required text and semantic label | Required non-colour visual | Caption/mute audio equivalent | Reduced-motion behaviour |
+[stderr] 66:### Score and feedback edge fixtures
+[stderr] 68:All fixtures start from a frozen `Mixed Fixture` run unless stated otherwise.
+[stderr] 74:| `SCORE-FX-01` | Correct with score 0, streak 0. | One event: `+100`, streak 1, score 100, `correct_base`; text/non-colour/caption equivalents agree. |
+[stderr] 80:| `SCORE-FX-07` | From score 1050, streak 7, resolve `wrong`. | One zero-point event, active streak 0, score remains 1050, best streak remains 7; answer/explanation and static non-colour feedback are available. |
+[stderr] 85:| `SCORE-FX-12` | Resolve a correct answer, then resend the same resolve command/interaction ID; enable mute and reduced motion before reopening feedback. | Exactly one attempt and score event exist; reopened feedback is static and text/non-colour equivalent remains complete with no audio required. |
+[stderr] 87:## GPI-011 — results and local milestone contract
+[stderr] 89:### Result states
+[stderr] 105:### Completion and milestone idempotence
+[stderr] 116:profile, not a counter. Its first stored value includes the source tutorial
+[stderr] 118:their own immutable history/result once, but cannot replace those provenance
+[stderr] 122:### Result and lifecycle fixtures
+[stderr] 133:## Release boundary
+[stderr] 136:`RESULT-FX-01`–`RESULT-FX-06`: exactly 18 fixtures. Wrong, blank, enabled
+[stderr] ### projects/football-trivia-e2e/design-evidence/accessibility-recovery-and-target-parity-bible.md
+[stderr] 1:# Accessibility, recovery, and target parity bible
+[stderr] 3:## Purpose and non-negotiable invariants
+[stderr] 5:This is the accepted design evidence for `GAME-009`–`GAME-012` and
+[stderr] 25:## GPI-012 — profile, settings, and four input mappings
+[stderr] 47:## Accessible feedback equivalents
+[stderr] 68:## GPI-013 — recovery states and fault evidence
+[stderr] 86:confirmation of local deletion. Each fixture asserts unchanged shared rules,
+[stderr] 89:## GPI-014 — offline, update, and error notices
+[stderr] 101:| `CACHE-INCOMPATIBLE` | Cache cannot support the pending content version. | “An update needs a cache refresh. Your confirmed progress will be kept.” | Preserve/export the confirmed snapshot before reset; provide **Refresh cache** and **Return home**. |
+[stderr] 104:Six release fixtures are required: offline launch of First Whistle with cached
+[stderr] 111:## GPI-015 — target parity and certification matrix
+[stderr] 123:| Accessible feedback evidence | Text scale, contrast, captions/descriptions, non-colour states, reduced motion, semantic labels. | Same shared feedback contract before/after install and offline. | Same shared feedback contract using selected OS accessibility settings. | Same shared feedback contract using selected OS accessibility settings. |
+[stderr] 126:| Certification record | Chosen browser/OS/device, input methods, assistive-tech/settings evidence, fixture IDs, defects, and sign-off. | Above plus install/offline/update evidence. | Chosen device/OS, packaging/store/privacy evidence, battery/thermal/size budget evidence, and sign-off. | Chosen device/OS, packaging/store/privacy evidence, battery/thermal/size budget evidence, and sign-off. |
+[stderr] 133:## Release evidence checklist
+[stderr] 139:- Execute all eight GPI-013 fault fixtures and six GPI-014 offline/update/error
+[stderr] 140:  fixtures against each selected target’s applicable capabilities.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "jq '{status, acceptance_status, modules: (.modules // .game_modules // .GAME // {}), inventory: (.inventory // .production_inventory // .GPI // {}), checks: (.checks // .completion_checks // {})}' projects/football-trivia-e2e/planning/game-design-manifest.json; jq 'keys' projects/football-trivia-e2e/specification/02-game-design-bible.json; jq 'keys' projects/football-trivia-e2e/planning/game-production-inventory.json" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] {
+[stderr]   "status": "pending",
+[stderr]   "acceptance_status": null,
+[stderr]   "modules": [
+[stderr]     {
+[stderr]       "module": "quiz-content-and-editorial-integrity",
+[stderr]       "status": "pending",
+[stderr]       "design_output_paths": [
+[stderr]         "game-design-runbooks/G0001.md",
+[stderr]         "game-design-runbooks/G0002.md"
+[stderr]       ],
+[stderr]       "game_design_ids": [
+[stderr]         "GAME-001",
+[stderr]         "GAME-002",
+[stderr]         "GAME-003",
+[stderr]         "GAME-004"
+[stderr]       ],
+[stderr]       "production_inventory_ids": [
+[stderr]         "GPI-001",
+[stderr]         "GPI-002",
+[stderr]         "GPI-003",
+[stderr]         "GPI-004",
+[stderr]         "GPI-005",
+[stderr]         "GPI-006",
+[stderr]         "GPI-007"
+[stderr]       ]
+[stderr]     },
+[stderr]     {
+[stderr]       "module": "round-score-and-progress-rules",
+[stderr]       "status": "pending",
+[stderr]       "design_output_paths": [
+[stderr]         "game-design-runbooks/G0003.md",
+[stderr]         "game-design-runbooks/G0004.md"
+[stderr]       ],
+[stderr]       "game_design_ids": [
+[stderr]         "GAME-005",
+[stderr]         "GAME-006",
+[stderr]         "GAME-007",
+[stderr]         "GAME-008"
+[stderr]       ],
+[stderr]       "production_inventory_ids": [
+[stderr]         "GPI-008",
+[stderr]         "GPI-009",
+[stderr]         "GPI-010",
+[stderr]         "GPI-011"
+[stderr]       ]
+[stderr]     },
+[stderr]     {
+[stderr]       "module": "accessible-recoverable-multitarget-experience",
+[stderr]       "status": "pending",
+[stderr]       "design_output_paths": [
+[stderr]         "game-design-runbooks/G0005.md"
+[stderr]       ],
+[stderr]       "game_design_ids": [
+[stderr]         "GAME-009",
+[stderr]         "GAME-010",
+[stderr]         "GAME-011",
+[stderr]         "GAME-012"
+[stderr]       ],
+[stderr]       "production_inventory_ids": [
+[stderr]         "GPI-012",
+[stderr]         "GPI-013",
+[stderr]         "GPI-014",
+[stderr]         "GPI-015"
+[stderr]       ]
+[stderr]     }
+[stderr]   ],
+[stderr]   "inventory": {},
+[stderr]   "checks": {}
+[stderr] }
+[stderr] [
+[stderr]   "design_units",
+[stderr]   "game_archetypes",
+[stderr]   "implementation_map",
+[stderr]   "rejected_modules",
+[stderr]   "selected_modules"
+[stderr] ]
+[stderr] [
+[stderr]   "entries",
+[stderr]   "inventory_version",
+[stderr]   "source_bible"
+[stderr] ]
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "jq -r '.design_units[] | [.id,.title,.selected_module,.status] | @tsv' projects/football-trivia-e2e/specification/02-game-design-bible.json; jq -r '.entries[] | [.id,.title,.selected_module,.status] | @tsv' projects/football-trivia-e2e/planning/game-production-inventory.json; jq '{required_checks, completion_check, status, evidence: .evidence // null, pending_reasons: .pending_reasons // null}' projects/football-trivia-e2e/planning/game-design-manifest.json; test "'! -e projects/football-trivia-e2e/game-design-runbooks/GQ0001.md && echo '"'GQ0001 absent'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] GAME-001	Question-card grammar		
+[stderr] GAME-002	Kickoff Mix catalogue batch		
+[stderr] GAME-003	Answer adjudication and provenance		
+[stderr] GAME-004	Freshness and editorial workflow		
+[stderr] GAME-005	First Whistle tutorial round		
+[stderr] GAME-006	Mixed Fixture standard round		
+[stderr] GAME-007	Score and streak rules		
+[stderr] GAME-008	Result and local milestone		
+[stderr] GAME-009	Guided accessible start		
+[stderr] GAME-010	Confirmed snapshot recovery		
+[stderr] GAME-011	Offline update and error path		
+[stderr] GAME-012	Shared-core platform adaptation		
+[stderr] GPI-001		quiz-content-and-editorial-integrity	
+[stderr] GPI-002		quiz-content-and-editorial-integrity	
+[stderr] GPI-003		quiz-content-and-editorial-integrity	
+[stderr] GPI-004		quiz-content-and-editorial-integrity	
+[stderr] GPI-005		quiz-content-and-editorial-integrity	
+[stderr] GPI-006		quiz-content-and-editorial-integrity	
+[stderr] GPI-007		quiz-content-and-editorial-integrity	
+[stderr] GPI-008		round-score-and-progress-rules	
+[stderr] GPI-009		round-score-and-progress-rules	
+[stderr] GPI-010		round-score-and-progress-rules	
+[stderr] GPI-011		round-score-and-progress-rules	
+[stderr] GPI-012		accessible-recoverable-multitarget-experience	
+[stderr] GPI-013		accessible-recoverable-multitarget-experience	
+[stderr] GPI-014		accessible-recoverable-multitarget-experience	
+[stderr] GPI-015		accessible-recoverable-multitarget-experience	
+[stderr] jq: error: syntax error, unexpected //, expecting '}' (Unix shell quoting issues?) at <top-level>, line 1:
+[stderr] {required_checks, completion_check, status, evidence: .evidence // null, pending_reasons: .pending_reasons // null}                                                                
+[stderr] jq: error: syntax error, unexpected //, expecting '}' (Unix shell quoting issues?) at <top-level>, line 1:
+[stderr] {required_checks, completion_check, status, evidence: .evidence // null, pending_reasons: .pending_reasons // null}                                                                                                           
+[stderr] jq: 2 compile errors
+[stderr] GQ0001 absent
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "jq '{status, required_checks, completion_check, evidence: (.evidence // null), pending_reasons: (.pending_reasons // null)}' projects/football-trivia-e2e/planning/game-design-manifest.json; sed -n '1,220p' projects/football-trivia-e2e/planning/game-design-manifest.json; sed -n '1,220p' projects/football-trivia-e2e/specification/02-game-design-bible.md; sed -n '1,200p' projects/football-trivia-e2e/planning/game-production-inventory.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] {
+[stderr]   "status": "pending",
+[stderr]   "required_checks": null,
+[stderr]   "completion_check": null,
+[stderr]   "evidence": null,
+[stderr]   "pending_reasons": null
+[stderr] }
+[stderr] {
+[stderr]   "status": "pending",
+[stderr]   "final_audit": null,
+[stderr]   "pending_modules": ["quiz-content-and-editorial-integrity", "round-score-and-progress-rules", "accessible-recoverable-multitarget-experience"],
+[stderr]   "blocked_modules": [],
+[stderr]   "checkpoint": {
+[stderr]     "audit": "GC0001",
+[stderr]     "status": "pending",
+[stderr]     "findings": [
+[stderr]       "Ownership is closed: GB0001 owns G0001,G0002; GB0002 owns G0003,G0004; GB0003 owns G0005. Each G declares its owning batch and each batch has fewer than five G outputs.",
+[stderr]       "Canonical coverage is assigned and evidenced by the five detailed bibles: GAME-001 through GAME-012 and GPI-001 through GPI-015 are represented; G dependencies reference earlier available G outputs.",
+[stderr]       "The quiz-content-and-editorial-integrity module is not accepted: QB-A-01 through QB-A-48 are explicitly draft records with only pending review records. The catalogue defines required provenance locators and two distinct accepted reviews, but does not contain a completed provenance record, factual/rights decision, accessibility/copy decision, or second-review decision for any card revision.",
+[stderr]       "Because GPI-002 through GPI-005 lack published cards with accepted provenance and two reviews, GAME-002 and the downstream GAME-004/GAME-006 publication-dependent selection evidence remain conditional and the manifest cannot be accepted."
+[stderr]     ],
+[stderr]     "implementation_coverage": "Deferred until F012."
+[stderr]   },
+[stderr]   "modules": [
+[stderr]     {"module":"quiz-content-and-editorial-integrity","status":"pending","design_output_paths":["game-design-runbooks/G0001.md","game-design-runbooks/G0002.md"],"game_design_ids":["GAME-001","GAME-002","GAME-003","GAME-004"],"production_inventory_ids":["GPI-001","GPI-002","GPI-003","GPI-004","GPI-005","GPI-006","GPI-007"]},
+[stderr]     {"module":"round-score-and-progress-rules","status":"pending","design_output_paths":["game-design-runbooks/G0003.md","game-design-runbooks/G0004.md"],"game_design_ids":["GAME-005","GAME-006","GAME-007","GAME-008"],"production_inventory_ids":["GPI-008","GPI-009","GPI-010","GPI-011"]},
+[stderr]     {"module":"accessible-recoverable-multitarget-experience","status":"pending","design_output_paths":["game-design-runbooks/G0005.md"],"game_design_ids":["GAME-009","GAME-010","GAME-011","GAME-012"],"production_inventory_ids":["GPI-012","GPI-013","GPI-014","GPI-015"]}
+[stderr]   ]
+[stderr] }
+[stderr] # 02 — Game design bible
+[stderr] 
+[stderr] **Status:** bounded first-release proposal. This is an original 2D, solo
+[stderr] football-trivia game; it is not a football simulation, RPG, or social product.
+[stderr] The selected modules arise from the F001 discovery map and support the first
+[stderr] useful journey in `02-feature-model.md`.
+[stderr] 
+[stderr] ## Game decision
+[stderr] 
+[stderr] | Archetype | Selected because | Explicitly not promised |
+[stderr] | --- | --- | --- |
+[stderr] | Football trivia / knowledge puzzle | The brief calls for themed football rounds, varied formats, validation, and a curated bank. | Licensed data feeds or copied questions. |
+[stderr] | Turn-based card-like quiz | One prompt is resolved before the next and supports touch, keyboard, mouse, and gamepad. | Board traversal, real-time action, or match play. |
+[stderr] | Single-player quick session | Casual adults need a useful session in a few minutes, including interruption-safe return. | Opponents, ranking, chat, or multiplayer. |
+[stderr] 
+[stderr] ## Selected design systems
+[stderr] 
+[stderr] ### Quiz content and editorial integrity — `GAME-001` to `GAME-004`
+[stderr] 
+[stderr] **Player outcome:** receive fresh, fair, answerable football questions with a
+[stderr] clear explanation. **Entities:** `QuestionCard`, `AnswerOption`,
+[stderr] `AcceptedAnswerRule`, `Category`, `Era`, `CompetitionScope`, `DifficultyBand`,
+[stderr] `ProvenanceRecord`, `ReviewRecord`, `ContentBatch`, and `RepeatLedger`.
+[stderr] 
+[stderr] | Unit | Design card / rule | First-release boundary and acceptance |
+[stderr] | --- | --- | --- |
+[stderr] | GAME-001 | **Question-card grammar.** An original card has one unambiguous fact, prompt, format, category, era/competition tags, difficulty 1–3, answer rule, short explanation, and review/version state. Formats: four-option select, true/false, ordered pair, and short typed answer. | Ship only reviewed `published` cards. A card without provenance, answer rule, explanation, or two-editor approval is ineligible. Test: each sampled card adjudicates its canonical and configured accepted answers identically. |
+[stderr] | GAME-002 | **Catalogue batch A: “Kickoff Mix.”** 48 original cards: 12 world tournament history, 12 domestic league moments, 12 club/manager/identity, 12 players/records. Each category has 4 cards at each band, max 6 cards per competition and no single club above 4. | Finite named release package: `QB-A-01` through `QB-A-48`, authored in four 12-card editorial batches. Exact facts, wording, sources, and rights clearance remain an editorial approval gate; placeholders never ship. Test: the manifest enforces totals, distributions, unique IDs, and no unpublished card. |
+[stderr] | GAME-003 | **Adjudication and provenance.** Select/true-false compare canonical IDs. Ordered pair compares ordered IDs. Typed answers normalise Unicode, case, punctuation, whitespace, diacritics, and configured aliases; it never uses fuzzy matching in release one. A rejected typed answer shows the canonical answer and explanation. | Each factual assertion links to a durable permitted source or approved internal research note, with checked date, reviewer, and correction history. Conflict or contested fact ⇒ remove from eligibility until resolved. Test: alias, malformed, blank, ambiguous, and outdated-version cases have fixtures. |
+[stderr] | GAME-004 | **Freshness.** The repeat ledger records card ID and completion timestamp locally. A round excludes cards seen in its last two completed rounds where alternatives exist; if insufficient eligible cards exist, it discloses reuse rather than silently failing. | No renewable feed, scraping, or live refresh. Authoring flow: propose → source/provenance → factual check → accessibility/copy edit → second review → publish to a versioned batch → validate → release/rollback. Test: seeded selection is reproducible and respects the exclusion rule. |
+[stderr] 
+[stderr] **Visual/audio/accessibility:** cards use original broadcast-inspired category
+[stderr] colour families plus text labels/patterns; no colour alone encodes category or
+[stderr] result. Readable scalable typography, screen-reader labels, captions/text
+[stderr] equivalents for cues, and a reduced-motion feedback path are required. Original
+[stderr] cue families: prompt arrival, correct, incorrect, streak rise, and saved state;
+[stderr] each has a mute/volume path and no cue conveys information unavailable in text.
+[stderr] 
+[stderr] ### Round, score, and progress rules — `GAME-005` to `GAME-008`
+[stderr] 
+[stderr] **Player outcome:** complete a clear, fair themed round and understand a local
+[stderr] milestone. **Entities:** `RoundDefinition`, `RoundRun`, `QuestionAttempt`,
+[stderr] `AnswerSubmission`, `ScoreEvent`, `StreakState`, `TimerState`, `ResultSummary`,
+[stderr] `LocalMilestone`, and `SelectionSeed`.
+[stderr] 
+[stderr] | Unit | Design card / rule | First-release boundary and acceptance |
+[stderr] | --- | --- | --- |
+[stderr] | GAME-005 | **Round “First Whistle.”** Tutorial round contains 5 fixed, original tutorial cards (`TUT-01`–`TUT-05`) covering selecting, typing, feedback, explanation, and pause/save. It is intentionally non-timed. | This is the complete first useful journey. Completion creates/updates local milestone `first_whistle_complete`; it cannot require account, network, purchase, or deferred content. Test: a new local profile can complete it offline and resume after app restart. |
+[stderr] | GAME-006 | **Round “Mixed Fixture.”** A 10-card themed round draws from one selected category or the Kickoff Mix, with no more than two adjacent cards sharing format or difficulty. The player may pause; a displayed timer mode is optional and defaults off. | First release ships one tutorial and one configurable standard round template, no ranked/daily/live/event modes. Test: deterministic seed produces ten eligible cards and valid format alternation or records the shortage. |
+[stderr] | GAME-007 | **Scoring and streak.** Correct = 100 points; a consecutive-correct streak of 3+ adds 25 points to each later correct answer, capped at +100. Incorrect, timeout (only if enabled), blank submission, or abandon resets the active streak; score never decreases. Explanation is available after resolution. | No paid boosts, leaderboard, social comparison, or opaque difficulty multiplier. Test: table-driven sequence proves cap, reset, and per-attempt result; a retry is a new run, not an overwrite of history. |
+[stderr] | GAME-008 | **Result and return.** Results show answered/correct, score, best active-session streak, category, and next action: replay, choose theme, or exit. Progress is local milestones and aggregate history only, not RPG levels. | An interrupted run persists at a safe boundary before the next unresolved question. Completed result is idempotent: reopening cannot award twice. Test: complete/reopen, abandon/resume, corrupted draft, and delete-history paths are specified. |
+[stderr] 
+[stderr] **Dependencies:** GAME-005 needs published tutorial cards and persistence;
+[stderr] GAME-006 needs GAME-001–004; GAME-007 consumes adjudication events; GAME-008
+[stderr] consumes score events and save/recovery. Visual family is bold category panels,
+[stderr] neutral answer controls, and non-colour success/error indicators; audio is
+[stderr] supportive, optional, and captioned.
+[stderr] 
+[stderr] ### Accessible, recoverable multi-target experience — `GAME-009` to `GAME-012`
+[stderr] 
+[stderr] **Player outcome:** start, control, interrupt, recover, and return to a round
+[stderr] confidently on a supported surface. **Entities:** `LocalProfile`, `Settings`,
+[stderr] `SaveSnapshot`, `RecoveryRecord`, `ContentVersion`, `ErrorNotice`,
+[stderr] `InputAction`, `InstallState`, and `DiagnosticEvent`.
+[stderr] 
+[stderr] | Unit | Design card / rule | First-release boundary and acceptance |
+[stderr] | --- | --- | --- |
+[stderr] | GAME-009 | **Guided start.** First launch offers an accessible plain-language tutorial entry, settings access, and a local profile without sign-in. Controls map select/navigate/confirm/back/pause to touch, pointer, keyboard, and gamepad. | No mandatory account. Permission denial for optional notifications/diagnostics changes no game path and explains how to alter it later. Test: every critical action is operable with keyboard and touch, focus is visible, and gamepad has an equivalent mapping. |
+[stderr] | GAME-010 | **Save/recovery.** Save immutable confirmed snapshots at tutorial completion, resolved question boundaries, explicit pause, and completed results. On failed write, retain the last confirmed snapshot and show retry/continue-without-saving. On corrupt draft, offer last confirmed snapshot or discard draft; never silently overwrite. | Remote sync/conflict requires approval and is excluded. Local deletion requires confirmation, names its effect, clears local profile/history/snapshots, and returns to first launch. Test: write failure, crash/restart, corrupt draft, and deletion fixtures preserve stated invariants. |
+[stderr] | GAME-011 | **Offline/update/error.** The installed content batch and current snapshot remain playable offline. A new content version is staged between rounds; an incompatible cache reports recovery steps and preserves confirmed save before cache reset. Unexpected errors show a plain-language retry/return-home path and optional minimised diagnostic consent. | No background live content requirement. Test: offline launch with cached assets, update mid-round, unavailable content, and diagnostic permission-denied behaviours are covered. |
+[stderr] | GAME-012 | **Platform adaptation.** Shared rule/content/save semantics on responsive web, PWA, Android, and iOS. Web adds pointer/keyboard/gamepad and responsive layouts; PWA adds install/offline cache/update UX; phones add touch targets and approved portrait/landscape choice. | No target-exclusive questions or rule differences. OS/browser matrix, orientation, performance, battery, thermal, size, store/privacy declarations, crash vendor, and exact language set remain approval gates. Test: capability matrix is exercised once targets are chosen. |
+[stderr] 
+[stderr] Accessibility applies to all three systems: text-size and contrast settings,
+[stderr] reduced motion, captions/text equivalents, non-colour result encoding, focus
+[stderr] order, semantic labels, sufficient touch targets, and no time limit by default.
+[stderr] Localisation inputs are externalised prompt, answer, explanation, category, and
+[stderr] UI strings; only a future approved language may add translated content after
+[stderr] answer aliases and factual review are validated.
+[stderr] 
+[stderr] **Experience production package:** a finite first-release package contains the
+[stderr] five named tutorial cards, one settings/help copy set, input-action labels,
+[stderr] result/recovery/empty-state strings, category visual tokens, and five original
+[stderr] optional cue families. Its workflow is interaction specification → accessible
+[stderr] copy/caption and focus review → original art/audio production → target
+[stderr] adaptation → keyboard/touch/gamepad and offline/recovery acceptance checks.
+[stderr] It depends on the shared shell, settings, persistence, renderer, and target
+[stderr] adapters; it cannot depend on an account, remote service, or purchase.
+[stderr] 
+[stderr] ## Journey and implementation-domain crosswalk
+[stderr] 
+[stderr] | Units | First-release journeys | Implementation domains |
+[stderr] | --- | --- | --- |
+[stderr] | GAME-001–004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |
+[stderr] | GAME-005–008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |
+[stderr] | GAME-009–012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |
+[stderr] 
+[stderr] The machine-readable `implementation_map` in the companion JSON maps every
+[stderr] individual `GAME-*` unit, rather than treating this grouped table as a substitute.
+[stderr] 
+[stderr] ## Rejected and decision-gated modules
+[stderr] 
+[stderr] | Module | Decision | Why |
+[stderr] | --- | --- | --- |
+[stderr] | Narrative/world; characters/factions; quests/scenes/dialogue | Rejected | The brief supports themed quiz progression, not fictional story content. |
+[stderr] | Combat/encounters/bosses; classes/abilities/status effects | Rejected | No action, battle, party, or power-progression player activity is evidenced. |
+[stderr] | Units/buildings/resources; economy | Rejected | No construction, collection, or economy loop; IAP is not authorisation for an economy. |
+[stderr] | Levels/maps; puzzles beyond trivia | Rejected | Questions/rounds are the bounded puzzle surface; no traversal or board design is required. |
+[stderr] | Racing/sport rules or football match simulation | Rejected | Football is subject matter, not simulated play. |
+[stderr] | Multiplayer; social/safety | Decision-gated | Brief names services/safety but selects single-player and gives no mode, age, moderation, reporting, or retention policy. |
+[stderr] | Live content | Decision-gated/deferred | Seasons/events are deferred; editorial batches can ship without a live schedule. |
+[stderr] | Commerce/entitlements | Decision-gated/deferred | Purchases are named but monetisation is deferred and store/refund policy is absent. |
+[stderr] | Narrative content model | Not created | Narrative module is not selected; inventing premise, characters, or a script would violate scope. |
+[stderr] 
+[stderr] All expression is original. Functional references may inform topic breadth and
+[stderr] short-session goals only; they supply no copied questions, wording, assets,
+[stderr] layouts, audio, or interaction choreography.
+[stderr] # Game production inventory
+[stderr] 
+[stderr] **Source:** `specification/02-game-design-bible.json`. This inventory is the
+[stderr] bounded bridge from canonical design units to authored production work. All
+[stderr] entries are first-release planned; the bible's rejected modules remain rejected
+[stderr] with their recorded reasons. `GPI-*` IDs are stable and map one-to-one or
+[stderr] one-to-many to `GAME-*` units.
+[stderr] 
+[stderr] | Design unit | Inventory IDs and finite scope | Dependency | Owner | Verification route |
+[stderr] | --- | --- | --- | --- | --- |
+[stderr] | GAME-001 | GPI-001: one card schema, five format fixtures | — | Editorial + tooling | Schema/negative fixtures |
+[stderr] | GAME-002 | GPI-002–005: four named 12-card batches, QB-A-01–48 | GPI-001 | Editorial + two reviewers | Provenance, review, quota, uniqueness validator |
+[stderr] | GAME-003 | GPI-006: four handlers, 20 adjudication fixtures | GPI-001 | Rules + core | Deterministic acceptance/rejection fixtures |
+[stderr] | GAME-004 | GPI-007: selection policy, 8 seeded fixtures | GPI-002–005 | Editorial + core | Repeat/shortage/withdrawal tests |
+[stderr] | GAME-005 | GPI-008: TUT-01–05 fixed tutorial | GPI-001, 006, 013–014 | Design + editorial | Offline completion/resume test |
+[stderr] | GAME-006 | GPI-009: one 10-card Mixed Fixture template | GPI-002–007 | Rules + core | Seeded selection lifecycle |
+[stderr] | GAME-007 | GPI-010: rule table, 12 edge fixtures | GPI-006, 009 | Rules + accessibility | Score/streak equivalent-feedback tests |
+[stderr] | GAME-008 | GPI-011: result and milestone states | GPI-009–010, 014 | Design + UI | Idempotence/recovery lifecycle tests |
+[stderr] | GAME-009 | GPI-012: profile/settings plus four input maps | — | Accessibility + platform | Input and accessibility review |
+[stderr] | GAME-010 | GPI-013: four recovery states, eight faults | GPI-011 | Persistence + accessibility | Fault-injection recovery tests |
+[stderr] | GAME-011 | GPI-014: cache/update notices and six fixtures | GPI-002–005, 013 | Release + platform | Offline/update/error tests |
+[stderr] | GAME-012 | GPI-015: four-target parity/certification matrix | GPI-012–014 | Platform + release | Target evidence and certification checklist |
+[stderr] 
+[stderr] The machine-readable [inventory](game-production-inventory.json) is
+[stderr] authoritative for each original brief, asset/audio linkage, and verification.
+[stderr] All referenced visuals (`ASSET-*`) and cues (`AUDIO-*`) are original-production
+[stderr] work: each is reviewed for provenance, non-copying, accessibility equivalence,
+[stderr] manifest validity, integration trigger, and runtime fallback before release.
+[stderr] 
+[stderr] codex
+[stderr] {"status":"repairable_failure","summary":"The audit checkpoint correctly finds one bounded evidence gap: all 48 QB-A cards are still draft/pending, so the manifest cannot be accepted. I’m running focused structural checks of the existing successor and ownership map; no implementation work is in scope.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GC0001.md","projects/football-trivia-e2e/game-design-runbooks/GD0002.md"],"updated_files":[],"summary":"The task is a documentation/design audit; its prescribed bounded successor already exists."},"known_limitations":["The QB-A acceptance register has not been authored; publication-dependent content remains ineligible."],"browser_coverage":"No browser impact; this is a documentation/design evidence audit.","recommended_next_step":"use_codex"}
+[stderr] exec
+[stderr] /bin/zsh -lc 'set -e
+[stderr] project_dir=projects/football-trivia-e2e
+[stderr] [ "$(rg -l '"'"'^task_id: GD0002$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 1 ]
+[stderr] [ "'! -e "$project_dir/game-design-runbooks/GQ0001.md" ]
+[stderr] [ "$(rg -l '"'"'^design_authoring_batch: GB0001$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 2 ]
+[stderr] [ \""'$(rg -l '"'"'^design_authoring_batch: GB0002$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 2 ]
+[stderr] [ \""'$(rg -l '"'"'^design_authoring_batch: GB0003$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 1 ]
+[stderr] jq -e '[.modules[].game_design_ids[], .modules[].production_inventory_ids[]] | length == 27 and (unique | length == 27)' \""'$project_dir/planning/game-design-manifest.json" >/dev/null
+[stderr] jq -e '"'[.entries[].id] | length == 15 and (unique | length == 15)' \""'$project_dir/planning/game-production-inventory.json" >/dev/null
+[stderr] rg -q '"'"'`QB-A-01` through `QB-A-48` are'"\\s+still "'`draft`'"' \""'$project_dir/game-design-runbooks/GD0002.md"
+[stderr] rg -q '"'does not contain a completed provenance record' \""'$project_dir/planning/game-design-manifest.json"
+[stderr] printf '"'%s\\n' 'ownership, canonical coverage, pending successor, and manifest checkpoint checks passed'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  exited 1 in 0ms:
+[stderr] exec
+[stderr] /bin/zsh -lc "project_dir=projects/football-trivia-e2e
+[stderr] printf 'GD='; rg -l '"'^task_id: GD0002$'"' \""'$project_dir/game-design-runbooks" | wc -l
+[stderr] printf '"'GB1='; rg -l '"'^design_authoring_batch: GB0001$'"' \""'$project_dir/game-design-runbooks" | wc -l
+[stderr] printf '"'GB2='; rg -l '"'^design_authoring_batch: GB0002$'"' \""'$project_dir/game-design-runbooks" | wc -l
+[stderr] printf '"'GB3='; rg -l '"'^design_authoring_batch: GB0003$'"' \""'$project_dir/game-design-runbooks" | wc -l
+[stderr] jq -e '"'[.modules[].game_design_ids[], .modules[].production_inventory_ids[]] | {count:length, unique:(unique|length)}' \""'$project_dir/planning/game-design-manifest.json"
+[stderr] jq -e '"'[.entries[].id] | {count:length, unique:(unique|length)}' \""'$project_dir/planning/game-production-inventory.json"
+[stderr] rg -n '"'still "'`draft`|completed provenance record'"' \""'$project_dir/game-design-runbooks/GD0002.md" "$project_dir/planning/game-design-manifest.json"' in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] GD=       1
+[stderr] GB1=       2
+[stderr] GB2=       2
+[stderr] GB3=       1
+[stderr] {
+[stderr]   "count": 27,
+[stderr]   "unique": 27
+[stderr] }
+[stderr] {
+[stderr]   "count": 15,
+[stderr]   "unique": 15
+[stderr] }
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:17:still `draft` and have only pending reviews. Create or review durable editorial
+[stderr] projects/football-trivia-e2e/planning/game-design-manifest.json:12:      "The quiz-content-and-editorial-integrity module is not accepted: QB-A-01 through QB-A-48 are explicitly draft records with only pending review records. The catalogue defines required provenance locators and two distinct accepted reviews, but does not contain a completed provenance record, factual/rights decision, accessibility/copy decision, or second-review decision for any card revision.",
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc 'set -e
+[stderr] project_dir=projects/football-trivia-e2e
+[stderr] [ "$(rg -l '"'"'^task_id: GD0002$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 1 ]
+[stderr] [ "'! -e "$project_dir/game-design-runbooks/GQ0001.md" ]
+[stderr] [ "$(rg -l '"'"'^design_authoring_batch: GB0001$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 2 ]
+[stderr] [ \""'$(rg -l '"'"'^design_authoring_batch: GB0002$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 2 ]
+[stderr] [ \""'$(rg -l '"'"'^design_authoring_batch: GB0003$'"' \""'$project_dir/game-design-runbooks" | wc -l | tr -d '"' ')\" = 1 ]
+[stderr] jq -e '[.modules[].game_design_ids[], .modules[].production_inventory_ids[]] | length == 27 and (unique | length == 27)' \""'$project_dir/planning/game-design-manifest.json" >/dev/null
+[stderr] jq -e '"'[.entries[].id] | length == 15 and (unique | length == 15)' \""'$project_dir/planning/game-production-inventory.json" >/dev/null
+[stderr] rg -q '"'still "'`draft` and have only pending reviews'"' \""'$project_dir/game-design-runbooks/GD0002.md"
+[stderr] rg -q '"'does not contain a completed provenance record' \""'$project_dir/planning/game-design-manifest.json"
+[stderr] printf '"'%s\\n' 'PASS: ownership, canonical coverage, pending successor, and manifest checkpoint checks'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] PASS: ownership, canonical coverage, pending successor, and manifest checkpoint checks
+[stderr] 
+[stderr] codex
+[stderr] {"status":"repairable_failure","summary":"GC0001 audit is complete: ownership, dependency closure, and canonical ID coverage are structurally closed, but accepted detailed evidence is missing for all 48 QB-A card revisions. The required single bounded successor GD0002 already exists; the manifest remains pending and unaccepted.","changed_files":[],"test_result":"Passed focused shell checks: exactly one GD0002 and no GQ0001; GB ownership counts are 2/2/1 for GB0001/2/3; manifest has 27 unique GAME/GPI references; inventory has 15 unique GPI entries; GD0002 and the manifest checkpoint retain the draft/pending provenance-and-review reason.","evidence":{"agent_log":"Reviewed GC0001, GB0001–GB0003, G0001–G0005, the five design-evidence bibles, canonical bible/inventory, manifest, and GD0002.","adapter_log":"","test_log":"PASS: ownership, canonical coverage, pending successor, and manifest checkpoint checks","browser_log":"Not applicable.","screenshots":[]},"acceptance_results":[{"criterion":"Every selected module and inventory entry has accepted owned evidence.","status":"fail","evidence":"GAME-002/GPI-001–GPI-005 lack accepted card-level evidence: QB-A-01–QB-A-48 remain draft with pending reviews and no completed provenance, factual/rights, accessibility/copy, or independent second-review decisions. GD0002 retains these exact reasons."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GC0001.md","projects/football-trivia-e2e/game-design-runbooks/GB0001.md","projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0001.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md","projects/football-trivia-e2e/game-design-runbooks/GD0002.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.json","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/planning/game-production-inventory.json","projects/football-trivia-e2e/planning/game-design-manifest.json"],"updated_files":[],"summary":"No documentation was changed because the task’s prescribed incomplete-evidence successor, GD0002, and the pending manifest checkpoint were already present and accurate."},"known_limitations":["All 48 QB-A records require independently inspectable current-revision originality, durable factual provenance, factual/rights review, accessibility/copy review, and independent second-review acceptance before they can become eligible.","GAME-004 and GAME-006 publication-dependent selection remains conditional; manifest acceptance and canonical bible/inventory updates are reserved for later GQ0001.","Implementation coverage remains deferred until F012."],"browser_coverage":"No browser spec changed: this is a domain/documentation audit with browser_impact not_applicable.","recommended_next_step":"use_codex"}
+[stdout] {"status":"repairable_failure","summary":"GC0001 audit is complete: ownership, dependency closure, and canonical ID coverage are structurally closed, but accepted detailed evidence is missing for all 48 QB-A card revisions. The required single bounded successor GD0002 already exists; the manifest remains pending and unaccepted.","changed_files":[],"test_result":"Passed focused shell checks: exactly one GD0002 and no GQ0001; GB ownership counts are 2/2/1 for GB0001/2/3; manifest has 27 unique GAME/GPI references; inventory has 15 unique GPI entries; GD0002 and the manifest checkpoint retain the draft/pending provenance-and-review reason.","evidence":{"agent_log":"Reviewed GC0001, GB0001–GB0003, G0001–G0005, the five design-evidence bibles, canonical bible/inventory, manifest, and GD0002.","adapter_log":"","test_log":"PASS: ownership, canonical coverage, pending successor, and manifest checkpoint checks","browser_log":"Not applicable.","screenshots":[]},"acceptance_results":[{"criterion":"Every selected module and inventory entry has accepted owned evidence.","status":"fail","evidence":"GAME-002/GPI-001–GPI-005 lack accepted card-level evidence: QB-A-01–QB-A-48 remain draft with pending reviews and no completed provenance, factual/rights, accessibility/copy, or independent second-review decisions. GD0002 retains these exact reasons."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GC0001.md","projects/football-trivia-e2e/game-design-runbooks/GB0001.md","projects/football-trivia-e2e/game-design-runbooks/GB0002.md","projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0001.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md","projects/football-trivia-e2e/game-design-runbooks/G0003.md","projects/football-trivia-e2e/game-design-runbooks/G0004.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md","projects/football-trivia-e2e/game-design-runbooks/GD0002.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.json","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/planning/game-production-inventory.json","projects/football-trivia-e2e/planning/game-design-manifest.json"],"updated_files":[],"summary":"No documentation was changed because the task’s prescribed incomplete-evidence successor, GD0002, and the pending manifest checkpoint were already present and accurate."},"known_limitations":["All 48 QB-A records require independently inspectable current-revision originality, durable factual provenance, factual/rights review, accessibility/copy review, and independent second-review acceptance before they can become eligible.","GAME-004 and GAME-006 publication-dependent selection remains conditional; manifest acceptance and canonical bible/inventory updates are reserved for later GQ0001.","Implementation coverage remains deferred until F012."],"browser_coverage":"No browser spec changed: this is a domain/documentation audit with browser_impact not_applicable.","recommended_next_step":"use_codex"}
+[stderr] tokens used
+[stderr] 40,636

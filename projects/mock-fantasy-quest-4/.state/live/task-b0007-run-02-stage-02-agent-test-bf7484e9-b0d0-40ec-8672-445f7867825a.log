@@ -1,0 +1,8 @@
+Task: B0007 — Author campaign domain-state contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for B0007.
+
+===== Test output =====
+$ git diff --check
+

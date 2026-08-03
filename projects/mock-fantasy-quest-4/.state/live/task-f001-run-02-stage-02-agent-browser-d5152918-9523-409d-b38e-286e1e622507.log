@@ -1,0 +1,8 @@
+Task: F001 — Discover product context and normalize the product brief
+Stage: browser
+Status: environment_failure
+Summary: Browser QA: build/web is missing; the Flutter build worker must pass first
+
+===== Adapter output =====
+{"status": "environment_failure", "summary": "Browser QA: build/web is missing; the Flutter build worker must pass first", "changed_files": [], "test_result": "", "evidence": {"agent_log": "", "adapter_log": "", "test_log": "", "browser_log": "", "screenshots": []}, "acceptance_results": [], "documentation": {"reviewed_files": [], "updated_files": [], "summary": ""}, "known_limitations": [], "browser_coverage": "", "recommended_next_step": "ask_user"}
+

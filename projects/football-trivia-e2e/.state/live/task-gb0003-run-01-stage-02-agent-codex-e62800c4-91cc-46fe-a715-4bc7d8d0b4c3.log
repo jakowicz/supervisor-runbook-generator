@@ -1,0 +1,982 @@
+[stderr] Reading additional input from stdin...
+[stderr] 2026-08-03T00:41:30.012135Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+[stderr] 2026-08-03T00:41:30.012154Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+[stderr] 2026-08-03T00:41:30.012318Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+[stderr] 2026-08-03T00:41:30.013006Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+[stderr] 2026-08-03T00:41:30.013939Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+[stderr] 2026-08-03T00:41:30.015195Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+[stderr] OpenAI Codex v0.145.0
+[stderr] --------
+[stderr] workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] model: gpt-5.6-terra
+[stderr] provider: openai
+[stderr] approval: on-request
+[stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[stderr] reasoning effort: medium
+[stderr] reasoning summaries: none
+[stderr] session id: 019fc511-8e69-7de3-9ad8-071b97403d68
+[stderr] --------
+[stderr] user
+[stderr] You are the coding worker for one isolated runbook task.
+[stderr] 
+[stderr] Work only in the repository passed as your working directory. Do not publish,
+[stderr] deploy, access secrets, make payments, or change product scope. Stop and report
+[stderr] needs_user_review if the task is destructive, unclear, or requires authority.
+[stderr] Implement only the task below, run relevant checks, and then output exactly one
+[stderr] JSON object conforming to the WorkerResult contract. A status of pass means the
+[stderr] change is ready for independent test and visual review; it is not self-approval.
+[stderr] 
+[stderr] Task:
+[stderr] {
+[stderr]   "task_id": "GB0003",
+[stderr]   "title": "Author accessibility and target design runbook",
+[stderr]   "objective": "Create only G0005 for GAME-009\u2013012 and GPI-012\u2013015: equivalent controls and feedback, recovery, offline/update messaging, and target parity/certification evidence.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+[stderr]   "acceptance_criteria": [
+[stderr]     "No more than five G tasks are created and it declares `design_authoring_batch: GB0003`."
+[stderr]   ],
+[stderr]   "risk_level": "normal",
+[stderr]   "sequence": 2,
+[stderr]   "dependencies": [
+[stderr]     "GD0001"
+[stderr]   ],
+[stderr]   "prerequisite_collections": [],
+[stderr]   "browser_impact": "not_applicable",
+[stderr]   "playwright_specs": [],
+[stderr]   "asset_impact": "not_applicable",
+[stderr]   "asset_brief": "",
+[stderr]   "asset_ids": [],
+[stderr]   "visual_style_version": "",
+[stderr]   "audio_impact": "not_applicable",
+[stderr]   "audio_brief": "",
+[stderr]   "audio_ids": [],
+[stderr]   "audio_duration_seconds": 0,
+[stderr]   "audio_loop": "not_applicable",
+[stderr]   "audio_style_version": "",
+[stderr]   "source_specifications": [
+[stderr]     "specification/02-game-design-bible.md",
+[stderr]     "specification/02-game-design-bible.json",
+[stderr]     "specification/01-creative-direction.md"
+[stderr]   ],
+[stderr]   "source_catalogue_ids": [
+[stderr]     "GAME-009",
+[stderr]     "GAME-010",
+[stderr]     "GAME-011",
+[stderr]     "GAME-012",
+[stderr]     "GPI-012",
+[stderr]     "GPI-013",
+[stderr]     "GPI-014",
+[stderr]     "GPI-015"
+[stderr]   ],
+[stderr]   "authoring_batch": "",
+[stderr]   "design_authoring_batch": "",
+[stderr]   "factory_stages": [],
+[stderr]   "execution_mode": "implementation",
+[stderr]   "continuation_context": ""
+[stderr] }
+[stderr] 
+[stderr] Continuation checkpoint (only when present):
+[stderr] No prior checkpoint: inspect the current repository before making changes.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+[stderr] `dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+[stderr] can write SDK caches outside the worktree and are deliberately owned by the
+[stderr] supervisor's independent precheck/test stages. When the continuation evidence
+[stderr] names a concrete source or test failure, repair that evidence in the worktree,
+[stderr] run only safe focused checks, and return `pass` for the deterministic stage to
+[stderr] validate. Never return a failure solely because an SDK command needs approval.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] Efficient investigation rules (especially important for local models):
+[stderr] - Start with the Codebase Memory MCP for architecture and targeted symbols.
+[stderr] - Do not use whole-file reads for Dart, test, lock, generated, or log files.
+[stderr]   Use targeted symbol snippets or `run_shell_command` with `rg` and
+[stderr]   `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+[stderr] - Inspect only files directly relevant to the acceptance criteria. Do not
+[stderr]   browse unrelated Playwright, automation, or configuration files merely to
+[stderr]   learn the repository layout.
+[stderr] - After the focused investigation, implement and run the smallest relevant
+[stderr]   checks. Do not continue exploratory tool calls once the implementation path
+[stderr]   is clear.
+[stderr] - If a tool reports a missing file, treat it as non-blocking and continue with
+[stderr]   the repository evidence you already have.
+[stderr] 
+[stderr] Completion protocol:
+[stderr] - Your final action MUST be the `structured_output` tool supplied by
+[stderr]   `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+[stderr]   response.
+[stderr] - Use native nested JSON values in that tool call: `evidence` and
+[stderr]   `documentation` are objects, while `acceptance_results` is an array. Never
+[stderr]   put JSON text inside quotes for any of those fields.
+[stderr] - If a check cannot run, return a structured `repairable_failure` or
+[stderr]   `needs_user_review` result immediately with the exact reason. Never wait
+[stderr]   silently for a tool or model request to recover.
+[stderr] 
+[stderr] 
+[stderr] Your final WorkerResult must include all of the following:
+[stderr] - `acceptance_results`: one entry for every task acceptance criterion, in the
+[stderr]   same order. Copy each criterion text verbatim from the task, with pass/fail/
+[stderr]   not_verified status and concrete evidence;
+[stderr] - `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+[stderr]   why they were or were not changed;
+[stderr] - `test_result`: exact checks you ran and their outcomes;
+[stderr] - `known_limitations`: remaining gaps or an empty list.
+[stderr] 
+[stderr] Do not claim `pass` if a criterion is unverified. Update user-facing README or
+[stderr] developer documentation whenever the change affects behaviour, setup, commands,
+[stderr] architecture, design, or progress. If no documentation change is needed, state
+[stderr] the reviewed files and explain why.
+[stderr] 
+[stderr] For `final_verification`, the independent `test`, `browser`, and visual-review
+[stderr] stages are the required verification gates. After repairing every concrete
+[stderr] source/test failure supplied in this prompt, return `pass` so those gates run.
+[stderr] Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+[stderr] left to the independent test stage. Return `needs_user_review` only for a real
+[stderr] authority, safety, or irreducibly ambiguous product decision.
+[stderr] 
+[stderr] For browser-impacting work, create or update a task-specific Playwright spec in
+[stderr] `supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+[stderr] and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+[stderr] work, explain in `browser_coverage` why no task-specific browser spec changed.
+[stderr] 
+[stderr] Visual baseline rule:
+[stderr] - When the continuation evidence names a golden, snapshot, or visual-regression
+[stderr]   failure, inspect the supplied master/test/diff artifacts before changing any
+[stderr]   baseline. Work out whether the new render is the intended result of this
+[stderr]   task, and check that it has no clipping, overlap, or lost meaning.
+[stderr] - If it is intentional, regenerate only the affected approved baselines using
+[stderr]   the repository's documented command, update stale visual/browser checks when
+[stderr]   their prior expectation is no longer correct, and rerun the relevant suite.
+[stderr] - If it is not intentional, fix the product or test setup instead. Never mask
+[stderr]   a real visual regression by blindly accepting a changed screenshot.
+[stderr] 
+[stderr] Failure-repair protocol:
+[stderr] - When the continuation checkpoint says that a Supervisor terminal stage
+[stderr]   failed, treat its captured command and output as the starting evidence. Do
+[stderr]   not merely describe a possible fix.
+[stderr] - Use the terminal in this project worktree to inspect, repair, and rerun the
+[stderr]   same focused check whenever that command is safe in your sandbox. Include
+[stderr]   the command and result in `test_result`.
+[stderr] - If that exact command needs an SDK, browser, or approval outside this
+[stderr]   worker's sandbox, repair the demonstrated issue but do not replace the
+[stderr]   independent validation. Return `pass` only when the worktree is ready for
+[stderr]   Supervisor to rerun its configured terminal command after your repair.
+[stderr] 
+[stderr] warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+[stderr] codex
+[stderr] {"status":"pass","summary":"I’ll inspect the existing design runbook conventions and add the single requested G0005 artifact without touching application code.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] mcp: codebase-memory-mcp/get_architecture started
+[stderr] mcp: codebase-memory-mcp/get_architecture (failed)
+[stderr] user cancelled MCP tool call
+[stderr] exec
+[stderr] /bin/zsh -lc "rg --files -g '"'!*lock*'"' | rg '("'^|/)(G0005|README|INITIAL|02-game-design-bible|01-creative-direction|AGENTS)'"\\.'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] supervisor/README.md
+[stderr] README.md
+[stderr] runbooks/README.md
+[stderr] projects/README.md
+[stderr] projects/mock-fantasy-quest-4/README.md
+[stderr] projects/mock-fantasy-quest-4/specification/README.md
+[stderr] projects/mock-fantasy-quest-4/authoring-runbooks/INITIAL.md
+[stderr] projects/mock-fantasy-quest-4/INITIAL.md
+[stderr] projects/final-fantasy/INITIAL.md
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md
+[stderr] projects/football-trivia-e2e/specification/01-creative-direction.md
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] projects/football-trivia-e2e/INITIAL.md
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "sed -n '1,240p' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] rg -n -C 3 'GAME-009|GAME-010|GAME-011|GAME-012|GPI-012|GPI-013|GPI-014|GPI-015|G0005|design_authoring_batch' projects/football-trivia-e2e/specification/02-game-design-bible.md projects/football-trivia-e2e/specification/02-game-design-bible.json projects/football-trivia-e2e/specification/01-creative-direction.md
+[stderr] sed -n '1,200p' projects/football-trivia-e2e/game-design-runbooks/README.md 2>/dev/null || true
+[stderr] sed -n '1,160p' projects/football-trivia-e2e/INITIAL.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] ---
+[stderr] task_id: G0005
+[stderr] sequence: 3
+[stderr] dependencies: GB0003,G0004
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+[stderr] title: Define accessible recovery and target parity bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0003
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-009–012/GPI-012–015: four input mappings, captions/contrast/text/motion equivalents, four recovery states, offline/update notices, and web/PWA/Android/iOS parity and certification matrix.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/accessibility-recovery-and-target-parity-bible.md`: four input mappings, accessible feedback equivalents, recovery/offline/update states, and web/PWA/Android/iOS rule/content/save parity matrix.
+[stderr] 
+[stderr] Do not create target-exclusive content, mandatory accounts/sync, code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Each meaning has a non-audio, non-colour equivalent and target adaptations cannot alter shared rules or saves.
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-15-    {"id":"GAME-002","module":"quiz-content-and-editorial-integrity","title":"Kickoff Mix catalogue batch","player_outcome":"Play varied football knowledge questions.","source_evidence":["INITIAL: themed rounds","PROJECT_BRIEF: curated reviewed versioned bank"],"first_release_boundary":"48 cards in four 12-card reviewed batches with stated category/difficulty quotas.","dependencies":["GAME-001"],"production_mode":"finite_named_content"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-16-    {"id":"GAME-003","module":"quiz-content-and-editorial-integrity","title":"Answer adjudication and provenance","player_outcome":"Understand a fair accepted or rejected answer.","source_evidence":["INITIAL: answer validation","F001: provenance and fact review"],"first_release_boundary":"Deterministic ID/normalised-alias comparison only; no fuzzy matching or unreviewed source.","dependencies":["GAME-001"],"production_mode":"systemic_rules"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-17-    {"id":"GAME-004","module":"quiz-content-and-editorial-integrity","title":"Freshness and editorial workflow","player_outcome":"Avoid unnecessary repeat questions.","source_evidence":["INITIAL: curated bank and local progress","F001: anti-repetition"],"first_release_boundary":"Exclude last two completed-round cards where alternatives exist; versioned propose-to-publish workflow.","dependencies":["GAME-001","GAME-002"],"production_mode":"scalable_catalogue"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:18:    {"id":"GAME-005","module":"round-score-and-progress-rules","title":"First Whistle tutorial round","player_outcome":"Finish a first round and understand saving.","source_evidence":["INITIAL: onboarding/tutorial and save/resume","PROJECT_BRIEF: first useful session"],"first_release_boundary":"Five fixed named tutorial cards, non-timed, completable offline without sign-in.","dependencies":["GAME-001","GAME-009","GAME-010"],"production_mode":"finite_named_content"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-19-    {"id":"GAME-006","module":"round-score-and-progress-rules","title":"Mixed Fixture standard round","player_outcome":"Complete a mobile-friendly themed round.","source_evidence":["INITIAL: quick sessions and themed rounds"],"first_release_boundary":"One 10-card template with deterministic eligible selection and optional-off timer.","dependencies":["GAME-002","GAME-003","GAME-004"],"production_mode":"systemic_rules"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-20-    {"id":"GAME-007","module":"round-score-and-progress-rules","title":"Score and streak rules","player_outcome":"See understandable momentum and results.","source_evidence":["INITIAL: scoring streaks and feedback"],"first_release_boundary":"100 base points; capped 3+ streak bonus; wrong/blank/timeout/abandon resets streak.","dependencies":["GAME-003","GAME-006"],"production_mode":"systemic_rules"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:21:    {"id":"GAME-008","module":"round-score-and-progress-rules","title":"Result and local milestone","player_outcome":"Know what was achieved and what to do next.","source_evidence":["INITIAL: local progress and save/load"],"first_release_boundary":"Results and first_whistle_complete only; no RPG levels, ranks, or social leaderboard.","dependencies":["GAME-006","GAME-007","GAME-010"],"production_mode":"systemic_rules"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:22:    {"id":"GAME-009","module":"accessible-recoverable-multitarget-experience","title":"Guided accessible start","player_outcome":"Start and control the game with a chosen input method.","source_evidence":["INITIAL: accessible controls/text/captions/visual settings","INITIAL: web keyboard/mouse/touch/gamepad"],"first_release_boundary":"Local profile, tutorial entry, settings, and equivalent touch/pointer/keyboard/gamepad actions; no mandatory account.","dependencies":[],"production_mode":"systemic_rules"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:23:    {"id":"GAME-010","module":"accessible-recoverable-multitarget-experience","title":"Confirmed snapshot recovery","player_outcome":"Return without silent loss after interruption or failure.","source_evidence":["INITIAL: save resume data-loss recovery","INITIAL: crash/error recovery"],"first_release_boundary":"Confirmed local snapshots, write-failure UI, corrupt-draft choice, and confirmed local deletion; no remote sync.","dependencies":["GAME-008"],"production_mode":"systemic_rules"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:24:    {"id":"GAME-011","module":"accessible-recoverable-multitarget-experience","title":"Offline update and error path","player_outcome":"Play cached content and recover safely from update/error states.","source_evidence":["INITIAL: PWA offline/cache refresh","INITIAL: crash reporting and recovery"],"first_release_boundary":"Cached batch is playable offline; updates apply between rounds; minimised optional diagnostics only.","dependencies":["GAME-002","GAME-010"],"production_mode":"systemic_rules"},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:25:    {"id":"GAME-012","module":"accessible-recoverable-multitarget-experience","title":"Shared-core platform adaptation","player_outcome":"Receive the same fair quiz on each selected target.","source_evidence":["INITIAL: responsive web, PWA, Android, iOS","INITIAL: shared core with adaptations"],"first_release_boundary":"Rule/content/save parity; web inputs/responsive layout, PWA install/cache UX, phone touch adaptation only.","dependencies":["GAME-009","GAME-010","GAME-011"],"production_mode":"systemic_rules"}
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-26-  ],
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-27-  "implementation_map": [
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-28-    {"id":"GAME-001","first_release_journeys":["J1","J2","J4"],"implementation_domains":["B-content-adjudication" ]},
+[stderr] --
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-33-    {"id":"GAME-006","first_release_journeys":["J2","J3"],"implementation_domains":["A-shell-progress","C-round-score-feedback"]},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-34-    {"id":"GAME-007","first_release_journeys":["J1","J2"],"implementation_domains":["C-round-score-feedback"]},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-35-    {"id":"GAME-008","first_release_journeys":["J1","J2","J3"],"implementation_domains":["A-shell-progress","C-round-score-feedback","D-persistence-recovery"]},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:36:    {"id":"GAME-009","first_release_journeys":["J0","J1"],"implementation_domains":["E-presentation-accessibility"]},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:37:    {"id":"GAME-010","first_release_journeys":["J3"],"implementation_domains":["D-persistence-recovery"]},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:38:    {"id":"GAME-011","first_release_journeys":["J1","J3","J5"],"implementation_domains":["D-persistence-recovery","F-delivery-operations"]},
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json:39:    {"id":"GAME-012","first_release_journeys":["J0","J1","J2","J3","J5"],"implementation_domains":["E-presentation-accessibility","F-delivery-operations"]}
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-40-  ]
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.json-41-}
+[stderr] --
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-56-neutral answer controls, and non-colour success/error indicators; audio is
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-57-supportive, optional, and captioned.
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-58-
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md:59:### Accessible, recoverable multi-target experience — `GAME-009` to `GAME-012`
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-60-
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-61-**Player outcome:** start, control, interrupt, recover, and return to a round
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-62-confidently on a supported surface. **Entities:** `LocalProfile`, `Settings`,
+[stderr] --
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-65-
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-66-| Unit | Design card / rule | First-release boundary and acceptance |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-67-| --- | --- | --- |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md:68:| GAME-009 | **Guided start.** First launch offers an accessible plain-language tutorial entry, settings access, and a local profile without sign-in. Controls map select/navigate/confirm/back/pause to touch, pointer, keyboard, and gamepad. | No mandatory account. Permission denial for optional notifications/diagnostics changes no game path and explains how to alter it later. Test: every critical action is operable with keyboard and touch, focus is visible, and gamepad has an equivalent mapping. |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md:69:| GAME-010 | **Save/recovery.** Save immutable confirmed snapshots at tutorial completion, resolved question boundaries, explicit pause, and completed results. On failed write, retain the last confirmed snapshot and show retry/continue-without-saving. On corrupt draft, offer last confirmed snapshot or discard draft; never silently overwrite. | Remote sync/conflict requires approval and is excluded. Local deletion requires confirmation, names its effect, clears local profile/history/snapshots, and returns to first launch. Test: write failure, crash/restart, corrupt draft, and deletion fixtures preserve stated invariants. |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md:70:| GAME-011 | **Offline/update/error.** The installed content batch and current snapshot remain playable offline. A new content version is staged between rounds; an incompatible cache reports recovery steps and preserves confirmed save before cache reset. Unexpected errors show a plain-language retry/return-home path and optional minimised diagnostic consent. | No background live content requirement. Test: offline launch with cached assets, update mid-round, unavailable content, and diagnostic permission-denied behaviours are covered. |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md:71:| GAME-012 | **Platform adaptation.** Shared rule/content/save semantics on responsive web, PWA, Android, and iOS. Web adds pointer/keyboard/gamepad and responsive layouts; PWA adds install/offline cache/update UX; phones add touch targets and approved portrait/landscape choice. | No target-exclusive questions or rule differences. OS/browser matrix, orientation, performance, battery, thermal, size, store/privacy declarations, crash vendor, and exact language set remain approval gates. Test: capability matrix is exercised once targets are chosen. |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-72-
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-73-Accessibility applies to all three systems: text-size and contrast settings,
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-74-reduced motion, captions/text equivalents, non-colour result encoding, focus
+[stderr] --
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-92-| --- | --- | --- |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-93-| GAME-001–004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-94-| GAME-005–008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md:95:| GAME-009–012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-96-
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-97-The machine-readable `implementation_map` in the companion JSON maps every
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md-98-individual `GAME-*` unit, rather than treating this grouped table as a substitute.
+[stderr] # Initial project brief
+[stderr] 
+[stderr] This file is the source of truth for the document-producing collection. Later
+[stderr] runbooks must preserve its scope and record unanswered questions rather than
+[stderr] inventing requirements.
+[stderr] 
+[stderr] ## Project workspace
+[stderr] 
+[stderr] - Project name: football-trivia-e2e
+[stderr] - Workspace: `projects/football-trivia-e2e/`
+[stderr] 
+[stderr] ## What are we creating?
+[stderr] 
+[stderr] A feature-rich football trivia game for quick mobile sessions: themed rounds, multiple question formats, answer validation, scoring streaks, accessible feedback, local progress, and a curated first-release question bank.
+[stderr] 
+[stderr] ## Product category
+[stderr] 
+[stderr] - [x] Game
+[stderr] 
+[stderr] ## Game characteristics
+[stderr] 
+[stderr] - [x] 2D presentation
+[stderr] - [x] Single-player game
+[stderr] - [x] Puzzle
+[stderr] - [x] card
+[stderr] - [x] board
+[stderr] - [x] or turn-based game
+[stderr] 
+[stderr] ## Shared product requirements
+[stderr] 
+[stderr] - Accessible controls, text, captions, and visual settings
+[stderr] - Save, resume, and data-loss recovery behaviour
+[stderr] - Crash reporting and player-facing error recovery
+[stderr] 
+[stderr] ## Who is it for, and what must it help them do?
+[stderr] 
+[stderr] - Intended users: - Casual players
+[stderr] - Adult players
+[stderr] - Their primary outcome: Progress through a story or campaign.
+[stderr] - What makes the first useful session successful: Finish a first battle and understand how saving works.
+[stderr] 
+[stderr] ## Required first-release capabilities
+[stderr] 
+[stderr] - Playable core loop
+[stderr] - Onboarding and tutorial
+[stderr] - Save/load and progression
+[stderr] - Settings and accessibility
+[stderr] - Audio and visual feedback
+[stderr] - Content/level delivery
+[stderr] - Player account and identity
+[stderr] - Multiplayer services and player safety
+[stderr] - Live-service operations
+[stderr] - In-app purchases and entitlement handling
+[stderr] - Crash/error recovery
+[stderr] 
+[stderr] ## Later or deferred capabilities
+[stderr] 
+[stderr] - Live events or seasonal content
+[stderr] - Player-created and shared content (custom levels, mods, designs, or stories)
+[stderr] - Advanced analytics or monetisation
+[stderr] 
+[stderr] ## Target systems and delivery surfaces
+[stderr] 
+[stderr] Responsive public web application and Progressive web app (PWA) are included by
+[stderr] default. The selected compatible delivery profile is:
+[stderr] 
+[stderr] - [x] Automated compatible profile
+[stderr] 
+[stderr] Additional selected targets:
+[stderr] 
+[stderr] - [x] Responsive public web application
+[stderr] - [x] Progressive web app (PWA)
+[stderr] - [x] Android phone
+[stderr] - [x] iPhone (iOS)
+[stderr] 
+[stderr] ## Per-target requirements
+[stderr] 
+[stderr] ### Responsive public web application
+[stderr] 
+[stderr] - Keyboard, mouse, touch, and gamepad input
+[stderr] - Responsive layout across phone, tablet, and desktop screens
+[stderr] - Browser compatibility and web performance budget
+[stderr] ### Progressive web app (PWA)
+[stderr] 
+[stderr] - Installable PWA experience
+[stderr] - Offline asset and save-data behaviour
+[stderr] - Safe game update and cache-refresh behaviour
+[stderr] ### Android phone
+[stderr] 
+[stderr] - Touch controls and orientation rules
+[stderr] - Mobile performance, battery, thermal, and download-size budget
+[stderr] - App-store packaging, privacy disclosures, and release requirements
+[stderr] ### iPhone (iOS)
+[stderr] 
+[stderr] - Touch controls and orientation rules
+[stderr] - Mobile performance, battery, thermal, and download-size budget
+[stderr] - App-store packaging, privacy disclosures, and release requirements
+[stderr] 
+[stderr] ## Constraints and non-goals
+[stderr] 
+[stderr] - Technology and repository constraints: Determine from the product brief and selected platforms.
+[stderr] - Privacy, security, accessibility, offline, integration, cost, and delivery constraints: Determine from the product brief and selected platforms.
+[stderr] - Explicitly excluded work: No copied branding, assets, text, layouts, or distinctive interactions.
+[stderr] 
+[stderr] ## Cross-platform product decisions
+[stderr] 
+[stderr] - Shared versus platform-specific capabilities: Use a shared core with platform adaptations only where necessary.
+[stderr] - Data synchronisation, offline, and conflict policy: Use remote account-linked state with safe local cache where applicable.
+[stderr] - Accessibility, localisation, privacy, parental-control, store, or certification requirements: Provide accessibility, localisation, privacy, and applicable platform requirements.
+[stderr] - Minimum supported OS, browser, device class, and network condition: Support widely used devices and feasible slow-network behaviour.
+[stderr] 
+[stderr] ## Functional references
+[stderr] 
+[stderr] The Athletic quiz formats for football-topic breadth and QuizUp for short competitive trivia sessions only
+[stderr] 
+[stderr] ## Art direction
+[stderr] 
+[stderr] - User direction: Original modern football broadcast graphics, bold category colours, readable typography, and celebratory but accessible feedback
+[stderr] - The project `.env` has been updated to use this direction.
+[stderr] 
+[stderr] ## Audio direction
+[stderr] 
+[stderr] - No custom direction supplied. Gemma 4 12B will create an original music and sound direction for audio work; ACE-Step 1.5 XL Turbo will generate the selected cues locally.
+[stderr] 
+[stderr] ## Open decisions
+[stderr] 
+[stderr] - Resolve remaining decisions from the brief and references; record only genuine ambiguities.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "rg --files projects/football-trivia-e2e | rg '("'^|/)(design-evidence|game-design-runbooks|GPI-|G000[1-5])'"' && find projects/football-trivia-e2e -maxdepth 2 -type d | sort && git status --short" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0004.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0003.md
+[stderr] projects/football-trivia-e2e
+[stderr] projects/football-trivia-e2e/.state
+[stderr] projects/football-trivia-e2e/.state/live
+[stderr] projects/football-trivia-e2e/.state/reports
+[stderr] projects/football-trivia-e2e/game-design-runbooks
+[stderr] projects/football-trivia-e2e/planning
+[stderr] projects/football-trivia-e2e/specification
+[stderr]  M .env
+[stderr] ?? projects/final-fantasy/
+[stderr] ?? projects/football-trivia-e2e/
+[stderr] ?? projects/mock-fantasy-quest-4/
+[stderr] ?? runbooks/.supervisor-children/
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+[stderr] for file in projects/football-trivia-e2e/game-design-runbooks/G000{1,2,3,4,5}.md; do printf '%s ' \""'$file"; sed -n '"'1,20p' \""'$file" | rg '"'"'^task_id:|''^design_authoring_batch:'"'; done
+[stderr] rg -n 'GPI-012|GPI-013|GPI-014|GPI-015' projects/football-trivia-e2e/specification/01-creative-direction.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  exited 1 in 0ms:
+[stderr] ---
+[stderr] task_id: GB0003
+[stderr] sequence: 2
+[stderr] dependencies: GD0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md
+[stderr] source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+[stderr] title: Author accessibility and target design runbook
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Create only G0005 for GAME-009–012 and GPI-012–015: equivalent controls and feedback, recovery, offline/update messaging, and target parity/certification evidence.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `G0005.md` only; it must declare `design_authoring_batch: GB0003` and create/review `design-evidence/accessibility-recovery-and-target-parity-bible.md`.
+[stderr] 
+[stderr] Do not create code, B/R runbooks, target-exclusive rules, mandatory accounts, remote sync, or final audit.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0001.md task_id: G0001
+[stderr] design_authoring_batch: GB0001
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0002.md task_id: G0002
+[stderr] design_authoring_batch: GB0001
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0003.md task_id: G0003
+[stderr] design_authoring_batch: GB0002
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0004.md task_id: G0004
+[stderr] design_authoring_batch: GB0002
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0005.md task_id: G0005
+[stderr] design_authoring_batch: GB0003
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"The requested artifact is already present and scoped correctly. I’m running a focused structural check only; no app or SDK tooling is needed.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md"],"updated_files":[],"summary":"No documentation changes are needed because the requested G0005 runbook already exists and satisfies the authoring-batch requirement."},"known_limitations":[],"browser_coverage":"Not applicable: this is a design-runbook authoring task with no browser-facing code changes.","recommended_next_step":"complete"}
+[stderr] exec
+[stderr] /bin/zsh -lc 'task_count=$(find projects/football-trivia-e2e/game-design-runbooks -maxdepth 1 -type f -name '"'G[0-9][0-9][0-9][0-9].md' | wc -l | tr -d ' ')
+[stderr] [ \""'$task_count" = 5 ]
+[stderr] rg -qx '"'task_id: G0005' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] rg -qx 'design_authoring_batch: GB0003' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] rg -q '"'^source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015$'"' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] printf 'verified G task count: %s\\n' \""'$task_count"' in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] verified G task count: 5
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.","changed_files":[],"test_result":"Focused structural check passed: exactly five G####.md tasks exist; G0005 declares task_id G0005, design_authoring_batch GB0003, and all required source catalogue IDs.","evidence":{"agent_log":"Inspected GB0003 and G0005 runbook metadata and scope.","adapter_log":"","test_log":"verified G task count: 5","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.","status":"pass","evidence":"Found exactly five G####.md runbooks (G0001–G0005); G0005.md contains `design_authoring_batch: GB0003`."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.json","projects/football-trivia-e2e/INITIAL.md"],"updated_files":[],"summary":"No documentation update was needed: the requested G0005 runbook already exists and accurately records the required design-authoring scope."},"known_limitations":[],"browser_coverage":"Not applicable: this task only verifies a design-runbook artifact and changes no browser-facing product behavior.","recommended_next_step":"complete"}
+[stderr] tokens used
+[stdout] {"status":"pass","summary":"Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.","changed_files":[],"test_result":"Focused structural check passed: exactly five G####.md tasks exist; G0005 declares task_id G0005, design_authoring_batch GB0003, and all required source catalogue IDs.","evidence":{"agent_log":"Inspected GB0003 and G0005 runbook metadata and scope.","adapter_log":"","test_log":"verified G task count: 5","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.","status":"pass","evidence":"Found exactly five G####.md runbooks (G0001–G0005); G0005.md contains `design_authoring_batch: GB0003`."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.json","projects/football-trivia-e2e/INITIAL.md"],"updated_files":[],"summary":"No documentation update was needed: the requested G0005 runbook already exists and accurately records the required design-authoring scope."},"known_limitations":[],"browser_coverage":"Not applicable: this task only verifies a design-runbook artifact and changes no browser-facing product behavior.","recommended_next_step":"complete"}
+[stderr] 25,286
+
+===== SUPERVISOR RESULT =====
+Task: GB0003 — Author accessibility and target design runbook
+Stage: codex
+Status: pass
+Summary: Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.
+
+===== Raw agent output =====
+{"status":"pass","summary":"Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.","changed_files":[],"test_result":"Focused structural check passed: exactly five G####.md tasks exist; G0005 declares task_id G0005, design_authoring_batch GB0003, and all required source catalogue IDs.","evidence":{"agent_log":"Inspected GB0003 and G0005 runbook metadata and scope.","adapter_log":"","test_log":"verified G task count: 5","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.","status":"pass","evidence":"Found exactly five G####.md runbooks (G0001–G0005); G0005.md contains `design_authoring_batch: GB0003`."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.json","projects/football-trivia-e2e/INITIAL.md"],"updated_files":[],"summary":"No documentation update was needed: the requested G0005 runbook already exists and accurately records the required design-authoring scope."},"known_limitations":[],"browser_coverage":"Not applicable: this task only verifies a design-runbook artifact and changes no browser-facing product behavior.","recommended_next_step":"complete"}
+Reading additional input from stdin...
+2026-08-03T00:41:30.012135Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-08-03T00:41:30.012154Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-08-03T00:41:30.012318Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+2026-08-03T00:41:30.013006Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json
+2026-08-03T00:41:30.013939Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+2026-08-03T00:41:30.015195Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json
+OpenAI Codex v0.145.0
+--------
+workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+model: gpt-5.6-terra
+provider: openai
+approval: on-request
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019fc511-8e69-7de3-9ad8-071b97403d68
+--------
+user
+You are the coding worker for one isolated runbook task.
+
+Work only in the repository passed as your working directory. Do not publish,
+deploy, access secrets, make payments, or change product scope. Stop and report
+needs_user_review if the task is destructive, unclear, or requires authority.
+Implement only the task below, run relevant checks, and then output exactly one
+JSON object conforming to the WorkerResult contract. A status of pass means the
+change is ready for independent test and visual review; it is not self-approval.
+
+Task:
+{
+  "task_id": "GB0003",
+  "title": "Author accessibility and target design runbook",
+  "objective": "Create only G0005 for GAME-009\u2013012 and GPI-012\u2013015: equivalent controls and feedback, recovery, offline/update messaging, and target parity/certification evidence.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+  "acceptance_criteria": [
+    "No more than five G tasks are created and it declares `design_authoring_batch: GB0003`."
+  ],
+  "risk_level": "normal",
+  "sequence": 2,
+  "dependencies": [
+    "GD0001"
+  ],
+  "prerequisite_collections": [],
+  "browser_impact": "not_applicable",
+  "playwright_specs": [],
+  "asset_impact": "not_applicable",
+  "asset_brief": "",
+  "asset_ids": [],
+  "visual_style_version": "",
+  "audio_impact": "not_applicable",
+  "audio_brief": "",
+  "audio_ids": [],
+  "audio_duration_seconds": 0,
+  "audio_loop": "not_applicable",
+  "audio_style_version": "",
+  "source_specifications": [
+    "specification/02-game-design-bible.md",
+    "specification/02-game-design-bible.json",
+    "specification/01-creative-direction.md"
+  ],
+  "source_catalogue_ids": [
+    "GAME-009",
+    "GAME-010",
+    "GAME-011",
+    "GAME-012",
+    "GPI-012",
+    "GPI-013",
+    "GPI-014",
+    "GPI-015"
+  ],
+  "authoring_batch": "",
+  "design_authoring_batch": "",
+  "factory_stages": [],
+  "execution_mode": "implementation",
+  "continuation_context": ""
+}
+
+Continuation checkpoint (only when present):
+No prior checkpoint: inspect the current repository before making changes.
+
+
+
+This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+`dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+can write SDK caches outside the worktree and are deliberately owned by the
+supervisor's independent precheck/test stages. When the continuation evidence
+names a concrete source or test failure, repair that evidence in the worktree,
+run only safe focused checks, and return `pass` for the deterministic stage to
+validate. Never return a failure solely because an SDK command needs approval.
+
+
+
+Efficient investigation rules (especially important for local models):
+- Start with the Codebase Memory MCP for architecture and targeted symbols.
+- Do not use whole-file reads for Dart, test, lock, generated, or log files.
+  Use targeted symbol snippets or `run_shell_command` with `rg` and
+  `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+- Inspect only files directly relevant to the acceptance criteria. Do not
+  browse unrelated Playwright, automation, or configuration files merely to
+  learn the repository layout.
+- After the focused investigation, implement and run the smallest relevant
+  checks. Do not continue exploratory tool calls once the implementation path
+  is clear.
+- If a tool reports a missing file, treat it as non-blocking and continue with
+  the repository evidence you already have.
+
+Completion protocol:
+- Your final action MUST be the `structured_output` tool supplied by
+  `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+  response.
+- Use native nested JSON values in that tool call: `evidence` and
+  `documentation` are objects, while `acceptance_results` is an array. Never
+  put JSON text inside quotes for any of those fields.
+- If a check cannot run, return a structured `repairable_failure` or
+  `needs_user_review` result immediately with the exact reason. Never wait
+  silently for a tool or model request to recover.
+
+
+Your final WorkerResult must include all of the following:
+- `acceptance_results`: one entry for every task acceptance criterion, in the
+  same order. Copy each criterion text verbatim from the task, with pass/fail/
+  not_verified status and concrete evidence;
+- `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+  why they were or were not changed;
+- `test_result`: exact checks you ran and their outcomes;
+- `known_limitations`: remaining gaps or an empty list.
+
+Do not claim `pass` if a criterion is unverified. Update user-facing README or
+developer documentation whenever the change affects behaviour, setup, commands,
+architecture, design, or progress. If no documentation change is needed, state
+the reviewed files and explain why.
+
+For `final_verification`, the independent `test`, `browser`, and visual-review
+stages are the required verification gates. After repairing every concrete
+source/test failure supplied in this prompt, return `pass` so those gates run.
+Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+left to the independent test stage. Return `needs_user_review` only for a real
+authority, safety, or irreducibly ambiguous product decision.
+
+For browser-impacting work, create or update a task-specific Playwright spec in
+`supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+work, explain in `browser_coverage` why no task-specific browser spec changed.
+
+Visual baseline rule:
+- When the continuation evidence names a golden, snapshot, or visual-regression
+  failure, inspect the supplied master/test/diff artifacts before changing any
+  baseline. Work out whether the new render is the intended result of this
+  task, and check that it has no clipping, overlap, or lost meaning.
+- If it is intentional, regenerate only the affected approved baselines using
+  the repository's documented command, update stale visual/browser checks when
+  their prior expectation is no longer correct, and rerun the relevant suite.
+- If it is not intentional, fix the product or test setup instead. Never mask
+  a real visual regression by blindly accepting a changed screenshot.
+
+Failure-repair protocol:
+- When the continuation checkpoint says that a Supervisor terminal stage
+  failed, treat its captured command and output as the starting evidence. Do
+  not merely describe a possible fix.
+- Use the terminal in this project worktree to inspect, repair, and rerun the
+  same focused check whenever that command is safe in your sandbox. Include
+  the command and result in `test_result`.
+- If that exact command needs an SDK, browser, or approval outside this
+  worker's sandbox, repair the demonstrated issue but do not replace the
+  independent validation. Return `pass` only when the worktree is ready for
+  Supervisor to rerun its configured terminal command after your repair.
+
+warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+codex
+{"status":"pass","summary":"I’ll inspect the existing design runbook conventions and add the single requested G0005 artifact without touching application code.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+mcp: codebase-memory-mcp/get_architecture started
+mcp: codebase-memory-mcp/get_architecture (failed)
+user cancelled MCP tool call
+exec
+/bin/zsh -lc "rg --files -g '"'!*lock*'"' | rg '("'^|/)(G0005|README|INITIAL|02-game-design-bible|01-creative-direction|AGENTS)'"\\.'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+supervisor/README.md
+README.md
+runbooks/README.md
+projects/README.md
+projects/mock-fantasy-quest-4/README.md
+projects/mock-fantasy-quest-4/specification/README.md
+projects/mock-fantasy-quest-4/authoring-runbooks/INITIAL.md
+projects/mock-fantasy-quest-4/INITIAL.md
+projects/final-fantasy/INITIAL.md
+projects/football-trivia-e2e/specification/02-game-design-bible.md
+projects/football-trivia-e2e/specification/01-creative-direction.md
+projects/football-trivia-e2e/specification/02-game-design-bible.json
+projects/football-trivia-e2e/game-design-runbooks/G0005.md
+projects/football-trivia-e2e/INITIAL.md
+
+exec
+/bin/zsh -lc "sed -n '1,240p' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+rg -n -C 3 'GAME-009|GAME-010|GAME-011|GAME-012|GPI-012|GPI-013|GPI-014|GPI-015|G0005|design_authoring_batch' projects/football-trivia-e2e/specification/02-game-design-bible.md projects/football-trivia-e2e/specification/02-game-design-bible.json projects/football-trivia-e2e/specification/01-creative-direction.md
+sed -n '1,200p' projects/football-trivia-e2e/game-design-runbooks/README.md 2>/dev/null || true
+sed -n '1,160p' projects/football-trivia-e2e/INITIAL.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+---
+task_id: G0005
+sequence: 3
+dependencies: GB0003,G0004
+source_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md
+source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+title: Define accessible recovery and target parity bible
+browser_impact: not_applicable
+playwright_spec:
+design_authoring_batch: GB0003
+---
+
+## Objective
+
+Write accepted evidence for GAME-009–012/GPI-012–015: four input mappings, captions/contrast/text/motion equivalents, four recovery states, offline/update notices, and web/PWA/Android/iOS parity and certification matrix.
+
+## Output list
+
+- `design-evidence/accessibility-recovery-and-target-parity-bible.md`: four input mappings, accessible feedback equivalents, recovery/offline/update states, and web/PWA/Android/iOS rule/content/save parity matrix.
+
+Do not create target-exclusive content, mandatory accounts/sync, code, B/R runbooks, or manifest acceptance.
+
+## Acceptance criteria
+
+- Each meaning has a non-audio, non-colour equivalent and target adaptations cannot alter shared rules or saves.
+projects/football-trivia-e2e/specification/02-game-design-bible.json-15-    {"id":"GAME-002","module":"quiz-content-and-editorial-integrity","title":"Kickoff Mix catalogue batch","player_outcome":"Play varied football knowledge questions.","source_evidence":["INITIAL: themed rounds","PROJECT_BRIEF: curated reviewed versioned bank"],"first_release_boundary":"48 cards in four 12-card reviewed batches with stated category/difficulty quotas.","dependencies":["GAME-001"],"production_mode":"finite_named_content"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json-16-    {"id":"GAME-003","module":"quiz-content-and-editorial-integrity","title":"Answer adjudication and provenance","player_outcome":"Understand a fair accepted or rejected answer.","source_evidence":["INITIAL: answer validation","F001: provenance and fact review"],"first_release_boundary":"Deterministic ID/normalised-alias comparison only; no fuzzy matching or unreviewed source.","dependencies":["GAME-001"],"production_mode":"systemic_rules"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json-17-    {"id":"GAME-004","module":"quiz-content-and-editorial-integrity","title":"Freshness and editorial workflow","player_outcome":"Avoid unnecessary repeat questions.","source_evidence":["INITIAL: curated bank and local progress","F001: anti-repetition"],"first_release_boundary":"Exclude last two completed-round cards where alternatives exist; versioned propose-to-publish workflow.","dependencies":["GAME-001","GAME-002"],"production_mode":"scalable_catalogue"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:18:    {"id":"GAME-005","module":"round-score-and-progress-rules","title":"First Whistle tutorial round","player_outcome":"Finish a first round and understand saving.","source_evidence":["INITIAL: onboarding/tutorial and save/resume","PROJECT_BRIEF: first useful session"],"first_release_boundary":"Five fixed named tutorial cards, non-timed, completable offline without sign-in.","dependencies":["GAME-001","GAME-009","GAME-010"],"production_mode":"finite_named_content"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json-19-    {"id":"GAME-006","module":"round-score-and-progress-rules","title":"Mixed Fixture standard round","player_outcome":"Complete a mobile-friendly themed round.","source_evidence":["INITIAL: quick sessions and themed rounds"],"first_release_boundary":"One 10-card template with deterministic eligible selection and optional-off timer.","dependencies":["GAME-002","GAME-003","GAME-004"],"production_mode":"systemic_rules"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json-20-    {"id":"GAME-007","module":"round-score-and-progress-rules","title":"Score and streak rules","player_outcome":"See understandable momentum and results.","source_evidence":["INITIAL: scoring streaks and feedback"],"first_release_boundary":"100 base points; capped 3+ streak bonus; wrong/blank/timeout/abandon resets streak.","dependencies":["GAME-003","GAME-006"],"production_mode":"systemic_rules"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:21:    {"id":"GAME-008","module":"round-score-and-progress-rules","title":"Result and local milestone","player_outcome":"Know what was achieved and what to do next.","source_evidence":["INITIAL: local progress and save/load"],"first_release_boundary":"Results and first_whistle_complete only; no RPG levels, ranks, or social leaderboard.","dependencies":["GAME-006","GAME-007","GAME-010"],"production_mode":"systemic_rules"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:22:    {"id":"GAME-009","module":"accessible-recoverable-multitarget-experience","title":"Guided accessible start","player_outcome":"Start and control the game with a chosen input method.","source_evidence":["INITIAL: accessible controls/text/captions/visual settings","INITIAL: web keyboard/mouse/touch/gamepad"],"first_release_boundary":"Local profile, tutorial entry, settings, and equivalent touch/pointer/keyboard/gamepad actions; no mandatory account.","dependencies":[],"production_mode":"systemic_rules"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:23:    {"id":"GAME-010","module":"accessible-recoverable-multitarget-experience","title":"Confirmed snapshot recovery","player_outcome":"Return without silent loss after interruption or failure.","source_evidence":["INITIAL: save resume data-loss recovery","INITIAL: crash/error recovery"],"first_release_boundary":"Confirmed local snapshots, write-failure UI, corrupt-draft choice, and confirmed local deletion; no remote sync.","dependencies":["GAME-008"],"production_mode":"systemic_rules"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:24:    {"id":"GAME-011","module":"accessible-recoverable-multitarget-experience","title":"Offline update and error path","player_outcome":"Play cached content and recover safely from update/error states.","source_evidence":["INITIAL: PWA offline/cache refresh","INITIAL: crash reporting and recovery"],"first_release_boundary":"Cached batch is playable offline; updates apply between rounds; minimised optional diagnostics only.","dependencies":["GAME-002","GAME-010"],"production_mode":"systemic_rules"},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:25:    {"id":"GAME-012","module":"accessible-recoverable-multitarget-experience","title":"Shared-core platform adaptation","player_outcome":"Receive the same fair quiz on each selected target.","source_evidence":["INITIAL: responsive web, PWA, Android, iOS","INITIAL: shared core with adaptations"],"first_release_boundary":"Rule/content/save parity; web inputs/responsive layout, PWA install/cache UX, phone touch adaptation only.","dependencies":["GAME-009","GAME-010","GAME-011"],"production_mode":"systemic_rules"}
+projects/football-trivia-e2e/specification/02-game-design-bible.json-26-  ],
+projects/football-trivia-e2e/specification/02-game-design-bible.json-27-  "implementation_map": [
+projects/football-trivia-e2e/specification/02-game-design-bible.json-28-    {"id":"GAME-001","first_release_journeys":["J1","J2","J4"],"implementation_domains":["B-content-adjudication" ]},
+--
+projects/football-trivia-e2e/specification/02-game-design-bible.json-33-    {"id":"GAME-006","first_release_journeys":["J2","J3"],"implementation_domains":["A-shell-progress","C-round-score-feedback"]},
+projects/football-trivia-e2e/specification/02-game-design-bible.json-34-    {"id":"GAME-007","first_release_journeys":["J1","J2"],"implementation_domains":["C-round-score-feedback"]},
+projects/football-trivia-e2e/specification/02-game-design-bible.json-35-    {"id":"GAME-008","first_release_journeys":["J1","J2","J3"],"implementation_domains":["A-shell-progress","C-round-score-feedback","D-persistence-recovery"]},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:36:    {"id":"GAME-009","first_release_journeys":["J0","J1"],"implementation_domains":["E-presentation-accessibility"]},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:37:    {"id":"GAME-010","first_release_journeys":["J3"],"implementation_domains":["D-persistence-recovery"]},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:38:    {"id":"GAME-011","first_release_journeys":["J1","J3","J5"],"implementation_domains":["D-persistence-recovery","F-delivery-operations"]},
+projects/football-trivia-e2e/specification/02-game-design-bible.json:39:    {"id":"GAME-012","first_release_journeys":["J0","J1","J2","J3","J5"],"implementation_domains":["E-presentation-accessibility","F-delivery-operations"]}
+projects/football-trivia-e2e/specification/02-game-design-bible.json-40-  ]
+projects/football-trivia-e2e/specification/02-game-design-bible.json-41-}
+--
+projects/football-trivia-e2e/specification/02-game-design-bible.md-56-neutral answer controls, and non-colour success/error indicators; audio is
+projects/football-trivia-e2e/specification/02-game-design-bible.md-57-supportive, optional, and captioned.
+projects/football-trivia-e2e/specification/02-game-design-bible.md-58-
+projects/football-trivia-e2e/specification/02-game-design-bible.md:59:### Accessible, recoverable multi-target experience — `GAME-009` to `GAME-012`
+projects/football-trivia-e2e/specification/02-game-design-bible.md-60-
+projects/football-trivia-e2e/specification/02-game-design-bible.md-61-**Player outcome:** start, control, interrupt, recover, and return to a round
+projects/football-trivia-e2e/specification/02-game-design-bible.md-62-confidently on a supported surface. **Entities:** `LocalProfile`, `Settings`,
+--
+projects/football-trivia-e2e/specification/02-game-design-bible.md-65-
+projects/football-trivia-e2e/specification/02-game-design-bible.md-66-| Unit | Design card / rule | First-release boundary and acceptance |
+projects/football-trivia-e2e/specification/02-game-design-bible.md-67-| --- | --- | --- |
+projects/football-trivia-e2e/specification/02-game-design-bible.md:68:| GAME-009 | **Guided start.** First launch offers an accessible plain-language tutorial entry, settings access, and a local profile without sign-in. Controls map select/navigate/confirm/back/pause to touch, pointer, keyboard, and gamepad. | No mandatory account. Permission denial for optional notifications/diagnostics changes no game path and explains how to alter it later. Test: every critical action is operable with keyboard and touch, focus is visible, and gamepad has an equivalent mapping. |
+projects/football-trivia-e2e/specification/02-game-design-bible.md:69:| GAME-010 | **Save/recovery.** Save immutable confirmed snapshots at tutorial completion, resolved question boundaries, explicit pause, and completed results. On failed write, retain the last confirmed snapshot and show retry/continue-without-saving. On corrupt draft, offer last confirmed snapshot or discard draft; never silently overwrite. | Remote sync/conflict requires approval and is excluded. Local deletion requires confirmation, names its effect, clears local profile/history/snapshots, and returns to first launch. Test: write failure, crash/restart, corrupt draft, and deletion fixtures preserve stated invariants. |
+projects/football-trivia-e2e/specification/02-game-design-bible.md:70:| GAME-011 | **Offline/update/error.** The installed content batch and current snapshot remain playable offline. A new content version is staged between rounds; an incompatible cache reports recovery steps and preserves confirmed save before cache reset. Unexpected errors show a plain-language retry/return-home path and optional minimised diagnostic consent. | No background live content requirement. Test: offline launch with cached assets, update mid-round, unavailable content, and diagnostic permission-denied behaviours are covered. |
+projects/football-trivia-e2e/specification/02-game-design-bible.md:71:| GAME-012 | **Platform adaptation.** Shared rule/content/save semantics on responsive web, PWA, Android, and iOS. Web adds pointer/keyboard/gamepad and responsive layouts; PWA adds install/offline cache/update UX; phones add touch targets and approved portrait/landscape choice. | No target-exclusive questions or rule differences. OS/browser matrix, orientation, performance, battery, thermal, size, store/privacy declarations, crash vendor, and exact language set remain approval gates. Test: capability matrix is exercised once targets are chosen. |
+projects/football-trivia-e2e/specification/02-game-design-bible.md-72-
+projects/football-trivia-e2e/specification/02-game-design-bible.md-73-Accessibility applies to all three systems: text-size and contrast settings,
+projects/football-trivia-e2e/specification/02-game-design-bible.md-74-reduced motion, captions/text equivalents, non-colour result encoding, focus
+--
+projects/football-trivia-e2e/specification/02-game-design-bible.md-92-| --- | --- | --- |
+projects/football-trivia-e2e/specification/02-game-design-bible.md-93-| GAME-001–004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |
+projects/football-trivia-e2e/specification/02-game-design-bible.md-94-| GAME-005–008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |
+projects/football-trivia-e2e/specification/02-game-design-bible.md:95:| GAME-009–012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |
+projects/football-trivia-e2e/specification/02-game-design-bible.md-96-
+projects/football-trivia-e2e/specification/02-game-design-bible.md-97-The machine-readable `implementation_map` in the companion JSON maps every
+projects/football-trivia-e2e/specification/02-game-design-bible.md-98-individual `GAME-*` unit, rather than treating this grouped table as a substitute.
+# Initial project brief
+
+This file is the source of truth for the document-producing collection. Later
+runbooks must preserve its scope and record unanswered questions rather than
+inventing requirements.
+
+## Project workspace
+
+- Project name: football-trivia-e2e
+- Workspace: `projects/football-trivia-e2e/`
+
+## What are we creating?
+
+A feature-rich football trivia game for quick mobile sessions: themed rounds, multiple question formats, answer validation, scoring streaks, accessible feedback, local progress, and a curated first-release question bank.
+
+## Product category
+
+- [x] Game
+
+## Game characteristics
+
+- [x] 2D presentation
+- [x] Single-player game
+- [x] Puzzle
+- [x] card
+- [x] board
+- [x] or turn-based game
+
+## Shared product requirements
+
+- Accessible controls, text, captions, and visual settings
+- Save, resume, and data-loss recovery behaviour
+- Crash reporting and player-facing error recovery
+
+## Who is it for, and what must it help them do?
+
+- Intended users: - Casual players
+- Adult players
+- Their primary outcome: Progress through a story or campaign.
+- What makes the first useful session successful: Finish a first battle and understand how saving works.
+
+## Required first-release capabilities
+
+- Playable core loop
+- Onboarding and tutorial
+- Save/load and progression
+- Settings and accessibility
+- Audio and visual feedback
+- Content/level delivery
+- Player account and identity
+- Multiplayer services and player safety
+- Live-service operations
+- In-app purchases and entitlement handling
+- Crash/error recovery
+
+## Later or deferred capabilities
+
+- Live events or seasonal content
+- Player-created and shared content (custom levels, mods, designs, or stories)
+- Advanced analytics or monetisation
+
+## Target systems and delivery surfaces
+
+Responsive public web application and Progressive web app (PWA) are included by
+default. The selected compatible delivery profile is:
+
+- [x] Automated compatible profile
+
+Additional selected targets:
+
+- [x] Responsive public web application
+- [x] Progressive web app (PWA)
+- [x] Android phone
+- [x] iPhone (iOS)
+
+## Per-target requirements
+
+### Responsive public web application
+
+- Keyboard, mouse, touch, and gamepad input
+- Responsive layout across phone, tablet, and desktop screens
+- Browser compatibility and web performance budget
+### Progressive web app (PWA)
+
+- Installable PWA experience
+- Offline asset and save-data behaviour
+- Safe game update and cache-refresh behaviour
+### Android phone
+
+- Touch controls and orientation rules
+- Mobile performance, battery, thermal, and download-size budget
+- App-store packaging, privacy disclosures, and release requirements
+### iPhone (iOS)
+
+- Touch controls and orientation rules
+- Mobile performance, battery, thermal, and download-size budget
+- App-store packaging, privacy disclosures, and release requirements
+
+## Constraints and non-goals
+
+- Technology and repository constraints: Determine from the product brief and selected platforms.
+- Privacy, security, accessibility, offline, integration, cost, and delivery constraints: Determine from the product brief and selected platforms.
+- Explicitly excluded work: No copied branding, assets, text, layouts, or distinctive interactions.
+
+## Cross-platform product decisions
+
+- Shared versus platform-specific capabilities: Use a shared core with platform adaptations only where necessary.
+- Data synchronisation, offline, and conflict policy: Use remote account-linked state with safe local cache where applicable.
+- Accessibility, localisation, privacy, parental-control, store, or certification requirements: Provide accessibility, localisation, privacy, and applicable platform requirements.
+- Minimum supported OS, browser, device class, and network condition: Support widely used devices and feasible slow-network behaviour.
+
+## Functional references
+
+The Athletic quiz formats for football-topic breadth and QuizUp for short competitive trivia sessions only
+
+## Art direction
+
+- User direction: Original modern football broadcast graphics, bold category colours, readable typography, and celebratory but accessible feedback
+- The project `.env` has been updated to use this direction.
+
+## Audio direction
+
+- No custom direction supplied. Gemma 4 12B will create an original music and sound direction for audio work; ACE-Step 1.5 XL Turbo will generate the selected cues locally.
+
+## Open decisions
+
+- Resolve remaining decisions from the brief and references; record only genuine ambiguities.
+
+exec
+/bin/zsh -lc "rg --files projects/football-trivia-e2e | rg '("'^|/)(design-evidence|game-design-runbooks|GPI-|G000[1-5])'"' && find projects/football-trivia-e2e -maxdepth 2 -type d | sort && git status --short" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+projects/football-trivia-e2e/game-design-runbooks/GC0001.md
+projects/football-trivia-e2e/game-design-runbooks/G0004.md
+projects/football-trivia-e2e/game-design-runbooks/G0005.md
+projects/football-trivia-e2e/game-design-runbooks/G0001.md
+projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+projects/football-trivia-e2e/game-design-runbooks/GB0002.md
+projects/football-trivia-e2e/game-design-runbooks/GB0001.md
+projects/football-trivia-e2e/game-design-runbooks/GD0001.md
+projects/football-trivia-e2e/game-design-runbooks/G0002.md
+projects/football-trivia-e2e/game-design-runbooks/G0003.md
+projects/football-trivia-e2e
+projects/football-trivia-e2e/.state
+projects/football-trivia-e2e/.state/live
+projects/football-trivia-e2e/.state/reports
+projects/football-trivia-e2e/game-design-runbooks
+projects/football-trivia-e2e/planning
+projects/football-trivia-e2e/specification
+ M .env
+?? projects/final-fantasy/
+?? projects/football-trivia-e2e/
+?? projects/mock-fantasy-quest-4/
+?? runbooks/.supervisor-children/
+
+exec
+/bin/zsh -lc "sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+for file in projects/football-trivia-e2e/game-design-runbooks/G000{1,2,3,4,5}.md; do printf '%s ' \""'$file"; sed -n '"'1,20p' \""'$file" | rg '"'"'^task_id:|''^design_authoring_batch:'"'; done
+rg -n 'GPI-012|GPI-013|GPI-014|GPI-015' projects/football-trivia-e2e/specification/01-creative-direction.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ exited 1 in 0ms:
+---
+task_id: GB0003
+sequence: 2
+dependencies: GD0001
+source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md
+source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015
+title: Author accessibility and target design runbook
+browser_impact: not_applicable
+playwright_spec:
+---
+
+## Objective
+
+Create only G0005 for GAME-009–012 and GPI-012–015: equivalent controls and feedback, recovery, offline/update messaging, and target parity/certification evidence.
+
+## Output list
+
+- `G0005.md` only; it must declare `design_authoring_batch: GB0003` and create/review `design-evidence/accessibility-recovery-and-target-parity-bible.md`.
+
+Do not create code, B/R runbooks, target-exclusive rules, mandatory accounts, remote sync, or final audit.
+
+## Acceptance criteria
+
+- No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.
+projects/football-trivia-e2e/game-design-runbooks/G0001.md task_id: G0001
+design_authoring_batch: GB0001
+projects/football-trivia-e2e/game-design-runbooks/G0002.md task_id: G0002
+design_authoring_batch: GB0001
+projects/football-trivia-e2e/game-design-runbooks/G0003.md task_id: G0003
+design_authoring_batch: GB0002
+projects/football-trivia-e2e/game-design-runbooks/G0004.md task_id: G0004
+design_authoring_batch: GB0002
+projects/football-trivia-e2e/game-design-runbooks/G0005.md task_id: G0005
+design_authoring_batch: GB0003
+
+codex
+{"status":"pass","summary":"The requested artifact is already present and scoped correctly. I’m running a focused structural check only; no app or SDK tooling is needed.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md"],"updated_files":[],"summary":"No documentation changes are needed because the requested G0005 runbook already exists and satisfies the authoring-batch requirement."},"known_limitations":[],"browser_coverage":"Not applicable: this is a design-runbook authoring task with no browser-facing code changes.","recommended_next_step":"complete"}
+exec
+/bin/zsh -lc 'task_count=$(find projects/football-trivia-e2e/game-design-runbooks -maxdepth 1 -type f -name '"'G[0-9][0-9][0-9][0-9].md' | wc -l | tr -d ' ')
+[ \""'$task_count" = 5 ]
+rg -qx '"'task_id: G0005' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+rg -qx 'design_authoring_batch: GB0003' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+rg -q '"'^source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015$'"' projects/football-trivia-e2e/game-design-runbooks/G0005.md
+printf 'verified G task count: %s\\n' \""'$task_count"' in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+verified G task count: 5
+
+codex
+{"status":"pass","summary":"Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.","changed_files":[],"test_result":"Focused structural check passed: exactly five G####.md tasks exist; G0005 declares task_id G0005, design_authoring_batch GB0003, and all required source catalogue IDs.","evidence":{"agent_log":"Inspected GB0003 and G0005 runbook metadata and scope.","adapter_log":"","test_log":"verified G task count: 5","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.","status":"pass","evidence":"Found exactly five G####.md runbooks (G0001–G0005); G0005.md contains `design_authoring_batch: GB0003`."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GB0003.md","projects/football-trivia-e2e/game-design-runbooks/G0005.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.json","projects/football-trivia-e2e/INITIAL.md"],"updated_files":[],"summary":"No documentation update was needed: the requested G0005 runbook already exists and accurately records the required design-authoring scope."},"known_limitations":[],"browser_coverage":"Not applicable: this task only verifies a design-runbook artifact and changes no browser-facing product behavior.","recommended_next_step":"complete"}
+tokens used
+25,286
+
+
+===== Adapter output =====
+{"status": "pass", "summary": "Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.", "changed_files": [], "test_result": "Focused structural check passed: exactly five G####.md tasks exist; G0005 declares task_id G0005, design_authoring_batch GB0003, and all required source catalogue IDs.", "evidence": {"agent_log": "{\"status\":\"pass\",\"summary\":\"Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.\",\"changed_files\":[],\"test_result\":\"Focused structural check passed: exactly five G####.md tasks exist; G0005 declares task_id G0005, design_authoring_batch GB0003, and all required source catalogue IDs.\",\"evidence\":{\"agent_log\":\"Inspected GB0003 and G0005 runbook metadata and scope.\",\"adapter_log\":\"\",\"test_log\":\"verified G task count: 5\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[{\"criterion\":\"No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.\",\"status\":\"pass\",\"evidence\":\"Found exactly five G####.md runbooks (G0001\u2013G0005); G0005.md contains `design_authoring_batch: GB0003`.\"}],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/game-design-runbooks/GB0003.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0005.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.json\",\"projects/football-trivia-e2e/INITIAL.md\"],\"updated_files\":[],\"summary\":\"No documentation update was needed: the requested G0005 runbook already exists and accurately records the required design-authoring scope.\"},\"known_limitations\":[],\"browser_coverage\":\"Not applicable: this task only verifies a design-runbook artifact and changes no browser-facing product behavior.\",\"recommended_next_step\":\"complete\"}\nReading additional input from stdin...\n2026-08-03T00:41:30.012135Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/\n2026-08-03T00:41:30.012154Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/\n2026-08-03T00:41:30.012318Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json\n2026-08-03T00:41:30.013006Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///Users/simon/.codex/plugins/cache/openai-primary-runtime/template-creator/26.802.11031/.codex-plugin/plugin.json\n2026-08-03T00:41:30.013939Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json\n2026-08-03T00:41:30.015195Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=file:///Users/simon/.codex/plugins/cache/openai-curated-remote/workspace-agents/0.1.13/.codex-plugin/plugin.json\nOpenAI Codex v0.145.0\n--------\nworkdir: /Users/simon/Dev/github/jakowicz/runbook-generator\nmodel: gpt-5.6-terra\nprovider: openai\napproval: on-request\nsandbox: workspace-write [workdir, /tmp, $TMPDIR]\nreasoning effort: medium\nreasoning summaries: none\nsession id: 019fc511-8e69-7de3-9ad8-071b97403d68\n--------\nuser\nYou are the coding worker for one isolated runbook task.\n\nWork only in the repository passed as your working directory. Do not publish,\ndeploy, access secrets, make payments, or change product scope. Stop and report\nneeds_user_review if the task is destructive, unclear, or requires authority.\nImplement only the task below, run relevant checks, and then output exactly one\nJSON object conforming to the WorkerResult contract. A status of pass means the\nchange is ready for independent test and visual review; it is not self-approval.\n\nTask:\n{\n  \"task_id\": \"GB0003\",\n  \"title\": \"Author accessibility and target design runbook\",\n  \"objective\": \"Create only G0005 for GAME-009\\u2013012 and GPI-012\\u2013015: equivalent controls and feedback, recovery, offline/update messaging, and target parity/certification evidence.\\n\\nInitial project brief:\\n# Product brief \\u2014 football-trivia-e2e\\n\\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\\nits scope; it records unknowns and contradictions instead of choosing them.\\n\\n## Problem, category, users, and outcome\\n\\nCasual adult football followers need a satisfying way to test and extend their\\nknowledge in a few mobile-friendly minutes. This is an original 2D,\\nsingle-player football-trivia puzzle with themed rounds, varied question\\nformats, answer validation, score/streak feedback, local progress, and a\\ncurated question bank.\\n\\nThe first useful session succeeds when a player completes an onboarding round,\\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\\nThis is the quiz equivalent of the source's generic \\u201cfirst battle\\u201d text; a\\nliteral battle/campaign is a decision, not assumed scope.\\n\\n## First-release and roadmap scope\\n\\nFirst release: playable themed rounds; tutorial; question formats and answer\\nrules; accessible feedback; scoring/streaks; anti-repetition; local\\nprogress/save/load/resume/recovery; settings/accessibility; original\\naudio/visual feedback; curated, reviewed, versioned question content; content\\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\\nlive operations, and purchases are decision-gated, not automatic dependencies.\\n\\nSuccess is measurable when a new player can complete onboarding, play an\\nauthored round, get deterministic answer/score feedback, save and restore\\nconfirmed progress, and recover from interruption or a safe update without\\nsilent loss on every selected target. Every shipped question has category,\\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\\nmetadata. Bank size, completion cadence, and performance thresholds are open.\\n\\nDeferred: live/seasonal events, player-created/shared content, advanced\\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\\nparty, quest, combat, boss, or literal battle systems.\\n\\n## Target systems\\n\\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\\n| --- | --- | --- | --- | --- |\\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\\n\\nUse a shared core with necessary platform adaptations only. Remote\\naccount-linked state may use a safe local cache where approved, and must not\\nsilently discard confirmed single-player progress.\\n\\n## Constraints, assumptions, and reference boundary\\n\\nExplicit constraints: accessible controls/text/captions/visual settings;\\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\\nrequirements; and original expression. Safe assumptions: independently authored\\ncontent/UI/art/audio; editorial fact review; locally available approved content\\nsupports a basic session; outages are clear; and diagnostics minimise personal\\ndata. No stack, vendor, backend, account, retention, or licensing choice is\\napproved by these assumptions.\\n\\n| Reference | Allowed functional learning | Prohibited |\\n| --- | --- | --- |\\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\\n\\n## Human approval decisions\\n\\n1. Is generic \\u201cstory/campaign\\u201d and \\u201cfirst battle\\u201d text real scope, or should a\\n   lightweight themed quiz journey replace it?\\n2. For account identity, multiplayer safety, live operations, and purchases:\\n   choose release-critical, optional connected enhancement, or deferred.\\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\\n   outage, safety/moderation, age/region, refund/entitlement policies if any\\n   connected or commerce feature ships.\\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\\n   update/crash provider/cost model, and Android/iOS packaging path.\\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\\n   adjudication, languages, and exact accessibility/audio scope.\",\n  \"acceptance_criteria\": [\n    \"No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.\"\n  ],\n  \"risk_level\": \"normal\",\n  \"sequence\": 2,\n  \"dependencies\": [\n    \"GD0001\"\n  ],\n  \"prerequisite_collections\": [],\n  \"browser_impact\": \"not_applicable\",\n  \"playwright_specs\": [],\n  \"asset_impact\": \"not_applicable\",\n  \"asset_brief\": \"\",\n  \"asset_ids\": [],\n  \"visual_style_version\": \"\",\n  \"audio_impact\": \"not_applicable\",\n  \"audio_brief\": \"\",\n  \"audio_ids\": [],\n  \"audio_duration_seconds\": 0,\n  \"audio_loop\": \"not_applicable\",\n  \"audio_style_version\": \"\",\n  \"source_specifications\": [\n    \"specification/02-game-design-bible.md\",\n    \"specification/02-game-design-bible.json\",\n    \"specification/01-creative-direction.md\"\n  ],\n  \"source_catalogue_ids\": [\n    \"GAME-009\",\n    \"GAME-010\",\n    \"GAME-011\",\n    \"GAME-012\",\n    \"GPI-012\",\n    \"GPI-013\",\n    \"GPI-014\",\n    \"GPI-015\"\n  ],\n  \"authoring_batch\": \"\",\n  \"design_authoring_batch\": \"\",\n  \"factory_stages\": [],\n  \"execution_mode\": \"implementation\",\n  \"continuation_context\": \"\"\n}\n\nContinuation checkpoint (only when present):\nNo prior checkpoint: inspect the current repository before making changes.\n\n\n\nThis Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,\n`dart`, SDK/bootstrap tooling, or request an approval escalation: those tools\ncan write SDK caches outside the worktree and are deliberately owned by the\nsupervisor's independent precheck/test stages. When the continuation evidence\nnames a concrete source or test failure, repair that evidence in the worktree,\nrun only safe focused checks, and return `pass` for the deterministic stage to\nvalidate. Never return a failure solely because an SDK command needs approval.\n\n\n\nEfficient investigation rules (especially important for local models):\n- Start with the Codebase Memory MCP for architecture and targeted symbols.\n- Do not use whole-file reads for Dart, test, lock, generated, or log files.\n  Use targeted symbol snippets or `run_shell_command` with `rg` and\n  `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.\n- Inspect only files directly relevant to the acceptance criteria. Do not\n  browse unrelated Playwright, automation, or configuration files merely to\n  learn the repository layout.\n- After the focused investigation, implement and run the smallest relevant\n  checks. Do not continue exploratory tool calls once the implementation path\n  is clear.\n- If a tool reports a missing file, treat it as non-blocking and continue with\n  the repository evidence you already have.\n\nCompletion protocol:\n- Your final action MUST be the `structured_output` tool supplied by\n  `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON\n  response.\n- Use native nested JSON values in that tool call: `evidence` and\n  `documentation` are objects, while `acceptance_results` is an array. Never\n  put JSON text inside quotes for any of those fields.\n- If a check cannot run, return a structured `repairable_failure` or\n  `needs_user_review` result immediately with the exact reason. Never wait\n  silently for a tool or model request to recover.\n\n\nYour final WorkerResult must include all of the following:\n- `acceptance_results`: one entry for every task acceptance criterion, in the\n  same order. Copy each criterion text verbatim from the task, with pass/fail/\n  not_verified status and concrete evidence;\n- `documentation`: README/plan/ADR/runbook files reviewed, files updated, and\n  why they were or were not changed;\n- `test_result`: exact checks you ran and their outcomes;\n- `known_limitations`: remaining gaps or an empty list.\n\nDo not claim `pass` if a criterion is unverified. Update user-facing README or\ndeveloper documentation whenever the change affects behaviour, setup, commands,\narchitecture, design, or progress. If no documentation change is needed, state\nthe reviewed files and explain why.\n\nFor `final_verification`, the independent `test`, `browser`, and visual-review\nstages are the required verification gates. After repairing every concrete\nsource/test failure supplied in this prompt, return `pass` so those gates run.\nDo not return `needs_user_review` solely because Flutter/Dart was deliberately\nleft to the independent test stage. Return `needs_user_review` only for a real\nauthority, safety, or irreducibly ambiguous product decision.\n\nFor browser-impacting work, create or update a task-specific Playwright spec in\n`supervisor/browser/tests/changes/`, list it in `browser_coverage`,\nand revise stale checks. Keep `tests/smoke/` short and stable. For domain-only\nwork, explain in `browser_coverage` why no task-specific browser spec changed.\n\nVisual baseline rule:\n- When the continuation evidence names a golden, snapshot, or visual-regression\n  failure, inspect the supplied master/test/diff artifacts before changing any\n  baseline. Work out whether the new render is the intended result of this\n  task, and check that it has no clipping, overlap, or lost meaning.\n- If it is intentional, regenerate only the affected approved baselines using\n  the repository's documented command, update stale visual/browser checks when\n  their prior expectation is no longer correct, and rerun the relevant suite.\n- If it is not intentional, fix the product or test setup instead. Never mask\n  a real visual regression by blindly accepting a changed screenshot.\n\nFailure-repair protocol:\n- When the continuation checkpoint says that a Supervisor terminal stage\n  failed, treat its captured command and output as the starting evidence. Do\n  not merely describe a possible fix.\n- Use the terminal in this project worktree to inspect, repair, and rerun the\n  same focused check whenever that command is safe in your sandbox. Include\n  the command and result in `test_result`.\n- If that exact command needs an SDK, browser, or approval outside this\n  worker's sandbox, repair the demonstrated issue but do not replace the\n  independent validation. Return `pass` only when the worktree is ready for\n  Supervisor to rerun its configured terminal command after your repair.\n\nwarning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))\ncodex\n{\"status\":\"pass\",\"summary\":\"I\u2019ll inspect the existing design runbook conventions and add the single requested G0005 artifact without touching application code.\",\"changed_files\":[],\"test_result\":\"\",\"evidence\":{\"agent_log\":\"\",\"adapter_log\":\"\",\"test_log\":\"\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[],\"documentation\":{\"reviewed_files\":[],\"updated_files\":[],\"summary\":\"\"},\"known_limitations\":[],\"browser_coverage\":\"\",\"recommended_next_step\":\"complete\"}\nmcp: codebase-memory-mcp/get_architecture started\nmcp: codebase-memory-mcp/get_architecture (failed)\nuser cancelled MCP tool call\nexec\n/bin/zsh -lc \"rg --files -g '\"'!*lock*'\"' | rg '(\"'^|/)(G0005|README|INITIAL|02-game-design-bible|01-creative-direction|AGENTS)'\"\\\\.'\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\nsupervisor/README.md\nREADME.md\nrunbooks/README.md\nprojects/README.md\nprojects/mock-fantasy-quest-4/README.md\nprojects/mock-fantasy-quest-4/specification/README.md\nprojects/mock-fantasy-quest-4/authoring-runbooks/INITIAL.md\nprojects/mock-fantasy-quest-4/INITIAL.md\nprojects/final-fantasy/INITIAL.md\nprojects/football-trivia-e2e/specification/02-game-design-bible.md\nprojects/football-trivia-e2e/specification/01-creative-direction.md\nprojects/football-trivia-e2e/specification/02-game-design-bible.json\nprojects/football-trivia-e2e/game-design-runbooks/G0005.md\nprojects/football-trivia-e2e/INITIAL.md\n\nexec\n/bin/zsh -lc \"sed -n '1,240p' projects/football-trivia-e2e/game-design-runbooks/G0005.md\nrg -n -C 3 'GAME-009|GAME-010|GAME-011|GAME-012|GPI-012|GPI-013|GPI-014|GPI-015|G0005|design_authoring_batch' projects/football-trivia-e2e/specification/02-game-design-bible.md projects/football-trivia-e2e/specification/02-game-design-bible.json projects/football-trivia-e2e/specification/01-creative-direction.md\nsed -n '1,200p' projects/football-trivia-e2e/game-design-runbooks/README.md 2>/dev/null || true\nsed -n '1,160p' projects/football-trivia-e2e/INITIAL.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\n---\ntask_id: G0005\nsequence: 3\ndependencies: GB0003,G0004\nsource_specifications: specification/02-game-design-bible.md,specification/01-creative-direction.md\nsource_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015\ntitle: Define accessible recovery and target parity bible\nbrowser_impact: not_applicable\nplaywright_spec:\ndesign_authoring_batch: GB0003\n---\n\n## Objective\n\nWrite accepted evidence for GAME-009\u2013012/GPI-012\u2013015: four input mappings, captions/contrast/text/motion equivalents, four recovery states, offline/update notices, and web/PWA/Android/iOS parity and certification matrix.\n\n## Output list\n\n- `design-evidence/accessibility-recovery-and-target-parity-bible.md`: four input mappings, accessible feedback equivalents, recovery/offline/update states, and web/PWA/Android/iOS rule/content/save parity matrix.\n\nDo not create target-exclusive content, mandatory accounts/sync, code, B/R runbooks, or manifest acceptance.\n\n## Acceptance criteria\n\n- Each meaning has a non-audio, non-colour equivalent and target adaptations cannot alter shared rules or saves.\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-15-    {\"id\":\"GAME-002\",\"module\":\"quiz-content-and-editorial-integrity\",\"title\":\"Kickoff Mix catalogue batch\",\"player_outcome\":\"Play varied football knowledge questions.\",\"source_evidence\":[\"INITIAL: themed rounds\",\"PROJECT_BRIEF: curated reviewed versioned bank\"],\"first_release_boundary\":\"48 cards in four 12-card reviewed batches with stated category/difficulty quotas.\",\"dependencies\":[\"GAME-001\"],\"production_mode\":\"finite_named_content\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-16-    {\"id\":\"GAME-003\",\"module\":\"quiz-content-and-editorial-integrity\",\"title\":\"Answer adjudication and provenance\",\"player_outcome\":\"Understand a fair accepted or rejected answer.\",\"source_evidence\":[\"INITIAL: answer validation\",\"F001: provenance and fact review\"],\"first_release_boundary\":\"Deterministic ID/normalised-alias comparison only; no fuzzy matching or unreviewed source.\",\"dependencies\":[\"GAME-001\"],\"production_mode\":\"systemic_rules\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-17-    {\"id\":\"GAME-004\",\"module\":\"quiz-content-and-editorial-integrity\",\"title\":\"Freshness and editorial workflow\",\"player_outcome\":\"Avoid unnecessary repeat questions.\",\"source_evidence\":[\"INITIAL: curated bank and local progress\",\"F001: anti-repetition\"],\"first_release_boundary\":\"Exclude last two completed-round cards where alternatives exist; versioned propose-to-publish workflow.\",\"dependencies\":[\"GAME-001\",\"GAME-002\"],\"production_mode\":\"scalable_catalogue\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:18:    {\"id\":\"GAME-005\",\"module\":\"round-score-and-progress-rules\",\"title\":\"First Whistle tutorial round\",\"player_outcome\":\"Finish a first round and understand saving.\",\"source_evidence\":[\"INITIAL: onboarding/tutorial and save/resume\",\"PROJECT_BRIEF: first useful session\"],\"first_release_boundary\":\"Five fixed named tutorial cards, non-timed, completable offline without sign-in.\",\"dependencies\":[\"GAME-001\",\"GAME-009\",\"GAME-010\"],\"production_mode\":\"finite_named_content\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-19-    {\"id\":\"GAME-006\",\"module\":\"round-score-and-progress-rules\",\"title\":\"Mixed Fixture standard round\",\"player_outcome\":\"Complete a mobile-friendly themed round.\",\"source_evidence\":[\"INITIAL: quick sessions and themed rounds\"],\"first_release_boundary\":\"One 10-card template with deterministic eligible selection and optional-off timer.\",\"dependencies\":[\"GAME-002\",\"GAME-003\",\"GAME-004\"],\"production_mode\":\"systemic_rules\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-20-    {\"id\":\"GAME-007\",\"module\":\"round-score-and-progress-rules\",\"title\":\"Score and streak rules\",\"player_outcome\":\"See understandable momentum and results.\",\"source_evidence\":[\"INITIAL: scoring streaks and feedback\"],\"first_release_boundary\":\"100 base points; capped 3+ streak bonus; wrong/blank/timeout/abandon resets streak.\",\"dependencies\":[\"GAME-003\",\"GAME-006\"],\"production_mode\":\"systemic_rules\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:21:    {\"id\":\"GAME-008\",\"module\":\"round-score-and-progress-rules\",\"title\":\"Result and local milestone\",\"player_outcome\":\"Know what was achieved and what to do next.\",\"source_evidence\":[\"INITIAL: local progress and save/load\"],\"first_release_boundary\":\"Results and first_whistle_complete only; no RPG levels, ranks, or social leaderboard.\",\"dependencies\":[\"GAME-006\",\"GAME-007\",\"GAME-010\"],\"production_mode\":\"systemic_rules\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:22:    {\"id\":\"GAME-009\",\"module\":\"accessible-recoverable-multitarget-experience\",\"title\":\"Guided accessible start\",\"player_outcome\":\"Start and control the game with a chosen input method.\",\"source_evidence\":[\"INITIAL: accessible controls/text/captions/visual settings\",\"INITIAL: web keyboard/mouse/touch/gamepad\"],\"first_release_boundary\":\"Local profile, tutorial entry, settings, and equivalent touch/pointer/keyboard/gamepad actions; no mandatory account.\",\"dependencies\":[],\"production_mode\":\"systemic_rules\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:23:    {\"id\":\"GAME-010\",\"module\":\"accessible-recoverable-multitarget-experience\",\"title\":\"Confirmed snapshot recovery\",\"player_outcome\":\"Return without silent loss after interruption or failure.\",\"source_evidence\":[\"INITIAL: save resume data-loss recovery\",\"INITIAL: crash/error recovery\"],\"first_release_boundary\":\"Confirmed local snapshots, write-failure UI, corrupt-draft choice, and confirmed local deletion; no remote sync.\",\"dependencies\":[\"GAME-008\"],\"production_mode\":\"systemic_rules\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:24:    {\"id\":\"GAME-011\",\"module\":\"accessible-recoverable-multitarget-experience\",\"title\":\"Offline update and error path\",\"player_outcome\":\"Play cached content and recover safely from update/error states.\",\"source_evidence\":[\"INITIAL: PWA offline/cache refresh\",\"INITIAL: crash reporting and recovery\"],\"first_release_boundary\":\"Cached batch is playable offline; updates apply between rounds; minimised optional diagnostics only.\",\"dependencies\":[\"GAME-002\",\"GAME-010\"],\"production_mode\":\"systemic_rules\"},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:25:    {\"id\":\"GAME-012\",\"module\":\"accessible-recoverable-multitarget-experience\",\"title\":\"Shared-core platform adaptation\",\"player_outcome\":\"Receive the same fair quiz on each selected target.\",\"source_evidence\":[\"INITIAL: responsive web, PWA, Android, iOS\",\"INITIAL: shared core with adaptations\"],\"first_release_boundary\":\"Rule/content/save parity; web inputs/responsive layout, PWA install/cache UX, phone touch adaptation only.\",\"dependencies\":[\"GAME-009\",\"GAME-010\",\"GAME-011\"],\"production_mode\":\"systemic_rules\"}\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-26-  ],\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-27-  \"implementation_map\": [\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-28-    {\"id\":\"GAME-001\",\"first_release_journeys\":[\"J1\",\"J2\",\"J4\"],\"implementation_domains\":[\"B-content-adjudication\" ]},\n--\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-33-    {\"id\":\"GAME-006\",\"first_release_journeys\":[\"J2\",\"J3\"],\"implementation_domains\":[\"A-shell-progress\",\"C-round-score-feedback\"]},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-34-    {\"id\":\"GAME-007\",\"first_release_journeys\":[\"J1\",\"J2\"],\"implementation_domains\":[\"C-round-score-feedback\"]},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-35-    {\"id\":\"GAME-008\",\"first_release_journeys\":[\"J1\",\"J2\",\"J3\"],\"implementation_domains\":[\"A-shell-progress\",\"C-round-score-feedback\",\"D-persistence-recovery\"]},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:36:    {\"id\":\"GAME-009\",\"first_release_journeys\":[\"J0\",\"J1\"],\"implementation_domains\":[\"E-presentation-accessibility\"]},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:37:    {\"id\":\"GAME-010\",\"first_release_journeys\":[\"J3\"],\"implementation_domains\":[\"D-persistence-recovery\"]},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:38:    {\"id\":\"GAME-011\",\"first_release_journeys\":[\"J1\",\"J3\",\"J5\"],\"implementation_domains\":[\"D-persistence-recovery\",\"F-delivery-operations\"]},\nprojects/football-trivia-e2e/specification/02-game-design-bible.json:39:    {\"id\":\"GAME-012\",\"first_release_journeys\":[\"J0\",\"J1\",\"J2\",\"J3\",\"J5\"],\"implementation_domains\":[\"E-presentation-accessibility\",\"F-delivery-operations\"]}\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-40-  ]\nprojects/football-trivia-e2e/specification/02-game-design-bible.json-41-}\n--\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-56-neutral answer controls, and non-colour success/error indicators; audio is\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-57-supportive, optional, and captioned.\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-58-\nprojects/football-trivia-e2e/specification/02-game-design-bible.md:59:### Accessible, recoverable multi-target experience \u2014 `GAME-009` to `GAME-012`\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-60-\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-61-**Player outcome:** start, control, interrupt, recover, and return to a round\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-62-confidently on a supported surface. **Entities:** `LocalProfile`, `Settings`,\n--\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-65-\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-66-| Unit | Design card / rule | First-release boundary and acceptance |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-67-| --- | --- | --- |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md:68:| GAME-009 | **Guided start.** First launch offers an accessible plain-language tutorial entry, settings access, and a local profile without sign-in. Controls map select/navigate/confirm/back/pause to touch, pointer, keyboard, and gamepad. | No mandatory account. Permission denial for optional notifications/diagnostics changes no game path and explains how to alter it later. Test: every critical action is operable with keyboard and touch, focus is visible, and gamepad has an equivalent mapping. |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md:69:| GAME-010 | **Save/recovery.** Save immutable confirmed snapshots at tutorial completion, resolved question boundaries, explicit pause, and completed results. On failed write, retain the last confirmed snapshot and show retry/continue-without-saving. On corrupt draft, offer last confirmed snapshot or discard draft; never silently overwrite. | Remote sync/conflict requires approval and is excluded. Local deletion requires confirmation, names its effect, clears local profile/history/snapshots, and returns to first launch. Test: write failure, crash/restart, corrupt draft, and deletion fixtures preserve stated invariants. |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md:70:| GAME-011 | **Offline/update/error.** The installed content batch and current snapshot remain playable offline. A new content version is staged between rounds; an incompatible cache reports recovery steps and preserves confirmed save before cache reset. Unexpected errors show a plain-language retry/return-home path and optional minimised diagnostic consent. | No background live content requirement. Test: offline launch with cached assets, update mid-round, unavailable content, and diagnostic permission-denied behaviours are covered. |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md:71:| GAME-012 | **Platform adaptation.** Shared rule/content/save semantics on responsive web, PWA, Android, and iOS. Web adds pointer/keyboard/gamepad and responsive layouts; PWA adds install/offline cache/update UX; phones add touch targets and approved portrait/landscape choice. | No target-exclusive questions or rule differences. OS/browser matrix, orientation, performance, battery, thermal, size, store/privacy declarations, crash vendor, and exact language set remain approval gates. Test: capability matrix is exercised once targets are chosen. |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-72-\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-73-Accessibility applies to all three systems: text-size and contrast settings,\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-74-reduced motion, captions/text equivalents, non-colour result encoding, focus\n--\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-92-| --- | --- | --- |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-93-| GAME-001\u2013004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-94-| GAME-005\u2013008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md:95:| GAME-009\u2013012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-96-\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-97-The machine-readable `implementation_map` in the companion JSON maps every\nprojects/football-trivia-e2e/specification/02-game-design-bible.md-98-individual `GAME-*` unit, rather than treating this grouped table as a substitute.\n# Initial project brief\n\nThis file is the source of truth for the document-producing collection. Later\nrunbooks must preserve its scope and record unanswered questions rather than\ninventing requirements.\n\n## Project workspace\n\n- Project name: football-trivia-e2e\n- Workspace: `projects/football-trivia-e2e/`\n\n## What are we creating?\n\nA feature-rich football trivia game for quick mobile sessions: themed rounds, multiple question formats, answer validation, scoring streaks, accessible feedback, local progress, and a curated first-release question bank.\n\n## Product category\n\n- [x] Game\n\n## Game characteristics\n\n- [x] 2D presentation\n- [x] Single-player game\n- [x] Puzzle\n- [x] card\n- [x] board\n- [x] or turn-based game\n\n## Shared product requirements\n\n- Accessible controls, text, captions, and visual settings\n- Save, resume, and data-loss recovery behaviour\n- Crash reporting and player-facing error recovery\n\n## Who is it for, and what must it help them do?\n\n- Intended users: - Casual players\n- Adult players\n- Their primary outcome: Progress through a story or campaign.\n- What makes the first useful session successful: Finish a first battle and understand how saving works.\n\n## Required first-release capabilities\n\n- Playable core loop\n- Onboarding and tutorial\n- Save/load and progression\n- Settings and accessibility\n- Audio and visual feedback\n- Content/level delivery\n- Player account and identity\n- Multiplayer services and player safety\n- Live-service operations\n- In-app purchases and entitlement handling\n- Crash/error recovery\n\n## Later or deferred capabilities\n\n- Live events or seasonal content\n- Player-created and shared content (custom levels, mods, designs, or stories)\n- Advanced analytics or monetisation\n\n## Target systems and delivery surfaces\n\nResponsive public web application and Progressive web app (PWA) are included by\ndefault. The selected compatible delivery profile is:\n\n- [x] Automated compatible profile\n\nAdditional selected targets:\n\n- [x] Responsive public web application\n- [x] Progressive web app (PWA)\n- [x] Android phone\n- [x] iPhone (iOS)\n\n## Per-target requirements\n\n### Responsive public web application\n\n- Keyboard, mouse, touch, and gamepad input\n- Responsive layout across phone, tablet, and desktop screens\n- Browser compatibility and web performance budget\n### Progressive web app (PWA)\n\n- Installable PWA experience\n- Offline asset and save-data behaviour\n- Safe game update and cache-refresh behaviour\n### Android phone\n\n- Touch controls and orientation rules\n- Mobile performance, battery, thermal, and download-size budget\n- App-store packaging, privacy disclosures, and release requirements\n### iPhone (iOS)\n\n- Touch controls and orientation rules\n- Mobile performance, battery, thermal, and download-size budget\n- App-store packaging, privacy disclosures, and release requirements\n\n## Constraints and non-goals\n\n- Technology and repository constraints: Determine from the product brief and selected platforms.\n- Privacy, security, accessibility, offline, integration, cost, and delivery constraints: Determine from the product brief and selected platforms.\n- Explicitly excluded work: No copied branding, assets, text, layouts, or distinctive interactions.\n\n## Cross-platform product decisions\n\n- Shared versus platform-specific capabilities: Use a shared core with platform adaptations only where necessary.\n- Data synchronisation, offline, and conflict policy: Use remote account-linked state with safe local cache where applicable.\n- Accessibility, localisation, privacy, parental-control, store, or certification requirements: Provide accessibility, localisation, privacy, and applicable platform requirements.\n- Minimum supported OS, browser, device class, and network condition: Support widely used devices and feasible slow-network behaviour.\n\n## Functional references\n\nThe Athletic quiz formats for football-topic breadth and QuizUp for short competitive trivia sessions only\n\n## Art direction\n\n- User direction: Original modern football broadcast graphics, bold category colours, readable typography, and celebratory but accessible feedback\n- The project `.env` has been updated to use this direction.\n\n## Audio direction\n\n- No custom direction supplied. Gemma 4 12B will create an original music and sound direction for audio work; ACE-Step 1.5 XL Turbo will generate the selected cues locally.\n\n## Open decisions\n\n- Resolve remaining decisions from the brief and references; record only genuine ambiguities.\n\nexec\n/bin/zsh -lc \"rg --files projects/football-trivia-e2e | rg '(\"'^|/)(design-evidence|game-design-runbooks|GPI-|G000[1-5])'\"' && find projects/football-trivia-e2e -maxdepth 2 -type d | sort && git status --short\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\nprojects/football-trivia-e2e/game-design-runbooks/GC0001.md\nprojects/football-trivia-e2e/game-design-runbooks/G0004.md\nprojects/football-trivia-e2e/game-design-runbooks/G0005.md\nprojects/football-trivia-e2e/game-design-runbooks/G0001.md\nprojects/football-trivia-e2e/game-design-runbooks/GB0003.md\nprojects/football-trivia-e2e/game-design-runbooks/GB0002.md\nprojects/football-trivia-e2e/game-design-runbooks/GB0001.md\nprojects/football-trivia-e2e/game-design-runbooks/GD0001.md\nprojects/football-trivia-e2e/game-design-runbooks/G0002.md\nprojects/football-trivia-e2e/game-design-runbooks/G0003.md\nprojects/football-trivia-e2e\nprojects/football-trivia-e2e/.state\nprojects/football-trivia-e2e/.state/live\nprojects/football-trivia-e2e/.state/reports\nprojects/football-trivia-e2e/game-design-runbooks\nprojects/football-trivia-e2e/planning\nprojects/football-trivia-e2e/specification\n M .env\n?? projects/final-fantasy/\n?? projects/football-trivia-e2e/\n?? projects/mock-fantasy-quest-4/\n?? runbooks/.supervisor-children/\n\nexec\n/bin/zsh -lc \"sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/GB0003.md\nfor file in projects/football-trivia-e2e/game-design-runbooks/G000{1,2,3,4,5}.md; do printf '%s ' \\\"\"'$file\"; sed -n '\"'1,20p' \\\"\"'$file\" | rg '\"'\"'^task_id:|''^design_authoring_batch:'\"'; done\nrg -n 'GPI-012|GPI-013|GPI-014|GPI-015' projects/football-trivia-e2e/specification/01-creative-direction.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n exited 1 in 0ms:\n---\ntask_id: GB0003\nsequence: 2\ndependencies: GD0001\nsource_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md\nsource_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015\ntitle: Author accessibility and target design runbook\nbrowser_impact: not_applicable\nplaywright_spec:\n---\n\n## Objective\n\nCreate only G0005 for GAME-009\u2013012 and GPI-012\u2013015: equivalent controls and feedback, recovery, offline/update messaging, and target parity/certification evidence.\n\n## Output list\n\n- `G0005.md` only; it must declare `design_authoring_batch: GB0003` and create/review `design-evidence/accessibility-recovery-and-target-parity-bible.md`.\n\nDo not create code, B/R runbooks, target-exclusive rules, mandatory accounts, remote sync, or final audit.\n\n## Acceptance criteria\n\n- No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.\nprojects/football-trivia-e2e/game-design-runbooks/G0001.md task_id: G0001\ndesign_authoring_batch: GB0001\nprojects/football-trivia-e2e/game-design-runbooks/G0002.md task_id: G0002\ndesign_authoring_batch: GB0001\nprojects/football-trivia-e2e/game-design-runbooks/G0003.md task_id: G0003\ndesign_authoring_batch: GB0002\nprojects/football-trivia-e2e/game-design-runbooks/G0004.md task_id: G0004\ndesign_authoring_batch: GB0002\nprojects/football-trivia-e2e/game-design-runbooks/G0005.md task_id: G0005\ndesign_authoring_batch: GB0003\n\ncodex\n{\"status\":\"pass\",\"summary\":\"The requested artifact is already present and scoped correctly. I\u2019m running a focused structural check only; no app or SDK tooling is needed.\",\"changed_files\":[],\"test_result\":\"\",\"evidence\":{\"agent_log\":\"\",\"adapter_log\":\"\",\"test_log\":\"\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/game-design-runbooks/GB0003.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0005.md\"],\"updated_files\":[],\"summary\":\"No documentation changes are needed because the requested G0005 runbook already exists and satisfies the authoring-batch requirement.\"},\"known_limitations\":[],\"browser_coverage\":\"Not applicable: this is a design-runbook authoring task with no browser-facing code changes.\",\"recommended_next_step\":\"complete\"}\nexec\n/bin/zsh -lc 'task_count=$(find projects/football-trivia-e2e/game-design-runbooks -maxdepth 1 -type f -name '\"'G[0-9][0-9][0-9][0-9].md' | wc -l | tr -d ' ')\n[ \\\"\"'$task_count\" = 5 ]\nrg -qx '\"'task_id: G0005' projects/football-trivia-e2e/game-design-runbooks/G0005.md\nrg -qx 'design_authoring_batch: GB0003' projects/football-trivia-e2e/game-design-runbooks/G0005.md\nrg -q '\"'^source_catalogue_ids: GAME-009,GAME-010,GAME-011,GAME-012,GPI-012,GPI-013,GPI-014,GPI-015$'\"' projects/football-trivia-e2e/game-design-runbooks/G0005.md\nprintf 'verified G task count: %s\\\\n' \\\"\"'$task_count\"' in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\nverified G task count: 5\n\ncodex\n{\"status\":\"pass\",\"summary\":\"Verified the existing G0005 runbook is correctly scoped to GB0003 and the specified GAME/GPI catalogue IDs; no edit was required.\",\"changed_files\":[],\"test_result\":\"Focused structural check passed: exactly five G####.md tasks exist; G0005 declares task_id G0005, design_authoring_batch GB0003, and all required source catalogue IDs.\",\"evidence\":{\"agent_log\":\"Inspected GB0003 and G0005 runbook metadata and scope.\",\"adapter_log\":\"\",\"test_log\":\"verified G task count: 5\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[{\"criterion\":\"No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.\",\"status\":\"pass\",\"evidence\":\"Found exactly five G####.md runbooks (G0001\u2013G0005); G0005.md contains `design_authoring_batch: GB0003`.\"}],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/game-design-runbooks/GB0003.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0005.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.json\",\"projects/football-trivia-e2e/INITIAL.md\"],\"updated_files\":[],\"summary\":\"No documentation update was needed: the requested G0005 runbook already exists and accurately records the required design-authoring scope.\"},\"known_limitations\":[],\"browser_coverage\":\"Not applicable: this task only verifies a design-runbook artifact and changes no browser-facing product behavior.\",\"recommended_next_step\":\"complete\"}\ntokens used\n25,286\n", "adapter_log": "", "test_log": "verified G task count: 5", "browser_log": "", "screenshots": []}, "acceptance_results": [{"criterion": "No more than five G tasks are created and it declares `design_authoring_batch: GB0003`.", "status": "pass", "evidence": "Found exactly five G####.md runbooks (G0001\u2013G0005); G0005.md contains `design_authoring_batch: GB0003`."}], "documentation": {"reviewed_files": ["projects/football-trivia-e2e/game-design-runbooks/GB0003.md", "projects/football-trivia-e2e/game-design-runbooks/G0005.md", "projects/football-trivia-e2e/specification/02-game-design-bible.md", "projects/football-trivia-e2e/specification/02-game-design-bible.json", "projects/football-trivia-e2e/INITIAL.md"], "updated_files": [], "summary": "No documentation update was needed: the requested G0005 runbook already exists and accurately records the required design-authoring scope."}, "known_limitations": [], "browser_coverage": "Not applicable: this task only verifies a design-runbook artifact and changes no browser-facing product behavior.", "recommended_next_step": "complete"}
+
+
+===== Test output =====
+verified G task count: 5

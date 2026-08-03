@@ -1,0 +1,8 @@
+Task: C0001 — Validate the bounded foundation catalogue bootstrap
+Stage: test
+Status: pass
+Summary: Configured project checks passed for C0001.
+
+===== Test output =====
+$ git diff --check
+

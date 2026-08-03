@@ -1,0 +1,8 @@
+Task: F008 — Define trust, operations, and release authoring contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F008.
+
+===== Test output =====
+$ git diff --check
+

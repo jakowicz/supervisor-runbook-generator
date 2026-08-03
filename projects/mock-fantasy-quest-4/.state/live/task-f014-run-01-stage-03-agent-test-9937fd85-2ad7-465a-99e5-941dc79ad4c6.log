@@ -1,0 +1,8 @@
+Task: F014 — Generate the bounded implementation-runbook authoring collection
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F014.
+
+===== Test output =====
+$ git diff --check
+

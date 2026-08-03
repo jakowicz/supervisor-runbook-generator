@@ -1,0 +1,5 @@
+2026-08-02T15:43:23.789451+00:00  RUN   b0002-03 · 116143f5-524d-437f-95d1-c199aa27f401 · Author shared seams and deterministic harness contracts
+2026-08-02T15:43:23.789581+00:00  RESUME B0002 · restored durable checkpoint for needs_user_review
+2026-08-02T15:43:23.789622+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-b0002-run-03-stage-00-agent-supervisor-116143f5-524d-437f-95d1-c199aa27f401.log
+2026-08-02T15:43:23.840123+00:00  START qwen · Qwen3 Coder
+2026-08-02T15:43:31.606120+00:00  INTERRUPTED B0002 · durable checkpoint retained · KeyboardInterrupt: 

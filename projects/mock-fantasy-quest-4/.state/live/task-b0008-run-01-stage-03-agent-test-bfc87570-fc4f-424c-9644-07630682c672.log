@@ -1,0 +1,8 @@
+Task: B0008 — Author campaign integration and original-content contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for B0008.
+
+===== Test output =====
+$ git diff --check
+

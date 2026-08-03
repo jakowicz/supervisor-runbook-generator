@@ -1,0 +1,8 @@
+Task: B0004 — Author content-validation and local recovery contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for B0004.
+
+===== Test output =====
+$ git diff --check
+

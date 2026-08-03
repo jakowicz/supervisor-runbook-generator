@@ -1,0 +1,396 @@
+{
+  "inventory_version": 1,
+  "source_bible": "specification/02-game-design-bible.json",
+  "entries": [
+    {
+      "id": "GPI-001",
+      "game_design_id": "GAME-001",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "question-card schema and validation fixtures",
+      "finite_item_or_catalogue_batch": "one versioned schema with five format fixtures",
+      "planned_quantity": "1 schema; 5 representative fixtures",
+      "original_brief": "Original, concise, fact-first cards carry prompt, answer rule, explanation, provenance, accessibility copy, two reviews, and stable IDs.",
+      "dependencies": [],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-UI-001"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001"
+      ],
+      "implementation_outcome": "Validated immutable card records consumable by the quiz core.",
+      "owner": "Editorial lead + content tooling engineer",
+      "verification": "Validator accepts each supported format and rejects missing provenance, review, locale, answer rule, or asset/cue reference.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "bounded_content_set"
+    },
+    {
+      "id": "GPI-002",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-01–12: World Football Foundations",
+      "planned_quantity": "12 original cards; 3 each easy/medium/hard/expert; select/typed/order/boolean quota 4/3/3/2",
+      "original_brief": "Independent football-history and geography prompts; no copied wording, branding, or unverified current facts.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Reviewed published batch available to standard-round selection.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Source/right, two-review, category/difficulty/format quota, alias, and uniqueness validation passes.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-003",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-13–24: Domestic Leagues and Cups",
+      "planned_quantity": "12 original cards; same 3/3/3/3 difficulty and 3-per-format quota",
+      "original_brief": "Evergreen, precisely scoped domestic-football knowledge with explanations that teach rather than taunt.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Second reviewed batch available to standard-round selection.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Editorial ledger proves 12 distinct original cards and all source/review/status fields.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-004",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-25–36: Clubs, Players, and Managers",
+      "planned_quantity": "12 original cards; 3 each difficulty; no club dominates more than 3 cards",
+      "original_brief": "Balanced factual prompts that avoid celebrity imitation, stereotypes, and ambiguous era claims.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Third reviewed batch available to standard-round selection.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Validator checks club cap, disambiguated canonical answers, sources, and explanation coverage.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-005",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-37–48: Records and Tournaments",
+      "planned_quantity": "12 original cards; 3 each difficulty; at least 4 women’s-football or global-football topics",
+      "original_brief": "Inclusive, source-checked record and tournament prompts with checked-date metadata.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Fourth reviewed batch completes the 48-card Kickoff Mix catalogue.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Batch validation checks topical quota, freshness dates, provenance, and no duplicate factual claim.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-006",
+      "game_design_id": "GAME-003",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "adjudication rules and fixtures",
+      "finite_item_or_catalogue_batch": "one deterministic normalisation policy with 20 fixtures",
+      "planned_quantity": "4 format handlers; 20 acceptance/rejection fixtures",
+      "original_brief": "Normalise only documented Unicode/case/punctuation/space/diacritic variants and authored aliases; never guess.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-FBK-001",
+        "ASSET-FBK-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Fair answer resolver with explainable result events.",
+      "owner": "Game rules designer + core engineer",
+      "verification": "Fixtures cover aliases, blanks, malformed input, ambiguity, outdated facts, and immutable resolved attempts.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-007",
+      "game_design_id": "GAME-004",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "repeat ledger and editorial lifecycle",
+      "finite_item_or_catalogue_batch": "one selection policy plus draft/review/published/withdrawn catalogue states",
+      "planned_quantity": "1 policy; 8 seeded selection fixtures",
+      "original_brief": "Prioritise variety while excluding the last two completed-round cards when alternatives exist; disclose shortages.",
+      "dependencies": [
+        "GPI-002",
+        "GPI-003",
+        "GPI-004",
+        "GPI-005"
+      ],
+      "asset_ids": [
+        "ASSET-OPS-001"
+      ],
+      "audio_ids": [],
+      "implementation_outcome": "Versioned content workflow and deterministic anti-repeat selection input.",
+      "owner": "Editorial lead + core engineer",
+      "verification": "Seeded runs prove exclusion, shortage disclosure, withdrawal safety, and reproducible selection.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "scalable_catalogue"
+    },
+    {
+      "id": "GPI-008",
+      "game_design_id": "GAME-005",
+      "selected_module": "round-score-and-progress-rules",
+      "content_design_card_type": "tutorial round card set",
+      "finite_item_or_catalogue_batch": "TUT-01–05 First Whistle",
+      "planned_quantity": "5 named fixed cards, non-timed, available offline",
+      "original_brief": "Teach read/select-or-enter/confirm/result/save in five original questions, with plain-language guidance.",
+      "dependencies": [
+        "GPI-001",
+        "GPI-006",
+        "GPI-013",
+        "GPI-014"
+      ],
+      "asset_ids": [
+        "ASSET-SHL-001",
+        "ASSET-QZ-001",
+        "ASSET-FBK-001"
+      ],
+      "audio_ids": [
+        "AUDIO-MUS-001",
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002"
+      ],
+      "implementation_outcome": "Completable offline onboarding that sets first_whistle_complete once.",
+      "owner": "Game designer + editorial lead",
+      "verification": "New profile completes, restarts, resumes, and records one idempotent milestone.",
+      "module": "round-score-and-progress-rules",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-009",
+      "game_design_id": "GAME-006",
+      "selected_module": "round-score-and-progress-rules",
+      "content_design_card_type": "standard round rule card",
+      "finite_item_or_catalogue_batch": "Mixed Fixture 10-card template",
+      "planned_quantity": "1 template; 10-card seeded fixtures",
+      "original_brief": "Theme-led short session alternates eligible format/difficulty where possible and makes timing optional-off.",
+      "dependencies": [
+        "GPI-002",
+        "GPI-003",
+        "GPI-004",
+        "GPI-005",
+        "GPI-006",
+        "GPI-007"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-MUS-001",
+        "AUDIO-QZ-001"
+      ],
+      "implementation_outcome": "Deterministic, interruptible standard-round lifecycle.",
+      "owner": "Game rules designer + core engineer",
+      "verification": "Seed fixtures prove eligibility, alternation/shortage messaging, optional timer, and no mid-round content switch.",
+      "module": "round-score-and-progress-rules",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-010",
+      "game_design_id": "GAME-007",
+      "selected_module": "round-score-and-progress-rules",
+      "content_design_card_type": "score and feedback rule table",
+      "finite_item_or_catalogue_batch": "one 100-point base / capped 3+ streak rule table",
+      "planned_quantity": "1 rule table; 12 edge-case fixtures",
+      "original_brief": "Make momentum celebratory but recoverable: wrong, blank, timeout, and abandon reset streak without negative score.",
+      "dependencies": [
+        "GPI-006",
+        "GPI-009"
+      ],
+      "asset_ids": [
+        "ASSET-FBK-001",
+        "ASSET-FBK-002",
+        "ASSET-FBK-003"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003",
+        "AUDIO-QZ-004"
+      ],
+      "implementation_outcome": "Accessible state events for score, streak, correction, and celebration.",
+      "owner": "Game rules designer + accessibility reviewer",
+      "verification": "Fixtures prove cap, reset, monotonic total, text/pattern equivalent, reduced-motion and muted outcomes.",
+      "module": "round-score-and-progress-rules",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-011",
+      "game_design_id": "GAME-008",
+      "selected_module": "round-score-and-progress-rules",
+      "content_design_card_type": "results and milestone surface",
+      "finite_item_or_catalogue_batch": "one result summary and first_whistle_complete milestone",
+      "planned_quantity": "2 named states; 6 lifecycle fixtures",
+      "original_brief": "Show score, streak outcome, next action, and learning-oriented explanation without rank, loot, or social comparison.",
+      "dependencies": [
+        "GPI-009",
+        "GPI-010",
+        "GPI-014"
+      ],
+      "asset_ids": [
+        "ASSET-FBK-004",
+        "ASSET-UI-001"
+      ],
+      "audio_ids": [
+        "AUDIO-RES-001"
+      ],
+      "implementation_outcome": "Idempotent completion state compatible with safe local resume.",
+      "owner": "Game designer + UI engineer",
+      "verification": "Complete/reopen, abandon/resume, corrupt draft, and deletion flows preserve one result/milestone.",
+      "module": "round-score-and-progress-rules",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-012",
+      "game_design_id": "GAME-009",
+      "selected_module": "accessible-recoverable-multitarget-experience",
+      "content_design_card_type": "guided-start and accessibility action map",
+      "finite_item_or_catalogue_batch": "local profile, tutorial entry, settings, 4 semantic input adapters",
+      "planned_quantity": "4 mappings: touch, pointer, keyboard, gamepad",
+      "original_brief": "Every action is labelled and equivalently available; focus, captions, contrast, text scaling, and reduced motion are designed in.",
+      "dependencies": [],
+      "asset_ids": [
+        "ASSET-SHL-001",
+        "ASSET-UI-001",
+        "ASSET-UI-003"
+      ],
+      "audio_ids": [
+        "AUDIO-SET-001"
+      ],
+      "implementation_outcome": "Accessible entry and settings foundations for all rounds.",
+      "owner": "Accessibility lead + platform/UI engineer",
+      "verification": "Keyboard-only, touch, pointer, unavailable-gamepad, focus restoration, captions, 200% text, and contrast checks.",
+      "module": "accessible-recoverable-multitarget-experience",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-013",
+      "game_design_id": "GAME-010",
+      "selected_module": "accessible-recoverable-multitarget-experience",
+      "content_design_card_type": "snapshot recovery policy and UI states",
+      "finite_item_or_catalogue_batch": "confirmed snapshots, write-failure, corruption, deletion choice set",
+      "planned_quantity": "4 recovery states; 8 fault fixtures",
+      "original_brief": "Never silently lose confirmed local progress; explain choices plainly and require confirmation before deletion.",
+      "dependencies": [
+        "GPI-011"
+      ],
+      "asset_ids": [
+        "ASSET-UI-003",
+        "ASSET-SYS-001"
+      ],
+      "audio_ids": [
+        "AUDIO-SYS-002"
+      ],
+      "implementation_outcome": "Recoverable revisioned local saves separated from settings.",
+      "owner": "Persistence engineer + accessibility reviewer",
+      "verification": "Injected write failure, restart, corruption, migration rejection, and confirmed deletion retain stated invariants.",
+      "module": "accessible-recoverable-multitarget-experience",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-014",
+      "game_design_id": "GAME-011",
+      "selected_module": "accessible-recoverable-multitarget-experience",
+      "content_design_card_type": "offline/update/error communication package",
+      "finite_item_or_catalogue_batch": "cached package, between-round gate, recovery notices",
+      "planned_quantity": "4 status messages; 6 lifecycle fixtures",
+      "original_brief": "Offline availability and updates are truthful, plain-language, and never interrupt an active round or save.",
+      "dependencies": [
+        "GPI-002",
+        "GPI-003",
+        "GPI-004",
+        "GPI-005",
+        "GPI-013"
+      ],
+      "asset_ids": [
+        "ASSET-SYS-001"
+      ],
+      "audio_ids": [
+        "AUDIO-SYS-001"
+      ],
+      "implementation_outcome": "Safe cache/update/error behaviour with text/icon/pattern/caption equivalents.",
+      "owner": "Release engineer + platform engineer",
+      "verification": "Offline first visit, cached play, update mid-round, unavailable content, and diagnostics-denial fixtures.",
+      "module": "accessible-recoverable-multitarget-experience",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-015",
+      "game_design_id": "GAME-012",
+      "selected_module": "accessible-recoverable-multitarget-experience",
+      "content_design_card_type": "platform capability and certification matrix",
+      "finite_item_or_catalogue_batch": "web, PWA, Android, iOS parity matrix",
+      "planned_quantity": "4 target rows; 1 privacy/store checklist per mobile target",
+      "original_brief": "Shared fair rules/content/saves with only explicit input, install, layout, orientation, performance, and store adaptations.",
+      "dependencies": [
+        "GPI-012",
+        "GPI-013",
+        "GPI-014"
+      ],
+      "asset_ids": [
+        "ASSET-SHL-001",
+        "ASSET-UI-001"
+      ],
+      "audio_ids": [
+        "AUDIO-MUS-001",
+        "AUDIO-SET-001"
+      ],
+      "implementation_outcome": "Target-specific adapter/certification plan that cannot change core adjudication.",
+      "owner": "Platform lead + release manager",
+      "verification": "Target matrix demonstrates parity, adaptation rationale, privacy disclosure evidence, and approved budget/store gates.",
+      "module": "accessible-recoverable-multitarget-experience",
+      "production_kind": "systemic_rules"
+    }
+  ]
+}

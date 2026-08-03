@@ -1,0 +1,8 @@
+Task: F002 — Define the domain model, journeys, features, and release slices
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F002.
+
+===== Test output =====
+$ git diff --check
+

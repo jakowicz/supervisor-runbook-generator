@@ -1,0 +1,23 @@
+[stderr] using macos seatbelt (profile: permissive-open) ...
+[stderr] getconf: confstr: DARWIN_USER_CACHE_DIR: Input/output error
+[stderr] Fatal error: Failed to relaunch the CLI process.
+[stderr] Command failed: getconf DARWIN_USER_CACHE_DIR
+[stderr] getconf: confstr: DARWIN_USER_CACHE_DIR: Input/output error
+
+===== SUPERVISOR RESULT =====
+Task: B0002 — Author shared seams and deterministic harness contracts
+Stage: qwen
+Status: environment_failure
+Summary: Qwen3 Coder: exited with code 1
+
+===== Adapter output =====
+{"status": "environment_failure", "summary": "Qwen3 Coder: exited with code 1", "changed_files": [], "test_result": "", "evidence": {"agent_log": "", "adapter_log": "", "test_log": "using macos seatbelt (profile: permissive-open) ...\ngetconf: confstr: DARWIN_USER_CACHE_DIR: Input/output error\nFatal error: Failed to relaunch the CLI process.\nCommand failed: getconf DARWIN_USER_CACHE_DIR\ngetconf: confstr: DARWIN_USER_CACHE_DIR: Input/output error\n", "browser_log": "", "screenshots": []}, "acceptance_results": [], "documentation": {"reviewed_files": [], "updated_files": [], "summary": ""}, "known_limitations": [], "browser_coverage": "", "recommended_next_step": "use_openhands"}
+
+
+===== Test output =====
+using macos seatbelt (profile: permissive-open) ...
+getconf: confstr: DARWIN_USER_CACHE_DIR: Input/output error
+Fatal error: Failed to relaunch the CLI process.
+Command failed: getconf DARWIN_USER_CACHE_DIR
+getconf: confstr: DARWIN_USER_CACHE_DIR: Input/output error
+

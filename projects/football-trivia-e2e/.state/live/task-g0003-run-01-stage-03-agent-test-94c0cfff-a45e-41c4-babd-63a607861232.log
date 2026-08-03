@@ -1,0 +1,16 @@
+Task: G0003 — Define tutorial and standard-round bible
+Stage: test
+Status: pass
+Summary: Configured project checks passed for G0003.
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 12 declared
+assets: 12 declared
+audio: 9 declared
+narrative: 0 declared
+PASS: every declared creative item has an owned implementation route.
+

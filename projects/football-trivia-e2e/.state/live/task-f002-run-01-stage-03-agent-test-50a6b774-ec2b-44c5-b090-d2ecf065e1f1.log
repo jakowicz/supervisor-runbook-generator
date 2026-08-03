@@ -1,0 +1,39 @@
+Task: F002 — Define the domain model, journeys, features, and release slices
+Stage: test
+Status: repairable_failure
+Summary: Independent test worker failed: python3 scripts/runbookgen_validate.py
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 12 declared
+assets: 3 declared
+audio: 3 declared
+narrative: 0 declared
+ERROR: inventory entry for GAME-001 needs a selected module
+ERROR: inventory entry for GAME-002 needs a selected module
+ERROR: inventory entry for GAME-003 needs a selected module
+ERROR: game design unit GAME-004 has no production-inventory entry
+ERROR: game design unit GAME-005 has no production-inventory entry
+ERROR: game design unit GAME-006 has no production-inventory entry
+ERROR: game design unit GAME-007 has no production-inventory entry
+ERROR: game design unit GAME-008 has no production-inventory entry
+ERROR: game design unit GAME-009 has no production-inventory entry
+ERROR: game design unit GAME-010 has no production-inventory entry
+ERROR: game design unit GAME-011 has no production-inventory entry
+ERROR: game design unit GAME-012 has no production-inventory entry
+ERROR: game-design manifest has no accepted entry for selected module 'accessible-recoverable-multitarget-experience'
+ERROR: game-design manifest has no accepted entry for selected module 'quiz-content-and-editorial-integrity'
+ERROR: game-design manifest has no accepted entry for selected module 'round-score-and-progress-rules'
+ERROR: game GAME-004 has no coverage entry
+ERROR: game GAME-005 has no coverage entry
+ERROR: game GAME-006 has no coverage entry
+ERROR: game GAME-007 has no coverage entry
+ERROR: game GAME-008 has no coverage entry
+ERROR: game GAME-009 has no coverage entry
+ERROR: game GAME-010 has no coverage entry
+ERROR: game GAME-011 has no coverage entry
+ERROR: game GAME-012 has no coverage entry
+

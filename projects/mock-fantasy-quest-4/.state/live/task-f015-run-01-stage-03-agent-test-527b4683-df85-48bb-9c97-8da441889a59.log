@@ -1,0 +1,8 @@
+Task: F015 — Validate generated authoring batches and implementation contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F015.
+
+===== Test output =====
+$ git diff --check
+

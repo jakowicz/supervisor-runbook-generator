@@ -1,0 +1,24 @@
+Task: F001 — Discover product context and normalize the product brief
+Stage: test
+Status: repairable_failure
+Summary: Independent test worker failed: python3 scripts/runbookgen_validate.py
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 0 declared
+assets: 0 declared
+audio: 0 declared
+narrative: 0 declared
+ERROR: missing planning/implementation-catalogue-index.json
+ERROR: game is missing specification/02-game-design-bible.json
+ERROR: game design bible needs at least one selected module
+ERROR: game design bible needs non-empty design_units
+ERROR: game is missing stable GAME-* IDs in 02-game-design-bible.md
+ERROR: game is missing stable ASSET-* IDs in 04-asset-direction.md
+ERROR: game is missing stable AUDIO-* IDs in 04-audio-direction.md
+ERROR: game is missing planning/game-production-inventory.json
+ERROR: game is missing planning/game-design-manifest.json
+

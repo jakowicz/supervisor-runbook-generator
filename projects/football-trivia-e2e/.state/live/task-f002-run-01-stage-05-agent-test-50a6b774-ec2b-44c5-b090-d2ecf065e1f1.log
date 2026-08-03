@@ -1,0 +1,16 @@
+Task: F002 — Define the domain model, journeys, features, and release slices
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F002.
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 12 declared
+assets: 3 declared
+audio: 3 declared
+narrative: 0 declared
+PASS: every declared creative item has an owned implementation route.
+

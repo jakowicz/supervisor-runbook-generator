@@ -1,0 +1,8 @@
+Task: F010 — Finalize the specification-to-runbook handoff inputs
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F010.
+
+===== Test output =====
+$ git diff --check
+

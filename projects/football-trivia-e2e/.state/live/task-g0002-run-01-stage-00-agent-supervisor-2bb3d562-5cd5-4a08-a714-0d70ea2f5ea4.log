@@ -1,0 +1,9 @@
+2026-08-03T00:46:15.217033+00:00  RUN   g0002-01 · 2bb3d562-5cd5-4a08-a714-0d70ea2f5ea4 · Define fair adjudication and editorial lifecycle bible
+2026-08-03T00:46:15.217141+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-g0002-run-01-stage-00-agent-supervisor-2bb3d562-5cd5-4a08-a714-0d70ea2f5ea4.log
+2026-08-03T00:46:15.272653+00:00  START prepare · Git baseline guard
+2026-08-03T00:46:15.273518+00:00  EVENT prepare · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-g0002-run-01-stage-01-agent-prepare-2bb3d562-5cd5-4a08-a714-0d70ea2f5ea4.log
+2026-08-03T00:46:15.291460+00:00  DONE  prepare · pass → codex · Auto-publish disabled; no clean-worktree preflight needed.
+2026-08-03T00:46:15.292063+00:00  START codex · Codex
+2026-08-03T00:46:45.377563+00:00  WAIT  codex · Codex is still running
+2026-08-03T00:47:15.422153+00:00  WAIT  codex · Codex is still running
+2026-08-03T00:47:45.465887+00:00  WAIT  codex · Codex is still running

@@ -1,0 +1,1548 @@
+[stderr] OpenAI Codex v0.145.0
+[stderr] --------
+[stderr] workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] model: gpt-5.6-terra
+[stderr] provider: openai
+[stderr] approval: on-request
+[stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[stderr] reasoning effort: medium
+[stderr] reasoning summaries: none
+[stderr] session id: 019fc51e-15c6-7883-8700-d36155810df8
+[stderr] --------
+[stderr] user
+[stderr] You are the coding worker for one isolated runbook task.
+[stderr] 
+[stderr] Work only in the repository passed as your working directory. Do not publish,
+[stderr] deploy, access secrets, make payments, or change product scope. Stop and report
+[stderr] needs_user_review if the task is destructive, unclear, or requires authority.
+[stderr] Implement only the task below, run relevant checks, and then output exactly one
+[stderr] JSON object conforming to the WorkerResult contract. A status of pass means the
+[stderr] change is ready for independent test and visual review; it is not self-approval.
+[stderr] 
+[stderr] Task:
+[stderr] {
+[stderr]   "task_id": "G0002",
+[stderr]   "title": "Define fair adjudication and editorial lifecycle bible",
+[stderr]   "objective": "Write accepted evidence for GAME-003\u2013004/GPI-006\u2013007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+[stderr]   "acceptance_criteria": [
+[stderr]     "Rules never guess answers and every catalogue-state transition is reproducible."
+[stderr]   ],
+[stderr]   "risk_level": "normal",
+[stderr]   "sequence": 3,
+[stderr]   "dependencies": [
+[stderr]     "G0001"
+[stderr]   ],
+[stderr]   "prerequisite_collections": [],
+[stderr]   "browser_impact": "not_applicable",
+[stderr]   "playwright_specs": [],
+[stderr]   "asset_impact": "not_applicable",
+[stderr]   "asset_brief": "",
+[stderr]   "asset_ids": [],
+[stderr]   "visual_style_version": "",
+[stderr]   "audio_impact": "not_applicable",
+[stderr]   "audio_brief": "",
+[stderr]   "audio_ids": [],
+[stderr]   "audio_duration_seconds": 0,
+[stderr]   "audio_loop": "not_applicable",
+[stderr]   "audio_style_version": "",
+[stderr]   "source_specifications": [
+[stderr]     "specification/02-game-design-bible.md",
+[stderr]     "planning/game-production-inventory.md"
+[stderr]   ],
+[stderr]   "source_catalogue_ids": [
+[stderr]     "GAME-003",
+[stderr]     "GAME-004",
+[stderr]     "GPI-006",
+[stderr]     "GPI-007"
+[stderr]   ],
+[stderr]   "authoring_batch": "",
+[stderr]   "design_authoring_batch": "GB0001",
+[stderr]   "factory_stages": [],
+[stderr]   "execution_mode": "implementation",
+[stderr]   "continuation_context": "Continue the existing task; do not reimplement completed work.\nPrevious lifecycle: implementing.\nExisting changed files: .env, projects/final-fantasy/, projects/football-trivia-e2e/, projects/mock-fantasy-quest-4/, runbooks/.supervisor-children/.\nLast checkpoint: Codex is working in stage codex.\nRequired next action: continue_codex."
+[stderr] }
+[stderr] 
+[stderr] Continuation checkpoint (only when present):
+[stderr] Continue the existing task; do not reimplement completed work.
+[stderr] Previous lifecycle: implementing.
+[stderr] Existing changed files: .env, projects/final-fantasy/, projects/football-trivia-e2e/, projects/mock-fantasy-quest-4/, runbooks/.supervisor-children/.
+[stderr] Last checkpoint: Codex is working in stage codex.
+[stderr] Required next action: continue_codex.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+[stderr] `dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+[stderr] can write SDK caches outside the worktree and are deliberately owned by the
+[stderr] supervisor's independent precheck/test stages. When the continuation evidence
+[stderr] names a concrete source or test failure, repair that evidence in the worktree,
+[stderr] run only safe focused checks, and return `pass` for the deterministic stage to
+[stderr] validate. Never return a failure solely because an SDK command needs approval.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] Efficient investigation rules (especially important for local models):
+[stderr] - Start with the Codebase Memory MCP for architecture and targeted symbols.
+[stderr] - Do not use whole-file reads for Dart, test, lock, generated, or log files.
+[stderr]   Use targeted symbol snippets or `run_shell_command` with `rg` and
+[stderr]   `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+[stderr] - Inspect only files directly relevant to the acceptance criteria. Do not
+[stderr]   browse unrelated Playwright, automation, or configuration files merely to
+[stderr]   learn the repository layout.
+[stderr] - After the focused investigation, implement and run the smallest relevant
+[stderr]   checks. Do not continue exploratory tool calls once the implementation path
+[stderr]   is clear.
+[stderr] - If a tool reports a missing file, treat it as non-blocking and continue with
+[stderr]   the repository evidence you already have.
+[stderr] 
+[stderr] Completion protocol:
+[stderr] - Your final action MUST be the `structured_output` tool supplied by
+[stderr]   `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+[stderr]   response.
+[stderr] - Use native nested JSON values in that tool call: `evidence` and
+[stderr]   `documentation` are objects, while `acceptance_results` is an array. Never
+[stderr]   put JSON text inside quotes for any of those fields.
+[stderr] - If a check cannot run, return a structured `repairable_failure` or
+[stderr]   `needs_user_review` result immediately with the exact reason. Never wait
+[stderr]   silently for a tool or model request to recover.
+[stderr] 
+[stderr] 
+[stderr] Your final WorkerResult must include all of the following:
+[stderr] - `acceptance_results`: one entry for every task acceptance criterion, in the
+[stderr]   same order. Copy each criterion text verbatim from the task, with pass/fail/
+[stderr]   not_verified status and concrete evidence;
+[stderr] - `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+[stderr]   why they were or were not changed;
+[stderr] - `test_result`: exact checks you ran and their outcomes;
+[stderr] - `known_limitations`: remaining gaps or an empty list.
+[stderr] 
+[stderr] Do not claim `pass` if a criterion is unverified. Update user-facing README or
+[stderr] developer documentation whenever the change affects behaviour, setup, commands,
+[stderr] architecture, design, or progress. If no documentation change is needed, state
+[stderr] the reviewed files and explain why.
+[stderr] 
+[stderr] For `final_verification`, the independent `test`, `browser`, and visual-review
+[stderr] stages are the required verification gates. After repairing every concrete
+[stderr] source/test failure supplied in this prompt, return `pass` so those gates run.
+[stderr] Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+[stderr] left to the independent test stage. Return `needs_user_review` only for a real
+[stderr] authority, safety, or irreducibly ambiguous product decision.
+[stderr] 
+[stderr] For browser-impacting work, create or update a task-specific Playwright spec in
+[stderr] `supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+[stderr] and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+[stderr] work, explain in `browser_coverage` why no task-specific browser spec changed.
+[stderr] 
+[stderr] Visual baseline rule:
+[stderr] - When the continuation evidence names a golden, snapshot, or visual-regression
+[stderr]   failure, inspect the supplied master/test/diff artifacts before changing any
+[stderr]   baseline. Work out whether the new render is the intended result of this
+[stderr]   task, and check that it has no clipping, overlap, or lost meaning.
+[stderr] - If it is intentional, regenerate only the affected approved baselines using
+[stderr]   the repository's documented command, update stale visual/browser checks when
+[stderr]   their prior expectation is no longer correct, and rerun the relevant suite.
+[stderr] - If it is not intentional, fix the product or test setup instead. Never mask
+[stderr]   a real visual regression by blindly accepting a changed screenshot.
+[stderr] 
+[stderr] Failure-repair protocol:
+[stderr] - When the continuation checkpoint says that a Supervisor terminal stage
+[stderr]   failed, treat its captured command and output as the starting evidence. Do
+[stderr]   not merely describe a possible fix.
+[stderr] - Use the terminal in this project worktree to inspect, repair, and rerun the
+[stderr]   same focused check whenever that command is safe in your sandbox. Include
+[stderr]   the command and result in `test_result`.
+[stderr] - If that exact command needs an SDK, browser, or approval outside this
+[stderr]   worker's sandbox, repair the demonstrated issue but do not replace the
+[stderr]   independent validation. Return `pass` only when the worktree is ready for
+[stderr]   Supervisor to rerun its configured terminal command after your repair.
+[stderr] 
+[stderr] warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+[stderr] codex
+[stderr] {"status":"pass","summary":"I’ll inspect the existing football-trivia documentation and targeted codebase graph evidence, then add only the lifecycle/adjudication material needed for this task and run safe focused checks.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] mcp: codebase-memory-mcp/get_architecture started
+[stderr] mcp: codebase-memory-mcp/get_architecture (failed)
+[stderr] user cancelled MCP tool call
+[stderr] exec
+[stderr] /bin/zsh -lc "pwd; rg --files projects/football-trivia-e2e | rg '("'^|/)(specification/02-game-design-bible'"\\.md|planning/game-production-inventory\\.md|README\\.md)"'$'"'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] projects/football-trivia-e2e/specification/02-game-design-bible.md
+[stderr] projects/football-trivia-e2e/planning/game-production-inventory.md
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "rg -n -i -C 3 'GAME-003|GAME-004|GPI-006|GPI-007|adjudic|normalis|alias|withdraw|anti-repeat|shortage|catalogue' specification/02-game-design-bible.md planning/game-production-inventory.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+[stderr]  succeeded in 0ms:
+[stderr] planning/game-production-inventory.md-10-| --- | --- | --- | --- | --- |
+[stderr] planning/game-production-inventory.md-11-| GAME-001 | GPI-001: one card schema, five format fixtures | — | Editorial + tooling | Schema/negative fixtures |
+[stderr] planning/game-production-inventory.md-12-| GAME-002 | GPI-002–005: four named 12-card batches, QB-A-01–48 | GPI-001 | Editorial + two reviewers | Provenance, review, quota, uniqueness validator |
+[stderr] planning/game-production-inventory.md:13:| GAME-003 | GPI-006: four handlers, 20 adjudication fixtures | GPI-001 | Rules + core | Deterministic acceptance/rejection fixtures |
+[stderr] planning/game-production-inventory.md:14:| GAME-004 | GPI-007: selection policy, 8 seeded fixtures | GPI-002–005 | Editorial + core | Repeat/shortage/withdrawal tests |
+[stderr] planning/game-production-inventory.md-15-| GAME-005 | GPI-008: TUT-01–05 fixed tutorial | GPI-001, 006, 013–014 | Design + editorial | Offline completion/resume test |
+[stderr] planning/game-production-inventory.md-16-| GAME-006 | GPI-009: one 10-card Mixed Fixture template | GPI-002–007 | Rules + core | Seeded selection lifecycle |
+[stderr] planning/game-production-inventory.md:17:| GAME-007 | GPI-010: rule table, 12 edge fixtures | GPI-006, 009 | Rules + accessibility | Score/streak equivalent-feedback tests |
+[stderr] planning/game-production-inventory.md-18-| GAME-008 | GPI-011: result and milestone states | GPI-009–010, 014 | Design + UI | Idempotence/recovery lifecycle tests |
+[stderr] planning/game-production-inventory.md-19-| GAME-009 | GPI-012: profile/settings plus four input maps | — | Accessibility + platform | Input and accessibility review |
+[stderr] planning/game-production-inventory.md-20-| GAME-010 | GPI-013: four recovery states, eight faults | GPI-011 | Persistence + accessibility | Fault-injection recovery tests |
+[stderr] --
+[stderr] specification/02-game-design-bible.md-15-
+[stderr] specification/02-game-design-bible.md-16-## Selected design systems
+[stderr] specification/02-game-design-bible.md-17-
+[stderr] specification/02-game-design-bible.md:18:### Quiz content and editorial integrity — `GAME-001` to `GAME-004`
+[stderr] specification/02-game-design-bible.md-19-
+[stderr] specification/02-game-design-bible.md-20-**Player outcome:** receive fresh, fair, answerable football questions with a
+[stderr] specification/02-game-design-bible.md-21-clear explanation. **Entities:** `QuestionCard`, `AnswerOption`,
+[stderr] --
+[stderr] specification/02-game-design-bible.md-24-
+[stderr] specification/02-game-design-bible.md-25-| Unit | Design card / rule | First-release boundary and acceptance |
+[stderr] specification/02-game-design-bible.md-26-| --- | --- | --- |
+[stderr] specification/02-game-design-bible.md:27:| GAME-001 | **Question-card grammar.** An original card has one unambiguous fact, prompt, format, category, era/competition tags, difficulty 1–3, answer rule, short explanation, and review/version state. Formats: four-option select, true/false, ordered pair, and short typed answer. | Ship only reviewed `published` cards. A card without provenance, answer rule, explanation, or two-editor approval is ineligible. Test: each sampled card adjudicates its canonical and configured accepted answers identically. |
+[stderr] specification/02-game-design-bible.md:28:| GAME-002 | **Catalogue batch A: “Kickoff Mix.”** 48 original cards: 12 world tournament history, 12 domestic league moments, 12 club/manager/identity, 12 players/records. Each category has 4 cards at each band, max 6 cards per competition and no single club above 4. | Finite named release package: `QB-A-01` through `QB-A-48`, authored in four 12-card editorial batches. Exact facts, wording, sources, and rights clearance remain an editorial approval gate; placeholders never ship. Test: the manifest enforces totals, distributions, unique IDs, and no unpublished card. |
+[stderr] specification/02-game-design-bible.md:29:| GAME-003 | **Adjudication and provenance.** Select/true-false compare canonical IDs. Ordered pair compares ordered IDs. Typed answers normalise Unicode, case, punctuation, whitespace, diacritics, and configured aliases; it never uses fuzzy matching in release one. A rejected typed answer shows the canonical answer and explanation. | Each factual assertion links to a durable permitted source or approved internal research note, with checked date, reviewer, and correction history. Conflict or contested fact ⇒ remove from eligibility until resolved. Test: alias, malformed, blank, ambiguous, and outdated-version cases have fixtures. |
+[stderr] specification/02-game-design-bible.md:30:| GAME-004 | **Freshness.** The repeat ledger records card ID and completion timestamp locally. A round excludes cards seen in its last two completed rounds where alternatives exist; if insufficient eligible cards exist, it discloses reuse rather than silently failing. | No renewable feed, scraping, or live refresh. Authoring flow: propose → source/provenance → factual check → accessibility/copy edit → second review → publish to a versioned batch → validate → release/rollback. Test: seeded selection is reproducible and respects the exclusion rule. |
+[stderr] specification/02-game-design-bible.md-31-
+[stderr] specification/02-game-design-bible.md-32-**Visual/audio/accessibility:** cards use original broadcast-inspired category
+[stderr] specification/02-game-design-bible.md-33-colour families plus text labels/patterns; no colour alone encodes category or
+[stderr] --
+[stderr] specification/02-game-design-bible.md-46-| Unit | Design card / rule | First-release boundary and acceptance |
+[stderr] specification/02-game-design-bible.md-47-| --- | --- | --- |
+[stderr] specification/02-game-design-bible.md-48-| GAME-005 | **Round “First Whistle.”** Tutorial round contains 5 fixed, original tutorial cards (`TUT-01`–`TUT-05`) covering selecting, typing, feedback, explanation, and pause/save. It is intentionally non-timed. | This is the complete first useful journey. Completion creates/updates local milestone `first_whistle_complete`; it cannot require account, network, purchase, or deferred content. Test: a new local profile can complete it offline and resume after app restart. |
+[stderr] specification/02-game-design-bible.md:49:| GAME-006 | **Round “Mixed Fixture.”** A 10-card themed round draws from one selected category or the Kickoff Mix, with no more than two adjacent cards sharing format or difficulty. The player may pause; a displayed timer mode is optional and defaults off. | First release ships one tutorial and one configurable standard round template, no ranked/daily/live/event modes. Test: deterministic seed produces ten eligible cards and valid format alternation or records the shortage. |
+[stderr] specification/02-game-design-bible.md-50-| GAME-007 | **Scoring and streak.** Correct = 100 points; a consecutive-correct streak of 3+ adds 25 points to each later correct answer, capped at +100. Incorrect, timeout (only if enabled), blank submission, or abandon resets the active streak; score never decreases. Explanation is available after resolution. | No paid boosts, leaderboard, social comparison, or opaque difficulty multiplier. Test: table-driven sequence proves cap, reset, and per-attempt result; a retry is a new run, not an overwrite of history. |
+[stderr] specification/02-game-design-bible.md-51-| GAME-008 | **Result and return.** Results show answered/correct, score, best active-session streak, category, and next action: replay, choose theme, or exit. Progress is local milestones and aggregate history only, not RPG levels. | An interrupted run persists at a safe boundary before the next unresolved question. Completed result is idempotent: reopening cannot award twice. Test: complete/reopen, abandon/resume, corrupted draft, and delete-history paths are specified. |
+[stderr] specification/02-game-design-bible.md-52-
+[stderr] specification/02-game-design-bible.md-53-**Dependencies:** GAME-005 needs published tutorial cards and persistence;
+[stderr] specification/02-game-design-bible.md:54:GAME-006 needs GAME-001–004; GAME-007 consumes adjudication events; GAME-008
+[stderr] specification/02-game-design-bible.md-55-consumes score events and save/recovery. Visual family is bold category panels,
+[stderr] specification/02-game-design-bible.md-56-neutral answer controls, and non-colour success/error indicators; audio is
+[stderr] specification/02-game-design-bible.md-57-supportive, optional, and captioned.
+[stderr] --
+[stderr] specification/02-game-design-bible.md-75-order, semantic labels, sufficient touch targets, and no time limit by default.
+[stderr] specification/02-game-design-bible.md-76-Localisation inputs are externalised prompt, answer, explanation, category, and
+[stderr] specification/02-game-design-bible.md-77-UI strings; only a future approved language may add translated content after
+[stderr] specification/02-game-design-bible.md:78:answer aliases and factual review are validated.
+[stderr] specification/02-game-design-bible.md-79-
+[stderr] specification/02-game-design-bible.md-80-**Experience production package:** a finite first-release package contains the
+[stderr] specification/02-game-design-bible.md-81-five named tutorial cards, one settings/help copy set, input-action labels,
+[stderr] --
+[stderr] specification/02-game-design-bible.md-90-
+[stderr] specification/02-game-design-bible.md-91-| Units | First-release journeys | Implementation domains |
+[stderr] specification/02-game-design-bible.md-92-| --- | --- | --- |
+[stderr] specification/02-game-design-bible.md:93:| GAME-001–004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |
+[stderr] specification/02-game-design-bible.md-94-| GAME-005–008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |
+[stderr] specification/02-game-design-bible.md-95-| GAME-009–012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |
+[stderr] specification/02-game-design-bible.md-96-
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc 'git status --short -- projects/football-trivia-e2e; git diff --stat -- projects/football-trivia-e2e' in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] ?? projects/football-trivia-e2e/
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "rg --files | rg '("'^|/)(content|editorial|fixture|adjudication|catalogue|question|game-production|game-design)'"' | head -120" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+[stderr]  succeeded in 0ms:
+[stderr] planning/game-production-inventory.json
+[stderr] planning/game-design-manifest.json
+[stderr] planning/game-production-inventory.md
+[stderr] design-evidence/question-card-and-qba-catalogue-bible.md
+[stderr] design-evidence/adjudication-and-freshness-bible.md
+[stderr] game-design-runbooks/GC0001.md
+[stderr] game-design-runbooks/G0004.md
+[stderr] game-design-runbooks/G0005.md
+[stderr] game-design-runbooks/G0001.md
+[stderr] game-design-runbooks/GB0003.md
+[stderr] game-design-runbooks/GB0002.md
+[stderr] game-design-runbooks/GB0001.md
+[stderr] game-design-runbooks/GD0001.md
+[stderr] game-design-runbooks/G0002.md
+[stderr] game-design-runbooks/G0003.md
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "sed -n '1,220p' game-design-runbooks/G0002.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+[stderr]  succeeded in 0ms:
+[stderr] ---
+[stderr] task_id: G0002
+[stderr] sequence: 3
+[stderr] dependencies: G0001
+[stderr] source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+[stderr] source_catalogue_ids: GAME-003,GAME-004,GPI-006,GPI-007
+[stderr] title: Define fair adjudication and editorial lifecycle bible
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] design_authoring_batch: GB0001
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Write accepted evidence for GAME-003–004/GPI-006–007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/adjudication-and-freshness-bible.md`: deterministic select/true-false/ordered/typed-answer rules, 20 fixtures, contested-fact withdrawal/provenance review states, and a seeded anti-repeat/shortage rule.
+[stderr] 
+[stderr] No fuzzy guessing, implementation code, B/R runbooks, or manifest acceptance.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - Rules never guess answers and every catalogue-state transition is reproducible.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "sed -n '1,240p' design-evidence/adjudication-and-freshness-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+[stderr]  succeeded in 0ms:
+[stderr] # Adjudication and freshness bible
+[stderr] 
+[stderr] **Scope:** accepted evidence for `GAME-003`, `GAME-004`, `GPI-006`, and
+[stderr] `GPI-007`. This is a deterministic future-core contract, not implementation or
+[stderr] published content. A result is calculated only from stated input; it is never
+[stderr] inferred or guessed.
+[stderr] 
+[stderr] ## GPI-006 — answer adjudication
+[stderr] 
+[stderr] Every resolved attempt is immutable and records `attemptId`, `cardId`,
+[stderr] `cardRevision`, `format`, submitted value, `outcome`, `reasonCode`,
+[stderr] canonical answer, and explanation key. Feedback reopening cannot recompute
+[stderr] against a later revision. A card withdrawn after presentation may resolve that
+[stderr] presented attempt; it cannot enter a new selection.
+[stderr] 
+[stderr] | Format | Comparison | Accept only when | Reject examples |
+[stderr] | --- | --- | --- | --- |
+[stderr] | `four_option_select` | Exact option ID | It equals the one correct option ID. | `blank`, `unknown_option_id`, `incorrect_option` |
+[stderr] | `true_false` | Exact canonical ID | It is exact `true` or `false` and correct. | `blank`, `malformed_boolean_id`, `incorrect_option` |
+[stderr] | `ordered_pair` | Exact two-item ordered ID array | It has two known IDs in configured order, including intentional repeats. | `blank`, `wrong_arity`, `unknown_option_id`, `wrong_order` |
+[stderr] | `short_typed_answer` | Normalised text vs. canonical display answer plus aliases | It equals one unique configured normalised value. | `blank`, `normalises_empty`, `unconfigured_variant`, `ambiguous_alias` |
+[stderr] 
+[stderr] A rejected submission always exposes canonical answer and explanation. A
+[stderr] configuration error (including duplicate normalised alias) makes the card
+[stderr] ineligible; it never accepts, guesses, or silently maps an answer.
+[stderr] 
+[stderr] ### Typed-answer normalisation and aliases
+[stderr] 
+[stderr] Apply these steps, in order, to submitted text and every authored canonical
+[stderr] answer/alias when validating a card revision:
+[stderr] 
+[stderr] 1. Convert input to Unicode NFC.
+[stderr] 2. Apply Unicode default case folding (locale-independent).
+[stderr] 3. Replace each Unicode whitespace sequence with one ASCII space and trim.
+[stderr] 4. Decompose to Unicode NFD, remove combining marks, and recompose to NFC.
+[stderr] 5. Remove only Unicode punctuation. Letters, numbers, and symbols remain; no
+[stderr]    transliteration, word substitution, reordering, stemming, phonetics,
+[stderr]    edit-distance threshold, AI, or fuzzy matching occurs.
+[stderr] 6. Collapse whitespace again and trim. An empty key rejects as
+[stderr]    `normalises_empty`.
+[stderr] 
+[stderr] The key is comparison-only. An alias is accepted only if deliberately authored
+[stderr] for that revision, non-empty after normalisation, and unique in the card answer
+[stderr] domain. Validator failure rejects aliases colliding with another answer, another
+[stderr] alias/distractor, or multiple possible answers. Any canonical wording, alias, or
+[stderr] normalisation-version change creates a new revision, review, and validation; it
+[stderr] cannot change a resolved attempt.
+[stderr] 
+[stderr] Thus `Jürgen Klopp`, `JURGEN   KLOPP`, and `Jürgen-Klopp` share
+[stderr] `jurgen klopp`; `PSG` matches Paris Saint-Germain only if authored as an
+[stderr] alias. `M. Salah`, `Salahh`, or a missing first name never matches unless
+[stderr] explicitly configured and reviewed.
+[stderr] 
+[stderr] ### Twenty deterministic adjudication fixtures
+[stderr] 
+[stderr] Each row specifies all material input. `C` is canonical value; braces contain
+[stderr] the complete alias set.
+[stderr] 
+[stderr] | ID | Format / configured answer | Submitted | Expected result |
+[stderr] | --- | --- | --- | --- |
+[stderr] | ADJ-01 | Select, C=`france` | `france` | accepted / `canonical_match` |
+[stderr] | ADJ-02 | Select, C=`france` | `argentina` | rejected / `incorrect_option` |
+[stderr] | ADJ-03 | Select, C=`france` | empty | rejected / `blank` |
+[stderr] | ADJ-04 | Select, C=`france` | `France` | rejected / `unknown_option_id` |
+[stderr] | ADJ-05 | Select, C=`france` | `fra` | rejected / `unknown_option_id` |
+[stderr] | ADJ-06 | True/false, C=`true` | `true` | accepted / `canonical_match` |
+[stderr] | ADJ-07 | True/false, C=`true` | `false` | rejected / `incorrect_option` |
+[stderr] | ADJ-08 | True/false, C=`false` | `True` | rejected / `malformed_boolean_id` |
+[stderr] | ADJ-09 | True/false, C=`true` | `yes` | rejected / `malformed_boolean_id` |
+[stderr] | ADJ-10 | True/false, C=`false` | empty | rejected / `blank` |
+[stderr] | ADJ-11 | Ordered pair, C=`[japan,australia]` | `[japan,australia]` | accepted / `ordered_match` |
+[stderr] | ADJ-12 | Ordered pair, C=`[japan,australia]` | `[australia,japan]` | rejected / `wrong_order` |
+[stderr] | ADJ-13 | Ordered pair, C=`[france,france]` | `[france,france]` | accepted / `ordered_match` |
+[stderr] | ADJ-14 | Ordered pair, C=`[japan,australia]` | `[japan]` | rejected / `wrong_arity` |
+[stderr] | ADJ-15 | Ordered pair, C=`[japan,australia]` | `[japan,qatar]` | rejected / `unknown_option_id` |
+[stderr] | ADJ-16 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `  JURGEN---KLOPP ` | accepted / `normalised_canonical_match` |
+[stderr] | ADJ-17 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `Klopp` | accepted / `normalised_alias_match` |
+[stderr] | ADJ-18 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `Jurgen Klop` | rejected / `unconfigured_variant` |
+[stderr] | ADJ-19 | Typed, C=`Paris Saint-Germain`, aliases={`psg`} | `P.S.G.` | accepted / `normalised_alias_match` |
+[stderr] | ADJ-20 | Typed, invalid aliases={`inter`} for two answers | `Inter` | rejected / `ambiguous_alias`; ineligible card |
+[stderr] 
+[stderr] Whitespace-only typed input is `normalises_empty`. ADJ-20 is a failed
+[stderr] validation configuration, not releasable content: ambiguity is surfaced, never
+[stderr] guessed. An answer against `QB-A-28@r1` uses r1 values, never corrected r2.
+[stderr] 
+[stderr] ## GPI-007 — reproducible editorial lifecycle
+[stderr] 
+[stderr] A transition input is `(cardId, currentRevision, event, evidenceRefs,
+[stderr] actorRole, occurredAt)`. It emits an append-only event and either next state or
+[stderr] validation failure. Time is recorded UTC and never supplies a missing
+[stderr] transition. A revision is immutable after leaving `draft`; correction creates
+[stderr] a successor revision under the same stable ID.
+[stderr] 
+[stderr] | Current state | Permitted event / required evidence | Next state | Eligible |
+[stderr] | --- | --- | --- | --- |
+[stderr] | `draft` | `submit_factual_check`: provenance, originality, accepted factual review | `fact_checked` | no |
+[stderr] | `fact_checked` | `accept_accessibility_copy`: different reviewer, accepted revision review | `accessibility_edited` | no |
+[stderr] | `accessibility_edited` | `accept_second_review`: distinct reviewer, grammar/alias validation | `second_reviewed` | no |
+[stderr] | `second_reviewed` | `publish`: release editor, all release checks pass | `published` | yes |
+[stderr] | pre-publication | `block`: dispute, missing rights, or validation failure | `blocked` | no |
+[stderr] | `published` | `withdraw`: reason, effective UTC time, evidence | `withdrawn` | no |
+[stderr] | `blocked` or `withdrawn` | `revise`: creates r+1 and preserves history/correction note | `draft` (r+1) | no |
+[stderr] 
+[stderr] No other transition is allowed: no direct draft-to-published, self-review, or
+[stderr] silent reopen. Each event records from-state, to-state, card/revision, event,
+[stderr] reason/evidence, actor ID/role, and UTC time. Replay from draft reproduces
+[stderr] state; invalid events remain rejected audit entries and change no state.
+[stderr] 
+[stderr] A reported conflict blocks an unpublished card or withdraws a published card
+[stderr] immediately. Withdrawal records `factual_correction`, `source_rights`,
+[stderr] `ambiguity`, or `accessibility_defect`, effective time, evidence, and an
+[stderr] optional replacement. It does not silently replace cards or rewrite past rounds.
+[stderr] New selection excludes it from that time; a presented attempt resolves against
+[stderr] its presented revision. Only a corrected, newly reviewed revision may publish.
+[stderr] 
+[stderr] ## Seeded anti-repeat and shortage policy
+[stderr] 
+[stderr] For `(catalogueSnapshotId, seed, requestedCount, filter, ledger)`, freeze the
+[stderr] published eligible catalogue at the snapshot, apply filter, then remove
+[stderr] blocked/withdrawn cards. `recent` is the union of IDs in the two latest
+[stderr] *completed* rounds, sorting rounds by `(completedAtUtc, roundId)` descending.
+[stderr] Draft, abandoned, and in-progress rounds do not count.
+[stderr] 
+[stderr] Set `fresh = candidates − recent`. Assign each candidate
+[stderr] `SHA-256(seed + "|" + catalogueSnapshotId + "|" + cardId)`, then sort
+[stderr] ascending by `(key, cardId)`. Take the first
+[stderr] `min(requestedCount, fresh.length)`; fill only the remainder from
+[stderr] `reuse = candidates ∩ recent` in the same order. Whenever reuse occurs or
+[stderr] eligible cards are too few, record:
+[stderr] 
+[stderr] `{ requestedCount, freshAvailable, eligibleAvailable, reusedCardIds,
+[stderr] unfilledCount, disclosureKey: "selection_shortage_reuse_disclosed" }`.
+[stderr] 
+[stderr] Show this plain-language disclosure before round start whenever reuse or an
+[stderr] unfilled count exists. No clock, random source, network response, unpublished
+[stderr] card, or iteration order affects selection. Equal full input has equal IDs and
+[stderr] shortage record.
+[stderr] 
+[stderr] ### Eight seeded selection fixtures
+[stderr] 
+[stderr] Candidate lists are frozen, filtered, and published; R1/R2 are newest completed
+[stderr] rounds. Implementation fixtures calculate the specified SHA-256 ordering and
+[stderr] assert selected IDs, shortage fields, and disclosure key.
+[stderr] 
+[stderr] | ID | Snapshot / seed / count | Candidates; R1; R2 | Expected result |
+[stderr] | --- | --- | --- | --- |
+[stderr] | SEL-01 | `S1` / `alpha` / 2 | A,B,C,D; A; B | selected `D,C`; no reuse/shortage |
+[stderr] | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+[stderr] | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+[stderr] | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+[stderr] | SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+[stderr] | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+[stderr] | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+[stderr] | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+[stderr] 
+[stderr] ## Release checks
+[stderr] 
+[stderr] Eligibility requires published frozen-snapshot state, correct answer rule, no
+[stderr] alias collision, current provenance, two distinct accepted reviews, and no
+[stderr] effective withdrawal. The fixture suite requires exactly ADJ-01–ADJ-20 and
+[stderr] SEL-01–SEL-08. Failed validation blocks release; it cannot create a fallback
+[stderr] answer or undisclosed repeat.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "sed -n '1,160p' planning/game-production-inventory.json" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+[stderr]  succeeded in 0ms:
+[stderr] {
+[stderr]   "inventory_version": 1,
+[stderr]   "source_bible": "specification/02-game-design-bible.json",
+[stderr]   "entries": [
+[stderr]     {
+[stderr]       "id": "GPI-001",
+[stderr]       "game_design_id": "GAME-001",
+[stderr]       "selected_module": "quiz-content-and-editorial-integrity",
+[stderr]       "content_design_card_type": "question-card schema and validation fixtures",
+[stderr]       "finite_item_or_catalogue_batch": "one versioned schema with five format fixtures",
+[stderr]       "planned_quantity": "1 schema; 5 representative fixtures",
+[stderr]       "original_brief": "Original, concise, fact-first cards carry prompt, answer rule, explanation, provenance, accessibility copy, two reviews, and stable IDs.",
+[stderr]       "dependencies": [],
+[stderr]       "asset_ids": [
+[stderr]         "ASSET-QZ-001",
+[stderr]         "ASSET-UI-001"
+[stderr]       ],
+[stderr]       "audio_ids": [
+[stderr]         "AUDIO-QZ-001"
+[stderr]       ],
+[stderr]       "implementation_outcome": "Validated immutable card records consumable by the quiz core.",
+[stderr]       "owner": "Editorial lead + content tooling engineer",
+[stderr]       "verification": "Validator accepts each supported format and rejects missing provenance, review, locale, answer rule, or asset/cue reference.",
+[stderr]       "module": "quiz-content-and-editorial-integrity",
+[stderr]       "production_kind": "bounded_content_set"
+[stderr]     },
+[stderr]     {
+[stderr]       "id": "GPI-002",
+[stderr]       "game_design_id": "GAME-002",
+[stderr]       "selected_module": "quiz-content-and-editorial-integrity",
+[stderr]       "content_design_card_type": "finite editorial catalogue batches",
+[stderr]       "finite_item_or_catalogue_batch": "QB-A-01–12: World Football Foundations",
+[stderr]       "planned_quantity": "12 original cards; 3 each easy/medium/hard/expert; select/typed/order/boolean quota 4/3/3/2",
+[stderr]       "original_brief": "Independent football-history and geography prompts; no copied wording, branding, or unverified current facts.",
+[stderr]       "dependencies": [
+[stderr]         "GPI-001"
+[stderr]       ],
+[stderr]       "asset_ids": [
+[stderr]         "ASSET-QZ-001",
+[stderr]         "ASSET-QZ-002"
+[stderr]       ],
+[stderr]       "audio_ids": [
+[stderr]         "AUDIO-QZ-001",
+[stderr]         "AUDIO-QZ-002",
+[stderr]         "AUDIO-QZ-003"
+[stderr]       ],
+[stderr]       "implementation_outcome": "Reviewed published batch available to standard-round selection.",
+[stderr]       "owner": "Editorial lead + two factual reviewers",
+[stderr]       "verification": "Source/right, two-review, category/difficulty/format quota, alias, and uniqueness validation passes.",
+[stderr]       "module": "quiz-content-and-editorial-integrity",
+[stderr]       "production_kind": "finite_named_content"
+[stderr]     },
+[stderr]     {
+[stderr]       "id": "GPI-003",
+[stderr]       "game_design_id": "GAME-002",
+[stderr]       "selected_module": "quiz-content-and-editorial-integrity",
+[stderr]       "content_design_card_type": "finite editorial catalogue batches",
+[stderr]       "finite_item_or_catalogue_batch": "QB-A-13–24: Domestic Leagues and Cups",
+[stderr]       "planned_quantity": "12 original cards; same 3/3/3/3 difficulty and 3-per-format quota",
+[stderr]       "original_brief": "Evergreen, precisely scoped domestic-football knowledge with explanations that teach rather than taunt.",
+[stderr]       "dependencies": [
+[stderr]         "GPI-001"
+[stderr]       ],
+[stderr]       "asset_ids": [
+[stderr]         "ASSET-QZ-001",
+[stderr]         "ASSET-QZ-002"
+[stderr]       ],
+[stderr]       "audio_ids": [
+[stderr]         "AUDIO-QZ-001",
+[stderr]         "AUDIO-QZ-002",
+[stderr]         "AUDIO-QZ-003"
+[stderr]       ],
+[stderr]       "implementation_outcome": "Second reviewed batch available to standard-round selection.",
+[stderr]       "owner": "Editorial lead + two factual reviewers",
+[stderr]       "verification": "Editorial ledger proves 12 distinct original cards and all source/review/status fields.",
+[stderr]       "module": "quiz-content-and-editorial-integrity",
+[stderr]       "production_kind": "finite_named_content"
+[stderr]     },
+[stderr]     {
+[stderr]       "id": "GPI-004",
+[stderr]       "game_design_id": "GAME-002",
+[stderr]       "selected_module": "quiz-content-and-editorial-integrity",
+[stderr]       "content_design_card_type": "finite editorial catalogue batches",
+[stderr]       "finite_item_or_catalogue_batch": "QB-A-25–36: Clubs, Players, and Managers",
+[stderr]       "planned_quantity": "12 original cards; 3 each difficulty; no club dominates more than 3 cards",
+[stderr]       "original_brief": "Balanced factual prompts that avoid celebrity imitation, stereotypes, and ambiguous era claims.",
+[stderr]       "dependencies": [
+[stderr]         "GPI-001"
+[stderr]       ],
+[stderr]       "asset_ids": [
+[stderr]         "ASSET-QZ-001",
+[stderr]         "ASSET-QZ-002"
+[stderr]       ],
+[stderr]       "audio_ids": [
+[stderr]         "AUDIO-QZ-001",
+[stderr]         "AUDIO-QZ-002",
+[stderr]         "AUDIO-QZ-003"
+[stderr]       ],
+[stderr]       "implementation_outcome": "Third reviewed batch available to standard-round selection.",
+[stderr]       "owner": "Editorial lead + two factual reviewers",
+[stderr]       "verification": "Validator checks club cap, disambiguated canonical answers, sources, and explanation coverage.",
+[stderr]       "module": "quiz-content-and-editorial-integrity",
+[stderr]       "production_kind": "finite_named_content"
+[stderr]     },
+[stderr]     {
+[stderr]       "id": "GPI-005",
+[stderr]       "game_design_id": "GAME-002",
+[stderr]       "selected_module": "quiz-content-and-editorial-integrity",
+[stderr]       "content_design_card_type": "finite editorial catalogue batches",
+[stderr]       "finite_item_or_catalogue_batch": "QB-A-37–48: Records and Tournaments",
+[stderr]       "planned_quantity": "12 original cards; 3 each difficulty; at least 4 women’s-football or global-football topics",
+[stderr]       "original_brief": "Inclusive, source-checked record and tournament prompts with checked-date metadata.",
+[stderr]       "dependencies": [
+[stderr]         "GPI-001"
+[stderr]       ],
+[stderr]       "asset_ids": [
+[stderr]         "ASSET-QZ-001",
+[stderr]         "ASSET-QZ-002"
+[stderr]       ],
+[stderr]       "audio_ids": [
+[stderr]         "AUDIO-QZ-001",
+[stderr]         "AUDIO-QZ-002",
+[stderr]         "AUDIO-QZ-003"
+[stderr]       ],
+[stderr]       "implementation_outcome": "Fourth reviewed batch completes the 48-card Kickoff Mix catalogue.",
+[stderr]       "owner": "Editorial lead + two factual reviewers",
+[stderr]       "verification": "Batch validation checks topical quota, freshness dates, provenance, and no duplicate factual claim.",
+[stderr]       "module": "quiz-content-and-editorial-integrity",
+[stderr]       "production_kind": "finite_named_content"
+[stderr]     },
+[stderr]     {
+[stderr]       "id": "GPI-006",
+[stderr]       "game_design_id": "GAME-003",
+[stderr]       "selected_module": "quiz-content-and-editorial-integrity",
+[stderr]       "content_design_card_type": "adjudication rules and fixtures",
+[stderr]       "finite_item_or_catalogue_batch": "one deterministic normalisation policy with 20 fixtures",
+[stderr]       "planned_quantity": "4 format handlers; 20 acceptance/rejection fixtures",
+[stderr]       "original_brief": "Normalise only documented Unicode/case/punctuation/space/diacritic variants and authored aliases; never guess.",
+[stderr]       "dependencies": [
+[stderr]         "GPI-001"
+[stderr]       ],
+[stderr]       "asset_ids": [
+[stderr]         "ASSET-FBK-001",
+[stderr]         "ASSET-FBK-002"
+[stderr]       ],
+[stderr]       "audio_ids": [
+[stderr]         "AUDIO-QZ-002",
+[stderr]         "AUDIO-QZ-003"
+[stderr]       ],
+[stderr]       "implementation_outcome": "Fair answer resolver with explainable result events.",
+[stderr]       "owner": "Game rules designer + core engineer",
+[stderr]       "verification": "Fixtures cover aliases, blanks, malformed input, ambiguity, outdated facts, and immutable resolved attempts.",
+[stderr]       "module": "quiz-content-and-editorial-integrity",
+[stderr]       "production_kind": "systemic_rules"
+[stderr]     },
+[stderr]     {
+[stderr]       "id": "GPI-007",
+[stderr]       "game_design_id": "GAME-004",
+[stderr]       "selected_module": "quiz-content-and-editorial-integrity",
+[stderr]       "content_design_card_type": "repeat ledger and editorial lifecycle",
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "node - <<'NODE'
+[stderr] const crypto=require('crypto');
+[stderr] const cases=[['S1','alpha',['A','B','C','D']],['S1','beta',['A','B','C','D']],['S2','alpha',['A','B','C']],['S3','gamma',['A','B']],['S4','delta',['A','B','C']],['S5','epsilon',['A','B','C']]];
+[stderr] for (const [s,seed,ids] of cases) console.log(s,seed,ids.map(id=>[id,crypto.createHash('sha256').update("'`${seed}|${s}|${id}`).digest('"'hex')]).sort((a,b)=>a[1].localeCompare(b[1])).map(x=>x[0]).join(','));
+[stderr] NODE
+[stderr] awk '/\\| ADJ-[0-9][0-9] / {count++} END {print \"adjudication fixtures:\", count}' design-evidence/adjudication-and-freshness-bible.md
+[stderr] awk '/\\| SEL-[0-9][0-9] / {count++} END {print \"selection fixtures:\", count}' design-evidence/adjudication-and-freshness-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+[stderr]  succeeded in 0ms:
+[stderr] S1 alpha D,C,B,A
+[stderr] S1 beta A,D,C,B
+[stderr] S2 alpha A,C,B
+[stderr] S3 gamma A,B
+[stderr] S4 delta A,B,C
+[stderr] S5 epsilon A,B,C
+[stderr] adjudication fixtures: 20
+[stderr] selection fixtures: 8
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"The requested bible already exists and covers the four handlers, 20 adjudication fixtures, withdrawal lifecycle, and eight seeded selection fixtures. I found one deterministic fixture ordering inconsistency and am correcting that documented expected result.","changed_files":[],"test_result":"Validated fixture counts and SHA-256 ordering with a focused Node check; SEL-05 was inconsistent with the documented fresh-first policy.","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md"],"updated_files":[],"summary":"Review confirmed the dedicated evidence file is the appropriate user-facing design documentation."},"known_limitations":[],"browser_coverage":"Not applicable: this is a domain-documentation change with no browser behavior.","recommended_next_step":"complete"}
+[stderr] apply patch
+[stderr] patch: completed
+[stderr] /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+[stderr] --- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] +++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] @@ -148,7 +148,7 @@
+[stderr]  | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+[stderr]  | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+[stderr]  | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+[stderr] -| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+[stderr] +| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+[stderr]  | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+[stderr]  | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+[stderr]  | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+[stderr] 
+[stderr] hook: PostToolUse
+[stderr] hook: PostToolUse Failed
+[stderr] diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+[stderr] --- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] +++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] @@ -148,7 +148,7 @@
+[stderr]  | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+[stderr]  | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+[stderr]  | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+[stderr] -| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+[stderr] +| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+[stderr]  | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+[stderr]  | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+[stderr]  | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "node - <<'NODE'
+[stderr] const assert=require('assert'); const crypto=require('crypto');
+[stderr] function order(snapshot,seed,ids){return ids.slice().sort((a,b)=>{const h=x=>crypto.createHash('sha256').update("'`${seed}|${snapshot}|${x}`).digest('"'hex');return h(a).localeCompare(h(b))||a.localeCompare(b)});}
+[stderr] function select(snapshot,seed,count,candidates,recent){const ranked=order(snapshot,seed,candidates); const fresh=ranked.filter(id=>"'!recent.includes(id)); const reuse=ranked.filter(id=>recent.includes(id)); return fresh.concat(reuse).slice(0,count);}
+[stderr] const cases=[['"'S1','alpha',2,['A','B','C','D'],['A','B'],['D','C']],['S1','alpha',3,['A','B','C','D'],['A','B'],['D','C','B']],['S1','beta',3,['A','B','C','D'],['A','B'],['D','C','A']],['S2','alpha',3,['A','B','C'],['A','B'],['C','A','B']],['S2','alpha',4,['A','B','C'],['A','B'],['C','A','B']],['S3','gamma',2,['A','B'],['A','B'],['A','B']],['S4','delta',2,['A','B','C'],['A'],['B','C']],['S5','epsilon',2,['A','C'],['A'],['C','A']]];
+[stderr] for(const c of cases) assert.deepStrictEqual(select(...c.slice(0,5)),c[5]); console.log("'`verified ${cases.length} seeded selection fixtures`);
+[stderr] NODE
+[stderr] awk '"'/\\| ADJ-[0-9][0-9] / {count++} END {if (count "'!= 20) exit 1; print "verified 20 adjudication fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+[stderr] awk '/\\| SEL-[0-9][0-9] / {count++} END {if (count "'!= 8) exit 1; print "verified 8 selection fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+[stderr] git diff --check -- projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] git diff --no-index --check /dev/null projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md >/dev/null || test "'$? -eq 1' in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] verified 8 seeded selection fixtures
+[stderr] awk: can't open file design-evidence/adjudication-and-freshness-bible.md
+[stderr]  source line number 1
+[stderr] awk: can't open file design-evidence/adjudication-and-freshness-bible.md
+[stderr]  source line number 1
+[stderr] 
+[stderr] diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+[stderr] --- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] +++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] @@ -148,7 +148,7 @@
+[stderr]  | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+[stderr]  | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+[stderr]  | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+[stderr] -| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+[stderr] +| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+[stderr]  | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+[stderr]  | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+[stderr]  | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "node - <<'NODE'
+[stderr] const assert=require('assert'); const crypto=require('crypto');
+[stderr] function select(snapshot,seed,count,candidates,recent){const ranked=candidates.slice().sort((a,b)=>{const h=x=>crypto.createHash('sha256').update("'`${seed}|${snapshot}|${x}`).digest('"'hex');return h(a).localeCompare(h(b))||a.localeCompare(b)}); return ranked.filter(id=>"'!recent.includes(id)).concat(ranked.filter(id=>recent.includes(id))).slice(0,count);}
+[stderr] const cases=[['"'S1','alpha',2,['A','B','C','D'],['A','B'],['D','C']],['S1','alpha',3,['A','B','C','D'],['A','B'],['D','C','B']],['S1','beta',3,['A','B','C','D'],['A','B'],['D','C','A']],['S2','alpha',3,['A','B','C'],['A','B'],['C','A','B']],['S2','alpha',4,['A','B','C'],['A','B'],['C','A','B']],['S3','gamma',2,['A','B'],['A','B'],['A','B']],['S4','delta',2,['A','B','C'],['A'],['B','C']],['S5','epsilon',2,['A','C'],['A'],['C','A']]];
+[stderr] for(const c of cases) assert.deepStrictEqual(select(...c.slice(0,5)),c[5]); console.log("'`verified ${cases.length} seeded selection fixtures`);
+[stderr] NODE
+[stderr] awk '"'/\\| ADJ-[0-9][0-9] / {count++} END {if (count "'!= 20) exit 1; print "verified 20 adjudication fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+[stderr] awk '/\\| SEL-[0-9][0-9] / {count++} END {if (count "'!= 8) exit 1; print "verified 8 selection fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+[stderr] git diff --check -- design-evidence/adjudication-and-freshness-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+[stderr]  succeeded in 0ms:
+[stderr] verified 8 seeded selection fixtures
+[stderr] verified 20 adjudication fixtures
+[stderr] verified 8 selection fixtures
+[stderr] 
+[stderr] diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+[stderr] --- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] +++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] @@ -148,7 +148,7 @@
+[stderr]  | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+[stderr]  | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+[stderr]  | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+[stderr] -| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+[stderr] +| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+[stderr]  | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+[stderr]  | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+[stderr]  | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+[stderr] 
+[stderr] diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+[stderr] --- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] +++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] @@ -148,7 +148,7 @@
+[stderr]  | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+[stderr]  | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+[stderr]  | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+[stderr] -| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+[stderr] +| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+[stderr]  | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+[stderr]  | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+[stderr]  | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.","changed_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"test_result":"Passed focused Node SHA-256 selection verification for SEL-01–SEL-08; verified 20 ADJ fixtures and 8 SEL fixtures by count; `git diff --check -- design-evidence/adjudication-and-freshness-bible.md` passed.","evidence":{"agent_log":"Reviewed the dedicated adjudication/freshness bible and task runbook. Found SEL-05 inconsistent with the stated fresh-first ordering, then corrected it from A,C,B to C,A,B.","adapter_log":"","test_log":"verified 8 seeded selection fixtures\nverified 20 adjudication fixtures\nverified 8 selection fixtures","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"Rules never guess answers and every catalogue-state transition is reproducible.","status":"pass","evidence":"The bible explicitly forbids fuzzy/guessed matching, defines immutable state transitions and withdrawal behavior, includes ADJ-01–ADJ-20, and the corrected SEL-05 now conforms to the deterministic SHA-256 fresh-first selection policy validated across SEL-01–SEL-08."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md","projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"updated_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"summary":"Updated the dedicated user-facing design evidence to correct one deterministic seeded-fixture expectation; no README change was needed because behavior and setup did not change."},"known_limitations":[],"browser_coverage":"Not applicable: domain-documentation evidence only; no browser behavior or Playwright spec changed.","recommended_next_step":"complete"}
+[stderr] diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+[stderr] --- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] +++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+[stderr] @@ -148,7 +148,7 @@
+[stderr]  | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+[stderr]  | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+[stderr]  | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+[stderr] -| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+[stderr] +| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+[stderr]  | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+[stderr]  | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+[stderr]  | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+[stderr] 
+[stderr] tokens used
+[stdout] {"status":"pass","summary":"Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.","changed_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"test_result":"Passed focused Node SHA-256 selection verification for SEL-01–SEL-08; verified 20 ADJ fixtures and 8 SEL fixtures by count; `git diff --check -- design-evidence/adjudication-and-freshness-bible.md` passed.","evidence":{"agent_log":"Reviewed the dedicated adjudication/freshness bible and task runbook. Found SEL-05 inconsistent with the stated fresh-first ordering, then corrected it from A,C,B to C,A,B.","adapter_log":"","test_log":"verified 8 seeded selection fixtures\nverified 20 adjudication fixtures\nverified 8 selection fixtures","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"Rules never guess answers and every catalogue-state transition is reproducible.","status":"pass","evidence":"The bible explicitly forbids fuzzy/guessed matching, defines immutable state transitions and withdrawal behavior, includes ADJ-01–ADJ-20, and the corrected SEL-05 now conforms to the deterministic SHA-256 fresh-first selection policy validated across SEL-01–SEL-08."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md","projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"updated_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"summary":"Updated the dedicated user-facing design evidence to correct one deterministic seeded-fixture expectation; no README change was needed because behavior and setup did not change."},"known_limitations":[],"browser_coverage":"Not applicable: domain-documentation evidence only; no browser behavior or Playwright spec changed.","recommended_next_step":"complete"}
+[stderr] 32,044
+
+===== SUPERVISOR RESULT =====
+Task: G0002 — Define fair adjudication and editorial lifecycle bible
+Stage: codex
+Status: pass
+Summary: Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.
+
+===== Raw agent output =====
+{"status":"pass","summary":"Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.","changed_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"test_result":"Passed focused Node SHA-256 selection verification for SEL-01–SEL-08; verified 20 ADJ fixtures and 8 SEL fixtures by count; `git diff --check -- design-evidence/adjudication-and-freshness-bible.md` passed.","evidence":{"agent_log":"Reviewed the dedicated adjudication/freshness bible and task runbook. Found SEL-05 inconsistent with the stated fresh-first ordering, then corrected it from A,C,B to C,A,B.","adapter_log":"","test_log":"verified 8 seeded selection fixtures\nverified 20 adjudication fixtures\nverified 8 selection fixtures","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"Rules never guess answers and every catalogue-state transition is reproducible.","status":"pass","evidence":"The bible explicitly forbids fuzzy/guessed matching, defines immutable state transitions and withdrawal behavior, includes ADJ-01–ADJ-20, and the corrected SEL-05 now conforms to the deterministic SHA-256 fresh-first selection policy validated across SEL-01–SEL-08."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md","projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"updated_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"summary":"Updated the dedicated user-facing design evidence to correct one deterministic seeded-fixture expectation; no README change was needed because behavior and setup did not change."},"known_limitations":[],"browser_coverage":"Not applicable: domain-documentation evidence only; no browser behavior or Playwright spec changed.","recommended_next_step":"complete"}
+OpenAI Codex v0.145.0
+--------
+workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+model: gpt-5.6-terra
+provider: openai
+approval: on-request
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019fc51e-15c6-7883-8700-d36155810df8
+--------
+user
+You are the coding worker for one isolated runbook task.
+
+Work only in the repository passed as your working directory. Do not publish,
+deploy, access secrets, make payments, or change product scope. Stop and report
+needs_user_review if the task is destructive, unclear, or requires authority.
+Implement only the task below, run relevant checks, and then output exactly one
+JSON object conforming to the WorkerResult contract. A status of pass means the
+change is ready for independent test and visual review; it is not self-approval.
+
+Task:
+{
+  "task_id": "G0002",
+  "title": "Define fair adjudication and editorial lifecycle bible",
+  "objective": "Write accepted evidence for GAME-003\u2013004/GPI-006\u2013007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+  "acceptance_criteria": [
+    "Rules never guess answers and every catalogue-state transition is reproducible."
+  ],
+  "risk_level": "normal",
+  "sequence": 3,
+  "dependencies": [
+    "G0001"
+  ],
+  "prerequisite_collections": [],
+  "browser_impact": "not_applicable",
+  "playwright_specs": [],
+  "asset_impact": "not_applicable",
+  "asset_brief": "",
+  "asset_ids": [],
+  "visual_style_version": "",
+  "audio_impact": "not_applicable",
+  "audio_brief": "",
+  "audio_ids": [],
+  "audio_duration_seconds": 0,
+  "audio_loop": "not_applicable",
+  "audio_style_version": "",
+  "source_specifications": [
+    "specification/02-game-design-bible.md",
+    "planning/game-production-inventory.md"
+  ],
+  "source_catalogue_ids": [
+    "GAME-003",
+    "GAME-004",
+    "GPI-006",
+    "GPI-007"
+  ],
+  "authoring_batch": "",
+  "design_authoring_batch": "GB0001",
+  "factory_stages": [],
+  "execution_mode": "implementation",
+  "continuation_context": "Continue the existing task; do not reimplement completed work.\nPrevious lifecycle: implementing.\nExisting changed files: .env, projects/final-fantasy/, projects/football-trivia-e2e/, projects/mock-fantasy-quest-4/, runbooks/.supervisor-children/.\nLast checkpoint: Codex is working in stage codex.\nRequired next action: continue_codex."
+}
+
+Continuation checkpoint (only when present):
+Continue the existing task; do not reimplement completed work.
+Previous lifecycle: implementing.
+Existing changed files: .env, projects/final-fantasy/, projects/football-trivia-e2e/, projects/mock-fantasy-quest-4/, runbooks/.supervisor-children/.
+Last checkpoint: Codex is working in stage codex.
+Required next action: continue_codex.
+
+
+
+This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+`dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+can write SDK caches outside the worktree and are deliberately owned by the
+supervisor's independent precheck/test stages. When the continuation evidence
+names a concrete source or test failure, repair that evidence in the worktree,
+run only safe focused checks, and return `pass` for the deterministic stage to
+validate. Never return a failure solely because an SDK command needs approval.
+
+
+
+Efficient investigation rules (especially important for local models):
+- Start with the Codebase Memory MCP for architecture and targeted symbols.
+- Do not use whole-file reads for Dart, test, lock, generated, or log files.
+  Use targeted symbol snippets or `run_shell_command` with `rg` and
+  `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+- Inspect only files directly relevant to the acceptance criteria. Do not
+  browse unrelated Playwright, automation, or configuration files merely to
+  learn the repository layout.
+- After the focused investigation, implement and run the smallest relevant
+  checks. Do not continue exploratory tool calls once the implementation path
+  is clear.
+- If a tool reports a missing file, treat it as non-blocking and continue with
+  the repository evidence you already have.
+
+Completion protocol:
+- Your final action MUST be the `structured_output` tool supplied by
+  `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+  response.
+- Use native nested JSON values in that tool call: `evidence` and
+  `documentation` are objects, while `acceptance_results` is an array. Never
+  put JSON text inside quotes for any of those fields.
+- If a check cannot run, return a structured `repairable_failure` or
+  `needs_user_review` result immediately with the exact reason. Never wait
+  silently for a tool or model request to recover.
+
+
+Your final WorkerResult must include all of the following:
+- `acceptance_results`: one entry for every task acceptance criterion, in the
+  same order. Copy each criterion text verbatim from the task, with pass/fail/
+  not_verified status and concrete evidence;
+- `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+  why they were or were not changed;
+- `test_result`: exact checks you ran and their outcomes;
+- `known_limitations`: remaining gaps or an empty list.
+
+Do not claim `pass` if a criterion is unverified. Update user-facing README or
+developer documentation whenever the change affects behaviour, setup, commands,
+architecture, design, or progress. If no documentation change is needed, state
+the reviewed files and explain why.
+
+For `final_verification`, the independent `test`, `browser`, and visual-review
+stages are the required verification gates. After repairing every concrete
+source/test failure supplied in this prompt, return `pass` so those gates run.
+Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+left to the independent test stage. Return `needs_user_review` only for a real
+authority, safety, or irreducibly ambiguous product decision.
+
+For browser-impacting work, create or update a task-specific Playwright spec in
+`supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+work, explain in `browser_coverage` why no task-specific browser spec changed.
+
+Visual baseline rule:
+- When the continuation evidence names a golden, snapshot, or visual-regression
+  failure, inspect the supplied master/test/diff artifacts before changing any
+  baseline. Work out whether the new render is the intended result of this
+  task, and check that it has no clipping, overlap, or lost meaning.
+- If it is intentional, regenerate only the affected approved baselines using
+  the repository's documented command, update stale visual/browser checks when
+  their prior expectation is no longer correct, and rerun the relevant suite.
+- If it is not intentional, fix the product or test setup instead. Never mask
+  a real visual regression by blindly accepting a changed screenshot.
+
+Failure-repair protocol:
+- When the continuation checkpoint says that a Supervisor terminal stage
+  failed, treat its captured command and output as the starting evidence. Do
+  not merely describe a possible fix.
+- Use the terminal in this project worktree to inspect, repair, and rerun the
+  same focused check whenever that command is safe in your sandbox. Include
+  the command and result in `test_result`.
+- If that exact command needs an SDK, browser, or approval outside this
+  worker's sandbox, repair the demonstrated issue but do not replace the
+  independent validation. Return `pass` only when the worktree is ready for
+  Supervisor to rerun its configured terminal command after your repair.
+
+warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+codex
+{"status":"pass","summary":"I’ll inspect the existing football-trivia documentation and targeted codebase graph evidence, then add only the lifecycle/adjudication material needed for this task and run safe focused checks.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+mcp: codebase-memory-mcp/get_architecture started
+mcp: codebase-memory-mcp/get_architecture (failed)
+user cancelled MCP tool call
+exec
+/bin/zsh -lc "pwd; rg --files projects/football-trivia-e2e | rg '("'^|/)(specification/02-game-design-bible'"\\.md|planning/game-production-inventory\\.md|README\\.md)"'$'"'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+/Users/simon/Dev/github/jakowicz/runbook-generator
+projects/football-trivia-e2e/specification/02-game-design-bible.md
+projects/football-trivia-e2e/planning/game-production-inventory.md
+
+exec
+/bin/zsh -lc "rg -n -i -C 3 'GAME-003|GAME-004|GPI-006|GPI-007|adjudic|normalis|alias|withdraw|anti-repeat|shortage|catalogue' specification/02-game-design-bible.md planning/game-production-inventory.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+ succeeded in 0ms:
+planning/game-production-inventory.md-10-| --- | --- | --- | --- | --- |
+planning/game-production-inventory.md-11-| GAME-001 | GPI-001: one card schema, five format fixtures | — | Editorial + tooling | Schema/negative fixtures |
+planning/game-production-inventory.md-12-| GAME-002 | GPI-002–005: four named 12-card batches, QB-A-01–48 | GPI-001 | Editorial + two reviewers | Provenance, review, quota, uniqueness validator |
+planning/game-production-inventory.md:13:| GAME-003 | GPI-006: four handlers, 20 adjudication fixtures | GPI-001 | Rules + core | Deterministic acceptance/rejection fixtures |
+planning/game-production-inventory.md:14:| GAME-004 | GPI-007: selection policy, 8 seeded fixtures | GPI-002–005 | Editorial + core | Repeat/shortage/withdrawal tests |
+planning/game-production-inventory.md-15-| GAME-005 | GPI-008: TUT-01–05 fixed tutorial | GPI-001, 006, 013–014 | Design + editorial | Offline completion/resume test |
+planning/game-production-inventory.md-16-| GAME-006 | GPI-009: one 10-card Mixed Fixture template | GPI-002–007 | Rules + core | Seeded selection lifecycle |
+planning/game-production-inventory.md:17:| GAME-007 | GPI-010: rule table, 12 edge fixtures | GPI-006, 009 | Rules + accessibility | Score/streak equivalent-feedback tests |
+planning/game-production-inventory.md-18-| GAME-008 | GPI-011: result and milestone states | GPI-009–010, 014 | Design + UI | Idempotence/recovery lifecycle tests |
+planning/game-production-inventory.md-19-| GAME-009 | GPI-012: profile/settings plus four input maps | — | Accessibility + platform | Input and accessibility review |
+planning/game-production-inventory.md-20-| GAME-010 | GPI-013: four recovery states, eight faults | GPI-011 | Persistence + accessibility | Fault-injection recovery tests |
+--
+specification/02-game-design-bible.md-15-
+specification/02-game-design-bible.md-16-## Selected design systems
+specification/02-game-design-bible.md-17-
+specification/02-game-design-bible.md:18:### Quiz content and editorial integrity — `GAME-001` to `GAME-004`
+specification/02-game-design-bible.md-19-
+specification/02-game-design-bible.md-20-**Player outcome:** receive fresh, fair, answerable football questions with a
+specification/02-game-design-bible.md-21-clear explanation. **Entities:** `QuestionCard`, `AnswerOption`,
+--
+specification/02-game-design-bible.md-24-
+specification/02-game-design-bible.md-25-| Unit | Design card / rule | First-release boundary and acceptance |
+specification/02-game-design-bible.md-26-| --- | --- | --- |
+specification/02-game-design-bible.md:27:| GAME-001 | **Question-card grammar.** An original card has one unambiguous fact, prompt, format, category, era/competition tags, difficulty 1–3, answer rule, short explanation, and review/version state. Formats: four-option select, true/false, ordered pair, and short typed answer. | Ship only reviewed `published` cards. A card without provenance, answer rule, explanation, or two-editor approval is ineligible. Test: each sampled card adjudicates its canonical and configured accepted answers identically. |
+specification/02-game-design-bible.md:28:| GAME-002 | **Catalogue batch A: “Kickoff Mix.”** 48 original cards: 12 world tournament history, 12 domestic league moments, 12 club/manager/identity, 12 players/records. Each category has 4 cards at each band, max 6 cards per competition and no single club above 4. | Finite named release package: `QB-A-01` through `QB-A-48`, authored in four 12-card editorial batches. Exact facts, wording, sources, and rights clearance remain an editorial approval gate; placeholders never ship. Test: the manifest enforces totals, distributions, unique IDs, and no unpublished card. |
+specification/02-game-design-bible.md:29:| GAME-003 | **Adjudication and provenance.** Select/true-false compare canonical IDs. Ordered pair compares ordered IDs. Typed answers normalise Unicode, case, punctuation, whitespace, diacritics, and configured aliases; it never uses fuzzy matching in release one. A rejected typed answer shows the canonical answer and explanation. | Each factual assertion links to a durable permitted source or approved internal research note, with checked date, reviewer, and correction history. Conflict or contested fact ⇒ remove from eligibility until resolved. Test: alias, malformed, blank, ambiguous, and outdated-version cases have fixtures. |
+specification/02-game-design-bible.md:30:| GAME-004 | **Freshness.** The repeat ledger records card ID and completion timestamp locally. A round excludes cards seen in its last two completed rounds where alternatives exist; if insufficient eligible cards exist, it discloses reuse rather than silently failing. | No renewable feed, scraping, or live refresh. Authoring flow: propose → source/provenance → factual check → accessibility/copy edit → second review → publish to a versioned batch → validate → release/rollback. Test: seeded selection is reproducible and respects the exclusion rule. |
+specification/02-game-design-bible.md-31-
+specification/02-game-design-bible.md-32-**Visual/audio/accessibility:** cards use original broadcast-inspired category
+specification/02-game-design-bible.md-33-colour families plus text labels/patterns; no colour alone encodes category or
+--
+specification/02-game-design-bible.md-46-| Unit | Design card / rule | First-release boundary and acceptance |
+specification/02-game-design-bible.md-47-| --- | --- | --- |
+specification/02-game-design-bible.md-48-| GAME-005 | **Round “First Whistle.”** Tutorial round contains 5 fixed, original tutorial cards (`TUT-01`–`TUT-05`) covering selecting, typing, feedback, explanation, and pause/save. It is intentionally non-timed. | This is the complete first useful journey. Completion creates/updates local milestone `first_whistle_complete`; it cannot require account, network, purchase, or deferred content. Test: a new local profile can complete it offline and resume after app restart. |
+specification/02-game-design-bible.md:49:| GAME-006 | **Round “Mixed Fixture.”** A 10-card themed round draws from one selected category or the Kickoff Mix, with no more than two adjacent cards sharing format or difficulty. The player may pause; a displayed timer mode is optional and defaults off. | First release ships one tutorial and one configurable standard round template, no ranked/daily/live/event modes. Test: deterministic seed produces ten eligible cards and valid format alternation or records the shortage. |
+specification/02-game-design-bible.md-50-| GAME-007 | **Scoring and streak.** Correct = 100 points; a consecutive-correct streak of 3+ adds 25 points to each later correct answer, capped at +100. Incorrect, timeout (only if enabled), blank submission, or abandon resets the active streak; score never decreases. Explanation is available after resolution. | No paid boosts, leaderboard, social comparison, or opaque difficulty multiplier. Test: table-driven sequence proves cap, reset, and per-attempt result; a retry is a new run, not an overwrite of history. |
+specification/02-game-design-bible.md-51-| GAME-008 | **Result and return.** Results show answered/correct, score, best active-session streak, category, and next action: replay, choose theme, or exit. Progress is local milestones and aggregate history only, not RPG levels. | An interrupted run persists at a safe boundary before the next unresolved question. Completed result is idempotent: reopening cannot award twice. Test: complete/reopen, abandon/resume, corrupted draft, and delete-history paths are specified. |
+specification/02-game-design-bible.md-52-
+specification/02-game-design-bible.md-53-**Dependencies:** GAME-005 needs published tutorial cards and persistence;
+specification/02-game-design-bible.md:54:GAME-006 needs GAME-001–004; GAME-007 consumes adjudication events; GAME-008
+specification/02-game-design-bible.md-55-consumes score events and save/recovery. Visual family is bold category panels,
+specification/02-game-design-bible.md-56-neutral answer controls, and non-colour success/error indicators; audio is
+specification/02-game-design-bible.md-57-supportive, optional, and captioned.
+--
+specification/02-game-design-bible.md-75-order, semantic labels, sufficient touch targets, and no time limit by default.
+specification/02-game-design-bible.md-76-Localisation inputs are externalised prompt, answer, explanation, category, and
+specification/02-game-design-bible.md-77-UI strings; only a future approved language may add translated content after
+specification/02-game-design-bible.md:78:answer aliases and factual review are validated.
+specification/02-game-design-bible.md-79-
+specification/02-game-design-bible.md-80-**Experience production package:** a finite first-release package contains the
+specification/02-game-design-bible.md-81-five named tutorial cards, one settings/help copy set, input-action labels,
+--
+specification/02-game-design-bible.md-90-
+specification/02-game-design-bible.md-91-| Units | First-release journeys | Implementation domains |
+specification/02-game-design-bible.md-92-| --- | --- | --- |
+specification/02-game-design-bible.md:93:| GAME-001–004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |
+specification/02-game-design-bible.md-94-| GAME-005–008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |
+specification/02-game-design-bible.md-95-| GAME-009–012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |
+specification/02-game-design-bible.md-96-
+
+exec
+/bin/zsh -lc 'git status --short -- projects/football-trivia-e2e; git diff --stat -- projects/football-trivia-e2e' in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+?? projects/football-trivia-e2e/
+
+exec
+/bin/zsh -lc "rg --files | rg '("'^|/)(content|editorial|fixture|adjudication|catalogue|question|game-production|game-design)'"' | head -120" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+ succeeded in 0ms:
+planning/game-production-inventory.json
+planning/game-design-manifest.json
+planning/game-production-inventory.md
+design-evidence/question-card-and-qba-catalogue-bible.md
+design-evidence/adjudication-and-freshness-bible.md
+game-design-runbooks/GC0001.md
+game-design-runbooks/G0004.md
+game-design-runbooks/G0005.md
+game-design-runbooks/G0001.md
+game-design-runbooks/GB0003.md
+game-design-runbooks/GB0002.md
+game-design-runbooks/GB0001.md
+game-design-runbooks/GD0001.md
+game-design-runbooks/G0002.md
+game-design-runbooks/G0003.md
+
+exec
+/bin/zsh -lc "sed -n '1,220p' game-design-runbooks/G0002.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+ succeeded in 0ms:
+---
+task_id: G0002
+sequence: 3
+dependencies: G0001
+source_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md
+source_catalogue_ids: GAME-003,GAME-004,GPI-006,GPI-007
+title: Define fair adjudication and editorial lifecycle bible
+browser_impact: not_applicable
+playwright_spec:
+design_authoring_batch: GB0001
+---
+
+## Objective
+
+Write accepted evidence for GAME-003–004/GPI-006–007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.
+
+## Output list
+
+- `design-evidence/adjudication-and-freshness-bible.md`: deterministic select/true-false/ordered/typed-answer rules, 20 fixtures, contested-fact withdrawal/provenance review states, and a seeded anti-repeat/shortage rule.
+
+No fuzzy guessing, implementation code, B/R runbooks, or manifest acceptance.
+
+## Acceptance criteria
+
+- Rules never guess answers and every catalogue-state transition is reproducible.
+
+exec
+/bin/zsh -lc "sed -n '1,240p' design-evidence/adjudication-and-freshness-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+ succeeded in 0ms:
+# Adjudication and freshness bible
+
+**Scope:** accepted evidence for `GAME-003`, `GAME-004`, `GPI-006`, and
+`GPI-007`. This is a deterministic future-core contract, not implementation or
+published content. A result is calculated only from stated input; it is never
+inferred or guessed.
+
+## GPI-006 — answer adjudication
+
+Every resolved attempt is immutable and records `attemptId`, `cardId`,
+`cardRevision`, `format`, submitted value, `outcome`, `reasonCode`,
+canonical answer, and explanation key. Feedback reopening cannot recompute
+against a later revision. A card withdrawn after presentation may resolve that
+presented attempt; it cannot enter a new selection.
+
+| Format | Comparison | Accept only when | Reject examples |
+| --- | --- | --- | --- |
+| `four_option_select` | Exact option ID | It equals the one correct option ID. | `blank`, `unknown_option_id`, `incorrect_option` |
+| `true_false` | Exact canonical ID | It is exact `true` or `false` and correct. | `blank`, `malformed_boolean_id`, `incorrect_option` |
+| `ordered_pair` | Exact two-item ordered ID array | It has two known IDs in configured order, including intentional repeats. | `blank`, `wrong_arity`, `unknown_option_id`, `wrong_order` |
+| `short_typed_answer` | Normalised text vs. canonical display answer plus aliases | It equals one unique configured normalised value. | `blank`, `normalises_empty`, `unconfigured_variant`, `ambiguous_alias` |
+
+A rejected submission always exposes canonical answer and explanation. A
+configuration error (including duplicate normalised alias) makes the card
+ineligible; it never accepts, guesses, or silently maps an answer.
+
+### Typed-answer normalisation and aliases
+
+Apply these steps, in order, to submitted text and every authored canonical
+answer/alias when validating a card revision:
+
+1. Convert input to Unicode NFC.
+2. Apply Unicode default case folding (locale-independent).
+3. Replace each Unicode whitespace sequence with one ASCII space and trim.
+4. Decompose to Unicode NFD, remove combining marks, and recompose to NFC.
+5. Remove only Unicode punctuation. Letters, numbers, and symbols remain; no
+   transliteration, word substitution, reordering, stemming, phonetics,
+   edit-distance threshold, AI, or fuzzy matching occurs.
+6. Collapse whitespace again and trim. An empty key rejects as
+   `normalises_empty`.
+
+The key is comparison-only. An alias is accepted only if deliberately authored
+for that revision, non-empty after normalisation, and unique in the card answer
+domain. Validator failure rejects aliases colliding with another answer, another
+alias/distractor, or multiple possible answers. Any canonical wording, alias, or
+normalisation-version change creates a new revision, review, and validation; it
+cannot change a resolved attempt.
+
+Thus `Jürgen Klopp`, `JURGEN   KLOPP`, and `Jürgen-Klopp` share
+`jurgen klopp`; `PSG` matches Paris Saint-Germain only if authored as an
+alias. `M. Salah`, `Salahh`, or a missing first name never matches unless
+explicitly configured and reviewed.
+
+### Twenty deterministic adjudication fixtures
+
+Each row specifies all material input. `C` is canonical value; braces contain
+the complete alias set.
+
+| ID | Format / configured answer | Submitted | Expected result |
+| --- | --- | --- | --- |
+| ADJ-01 | Select, C=`france` | `france` | accepted / `canonical_match` |
+| ADJ-02 | Select, C=`france` | `argentina` | rejected / `incorrect_option` |
+| ADJ-03 | Select, C=`france` | empty | rejected / `blank` |
+| ADJ-04 | Select, C=`france` | `France` | rejected / `unknown_option_id` |
+| ADJ-05 | Select, C=`france` | `fra` | rejected / `unknown_option_id` |
+| ADJ-06 | True/false, C=`true` | `true` | accepted / `canonical_match` |
+| ADJ-07 | True/false, C=`true` | `false` | rejected / `incorrect_option` |
+| ADJ-08 | True/false, C=`false` | `True` | rejected / `malformed_boolean_id` |
+| ADJ-09 | True/false, C=`true` | `yes` | rejected / `malformed_boolean_id` |
+| ADJ-10 | True/false, C=`false` | empty | rejected / `blank` |
+| ADJ-11 | Ordered pair, C=`[japan,australia]` | `[japan,australia]` | accepted / `ordered_match` |
+| ADJ-12 | Ordered pair, C=`[japan,australia]` | `[australia,japan]` | rejected / `wrong_order` |
+| ADJ-13 | Ordered pair, C=`[france,france]` | `[france,france]` | accepted / `ordered_match` |
+| ADJ-14 | Ordered pair, C=`[japan,australia]` | `[japan]` | rejected / `wrong_arity` |
+| ADJ-15 | Ordered pair, C=`[japan,australia]` | `[japan,qatar]` | rejected / `unknown_option_id` |
+| ADJ-16 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `  JURGEN---KLOPP ` | accepted / `normalised_canonical_match` |
+| ADJ-17 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `Klopp` | accepted / `normalised_alias_match` |
+| ADJ-18 | Typed, C=`Jürgen Klopp`, aliases={`klopp`} | `Jurgen Klop` | rejected / `unconfigured_variant` |
+| ADJ-19 | Typed, C=`Paris Saint-Germain`, aliases={`psg`} | `P.S.G.` | accepted / `normalised_alias_match` |
+| ADJ-20 | Typed, invalid aliases={`inter`} for two answers | `Inter` | rejected / `ambiguous_alias`; ineligible card |
+
+Whitespace-only typed input is `normalises_empty`. ADJ-20 is a failed
+validation configuration, not releasable content: ambiguity is surfaced, never
+guessed. An answer against `QB-A-28@r1` uses r1 values, never corrected r2.
+
+## GPI-007 — reproducible editorial lifecycle
+
+A transition input is `(cardId, currentRevision, event, evidenceRefs,
+actorRole, occurredAt)`. It emits an append-only event and either next state or
+validation failure. Time is recorded UTC and never supplies a missing
+transition. A revision is immutable after leaving `draft`; correction creates
+a successor revision under the same stable ID.
+
+| Current state | Permitted event / required evidence | Next state | Eligible |
+| --- | --- | --- | --- |
+| `draft` | `submit_factual_check`: provenance, originality, accepted factual review | `fact_checked` | no |
+| `fact_checked` | `accept_accessibility_copy`: different reviewer, accepted revision review | `accessibility_edited` | no |
+| `accessibility_edited` | `accept_second_review`: distinct reviewer, grammar/alias validation | `second_reviewed` | no |
+| `second_reviewed` | `publish`: release editor, all release checks pass | `published` | yes |
+| pre-publication | `block`: dispute, missing rights, or validation failure | `blocked` | no |
+| `published` | `withdraw`: reason, effective UTC time, evidence | `withdrawn` | no |
+| `blocked` or `withdrawn` | `revise`: creates r+1 and preserves history/correction note | `draft` (r+1) | no |
+
+No other transition is allowed: no direct draft-to-published, self-review, or
+silent reopen. Each event records from-state, to-state, card/revision, event,
+reason/evidence, actor ID/role, and UTC time. Replay from draft reproduces
+state; invalid events remain rejected audit entries and change no state.
+
+A reported conflict blocks an unpublished card or withdraws a published card
+immediately. Withdrawal records `factual_correction`, `source_rights`,
+`ambiguity`, or `accessibility_defect`, effective time, evidence, and an
+optional replacement. It does not silently replace cards or rewrite past rounds.
+New selection excludes it from that time; a presented attempt resolves against
+its presented revision. Only a corrected, newly reviewed revision may publish.
+
+## Seeded anti-repeat and shortage policy
+
+For `(catalogueSnapshotId, seed, requestedCount, filter, ledger)`, freeze the
+published eligible catalogue at the snapshot, apply filter, then remove
+blocked/withdrawn cards. `recent` is the union of IDs in the two latest
+*completed* rounds, sorting rounds by `(completedAtUtc, roundId)` descending.
+Draft, abandoned, and in-progress rounds do not count.
+
+Set `fresh = candidates − recent`. Assign each candidate
+`SHA-256(seed + "|" + catalogueSnapshotId + "|" + cardId)`, then sort
+ascending by `(key, cardId)`. Take the first
+`min(requestedCount, fresh.length)`; fill only the remainder from
+`reuse = candidates ∩ recent` in the same order. Whenever reuse occurs or
+eligible cards are too few, record:
+
+`{ requestedCount, freshAvailable, eligibleAvailable, reusedCardIds,
+unfilledCount, disclosureKey: "selection_shortage_reuse_disclosed" }`.
+
+Show this plain-language disclosure before round start whenever reuse or an
+unfilled count exists. No clock, random source, network response, unpublished
+card, or iteration order affects selection. Equal full input has equal IDs and
+shortage record.
+
+### Eight seeded selection fixtures
+
+Candidate lists are frozen, filtered, and published; R1/R2 are newest completed
+rounds. Implementation fixtures calculate the specified SHA-256 ordering and
+assert selected IDs, shortage fields, and disclosure key.
+
+| ID | Snapshot / seed / count | Candidates; R1; R2 | Expected result |
+| --- | --- | --- | --- |
+| SEL-01 | `S1` / `alpha` / 2 | A,B,C,D; A; B | selected `D,C`; no reuse/shortage |
+| SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+| SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+| SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
+| SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+| SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+| SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+
+## Release checks
+
+Eligibility requires published frozen-snapshot state, correct answer rule, no
+alias collision, current provenance, two distinct accepted reviews, and no
+effective withdrawal. The fixture suite requires exactly ADJ-01–ADJ-20 and
+SEL-01–SEL-08. Failed validation blocks release; it cannot create a fallback
+answer or undisclosed repeat.
+
+exec
+/bin/zsh -lc "sed -n '1,160p' planning/game-production-inventory.json" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+ succeeded in 0ms:
+{
+  "inventory_version": 1,
+  "source_bible": "specification/02-game-design-bible.json",
+  "entries": [
+    {
+      "id": "GPI-001",
+      "game_design_id": "GAME-001",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "question-card schema and validation fixtures",
+      "finite_item_or_catalogue_batch": "one versioned schema with five format fixtures",
+      "planned_quantity": "1 schema; 5 representative fixtures",
+      "original_brief": "Original, concise, fact-first cards carry prompt, answer rule, explanation, provenance, accessibility copy, two reviews, and stable IDs.",
+      "dependencies": [],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-UI-001"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001"
+      ],
+      "implementation_outcome": "Validated immutable card records consumable by the quiz core.",
+      "owner": "Editorial lead + content tooling engineer",
+      "verification": "Validator accepts each supported format and rejects missing provenance, review, locale, answer rule, or asset/cue reference.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "bounded_content_set"
+    },
+    {
+      "id": "GPI-002",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-01–12: World Football Foundations",
+      "planned_quantity": "12 original cards; 3 each easy/medium/hard/expert; select/typed/order/boolean quota 4/3/3/2",
+      "original_brief": "Independent football-history and geography prompts; no copied wording, branding, or unverified current facts.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Reviewed published batch available to standard-round selection.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Source/right, two-review, category/difficulty/format quota, alias, and uniqueness validation passes.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-003",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-13–24: Domestic Leagues and Cups",
+      "planned_quantity": "12 original cards; same 3/3/3/3 difficulty and 3-per-format quota",
+      "original_brief": "Evergreen, precisely scoped domestic-football knowledge with explanations that teach rather than taunt.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Second reviewed batch available to standard-round selection.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Editorial ledger proves 12 distinct original cards and all source/review/status fields.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-004",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-25–36: Clubs, Players, and Managers",
+      "planned_quantity": "12 original cards; 3 each difficulty; no club dominates more than 3 cards",
+      "original_brief": "Balanced factual prompts that avoid celebrity imitation, stereotypes, and ambiguous era claims.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Third reviewed batch available to standard-round selection.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Validator checks club cap, disambiguated canonical answers, sources, and explanation coverage.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-005",
+      "game_design_id": "GAME-002",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "finite editorial catalogue batches",
+      "finite_item_or_catalogue_batch": "QB-A-37–48: Records and Tournaments",
+      "planned_quantity": "12 original cards; 3 each difficulty; at least 4 women’s-football or global-football topics",
+      "original_brief": "Inclusive, source-checked record and tournament prompts with checked-date metadata.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-QZ-001",
+        "ASSET-QZ-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-001",
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Fourth reviewed batch completes the 48-card Kickoff Mix catalogue.",
+      "owner": "Editorial lead + two factual reviewers",
+      "verification": "Batch validation checks topical quota, freshness dates, provenance, and no duplicate factual claim.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "finite_named_content"
+    },
+    {
+      "id": "GPI-006",
+      "game_design_id": "GAME-003",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "adjudication rules and fixtures",
+      "finite_item_or_catalogue_batch": "one deterministic normalisation policy with 20 fixtures",
+      "planned_quantity": "4 format handlers; 20 acceptance/rejection fixtures",
+      "original_brief": "Normalise only documented Unicode/case/punctuation/space/diacritic variants and authored aliases; never guess.",
+      "dependencies": [
+        "GPI-001"
+      ],
+      "asset_ids": [
+        "ASSET-FBK-001",
+        "ASSET-FBK-002"
+      ],
+      "audio_ids": [
+        "AUDIO-QZ-002",
+        "AUDIO-QZ-003"
+      ],
+      "implementation_outcome": "Fair answer resolver with explainable result events.",
+      "owner": "Game rules designer + core engineer",
+      "verification": "Fixtures cover aliases, blanks, malformed input, ambiguity, outdated facts, and immutable resolved attempts.",
+      "module": "quiz-content-and-editorial-integrity",
+      "production_kind": "systemic_rules"
+    },
+    {
+      "id": "GPI-007",
+      "game_design_id": "GAME-004",
+      "selected_module": "quiz-content-and-editorial-integrity",
+      "content_design_card_type": "repeat ledger and editorial lifecycle",
+
+exec
+/bin/zsh -lc "node - <<'NODE'
+const crypto=require('crypto');
+const cases=[['S1','alpha',['A','B','C','D']],['S1','beta',['A','B','C','D']],['S2','alpha',['A','B','C']],['S3','gamma',['A','B']],['S4','delta',['A','B','C']],['S5','epsilon',['A','B','C']]];
+for (const [s,seed,ids] of cases) console.log(s,seed,ids.map(id=>[id,crypto.createHash('sha256').update("'`${seed}|${s}|${id}`).digest('"'hex')]).sort((a,b)=>a[1].localeCompare(b[1])).map(x=>x[0]).join(','));
+NODE
+awk '/\\| ADJ-[0-9][0-9] / {count++} END {print \"adjudication fixtures:\", count}' design-evidence/adjudication-and-freshness-bible.md
+awk '/\\| SEL-[0-9][0-9] / {count++} END {print \"selection fixtures:\", count}' design-evidence/adjudication-and-freshness-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+ succeeded in 0ms:
+S1 alpha D,C,B,A
+S1 beta A,D,C,B
+S2 alpha A,C,B
+S3 gamma A,B
+S4 delta A,B,C
+S5 epsilon A,B,C
+adjudication fixtures: 20
+selection fixtures: 8
+
+codex
+{"status":"pass","summary":"The requested bible already exists and covers the four handlers, 20 adjudication fixtures, withdrawal lifecycle, and eight seeded selection fixtures. I found one deterministic fixture ordering inconsistency and am correcting that documented expected result.","changed_files":[],"test_result":"Validated fixture counts and SHA-256 ordering with a focused Node check; SEL-05 was inconsistent with the documented fresh-first policy.","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md","projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md"],"updated_files":[],"summary":"Review confirmed the dedicated evidence file is the appropriate user-facing design documentation."},"known_limitations":[],"browser_coverage":"Not applicable: this is a domain-documentation change with no browser behavior.","recommended_next_step":"complete"}
+apply patch
+patch: completed
+/Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
++++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+@@ -148,7 +148,7 @@
+ | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+ | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+ | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
++| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+ | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+ | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+ | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+
+hook: PostToolUse
+hook: PostToolUse Failed
+diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
++++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+@@ -148,7 +148,7 @@
+ | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+ | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+ | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
++| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+ | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+ | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+ | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+
+exec
+/bin/zsh -lc "node - <<'NODE'
+const assert=require('assert'); const crypto=require('crypto');
+function order(snapshot,seed,ids){return ids.slice().sort((a,b)=>{const h=x=>crypto.createHash('sha256').update("'`${seed}|${snapshot}|${x}`).digest('"'hex');return h(a).localeCompare(h(b))||a.localeCompare(b)});}
+function select(snapshot,seed,count,candidates,recent){const ranked=order(snapshot,seed,candidates); const fresh=ranked.filter(id=>"'!recent.includes(id)); const reuse=ranked.filter(id=>recent.includes(id)); return fresh.concat(reuse).slice(0,count);}
+const cases=[['"'S1','alpha',2,['A','B','C','D'],['A','B'],['D','C']],['S1','alpha',3,['A','B','C','D'],['A','B'],['D','C','B']],['S1','beta',3,['A','B','C','D'],['A','B'],['D','C','A']],['S2','alpha',3,['A','B','C'],['A','B'],['C','A','B']],['S2','alpha',4,['A','B','C'],['A','B'],['C','A','B']],['S3','gamma',2,['A','B'],['A','B'],['A','B']],['S4','delta',2,['A','B','C'],['A'],['B','C']],['S5','epsilon',2,['A','C'],['A'],['C','A']]];
+for(const c of cases) assert.deepStrictEqual(select(...c.slice(0,5)),c[5]); console.log("'`verified ${cases.length} seeded selection fixtures`);
+NODE
+awk '"'/\\| ADJ-[0-9][0-9] / {count++} END {if (count "'!= 20) exit 1; print "verified 20 adjudication fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+awk '/\\| SEL-[0-9][0-9] / {count++} END {if (count "'!= 8) exit 1; print "verified 8 selection fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+git diff --check -- projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+git diff --no-index --check /dev/null projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md >/dev/null || test "'$? -eq 1' in /Users/simon/Dev/github/jakowicz/runbook-generator
+ succeeded in 0ms:
+verified 8 seeded selection fixtures
+awk: can't open file design-evidence/adjudication-and-freshness-bible.md
+ source line number 1
+awk: can't open file design-evidence/adjudication-and-freshness-bible.md
+ source line number 1
+
+diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
++++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+@@ -148,7 +148,7 @@
+ | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+ | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+ | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
++| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+ | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+ | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+ | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+
+exec
+/bin/zsh -lc "node - <<'NODE'
+const assert=require('assert'); const crypto=require('crypto');
+function select(snapshot,seed,count,candidates,recent){const ranked=candidates.slice().sort((a,b)=>{const h=x=>crypto.createHash('sha256').update("'`${seed}|${snapshot}|${x}`).digest('"'hex');return h(a).localeCompare(h(b))||a.localeCompare(b)}); return ranked.filter(id=>"'!recent.includes(id)).concat(ranked.filter(id=>recent.includes(id))).slice(0,count);}
+const cases=[['"'S1','alpha',2,['A','B','C','D'],['A','B'],['D','C']],['S1','alpha',3,['A','B','C','D'],['A','B'],['D','C','B']],['S1','beta',3,['A','B','C','D'],['A','B'],['D','C','A']],['S2','alpha',3,['A','B','C'],['A','B'],['C','A','B']],['S2','alpha',4,['A','B','C'],['A','B'],['C','A','B']],['S3','gamma',2,['A','B'],['A','B'],['A','B']],['S4','delta',2,['A','B','C'],['A'],['B','C']],['S5','epsilon',2,['A','C'],['A'],['C','A']]];
+for(const c of cases) assert.deepStrictEqual(select(...c.slice(0,5)),c[5]); console.log("'`verified ${cases.length} seeded selection fixtures`);
+NODE
+awk '"'/\\| ADJ-[0-9][0-9] / {count++} END {if (count "'!= 20) exit 1; print "verified 20 adjudication fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+awk '/\\| SEL-[0-9][0-9] / {count++} END {if (count "'!= 8) exit 1; print "verified 8 selection fixtures"}'"' design-evidence/adjudication-and-freshness-bible.md
+git diff --check -- design-evidence/adjudication-and-freshness-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e
+ succeeded in 0ms:
+verified 8 seeded selection fixtures
+verified 20 adjudication fixtures
+verified 8 selection fixtures
+
+diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
++++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+@@ -148,7 +148,7 @@
+ | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+ | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+ | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
++| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+ | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+ | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+ | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+
+diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
++++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+@@ -148,7 +148,7 @@
+ | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+ | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+ | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
++| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+ | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+ | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+ | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+
+codex
+{"status":"pass","summary":"Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.","changed_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"test_result":"Passed focused Node SHA-256 selection verification for SEL-01–SEL-08; verified 20 ADJ fixtures and 8 SEL fixtures by count; `git diff --check -- design-evidence/adjudication-and-freshness-bible.md` passed.","evidence":{"agent_log":"Reviewed the dedicated adjudication/freshness bible and task runbook. Found SEL-05 inconsistent with the stated fresh-first ordering, then corrected it from A,C,B to C,A,B.","adapter_log":"","test_log":"verified 8 seeded selection fixtures\nverified 20 adjudication fixtures\nverified 8 selection fixtures","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"Rules never guess answers and every catalogue-state transition is reproducible.","status":"pass","evidence":"The bible explicitly forbids fuzzy/guessed matching, defines immutable state transitions and withdrawal behavior, includes ADJ-01–ADJ-20, and the corrected SEL-05 now conforms to the deterministic SHA-256 fresh-first selection policy validated across SEL-01–SEL-08."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/specification/02-game-design-bible.md","projects/football-trivia-e2e/planning/game-production-inventory.md","projects/football-trivia-e2e/game-design-runbooks/G0002.md","projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"updated_files":["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"],"summary":"Updated the dedicated user-facing design evidence to correct one deterministic seeded-fixture expectation; no README change was needed because behavior and setup did not change."},"known_limitations":[],"browser_coverage":"Not applicable: domain-documentation evidence only; no browser behavior or Playwright spec changed.","recommended_next_step":"complete"}
+diff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+index 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924
+--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
++++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md
+@@ -148,7 +148,7 @@
+ | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |
+ | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |
+ | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |
+-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |
++| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |
+ | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |
+ | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |
+ | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |
+
+tokens used
+32,044
+
+
+===== Adapter output =====
+{"status": "pass", "summary": "Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.", "changed_files": ["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"], "test_result": "Passed focused Node SHA-256 selection verification for SEL-01\u2013SEL-08; verified 20 ADJ fixtures and 8 SEL fixtures by count; `git diff --check -- design-evidence/adjudication-and-freshness-bible.md` passed.", "evidence": {"agent_log": "{\"status\":\"pass\",\"summary\":\"Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.\",\"changed_files\":[\"projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\"],\"test_result\":\"Passed focused Node SHA-256 selection verification for SEL-01\u2013SEL-08; verified 20 ADJ fixtures and 8 SEL fixtures by count; `git diff --check -- design-evidence/adjudication-and-freshness-bible.md` passed.\",\"evidence\":{\"agent_log\":\"Reviewed the dedicated adjudication/freshness bible and task runbook. Found SEL-05 inconsistent with the stated fresh-first ordering, then corrected it from A,C,B to C,A,B.\",\"adapter_log\":\"\",\"test_log\":\"verified 8 seeded selection fixtures\\nverified 20 adjudication fixtures\\nverified 8 selection fixtures\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[{\"criterion\":\"Rules never guess answers and every catalogue-state transition is reproducible.\",\"status\":\"pass\",\"evidence\":\"The bible explicitly forbids fuzzy/guessed matching, defines immutable state transitions and withdrawal behavior, includes ADJ-01\u2013ADJ-20, and the corrected SEL-05 now conforms to the deterministic SHA-256 fresh-first selection policy validated across SEL-01\u2013SEL-08.\"}],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/specification/02-game-design-bible.md\",\"projects/football-trivia-e2e/planning/game-production-inventory.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0002.md\",\"projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\"],\"updated_files\":[\"projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\"],\"summary\":\"Updated the dedicated user-facing design evidence to correct one deterministic seeded-fixture expectation; no README change was needed because behavior and setup did not change.\"},\"known_limitations\":[],\"browser_coverage\":\"Not applicable: domain-documentation evidence only; no browser behavior or Playwright spec changed.\",\"recommended_next_step\":\"complete\"}\nOpenAI Codex v0.145.0\n--------\nworkdir: /Users/simon/Dev/github/jakowicz/runbook-generator\nmodel: gpt-5.6-terra\nprovider: openai\napproval: on-request\nsandbox: workspace-write [workdir, /tmp, $TMPDIR]\nreasoning effort: medium\nreasoning summaries: none\nsession id: 019fc51e-15c6-7883-8700-d36155810df8\n--------\nuser\nYou are the coding worker for one isolated runbook task.\n\nWork only in the repository passed as your working directory. Do not publish,\ndeploy, access secrets, make payments, or change product scope. Stop and report\nneeds_user_review if the task is destructive, unclear, or requires authority.\nImplement only the task below, run relevant checks, and then output exactly one\nJSON object conforming to the WorkerResult contract. A status of pass means the\nchange is ready for independent test and visual review; it is not self-approval.\n\nTask:\n{\n  \"task_id\": \"G0002\",\n  \"title\": \"Define fair adjudication and editorial lifecycle bible\",\n  \"objective\": \"Write accepted evidence for GAME-003\\u2013004/GPI-006\\u2013007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.\\n\\nInitial project brief:\\n# Product brief \\u2014 football-trivia-e2e\\n\\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\\nits scope; it records unknowns and contradictions instead of choosing them.\\n\\n## Problem, category, users, and outcome\\n\\nCasual adult football followers need a satisfying way to test and extend their\\nknowledge in a few mobile-friendly minutes. This is an original 2D,\\nsingle-player football-trivia puzzle with themed rounds, varied question\\nformats, answer validation, score/streak feedback, local progress, and a\\ncurated question bank.\\n\\nThe first useful session succeeds when a player completes an onboarding round,\\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\\nThis is the quiz equivalent of the source's generic \\u201cfirst battle\\u201d text; a\\nliteral battle/campaign is a decision, not assumed scope.\\n\\n## First-release and roadmap scope\\n\\nFirst release: playable themed rounds; tutorial; question formats and answer\\nrules; accessible feedback; scoring/streaks; anti-repetition; local\\nprogress/save/load/resume/recovery; settings/accessibility; original\\naudio/visual feedback; curated, reviewed, versioned question content; content\\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\\nlive operations, and purchases are decision-gated, not automatic dependencies.\\n\\nSuccess is measurable when a new player can complete onboarding, play an\\nauthored round, get deterministic answer/score feedback, save and restore\\nconfirmed progress, and recover from interruption or a safe update without\\nsilent loss on every selected target. Every shipped question has category,\\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\\nmetadata. Bank size, completion cadence, and performance thresholds are open.\\n\\nDeferred: live/seasonal events, player-created/shared content, advanced\\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\\nparty, quest, combat, boss, or literal battle systems.\\n\\n## Target systems\\n\\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\\n| --- | --- | --- | --- | --- |\\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\\n\\nUse a shared core with necessary platform adaptations only. Remote\\naccount-linked state may use a safe local cache where approved, and must not\\nsilently discard confirmed single-player progress.\\n\\n## Constraints, assumptions, and reference boundary\\n\\nExplicit constraints: accessible controls/text/captions/visual settings;\\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\\nrequirements; and original expression. Safe assumptions: independently authored\\ncontent/UI/art/audio; editorial fact review; locally available approved content\\nsupports a basic session; outages are clear; and diagnostics minimise personal\\ndata. No stack, vendor, backend, account, retention, or licensing choice is\\napproved by these assumptions.\\n\\n| Reference | Allowed functional learning | Prohibited |\\n| --- | --- | --- |\\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\\n\\n## Human approval decisions\\n\\n1. Is generic \\u201cstory/campaign\\u201d and \\u201cfirst battle\\u201d text real scope, or should a\\n   lightweight themed quiz journey replace it?\\n2. For account identity, multiplayer safety, live operations, and purchases:\\n   choose release-critical, optional connected enhancement, or deferred.\\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\\n   outage, safety/moderation, age/region, refund/entitlement policies if any\\n   connected or commerce feature ships.\\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\\n   update/crash provider/cost model, and Android/iOS packaging path.\\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\\n   adjudication, languages, and exact accessibility/audio scope.\",\n  \"acceptance_criteria\": [\n    \"Rules never guess answers and every catalogue-state transition is reproducible.\"\n  ],\n  \"risk_level\": \"normal\",\n  \"sequence\": 3,\n  \"dependencies\": [\n    \"G0001\"\n  ],\n  \"prerequisite_collections\": [],\n  \"browser_impact\": \"not_applicable\",\n  \"playwright_specs\": [],\n  \"asset_impact\": \"not_applicable\",\n  \"asset_brief\": \"\",\n  \"asset_ids\": [],\n  \"visual_style_version\": \"\",\n  \"audio_impact\": \"not_applicable\",\n  \"audio_brief\": \"\",\n  \"audio_ids\": [],\n  \"audio_duration_seconds\": 0,\n  \"audio_loop\": \"not_applicable\",\n  \"audio_style_version\": \"\",\n  \"source_specifications\": [\n    \"specification/02-game-design-bible.md\",\n    \"planning/game-production-inventory.md\"\n  ],\n  \"source_catalogue_ids\": [\n    \"GAME-003\",\n    \"GAME-004\",\n    \"GPI-006\",\n    \"GPI-007\"\n  ],\n  \"authoring_batch\": \"\",\n  \"design_authoring_batch\": \"GB0001\",\n  \"factory_stages\": [],\n  \"execution_mode\": \"implementation\",\n  \"continuation_context\": \"Continue the existing task; do not reimplement completed work.\\nPrevious lifecycle: implementing.\\nExisting changed files: .env, projects/final-fantasy/, projects/football-trivia-e2e/, projects/mock-fantasy-quest-4/, runbooks/.supervisor-children/.\\nLast checkpoint: Codex is working in stage codex.\\nRequired next action: continue_codex.\"\n}\n\nContinuation checkpoint (only when present):\nContinue the existing task; do not reimplement completed work.\nPrevious lifecycle: implementing.\nExisting changed files: .env, projects/final-fantasy/, projects/football-trivia-e2e/, projects/mock-fantasy-quest-4/, runbooks/.supervisor-children/.\nLast checkpoint: Codex is working in stage codex.\nRequired next action: continue_codex.\n\n\n\nThis Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,\n`dart`, SDK/bootstrap tooling, or request an approval escalation: those tools\ncan write SDK caches outside the worktree and are deliberately owned by the\nsupervisor's independent precheck/test stages. When the continuation evidence\nnames a concrete source or test failure, repair that evidence in the worktree,\nrun only safe focused checks, and return `pass` for the deterministic stage to\nvalidate. Never return a failure solely because an SDK command needs approval.\n\n\n\nEfficient investigation rules (especially important for local models):\n- Start with the Codebase Memory MCP for architecture and targeted symbols.\n- Do not use whole-file reads for Dart, test, lock, generated, or log files.\n  Use targeted symbol snippets or `run_shell_command` with `rg` and\n  `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.\n- Inspect only files directly relevant to the acceptance criteria. Do not\n  browse unrelated Playwright, automation, or configuration files merely to\n  learn the repository layout.\n- After the focused investigation, implement and run the smallest relevant\n  checks. Do not continue exploratory tool calls once the implementation path\n  is clear.\n- If a tool reports a missing file, treat it as non-blocking and continue with\n  the repository evidence you already have.\n\nCompletion protocol:\n- Your final action MUST be the `structured_output` tool supplied by\n  `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON\n  response.\n- Use native nested JSON values in that tool call: `evidence` and\n  `documentation` are objects, while `acceptance_results` is an array. Never\n  put JSON text inside quotes for any of those fields.\n- If a check cannot run, return a structured `repairable_failure` or\n  `needs_user_review` result immediately with the exact reason. Never wait\n  silently for a tool or model request to recover.\n\n\nYour final WorkerResult must include all of the following:\n- `acceptance_results`: one entry for every task acceptance criterion, in the\n  same order. Copy each criterion text verbatim from the task, with pass/fail/\n  not_verified status and concrete evidence;\n- `documentation`: README/plan/ADR/runbook files reviewed, files updated, and\n  why they were or were not changed;\n- `test_result`: exact checks you ran and their outcomes;\n- `known_limitations`: remaining gaps or an empty list.\n\nDo not claim `pass` if a criterion is unverified. Update user-facing README or\ndeveloper documentation whenever the change affects behaviour, setup, commands,\narchitecture, design, or progress. If no documentation change is needed, state\nthe reviewed files and explain why.\n\nFor `final_verification`, the independent `test`, `browser`, and visual-review\nstages are the required verification gates. After repairing every concrete\nsource/test failure supplied in this prompt, return `pass` so those gates run.\nDo not return `needs_user_review` solely because Flutter/Dart was deliberately\nleft to the independent test stage. Return `needs_user_review` only for a real\nauthority, safety, or irreducibly ambiguous product decision.\n\nFor browser-impacting work, create or update a task-specific Playwright spec in\n`supervisor/browser/tests/changes/`, list it in `browser_coverage`,\nand revise stale checks. Keep `tests/smoke/` short and stable. For domain-only\nwork, explain in `browser_coverage` why no task-specific browser spec changed.\n\nVisual baseline rule:\n- When the continuation evidence names a golden, snapshot, or visual-regression\n  failure, inspect the supplied master/test/diff artifacts before changing any\n  baseline. Work out whether the new render is the intended result of this\n  task, and check that it has no clipping, overlap, or lost meaning.\n- If it is intentional, regenerate only the affected approved baselines using\n  the repository's documented command, update stale visual/browser checks when\n  their prior expectation is no longer correct, and rerun the relevant suite.\n- If it is not intentional, fix the product or test setup instead. Never mask\n  a real visual regression by blindly accepting a changed screenshot.\n\nFailure-repair protocol:\n- When the continuation checkpoint says that a Supervisor terminal stage\n  failed, treat its captured command and output as the starting evidence. Do\n  not merely describe a possible fix.\n- Use the terminal in this project worktree to inspect, repair, and rerun the\n  same focused check whenever that command is safe in your sandbox. Include\n  the command and result in `test_result`.\n- If that exact command needs an SDK, browser, or approval outside this\n  worker's sandbox, repair the demonstrated issue but do not replace the\n  independent validation. Return `pass` only when the worktree is ready for\n  Supervisor to rerun its configured terminal command after your repair.\n\nwarning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))\ncodex\n{\"status\":\"pass\",\"summary\":\"I\u2019ll inspect the existing football-trivia documentation and targeted codebase graph evidence, then add only the lifecycle/adjudication material needed for this task and run safe focused checks.\",\"changed_files\":[],\"test_result\":\"\",\"evidence\":{\"agent_log\":\"\",\"adapter_log\":\"\",\"test_log\":\"\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[],\"documentation\":{\"reviewed_files\":[],\"updated_files\":[],\"summary\":\"\"},\"known_limitations\":[],\"browser_coverage\":\"\",\"recommended_next_step\":\"complete\"}\nmcp: codebase-memory-mcp/get_architecture started\nmcp: codebase-memory-mcp/get_architecture (failed)\nuser cancelled MCP tool call\nexec\n/bin/zsh -lc \"pwd; rg --files projects/football-trivia-e2e | rg '(\"'^|/)(specification/02-game-design-bible'\"\\\\.md|planning/game-production-inventory\\\\.md|README\\\\.md)\"'$'\"'\" in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\n/Users/simon/Dev/github/jakowicz/runbook-generator\nprojects/football-trivia-e2e/specification/02-game-design-bible.md\nprojects/football-trivia-e2e/planning/game-production-inventory.md\n\nexec\n/bin/zsh -lc \"rg -n -i -C 3 'GAME-003|GAME-004|GPI-006|GPI-007|adjudic|normalis|alias|withdraw|anti-repeat|shortage|catalogue' specification/02-game-design-bible.md planning/game-production-inventory.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e\n succeeded in 0ms:\nplanning/game-production-inventory.md-10-| --- | --- | --- | --- | --- |\nplanning/game-production-inventory.md-11-| GAME-001 | GPI-001: one card schema, five format fixtures | \u2014 | Editorial + tooling | Schema/negative fixtures |\nplanning/game-production-inventory.md-12-| GAME-002 | GPI-002\u2013005: four named 12-card batches, QB-A-01\u201348 | GPI-001 | Editorial + two reviewers | Provenance, review, quota, uniqueness validator |\nplanning/game-production-inventory.md:13:| GAME-003 | GPI-006: four handlers, 20 adjudication fixtures | GPI-001 | Rules + core | Deterministic acceptance/rejection fixtures |\nplanning/game-production-inventory.md:14:| GAME-004 | GPI-007: selection policy, 8 seeded fixtures | GPI-002\u2013005 | Editorial + core | Repeat/shortage/withdrawal tests |\nplanning/game-production-inventory.md-15-| GAME-005 | GPI-008: TUT-01\u201305 fixed tutorial | GPI-001, 006, 013\u2013014 | Design + editorial | Offline completion/resume test |\nplanning/game-production-inventory.md-16-| GAME-006 | GPI-009: one 10-card Mixed Fixture template | GPI-002\u2013007 | Rules + core | Seeded selection lifecycle |\nplanning/game-production-inventory.md:17:| GAME-007 | GPI-010: rule table, 12 edge fixtures | GPI-006, 009 | Rules + accessibility | Score/streak equivalent-feedback tests |\nplanning/game-production-inventory.md-18-| GAME-008 | GPI-011: result and milestone states | GPI-009\u2013010, 014 | Design + UI | Idempotence/recovery lifecycle tests |\nplanning/game-production-inventory.md-19-| GAME-009 | GPI-012: profile/settings plus four input maps | \u2014 | Accessibility + platform | Input and accessibility review |\nplanning/game-production-inventory.md-20-| GAME-010 | GPI-013: four recovery states, eight faults | GPI-011 | Persistence + accessibility | Fault-injection recovery tests |\n--\nspecification/02-game-design-bible.md-15-\nspecification/02-game-design-bible.md-16-## Selected design systems\nspecification/02-game-design-bible.md-17-\nspecification/02-game-design-bible.md:18:### Quiz content and editorial integrity \u2014 `GAME-001` to `GAME-004`\nspecification/02-game-design-bible.md-19-\nspecification/02-game-design-bible.md-20-**Player outcome:** receive fresh, fair, answerable football questions with a\nspecification/02-game-design-bible.md-21-clear explanation. **Entities:** `QuestionCard`, `AnswerOption`,\n--\nspecification/02-game-design-bible.md-24-\nspecification/02-game-design-bible.md-25-| Unit | Design card / rule | First-release boundary and acceptance |\nspecification/02-game-design-bible.md-26-| --- | --- | --- |\nspecification/02-game-design-bible.md:27:| GAME-001 | **Question-card grammar.** An original card has one unambiguous fact, prompt, format, category, era/competition tags, difficulty 1\u20133, answer rule, short explanation, and review/version state. Formats: four-option select, true/false, ordered pair, and short typed answer. | Ship only reviewed `published` cards. A card without provenance, answer rule, explanation, or two-editor approval is ineligible. Test: each sampled card adjudicates its canonical and configured accepted answers identically. |\nspecification/02-game-design-bible.md:28:| GAME-002 | **Catalogue batch A: \u201cKickoff Mix.\u201d** 48 original cards: 12 world tournament history, 12 domestic league moments, 12 club/manager/identity, 12 players/records. Each category has 4 cards at each band, max 6 cards per competition and no single club above 4. | Finite named release package: `QB-A-01` through `QB-A-48`, authored in four 12-card editorial batches. Exact facts, wording, sources, and rights clearance remain an editorial approval gate; placeholders never ship. Test: the manifest enforces totals, distributions, unique IDs, and no unpublished card. |\nspecification/02-game-design-bible.md:29:| GAME-003 | **Adjudication and provenance.** Select/true-false compare canonical IDs. Ordered pair compares ordered IDs. Typed answers normalise Unicode, case, punctuation, whitespace, diacritics, and configured aliases; it never uses fuzzy matching in release one. A rejected typed answer shows the canonical answer and explanation. | Each factual assertion links to a durable permitted source or approved internal research note, with checked date, reviewer, and correction history. Conflict or contested fact \u21d2 remove from eligibility until resolved. Test: alias, malformed, blank, ambiguous, and outdated-version cases have fixtures. |\nspecification/02-game-design-bible.md:30:| GAME-004 | **Freshness.** The repeat ledger records card ID and completion timestamp locally. A round excludes cards seen in its last two completed rounds where alternatives exist; if insufficient eligible cards exist, it discloses reuse rather than silently failing. | No renewable feed, scraping, or live refresh. Authoring flow: propose \u2192 source/provenance \u2192 factual check \u2192 accessibility/copy edit \u2192 second review \u2192 publish to a versioned batch \u2192 validate \u2192 release/rollback. Test: seeded selection is reproducible and respects the exclusion rule. |\nspecification/02-game-design-bible.md-31-\nspecification/02-game-design-bible.md-32-**Visual/audio/accessibility:** cards use original broadcast-inspired category\nspecification/02-game-design-bible.md-33-colour families plus text labels/patterns; no colour alone encodes category or\n--\nspecification/02-game-design-bible.md-46-| Unit | Design card / rule | First-release boundary and acceptance |\nspecification/02-game-design-bible.md-47-| --- | --- | --- |\nspecification/02-game-design-bible.md-48-| GAME-005 | **Round \u201cFirst Whistle.\u201d** Tutorial round contains 5 fixed, original tutorial cards (`TUT-01`\u2013`TUT-05`) covering selecting, typing, feedback, explanation, and pause/save. It is intentionally non-timed. | This is the complete first useful journey. Completion creates/updates local milestone `first_whistle_complete`; it cannot require account, network, purchase, or deferred content. Test: a new local profile can complete it offline and resume after app restart. |\nspecification/02-game-design-bible.md:49:| GAME-006 | **Round \u201cMixed Fixture.\u201d** A 10-card themed round draws from one selected category or the Kickoff Mix, with no more than two adjacent cards sharing format or difficulty. The player may pause; a displayed timer mode is optional and defaults off. | First release ships one tutorial and one configurable standard round template, no ranked/daily/live/event modes. Test: deterministic seed produces ten eligible cards and valid format alternation or records the shortage. |\nspecification/02-game-design-bible.md-50-| GAME-007 | **Scoring and streak.** Correct = 100 points; a consecutive-correct streak of 3+ adds 25 points to each later correct answer, capped at +100. Incorrect, timeout (only if enabled), blank submission, or abandon resets the active streak; score never decreases. Explanation is available after resolution. | No paid boosts, leaderboard, social comparison, or opaque difficulty multiplier. Test: table-driven sequence proves cap, reset, and per-attempt result; a retry is a new run, not an overwrite of history. |\nspecification/02-game-design-bible.md-51-| GAME-008 | **Result and return.** Results show answered/correct, score, best active-session streak, category, and next action: replay, choose theme, or exit. Progress is local milestones and aggregate history only, not RPG levels. | An interrupted run persists at a safe boundary before the next unresolved question. Completed result is idempotent: reopening cannot award twice. Test: complete/reopen, abandon/resume, corrupted draft, and delete-history paths are specified. |\nspecification/02-game-design-bible.md-52-\nspecification/02-game-design-bible.md-53-**Dependencies:** GAME-005 needs published tutorial cards and persistence;\nspecification/02-game-design-bible.md:54:GAME-006 needs GAME-001\u2013004; GAME-007 consumes adjudication events; GAME-008\nspecification/02-game-design-bible.md-55-consumes score events and save/recovery. Visual family is bold category panels,\nspecification/02-game-design-bible.md-56-neutral answer controls, and non-colour success/error indicators; audio is\nspecification/02-game-design-bible.md-57-supportive, optional, and captioned.\n--\nspecification/02-game-design-bible.md-75-order, semantic labels, sufficient touch targets, and no time limit by default.\nspecification/02-game-design-bible.md-76-Localisation inputs are externalised prompt, answer, explanation, category, and\nspecification/02-game-design-bible.md-77-UI strings; only a future approved language may add translated content after\nspecification/02-game-design-bible.md:78:answer aliases and factual review are validated.\nspecification/02-game-design-bible.md-79-\nspecification/02-game-design-bible.md-80-**Experience production package:** a finite first-release package contains the\nspecification/02-game-design-bible.md-81-five named tutorial cards, one settings/help copy set, input-action labels,\n--\nspecification/02-game-design-bible.md-90-\nspecification/02-game-design-bible.md-91-| Units | First-release journeys | Implementation domains |\nspecification/02-game-design-bible.md-92-| --- | --- | --- |\nspecification/02-game-design-bible.md:93:| GAME-001\u2013004 | J1/J2/J4 (and J5 for versioned batch) | B content/adjudication; F delivery for batch lifecycle |\nspecification/02-game-design-bible.md-94-| GAME-005\u2013008 | J1/J2/J3 | A shell/progress; C rules/score/feedback; D persistence for return |\nspecification/02-game-design-bible.md-95-| GAME-009\u2013012 | J0/J1/J2/J3/J5 | D recovery, E accessibility/input/presentation, F delivery/targets |\nspecification/02-game-design-bible.md-96-\n\nexec\n/bin/zsh -lc 'git status --short -- projects/football-trivia-e2e; git diff --stat -- projects/football-trivia-e2e' in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\n?? projects/football-trivia-e2e/\n\nexec\n/bin/zsh -lc \"rg --files | rg '(\"'^|/)(content|editorial|fixture|adjudication|catalogue|question|game-production|game-design)'\"' | head -120\" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e\n succeeded in 0ms:\nplanning/game-production-inventory.json\nplanning/game-design-manifest.json\nplanning/game-production-inventory.md\ndesign-evidence/question-card-and-qba-catalogue-bible.md\ndesign-evidence/adjudication-and-freshness-bible.md\ngame-design-runbooks/GC0001.md\ngame-design-runbooks/G0004.md\ngame-design-runbooks/G0005.md\ngame-design-runbooks/G0001.md\ngame-design-runbooks/GB0003.md\ngame-design-runbooks/GB0002.md\ngame-design-runbooks/GB0001.md\ngame-design-runbooks/GD0001.md\ngame-design-runbooks/G0002.md\ngame-design-runbooks/G0003.md\n\nexec\n/bin/zsh -lc \"sed -n '1,220p' game-design-runbooks/G0002.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e\n succeeded in 0ms:\n---\ntask_id: G0002\nsequence: 3\ndependencies: G0001\nsource_specifications: specification/02-game-design-bible.md,planning/game-production-inventory.md\nsource_catalogue_ids: GAME-003,GAME-004,GPI-006,GPI-007\ntitle: Define fair adjudication and editorial lifecycle bible\nbrowser_impact: not_applicable\nplaywright_spec:\ndesign_authoring_batch: GB0001\n---\n\n## Objective\n\nWrite accepted evidence for GAME-003\u2013004/GPI-006\u2013007: documented normalisation/alias policy, 20 fair adjudication fixtures, withdrawal states, and seeded anti-repeat/shortage policy.\n\n## Output list\n\n- `design-evidence/adjudication-and-freshness-bible.md`: deterministic select/true-false/ordered/typed-answer rules, 20 fixtures, contested-fact withdrawal/provenance review states, and a seeded anti-repeat/shortage rule.\n\nNo fuzzy guessing, implementation code, B/R runbooks, or manifest acceptance.\n\n## Acceptance criteria\n\n- Rules never guess answers and every catalogue-state transition is reproducible.\n\nexec\n/bin/zsh -lc \"sed -n '1,240p' design-evidence/adjudication-and-freshness-bible.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e\n succeeded in 0ms:\n# Adjudication and freshness bible\n\n**Scope:** accepted evidence for `GAME-003`, `GAME-004`, `GPI-006`, and\n`GPI-007`. This is a deterministic future-core contract, not implementation or\npublished content. A result is calculated only from stated input; it is never\ninferred or guessed.\n\n## GPI-006 \u2014 answer adjudication\n\nEvery resolved attempt is immutable and records `attemptId`, `cardId`,\n`cardRevision`, `format`, submitted value, `outcome`, `reasonCode`,\ncanonical answer, and explanation key. Feedback reopening cannot recompute\nagainst a later revision. A card withdrawn after presentation may resolve that\npresented attempt; it cannot enter a new selection.\n\n| Format | Comparison | Accept only when | Reject examples |\n| --- | --- | --- | --- |\n| `four_option_select` | Exact option ID | It equals the one correct option ID. | `blank`, `unknown_option_id`, `incorrect_option` |\n| `true_false` | Exact canonical ID | It is exact `true` or `false` and correct. | `blank`, `malformed_boolean_id`, `incorrect_option` |\n| `ordered_pair` | Exact two-item ordered ID array | It has two known IDs in configured order, including intentional repeats. | `blank`, `wrong_arity`, `unknown_option_id`, `wrong_order` |\n| `short_typed_answer` | Normalised text vs. canonical display answer plus aliases | It equals one unique configured normalised value. | `blank`, `normalises_empty`, `unconfigured_variant`, `ambiguous_alias` |\n\nA rejected submission always exposes canonical answer and explanation. A\nconfiguration error (including duplicate normalised alias) makes the card\nineligible; it never accepts, guesses, or silently maps an answer.\n\n### Typed-answer normalisation and aliases\n\nApply these steps, in order, to submitted text and every authored canonical\nanswer/alias when validating a card revision:\n\n1. Convert input to Unicode NFC.\n2. Apply Unicode default case folding (locale-independent).\n3. Replace each Unicode whitespace sequence with one ASCII space and trim.\n4. Decompose to Unicode NFD, remove combining marks, and recompose to NFC.\n5. Remove only Unicode punctuation. Letters, numbers, and symbols remain; no\n   transliteration, word substitution, reordering, stemming, phonetics,\n   edit-distance threshold, AI, or fuzzy matching occurs.\n6. Collapse whitespace again and trim. An empty key rejects as\n   `normalises_empty`.\n\nThe key is comparison-only. An alias is accepted only if deliberately authored\nfor that revision, non-empty after normalisation, and unique in the card answer\ndomain. Validator failure rejects aliases colliding with another answer, another\nalias/distractor, or multiple possible answers. Any canonical wording, alias, or\nnormalisation-version change creates a new revision, review, and validation; it\ncannot change a resolved attempt.\n\nThus `J\u00fcrgen Klopp`, `JURGEN   KLOPP`, and `J\u00fcrgen-Klopp` share\n`jurgen klopp`; `PSG` matches Paris Saint-Germain only if authored as an\nalias. `M. Salah`, `Salahh`, or a missing first name never matches unless\nexplicitly configured and reviewed.\n\n### Twenty deterministic adjudication fixtures\n\nEach row specifies all material input. `C` is canonical value; braces contain\nthe complete alias set.\n\n| ID | Format / configured answer | Submitted | Expected result |\n| --- | --- | --- | --- |\n| ADJ-01 | Select, C=`france` | `france` | accepted / `canonical_match` |\n| ADJ-02 | Select, C=`france` | `argentina` | rejected / `incorrect_option` |\n| ADJ-03 | Select, C=`france` | empty | rejected / `blank` |\n| ADJ-04 | Select, C=`france` | `France` | rejected / `unknown_option_id` |\n| ADJ-05 | Select, C=`france` | `fra` | rejected / `unknown_option_id` |\n| ADJ-06 | True/false, C=`true` | `true` | accepted / `canonical_match` |\n| ADJ-07 | True/false, C=`true` | `false` | rejected / `incorrect_option` |\n| ADJ-08 | True/false, C=`false` | `True` | rejected / `malformed_boolean_id` |\n| ADJ-09 | True/false, C=`true` | `yes` | rejected / `malformed_boolean_id` |\n| ADJ-10 | True/false, C=`false` | empty | rejected / `blank` |\n| ADJ-11 | Ordered pair, C=`[japan,australia]` | `[japan,australia]` | accepted / `ordered_match` |\n| ADJ-12 | Ordered pair, C=`[japan,australia]` | `[australia,japan]` | rejected / `wrong_order` |\n| ADJ-13 | Ordered pair, C=`[france,france]` | `[france,france]` | accepted / `ordered_match` |\n| ADJ-14 | Ordered pair, C=`[japan,australia]` | `[japan]` | rejected / `wrong_arity` |\n| ADJ-15 | Ordered pair, C=`[japan,australia]` | `[japan,qatar]` | rejected / `unknown_option_id` |\n| ADJ-16 | Typed, C=`J\u00fcrgen Klopp`, aliases={`klopp`} | `  JURGEN---KLOPP ` | accepted / `normalised_canonical_match` |\n| ADJ-17 | Typed, C=`J\u00fcrgen Klopp`, aliases={`klopp`} | `Klopp` | accepted / `normalised_alias_match` |\n| ADJ-18 | Typed, C=`J\u00fcrgen Klopp`, aliases={`klopp`} | `Jurgen Klop` | rejected / `unconfigured_variant` |\n| ADJ-19 | Typed, C=`Paris Saint-Germain`, aliases={`psg`} | `P.S.G.` | accepted / `normalised_alias_match` |\n| ADJ-20 | Typed, invalid aliases={`inter`} for two answers | `Inter` | rejected / `ambiguous_alias`; ineligible card |\n\nWhitespace-only typed input is `normalises_empty`. ADJ-20 is a failed\nvalidation configuration, not releasable content: ambiguity is surfaced, never\nguessed. An answer against `QB-A-28@r1` uses r1 values, never corrected r2.\n\n## GPI-007 \u2014 reproducible editorial lifecycle\n\nA transition input is `(cardId, currentRevision, event, evidenceRefs,\nactorRole, occurredAt)`. It emits an append-only event and either next state or\nvalidation failure. Time is recorded UTC and never supplies a missing\ntransition. A revision is immutable after leaving `draft`; correction creates\na successor revision under the same stable ID.\n\n| Current state | Permitted event / required evidence | Next state | Eligible |\n| --- | --- | --- | --- |\n| `draft` | `submit_factual_check`: provenance, originality, accepted factual review | `fact_checked` | no |\n| `fact_checked` | `accept_accessibility_copy`: different reviewer, accepted revision review | `accessibility_edited` | no |\n| `accessibility_edited` | `accept_second_review`: distinct reviewer, grammar/alias validation | `second_reviewed` | no |\n| `second_reviewed` | `publish`: release editor, all release checks pass | `published` | yes |\n| pre-publication | `block`: dispute, missing rights, or validation failure | `blocked` | no |\n| `published` | `withdraw`: reason, effective UTC time, evidence | `withdrawn` | no |\n| `blocked` or `withdrawn` | `revise`: creates r+1 and preserves history/correction note | `draft` (r+1) | no |\n\nNo other transition is allowed: no direct draft-to-published, self-review, or\nsilent reopen. Each event records from-state, to-state, card/revision, event,\nreason/evidence, actor ID/role, and UTC time. Replay from draft reproduces\nstate; invalid events remain rejected audit entries and change no state.\n\nA reported conflict blocks an unpublished card or withdraws a published card\nimmediately. Withdrawal records `factual_correction`, `source_rights`,\n`ambiguity`, or `accessibility_defect`, effective time, evidence, and an\noptional replacement. It does not silently replace cards or rewrite past rounds.\nNew selection excludes it from that time; a presented attempt resolves against\nits presented revision. Only a corrected, newly reviewed revision may publish.\n\n## Seeded anti-repeat and shortage policy\n\nFor `(catalogueSnapshotId, seed, requestedCount, filter, ledger)`, freeze the\npublished eligible catalogue at the snapshot, apply filter, then remove\nblocked/withdrawn cards. `recent` is the union of IDs in the two latest\n*completed* rounds, sorting rounds by `(completedAtUtc, roundId)` descending.\nDraft, abandoned, and in-progress rounds do not count.\n\nSet `fresh = candidates \u2212 recent`. Assign each candidate\n`SHA-256(seed + \"|\" + catalogueSnapshotId + \"|\" + cardId)`, then sort\nascending by `(key, cardId)`. Take the first\n`min(requestedCount, fresh.length)`; fill only the remainder from\n`reuse = candidates \u2229 recent` in the same order. Whenever reuse occurs or\neligible cards are too few, record:\n\n`{ requestedCount, freshAvailable, eligibleAvailable, reusedCardIds,\nunfilledCount, disclosureKey: \"selection_shortage_reuse_disclosed\" }`.\n\nShow this plain-language disclosure before round start whenever reuse or an\nunfilled count exists. No clock, random source, network response, unpublished\ncard, or iteration order affects selection. Equal full input has equal IDs and\nshortage record.\n\n### Eight seeded selection fixtures\n\nCandidate lists are frozen, filtered, and published; R1/R2 are newest completed\nrounds. Implementation fixtures calculate the specified SHA-256 ordering and\nassert selected IDs, shortage fields, and disclosure key.\n\n| ID | Snapshot / seed / count | Candidates; R1; R2 | Expected result |\n| --- | --- | --- | --- |\n| SEL-01 | `S1` / `alpha` / 2 | A,B,C,D; A; B | selected `D,C`; no reuse/shortage |\n| SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |\n| SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |\n| SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |\n| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |\n| SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |\n| SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |\n| SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |\n\n## Release checks\n\nEligibility requires published frozen-snapshot state, correct answer rule, no\nalias collision, current provenance, two distinct accepted reviews, and no\neffective withdrawal. The fixture suite requires exactly ADJ-01\u2013ADJ-20 and\nSEL-01\u2013SEL-08. Failed validation blocks release; it cannot create a fallback\nanswer or undisclosed repeat.\n\nexec\n/bin/zsh -lc \"sed -n '1,160p' planning/game-production-inventory.json\" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e\n succeeded in 0ms:\n{\n  \"inventory_version\": 1,\n  \"source_bible\": \"specification/02-game-design-bible.json\",\n  \"entries\": [\n    {\n      \"id\": \"GPI-001\",\n      \"game_design_id\": \"GAME-001\",\n      \"selected_module\": \"quiz-content-and-editorial-integrity\",\n      \"content_design_card_type\": \"question-card schema and validation fixtures\",\n      \"finite_item_or_catalogue_batch\": \"one versioned schema with five format fixtures\",\n      \"planned_quantity\": \"1 schema; 5 representative fixtures\",\n      \"original_brief\": \"Original, concise, fact-first cards carry prompt, answer rule, explanation, provenance, accessibility copy, two reviews, and stable IDs.\",\n      \"dependencies\": [],\n      \"asset_ids\": [\n        \"ASSET-QZ-001\",\n        \"ASSET-UI-001\"\n      ],\n      \"audio_ids\": [\n        \"AUDIO-QZ-001\"\n      ],\n      \"implementation_outcome\": \"Validated immutable card records consumable by the quiz core.\",\n      \"owner\": \"Editorial lead + content tooling engineer\",\n      \"verification\": \"Validator accepts each supported format and rejects missing provenance, review, locale, answer rule, or asset/cue reference.\",\n      \"module\": \"quiz-content-and-editorial-integrity\",\n      \"production_kind\": \"bounded_content_set\"\n    },\n    {\n      \"id\": \"GPI-002\",\n      \"game_design_id\": \"GAME-002\",\n      \"selected_module\": \"quiz-content-and-editorial-integrity\",\n      \"content_design_card_type\": \"finite editorial catalogue batches\",\n      \"finite_item_or_catalogue_batch\": \"QB-A-01\u201312: World Football Foundations\",\n      \"planned_quantity\": \"12 original cards; 3 each easy/medium/hard/expert; select/typed/order/boolean quota 4/3/3/2\",\n      \"original_brief\": \"Independent football-history and geography prompts; no copied wording, branding, or unverified current facts.\",\n      \"dependencies\": [\n        \"GPI-001\"\n      ],\n      \"asset_ids\": [\n        \"ASSET-QZ-001\",\n        \"ASSET-QZ-002\"\n      ],\n      \"audio_ids\": [\n        \"AUDIO-QZ-001\",\n        \"AUDIO-QZ-002\",\n        \"AUDIO-QZ-003\"\n      ],\n      \"implementation_outcome\": \"Reviewed published batch available to standard-round selection.\",\n      \"owner\": \"Editorial lead + two factual reviewers\",\n      \"verification\": \"Source/right, two-review, category/difficulty/format quota, alias, and uniqueness validation passes.\",\n      \"module\": \"quiz-content-and-editorial-integrity\",\n      \"production_kind\": \"finite_named_content\"\n    },\n    {\n      \"id\": \"GPI-003\",\n      \"game_design_id\": \"GAME-002\",\n      \"selected_module\": \"quiz-content-and-editorial-integrity\",\n      \"content_design_card_type\": \"finite editorial catalogue batches\",\n      \"finite_item_or_catalogue_batch\": \"QB-A-13\u201324: Domestic Leagues and Cups\",\n      \"planned_quantity\": \"12 original cards; same 3/3/3/3 difficulty and 3-per-format quota\",\n      \"original_brief\": \"Evergreen, precisely scoped domestic-football knowledge with explanations that teach rather than taunt.\",\n      \"dependencies\": [\n        \"GPI-001\"\n      ],\n      \"asset_ids\": [\n        \"ASSET-QZ-001\",\n        \"ASSET-QZ-002\"\n      ],\n      \"audio_ids\": [\n        \"AUDIO-QZ-001\",\n        \"AUDIO-QZ-002\",\n        \"AUDIO-QZ-003\"\n      ],\n      \"implementation_outcome\": \"Second reviewed batch available to standard-round selection.\",\n      \"owner\": \"Editorial lead + two factual reviewers\",\n      \"verification\": \"Editorial ledger proves 12 distinct original cards and all source/review/status fields.\",\n      \"module\": \"quiz-content-and-editorial-integrity\",\n      \"production_kind\": \"finite_named_content\"\n    },\n    {\n      \"id\": \"GPI-004\",\n      \"game_design_id\": \"GAME-002\",\n      \"selected_module\": \"quiz-content-and-editorial-integrity\",\n      \"content_design_card_type\": \"finite editorial catalogue batches\",\n      \"finite_item_or_catalogue_batch\": \"QB-A-25\u201336: Clubs, Players, and Managers\",\n      \"planned_quantity\": \"12 original cards; 3 each difficulty; no club dominates more than 3 cards\",\n      \"original_brief\": \"Balanced factual prompts that avoid celebrity imitation, stereotypes, and ambiguous era claims.\",\n      \"dependencies\": [\n        \"GPI-001\"\n      ],\n      \"asset_ids\": [\n        \"ASSET-QZ-001\",\n        \"ASSET-QZ-002\"\n      ],\n      \"audio_ids\": [\n        \"AUDIO-QZ-001\",\n        \"AUDIO-QZ-002\",\n        \"AUDIO-QZ-003\"\n      ],\n      \"implementation_outcome\": \"Third reviewed batch available to standard-round selection.\",\n      \"owner\": \"Editorial lead + two factual reviewers\",\n      \"verification\": \"Validator checks club cap, disambiguated canonical answers, sources, and explanation coverage.\",\n      \"module\": \"quiz-content-and-editorial-integrity\",\n      \"production_kind\": \"finite_named_content\"\n    },\n    {\n      \"id\": \"GPI-005\",\n      \"game_design_id\": \"GAME-002\",\n      \"selected_module\": \"quiz-content-and-editorial-integrity\",\n      \"content_design_card_type\": \"finite editorial catalogue batches\",\n      \"finite_item_or_catalogue_batch\": \"QB-A-37\u201348: Records and Tournaments\",\n      \"planned_quantity\": \"12 original cards; 3 each difficulty; at least 4 women\u2019s-football or global-football topics\",\n      \"original_brief\": \"Inclusive, source-checked record and tournament prompts with checked-date metadata.\",\n      \"dependencies\": [\n        \"GPI-001\"\n      ],\n      \"asset_ids\": [\n        \"ASSET-QZ-001\",\n        \"ASSET-QZ-002\"\n      ],\n      \"audio_ids\": [\n        \"AUDIO-QZ-001\",\n        \"AUDIO-QZ-002\",\n        \"AUDIO-QZ-003\"\n      ],\n      \"implementation_outcome\": \"Fourth reviewed batch completes the 48-card Kickoff Mix catalogue.\",\n      \"owner\": \"Editorial lead + two factual reviewers\",\n      \"verification\": \"Batch validation checks topical quota, freshness dates, provenance, and no duplicate factual claim.\",\n      \"module\": \"quiz-content-and-editorial-integrity\",\n      \"production_kind\": \"finite_named_content\"\n    },\n    {\n      \"id\": \"GPI-006\",\n      \"game_design_id\": \"GAME-003\",\n      \"selected_module\": \"quiz-content-and-editorial-integrity\",\n      \"content_design_card_type\": \"adjudication rules and fixtures\",\n      \"finite_item_or_catalogue_batch\": \"one deterministic normalisation policy with 20 fixtures\",\n      \"planned_quantity\": \"4 format handlers; 20 acceptance/rejection fixtures\",\n      \"original_brief\": \"Normalise only documented Unicode/case/punctuation/space/diacritic variants and authored aliases; never guess.\",\n      \"dependencies\": [\n        \"GPI-001\"\n      ],\n      \"asset_ids\": [\n        \"ASSET-FBK-001\",\n        \"ASSET-FBK-002\"\n      ],\n      \"audio_ids\": [\n        \"AUDIO-QZ-002\",\n        \"AUDIO-QZ-003\"\n      ],\n      \"implementation_outcome\": \"Fair answer resolver with explainable result events.\",\n      \"owner\": \"Game rules designer + core engineer\",\n      \"verification\": \"Fixtures cover aliases, blanks, malformed input, ambiguity, outdated facts, and immutable resolved attempts.\",\n      \"module\": \"quiz-content-and-editorial-integrity\",\n      \"production_kind\": \"systemic_rules\"\n    },\n    {\n      \"id\": \"GPI-007\",\n      \"game_design_id\": \"GAME-004\",\n      \"selected_module\": \"quiz-content-and-editorial-integrity\",\n      \"content_design_card_type\": \"repeat ledger and editorial lifecycle\",\n\nexec\n/bin/zsh -lc \"node - <<'NODE'\nconst crypto=require('crypto');\nconst cases=[['S1','alpha',['A','B','C','D']],['S1','beta',['A','B','C','D']],['S2','alpha',['A','B','C']],['S3','gamma',['A','B']],['S4','delta',['A','B','C']],['S5','epsilon',['A','B','C']]];\nfor (const [s,seed,ids] of cases) console.log(s,seed,ids.map(id=>[id,crypto.createHash('sha256').update(\"'`${seed}|${s}|${id}`).digest('\"'hex')]).sort((a,b)=>a[1].localeCompare(b[1])).map(x=>x[0]).join(','));\nNODE\nawk '/\\\\| ADJ-[0-9][0-9] / {count++} END {print \\\"adjudication fixtures:\\\", count}' design-evidence/adjudication-and-freshness-bible.md\nawk '/\\\\| SEL-[0-9][0-9] / {count++} END {print \\\"selection fixtures:\\\", count}' design-evidence/adjudication-and-freshness-bible.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e\n succeeded in 0ms:\nS1 alpha D,C,B,A\nS1 beta A,D,C,B\nS2 alpha A,C,B\nS3 gamma A,B\nS4 delta A,B,C\nS5 epsilon A,B,C\nadjudication fixtures: 20\nselection fixtures: 8\n\ncodex\n{\"status\":\"pass\",\"summary\":\"The requested bible already exists and covers the four handlers, 20 adjudication fixtures, withdrawal lifecycle, and eight seeded selection fixtures. I found one deterministic fixture ordering inconsistency and am correcting that documented expected result.\",\"changed_files\":[],\"test_result\":\"Validated fixture counts and SHA-256 ordering with a focused Node check; SEL-05 was inconsistent with the documented fresh-first policy.\",\"evidence\":{\"agent_log\":\"\",\"adapter_log\":\"\",\"test_log\":\"\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\",\"projects/football-trivia-e2e/specification/02-game-design-bible.md\",\"projects/football-trivia-e2e/planning/game-production-inventory.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0002.md\"],\"updated_files\":[],\"summary\":\"Review confirmed the dedicated evidence file is the appropriate user-facing design documentation.\"},\"known_limitations\":[],\"browser_coverage\":\"Not applicable: this is a domain-documentation change with no browser behavior.\",\"recommended_next_step\":\"complete\"}\napply patch\npatch: completed\n/Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\ndiff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\nindex 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924\n--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n+++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n@@ -148,7 +148,7 @@\n | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |\n | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |\n | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |\n-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |\n+| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |\n | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |\n | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |\n | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |\n\nhook: PostToolUse\nhook: PostToolUse Failed\ndiff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\nindex 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924\n--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n+++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n@@ -148,7 +148,7 @@\n | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |\n | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |\n | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |\n-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |\n+| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |\n | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |\n | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |\n | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |\n\nexec\n/bin/zsh -lc \"node - <<'NODE'\nconst assert=require('assert'); const crypto=require('crypto');\nfunction order(snapshot,seed,ids){return ids.slice().sort((a,b)=>{const h=x=>crypto.createHash('sha256').update(\"'`${seed}|${snapshot}|${x}`).digest('\"'hex');return h(a).localeCompare(h(b))||a.localeCompare(b)});}\nfunction select(snapshot,seed,count,candidates,recent){const ranked=order(snapshot,seed,candidates); const fresh=ranked.filter(id=>\"'!recent.includes(id)); const reuse=ranked.filter(id=>recent.includes(id)); return fresh.concat(reuse).slice(0,count);}\nconst cases=[['\"'S1','alpha',2,['A','B','C','D'],['A','B'],['D','C']],['S1','alpha',3,['A','B','C','D'],['A','B'],['D','C','B']],['S1','beta',3,['A','B','C','D'],['A','B'],['D','C','A']],['S2','alpha',3,['A','B','C'],['A','B'],['C','A','B']],['S2','alpha',4,['A','B','C'],['A','B'],['C','A','B']],['S3','gamma',2,['A','B'],['A','B'],['A','B']],['S4','delta',2,['A','B','C'],['A'],['B','C']],['S5','epsilon',2,['A','C'],['A'],['C','A']]];\nfor(const c of cases) assert.deepStrictEqual(select(...c.slice(0,5)),c[5]); console.log(\"'`verified ${cases.length} seeded selection fixtures`);\nNODE\nawk '\"'/\\\\| ADJ-[0-9][0-9] / {count++} END {if (count \"'!= 20) exit 1; print \"verified 20 adjudication fixtures\"}'\"' design-evidence/adjudication-and-freshness-bible.md\nawk '/\\\\| SEL-[0-9][0-9] / {count++} END {if (count \"'!= 8) exit 1; print \"verified 8 selection fixtures\"}'\"' design-evidence/adjudication-and-freshness-bible.md\ngit diff --check -- projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\ngit diff --no-index --check /dev/null projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md >/dev/null || test \"'$? -eq 1' in /Users/simon/Dev/github/jakowicz/runbook-generator\n succeeded in 0ms:\nverified 8 seeded selection fixtures\nawk: can't open file design-evidence/adjudication-and-freshness-bible.md\n source line number 1\nawk: can't open file design-evidence/adjudication-and-freshness-bible.md\n source line number 1\n\ndiff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\nindex 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924\n--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n+++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n@@ -148,7 +148,7 @@\n | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |\n | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |\n | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |\n-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |\n+| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |\n | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |\n | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |\n | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |\n\nexec\n/bin/zsh -lc \"node - <<'NODE'\nconst assert=require('assert'); const crypto=require('crypto');\nfunction select(snapshot,seed,count,candidates,recent){const ranked=candidates.slice().sort((a,b)=>{const h=x=>crypto.createHash('sha256').update(\"'`${seed}|${snapshot}|${x}`).digest('\"'hex');return h(a).localeCompare(h(b))||a.localeCompare(b)}); return ranked.filter(id=>\"'!recent.includes(id)).concat(ranked.filter(id=>recent.includes(id))).slice(0,count);}\nconst cases=[['\"'S1','alpha',2,['A','B','C','D'],['A','B'],['D','C']],['S1','alpha',3,['A','B','C','D'],['A','B'],['D','C','B']],['S1','beta',3,['A','B','C','D'],['A','B'],['D','C','A']],['S2','alpha',3,['A','B','C'],['A','B'],['C','A','B']],['S2','alpha',4,['A','B','C'],['A','B'],['C','A','B']],['S3','gamma',2,['A','B'],['A','B'],['A','B']],['S4','delta',2,['A','B','C'],['A'],['B','C']],['S5','epsilon',2,['A','C'],['A'],['C','A']]];\nfor(const c of cases) assert.deepStrictEqual(select(...c.slice(0,5)),c[5]); console.log(\"'`verified ${cases.length} seeded selection fixtures`);\nNODE\nawk '\"'/\\\\| ADJ-[0-9][0-9] / {count++} END {if (count \"'!= 20) exit 1; print \"verified 20 adjudication fixtures\"}'\"' design-evidence/adjudication-and-freshness-bible.md\nawk '/\\\\| SEL-[0-9][0-9] / {count++} END {if (count \"'!= 8) exit 1; print \"verified 8 selection fixtures\"}'\"' design-evidence/adjudication-and-freshness-bible.md\ngit diff --check -- design-evidence/adjudication-and-freshness-bible.md\" in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e\n succeeded in 0ms:\nverified 8 seeded selection fixtures\nverified 20 adjudication fixtures\nverified 8 selection fixtures\n\ndiff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\nindex 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924\n--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n+++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n@@ -148,7 +148,7 @@\n | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |\n | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |\n | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |\n-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |\n+| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |\n | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |\n | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |\n | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |\n\ndiff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\nindex 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924\n--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n+++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n@@ -148,7 +148,7 @@\n | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |\n | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |\n | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |\n-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |\n+| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |\n | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |\n | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |\n | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |\n\ncodex\n{\"status\":\"pass\",\"summary\":\"Corrected SEL-05 so its documented selection follows the fresh-first SHA-256 policy.\",\"changed_files\":[\"projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\"],\"test_result\":\"Passed focused Node SHA-256 selection verification for SEL-01\u2013SEL-08; verified 20 ADJ fixtures and 8 SEL fixtures by count; `git diff --check -- design-evidence/adjudication-and-freshness-bible.md` passed.\",\"evidence\":{\"agent_log\":\"Reviewed the dedicated adjudication/freshness bible and task runbook. Found SEL-05 inconsistent with the stated fresh-first ordering, then corrected it from A,C,B to C,A,B.\",\"adapter_log\":\"\",\"test_log\":\"verified 8 seeded selection fixtures\\nverified 20 adjudication fixtures\\nverified 8 selection fixtures\",\"browser_log\":\"\",\"screenshots\":[]},\"acceptance_results\":[{\"criterion\":\"Rules never guess answers and every catalogue-state transition is reproducible.\",\"status\":\"pass\",\"evidence\":\"The bible explicitly forbids fuzzy/guessed matching, defines immutable state transitions and withdrawal behavior, includes ADJ-01\u2013ADJ-20, and the corrected SEL-05 now conforms to the deterministic SHA-256 fresh-first selection policy validated across SEL-01\u2013SEL-08.\"}],\"documentation\":{\"reviewed_files\":[\"projects/football-trivia-e2e/specification/02-game-design-bible.md\",\"projects/football-trivia-e2e/planning/game-production-inventory.md\",\"projects/football-trivia-e2e/game-design-runbooks/G0002.md\",\"projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\"],\"updated_files\":[\"projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\"],\"summary\":\"Updated the dedicated user-facing design evidence to correct one deterministic seeded-fixture expectation; no README change was needed because behavior and setup did not change.\"},\"known_limitations\":[],\"browser_coverage\":\"Not applicable: domain-documentation evidence only; no browser behavior or Playwright spec changed.\",\"recommended_next_step\":\"complete\"}\ndiff --git a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\nindex 49a2d200bf4cbeed305be63a7a7915de9b13845c..3ce118be02f22ca448a4ef7fccb7dc330bbb6924\n--- a/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n+++ b/projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md\n@@ -148,7 +148,7 @@\n | SEL-02 | `S1` / `alpha` / 3 | A,B,C,D; A; B | selected `D,C,B`; reused `B`; disclose |\n | SEL-03 | `S1` / `beta` / 3 | A,B,C,D; A; B | selected `D,C,A`; reused `A`; disclose |\n | SEL-04 | `S2` / `alpha` / 3 | A,B,C; A; B | selected `C,A,B`; reused `A,B`; disclose |\n-| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `A,C,B`; `unfilledCount=1`; disclose |\n+| SEL-05 | `S2` / `alpha` / 4 | A,B,C; A; B | selected `C,A,B`; `unfilledCount=1`; disclose |\n | SEL-06 | `S3` / `gamma` / 2 | A,B; A; B | selected `A,B`; both reused; disclose |\n | SEL-07 | `S4` / `delta` / 2 | A,B,C; A; R2 abandoned | selected `B,C`; no reuse |\n | SEL-08 | `S5` / `epsilon` / 2 | A,B,C; A; B withdrawn | selected `C,A`; B excluded; disclose |\n\ntokens used\n32,044\n", "adapter_log": "", "test_log": "verified 8 seeded selection fixtures\nverified 20 adjudication fixtures\nverified 8 selection fixtures", "browser_log": "", "screenshots": []}, "acceptance_results": [{"criterion": "Rules never guess answers and every catalogue-state transition is reproducible.", "status": "pass", "evidence": "The bible explicitly forbids fuzzy/guessed matching, defines immutable state transitions and withdrawal behavior, includes ADJ-01\u2013ADJ-20, and the corrected SEL-05 now conforms to the deterministic SHA-256 fresh-first selection policy validated across SEL-01\u2013SEL-08."}], "documentation": {"reviewed_files": ["projects/football-trivia-e2e/specification/02-game-design-bible.md", "projects/football-trivia-e2e/planning/game-production-inventory.md", "projects/football-trivia-e2e/game-design-runbooks/G0002.md", "projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"], "updated_files": ["projects/football-trivia-e2e/design-evidence/adjudication-and-freshness-bible.md"], "summary": "Updated the dedicated user-facing design evidence to correct one deterministic seeded-fixture expectation; no README change was needed because behavior and setup did not change."}, "known_limitations": [], "browser_coverage": "Not applicable: domain-documentation evidence only; no browser behavior or Playwright spec changed.", "recommended_next_step": "complete"}
+
+
+===== Test output =====
+verified 8 seeded selection fixtures
+verified 20 adjudication fixtures
+verified 8 selection fixtures

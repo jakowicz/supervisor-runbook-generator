@@ -1,0 +1,8 @@
+Task: D0001 — Dispatch the next bounded implementation-runbook authoring wave
+Stage: test
+Status: pass
+Summary: Configured project checks passed for D0001.
+
+===== Test output =====
+$ git diff --check
+

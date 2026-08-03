@@ -1,0 +1,52 @@
+{
+  "catalogue_id": "football-trivia-e2e-implementation-catalogue",
+  "version": 1,
+  "scope": "Original single-player football trivia core for responsive web, PWA, Android, and iOS adaptations; connected and commerce systems are decision-gated.",
+  "contracts": [
+    {"id": "IMP-FT-001", "title": "Implement curated quiz content and round rules", "creative_coverage_ids": ["GAME-001", "GAME-002", "GAME-003", "GAME-004", "GAME-005", "GAME-006", "GAME-007", "GAME-008", "ASSET-QZ-001", "ASSET-QZ-002", "ASSET-FBK-001", "ASSET-FBK-002", "ASSET-FBK-003", "ASSET-FBK-004", "AUDIO-MUS-001", "AUDIO-QZ-001", "AUDIO-QZ-002", "AUDIO-QZ-003", "AUDIO-QZ-004", "AUDIO-RES-001"], "status": "planned"},
+    {"id": "IMP-FT-002", "title": "Implement accessible resumable player experience", "creative_coverage_ids": ["GAME-009", "GAME-010", "GAME-011", "GAME-012", "ASSET-SHL-001", "ASSET-UI-001", "ASSET-UI-003", "ASSET-SYS-001", "ASSET-OPS-001", "ASSET-MKT-001", "AUDIO-SET-001", "AUDIO-SYS-001", "AUDIO-SYS-002"], "status": "planned"}
+  ],
+  "expansion_queue": [],
+  "creative_coverage": {
+    "game": {
+      "GAME-001": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "QA"], "shard": "current"},
+      "GAME-002": {"imp_ids": ["IMP-FT-001"], "roles": ["integration", "QA"], "shard": "current"},
+      "GAME-003": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-004": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-005": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-006": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-007": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-008": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-009": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-010": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-011": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "GAME-012": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"}
+    },
+    "assets": {
+      "ASSET-QZ-001": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-QZ-002": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-FBK-001": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-FBK-002": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-FBK-003": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-FBK-004": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-SHL-001": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-UI-001": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-UI-003": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-SYS-001": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-OPS-001": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "ASSET-MKT-001": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"}
+    },
+    "audio": {
+      "AUDIO-MUS-001": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-QZ-001": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-QZ-002": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-QZ-003": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-QZ-004": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-RES-001": {"imp_ids": ["IMP-FT-001"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-SET-001": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-SYS-001": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"},
+      "AUDIO-SYS-002": {"imp_ids": ["IMP-FT-002"], "roles": ["creation", "integration", "QA"], "shard": "current"}
+    },
+    "narrative": {}
+  }
+}

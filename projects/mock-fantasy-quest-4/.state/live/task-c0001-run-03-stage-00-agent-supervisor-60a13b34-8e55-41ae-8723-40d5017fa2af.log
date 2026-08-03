@@ -1,0 +1,4 @@
+2026-08-02T15:13:36.765174+00:00  RUN   c0001-03 · 60a13b34-8e55-41ae-8723-40d5017fa2af · Validate the bounded foundation catalogue bootstrap
+2026-08-02T15:13:36.765281+00:00  RESUME C0001 · restored durable checkpoint for validating
+2026-08-02T15:13:36.765318+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-c0001-run-03-stage-00-agent-supervisor-60a13b34-8e55-41ae-8723-40d5017fa2af.log
+2026-08-02T15:13:40.908109+00:00  NOT ACCEPTED · C0001 requires user review · report stored in SQLite and /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/reports/60a13b34-8e55-41ae-8723-40d5017fa2af.md

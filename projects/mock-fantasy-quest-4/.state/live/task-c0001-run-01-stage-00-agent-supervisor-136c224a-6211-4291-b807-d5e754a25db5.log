@@ -1,0 +1,10 @@
+2026-08-02T15:04:32.300066+00:00  RUN   c0001-01 · 136c224a-6211-4291-b807-d5e754a25db5 · Validate the bounded foundation catalogue bootstrap
+2026-08-02T15:04:32.300188+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-c0001-run-01-stage-00-agent-supervisor-136c224a-6211-4291-b807-d5e754a25db5.log
+2026-08-02T15:04:32.344367+00:00  START prepare · Git baseline guard
+2026-08-02T15:04:32.345213+00:00  EVENT prepare · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-c0001-run-01-stage-01-agent-prepare-136c224a-6211-4291-b807-d5e754a25db5.log
+2026-08-02T15:04:32.361269+00:00  DONE  prepare · pass → codex · Auto-publish disabled; no clean-worktree preflight needed.
+2026-08-02T15:04:32.361887+00:00  START codex · Codex
+2026-08-02T15:05:02.442217+00:00  WAIT  codex · Codex is still running
+2026-08-02T15:05:13.111268+00:00  EVENT codex · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-c0001-run-01-stage-02-agent-codex-136c224a-6211-4291-b807-d5e754a25db5.log
+2026-08-02T15:05:13.161699+00:00  DONE  codex · repairable_failure → codex · The three required validation sources are absent from the supplied repository, so SHARD-01 cannot be verified.
+2026-08-02T15:05:13.162802+00:00  START codex · Codex

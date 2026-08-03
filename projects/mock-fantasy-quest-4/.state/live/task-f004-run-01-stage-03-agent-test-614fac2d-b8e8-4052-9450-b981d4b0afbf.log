@@ -1,0 +1,8 @@
+Task: F004 — Define original experience and accessibility contract
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F004.
+
+===== Test output =====
+$ git diff --check
+

@@ -112,7 +112,11 @@ def main() -> int:
             parser.error("project is required outside a Supervisor project run")
     workspace = Path(project_value).expanduser()
     if not workspace.is_absolute():
-        workspace = root / "projects" / workspace
+        # A Supervisor database path is commonly relative to the repository
+        # root (for example, ``projects/example/.state/runbooks.sqlite3``).
+        # Its derived project path therefore already includes ``projects/``;
+        # only bare project names need that prefix added here.
+        workspace = root / workspace if workspace.parts[:1] == ("projects",) else root / "projects" / workspace
     workspace = workspace.resolve()
     specification = workspace / "specification"
     catalogue_path = workspace / "planning" / "implementation-catalogue-index.json"

@@ -1,0 +1,22 @@
+{
+  "status": "pending",
+  "final_audit": null,
+  "pending_modules": ["quiz-content-and-editorial-integrity", "round-score-and-progress-rules", "accessible-recoverable-multitarget-experience"],
+  "blocked_modules": [],
+  "checkpoint": {
+    "audit": "GC0001",
+    "status": "pending",
+    "findings": [
+      "Ownership is closed: GB0001 owns G0001,G0002; GB0002 owns G0003,G0004; GB0003 owns G0005. Each G declares its owning batch and each batch has fewer than five G outputs.",
+      "Canonical coverage is assigned and evidenced by the five detailed bibles: GAME-001 through GAME-012 and GPI-001 through GPI-015 are represented; G dependencies reference earlier available G outputs.",
+      "The quiz-content-and-editorial-integrity module is not accepted: QB-A-01 through QB-A-48 are explicitly draft records with only pending review records. The catalogue defines required provenance locators and two distinct accepted reviews, but does not contain a completed provenance record, factual/rights decision, accessibility/copy decision, or second-review decision for any card revision.",
+      "Because GPI-002 through GPI-005 lack published cards with accepted provenance and two reviews, GAME-002 and the downstream GAME-004/GAME-006 publication-dependent selection evidence remain conditional and the manifest cannot be accepted."
+    ],
+    "implementation_coverage": "Deferred until F012."
+  },
+  "modules": [
+    {"module":"quiz-content-and-editorial-integrity","status":"pending","design_output_paths":["game-design-runbooks/G0001.md","game-design-runbooks/G0002.md"],"game_design_ids":["GAME-001","GAME-002","GAME-003","GAME-004"],"production_inventory_ids":["GPI-001","GPI-002","GPI-003","GPI-004","GPI-005","GPI-006","GPI-007"]},
+    {"module":"round-score-and-progress-rules","status":"pending","design_output_paths":["game-design-runbooks/G0003.md","game-design-runbooks/G0004.md"],"game_design_ids":["GAME-005","GAME-006","GAME-007","GAME-008"],"production_inventory_ids":["GPI-008","GPI-009","GPI-010","GPI-011"]},
+    {"module":"accessible-recoverable-multitarget-experience","status":"pending","design_output_paths":["game-design-runbooks/G0005.md"],"game_design_ids":["GAME-009","GAME-010","GAME-011","GAME-012"],"production_inventory_ids":["GPI-012","GPI-013","GPI-014","GPI-015"]}
+  ]
+}

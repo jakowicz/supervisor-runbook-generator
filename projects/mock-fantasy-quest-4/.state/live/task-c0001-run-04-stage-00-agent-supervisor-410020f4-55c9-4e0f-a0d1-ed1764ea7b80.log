@@ -1,0 +1,5 @@
+2026-08-02T15:20:08.450082+00:00  RUN   c0001-04 · 410020f4-55c9-4e0f-a0d1-ed1764ea7b80 · Validate the bounded foundation catalogue bootstrap
+2026-08-02T15:20:08.450185+00:00  RESUME C0001 · restored durable checkpoint for validating
+2026-08-02T15:20:08.450218+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/mock-fantasy-quest-4/.state/live/task-c0001-run-04-stage-00-agent-supervisor-410020f4-55c9-4e0f-a0d1-ed1764ea7b80.log
+2026-08-02T15:20:08.497753+00:00  START qwen · Qwen3 Coder
+2026-08-02T15:20:19.579628+00:00  INTERRUPTED C0001 · durable checkpoint retained · KeyboardInterrupt: 

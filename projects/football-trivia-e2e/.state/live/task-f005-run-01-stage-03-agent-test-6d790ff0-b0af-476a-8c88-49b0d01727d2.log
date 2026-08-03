@@ -1,0 +1,51 @@
+Task: F005 — Build the implementation dependency map
+Stage: test
+Status: repairable_failure
+Summary: Independent test worker failed: python3 scripts/runbookgen_validate.py
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 12 declared
+assets: 12 declared
+audio: 9 declared
+narrative: 0 declared
+ERROR: inventory entry for GAME-001 needs a selected module
+ERROR: inventory entry for GAME-001 needs a production_kind
+ERROR: inventory entry for GAME-002 needs a selected module
+ERROR: inventory entry for GAME-002 needs a production_kind
+ERROR: inventory entry for GAME-002 needs a selected module
+ERROR: inventory entry for GAME-002 needs a production_kind
+ERROR: inventory entry for GAME-002 needs a selected module
+ERROR: inventory entry for GAME-002 needs a production_kind
+ERROR: inventory entry for GAME-002 needs a selected module
+ERROR: inventory entry for GAME-002 needs a production_kind
+ERROR: inventory entry for GAME-003 needs a selected module
+ERROR: inventory entry for GAME-003 needs a production_kind
+ERROR: inventory entry for GAME-004 needs a selected module
+ERROR: inventory entry for GAME-004 needs a production_kind
+ERROR: inventory entry for GAME-005 needs a selected module
+ERROR: inventory entry for GAME-005 needs a production_kind
+ERROR: inventory entry for GAME-006 needs a selected module
+ERROR: inventory entry for GAME-006 needs a production_kind
+ERROR: inventory entry for GAME-007 needs a selected module
+ERROR: inventory entry for GAME-007 needs a production_kind
+ERROR: inventory entry for GAME-008 needs a selected module
+ERROR: inventory entry for GAME-008 needs a production_kind
+ERROR: inventory entry for GAME-009 needs a selected module
+ERROR: inventory entry for GAME-009 needs a production_kind
+ERROR: inventory entry for GAME-010 needs a selected module
+ERROR: inventory entry for GAME-010 needs a production_kind
+ERROR: inventory entry for GAME-011 needs a selected module
+ERROR: inventory entry for GAME-011 needs a production_kind
+ERROR: inventory entry for GAME-012 needs a selected module
+ERROR: inventory entry for GAME-012 needs a production_kind
+ERROR: game-design manifest status must be accepted
+ERROR: game-design manifest needs an accepted G-series final_audit
+ERROR: game-design manifest has no accepted entry for selected module 'accessible-recoverable-multitarget-experience'
+ERROR: game-design manifest has no accepted entry for selected module 'quiz-content-and-editorial-integrity'
+ERROR: game-design manifest has no accepted entry for selected module 'round-score-and-progress-rules'
+ERROR: game-design manifest still has pending or blocked modules
+

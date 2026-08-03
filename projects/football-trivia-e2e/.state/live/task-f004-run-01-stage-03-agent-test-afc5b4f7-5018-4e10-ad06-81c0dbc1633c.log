@@ -1,0 +1,37 @@
+Task: F004 — Define original experience and accessibility contract
+Stage: test
+Status: repairable_failure
+Summary: Independent test worker failed: python3 scripts/runbookgen_validate.py
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 12 declared
+assets: 16 declared
+audio: 12 declared
+narrative: 0 declared
+ERROR: assets ASSET-FBK-001 has no coverage entry
+ERROR: assets ASSET-FBK-001- has no coverage entry
+ERROR: assets ASSET-FBK-002 has no coverage entry
+ERROR: assets ASSET-FBK-003 has no coverage entry
+ERROR: assets ASSET-FBK-004 has no coverage entry
+ERROR: assets ASSET-MKT-001 has no coverage entry
+ERROR: assets ASSET-OPS-001 has no coverage entry
+ERROR: assets ASSET-QZ-001 has no coverage entry
+ERROR: assets ASSET-QZ-002 has no coverage entry
+ERROR: assets ASSET-SHL-001 has no coverage entry
+ERROR: assets ASSET-SYS-001 has no coverage entry
+ERROR: assets ASSET-UI-001 has no coverage entry
+ERROR: assets ASSET-UI-003 has no coverage entry
+ERROR: audio AUDIO-MUS-001 has no coverage entry
+ERROR: audio AUDIO-QZ-001 has no coverage entry
+ERROR: audio AUDIO-QZ-002 has no coverage entry
+ERROR: audio AUDIO-QZ-003 has no coverage entry
+ERROR: audio AUDIO-QZ-004 has no coverage entry
+ERROR: audio AUDIO-RES-001 has no coverage entry
+ERROR: audio AUDIO-SET-001 has no coverage entry
+ERROR: audio AUDIO-SYS-001 has no coverage entry
+ERROR: audio AUDIO-SYS-002 has no coverage entry
+

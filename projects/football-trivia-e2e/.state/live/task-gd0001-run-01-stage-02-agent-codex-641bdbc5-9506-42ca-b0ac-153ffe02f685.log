@@ -1,0 +1,23 @@
+[stderr] WARNING: proceeding, even though we could not create PATH aliases: Operation not permitted (os error 1)
+[stderr] 2026-08-03T00:30:32.423199Z  WARN codex_state::runtime: failed to open state db at /Users/simon/.codex/state_5.sqlite: failed to open state DB at /Users/simon/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database
+[stderr] 2026-08-03T00:30:32.423228Z  WARN codex_rollout::state_db: failed to initialize state runtime: failed to initialize state runtime at /Users/simon/.codex: failed to open state DB at /Users/simon/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database
+[stderr] Reading additional input from stdin...
+[stderr] Error: failed to initialize in-process app-server client: Operation not permitted (os error 1)
+
+===== SUPERVISOR RESULT =====
+Task: GD0001 — Dispatch bounded football-trivia game-design programme
+Stage: codex
+Status: environment_failure
+Summary: Codex worker: exited with code 1
+
+===== Adapter output =====
+{"status": "environment_failure", "summary": "Codex worker: exited with code 1", "changed_files": [], "test_result": "", "evidence": {"agent_log": "", "adapter_log": "", "test_log": "WARNING: proceeding, even though we could not create PATH aliases: Operation not permitted (os error 1)\n2026-08-03T00:30:32.423199Z  WARN codex_state::runtime: failed to open state db at /Users/simon/.codex/state_5.sqlite: failed to open state DB at /Users/simon/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database\n2026-08-03T00:30:32.423228Z  WARN codex_rollout::state_db: failed to initialize state runtime: failed to initialize state runtime at /Users/simon/.codex: failed to open state DB at /Users/simon/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nReading additional input from stdin...\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n", "browser_log": "", "screenshots": []}, "acceptance_results": [], "documentation": {"reviewed_files": [], "updated_files": [], "summary": ""}, "known_limitations": [], "browser_coverage": "", "recommended_next_step": "ask_user"}
+
+
+===== Test output =====
+WARNING: proceeding, even though we could not create PATH aliases: Operation not permitted (os error 1)
+2026-08-03T00:30:32.423199Z  WARN codex_state::runtime: failed to open state db at /Users/simon/.codex/state_5.sqlite: failed to open state DB at /Users/simon/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database
+2026-08-03T00:30:32.423228Z  WARN codex_rollout::state_db: failed to initialize state runtime: failed to initialize state runtime at /Users/simon/.codex: failed to open state DB at /Users/simon/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database
+Reading additional input from stdin...
+Error: failed to initialize in-process app-server client: Operation not permitted (os error 1)
+

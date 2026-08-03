@@ -1,0 +1,8 @@
+Task: F003 — Define architecture, data, trust, and quality contracts
+Stage: test
+Status: pass
+Summary: Configured project checks passed for F003.
+
+===== Test output =====
+$ git diff --check
+

@@ -1,0 +1,4 @@
+Task: F001 — Discover product context and normalize the product brief
+Stage: test
+Status: environment_failure
+Summary: No project validation contract is configured. Set SUPERVISOR_TEST_COMMANDS via `supervisor configure`.

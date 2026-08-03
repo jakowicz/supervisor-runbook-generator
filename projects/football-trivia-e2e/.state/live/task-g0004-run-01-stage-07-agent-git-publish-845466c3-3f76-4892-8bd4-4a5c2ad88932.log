@@ -1,0 +1,4 @@
+Task: G0004 — Define scoring and results bible
+Stage: git_publish
+Status: pass
+Summary: All validation passed; auto-commit is disabled, so no Git commit was created.
