@@ -57,6 +57,11 @@ that point; only `GQ` can accept it. This keeps a valid checkpoint from
 mistakenly stopping the factory before the next design wave.
 The GC runbook remains executable on later retries; its audit is written as a
 separate file under `design-evidence/`, never by replacing the GC task file.
+A GQ audit that leaves the manifest pending must create one real GD successor
+for the remaining bounded work. It cannot close the collection merely by
+describing why evidence is incomplete. This supports multi-wave catalogues
+where authoring, independent review, and release eligibility are separate G
+tasks.
 
 The generated project's `planning/implementation-catalogue-index.json` also
 contains `IMP-*` **implementation catalogue records**. These are stable
