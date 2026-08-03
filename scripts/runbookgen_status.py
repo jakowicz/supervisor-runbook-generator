@@ -165,23 +165,23 @@ def main() -> None:
     print(f"State: {database}")
     print("\n== Factory stages ==")
     print(f"- {collection_progress(factory_ids, states, creation_label='stages available')}")
-    print("\n== Game design ==")
+    print("\n== Game-design runbook authoring ==")
     if is_game:
-        print("- Batch limit: each GB writer creates at most 5 G design runbooks")
+        print("- GB writers create the G game-design runbooks, in batches of at most 5")
     if g_paths:
-        print(f"- G design tasks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
-        print(f"- GB writers: {collection_progress(gb_ids, gb_collection_states, creation_label='GB files created')}")
+        print(f"- GB authoring batches: {collection_progress(gb_ids, gb_collection_states, creation_label='GB files created')}")
+        print(f"- G design runbooks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
         if g_control_ids:
             print(f"- GC/GD/GQ coordination: {collection_progress(g_control_ids, g_control_states, creation_label='coordination files created')}")
     elif is_game and not f005_accepted:
-        print("- Not started yet — F005 creates the G-series design programme.")
+        print("- Not started yet — F005 creates the GB authoring batches and G design programme.")
     elif is_game:
         print("- Waiting for F005 output — game-design runbooks have not been created yet.")
     else:
         print("- Not applicable for this product category.")
     print("\n== Runbook authoring ==")
-    print("- Batch limit: each B writer creates at most 5 R implementation runbooks")
-    print(f"- B writers: {collection_progress(b_ids, b_collection_states, creation_label='B files created')}")
+    print("- B writers create the R implementation runbooks, in batches of at most 5")
+    print(f"- B authoring batches: {collection_progress(b_ids, b_collection_states, creation_label='B files created')}")
     if not b_ids:
         if is_game and not g_ids:
             print("- Not started yet — B authoring begins after the G-series final audit and F014.")
