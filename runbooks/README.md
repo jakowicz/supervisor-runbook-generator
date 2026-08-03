@@ -50,6 +50,12 @@ question sourcing, categories, adjudication, scoring, fairness, and editorial
 batches. The G manifest and production inventory are the evidence that B/R
 authoring may begin.
 
+An intermediate `GC` succeeds when its audit is accurate and it either creates
+one bounded `GD` successor containing the exact outstanding evidence work, or
+creates `GQ` because no successor is needed. A pending manifest is expected at
+that point; only `GQ` can accept it. This keeps a valid checkpoint from
+mistakenly stopping the factory before the next design wave.
+
 The generated project's `planning/implementation-catalogue-index.json` also
 contains `IMP-*` **implementation catalogue records**. These are stable
 planning/traceability entries, not runbooks and not another name for R files.
