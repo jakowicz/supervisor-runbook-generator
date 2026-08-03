@@ -62,6 +62,11 @@ for the remaining bounded work. It cannot close the collection merely by
 describing why evidence is incomplete. This supports multi-wave catalogues
 where authoring, independent review, and release eligibility are separate G
 tasks.
+For machine-inspectable evidence, each bounded G task also carries its own
+`validation_command`. Supervisor runs that command in addition to the project
+checks, so exact records, provenance, reviewer separation, and release state
+must exist on disk before the task can be accepted. A pending GQ audit must
+create a new runnable GD successor rather than reusing an exhausted one.
 
 The generated project's `planning/implementation-catalogue-index.json` also
 contains `IMP-*` **implementation catalogue records**. These are stable

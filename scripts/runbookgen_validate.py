@@ -58,6 +58,122 @@ def is_game_workspace(workspace: Path) -> bool:
     return initial.is_file() and "Game" in initial.read_text(encoding="utf-8")
 
 
+def editorial_evidence_errors(
+    workspace: Path,
+    batch_id: str | None = None,
+    *,
+    require_authoring: bool = False,
+    require_release: bool = False,
+) -> list[str]:
+    """Validate bounded finite-content authoring and independent release evidence."""
+
+    register_path = workspace / "design-evidence" / "qba-editorial-acceptance-register.json"
+    if not register_path.is_file():
+        return ["missing design-evidence/qba-editorial-acceptance-register.json"]
+    try:
+        register = json.loads(register_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return ["qba-editorial-acceptance-register.json is not valid JSON"]
+    if not isinstance(register, dict):
+        return ["qba-editorial-acceptance-register.json must be a JSON object"]
+    batches = {
+        str(item.get("batchId")): item
+        for item in object_items(register.get("batches"))
+        if isinstance(item.get("batchId"), str)
+    }
+    selected_batches = [batch_id] if batch_id else sorted(batches)
+    errors: list[str] = []
+    records_by_id = {
+        str(item.get("cardId")): item
+        for item in object_items(register.get("records"))
+        if isinstance(item.get("cardId"), str)
+    }
+    for selected in selected_batches:
+        batch = batches.get(selected)
+        if not isinstance(batch, dict):
+            errors.append(f"editorial register has no batch {selected!r}")
+            continue
+        expected_ids = [value for value in batch.get("cardIds", []) if isinstance(value, str)]
+        if len(expected_ids) != 12 or len(set(expected_ids)) != 12:
+            errors.append(f"editorial batch {selected} must contain exactly 12 unique card IDs")
+            continue
+        if require_authoring:
+            evidence_path = workspace / "design-evidence" / f"{selected.lower()}-r1-originality-and-provenance.json"
+            try:
+                evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+            except FileNotFoundError:
+                errors.append(f"{selected} is missing {evidence_path.relative_to(workspace)}")
+                evidence = {}
+            except json.JSONDecodeError:
+                errors.append(f"{evidence_path.relative_to(workspace)} is not valid JSON")
+                evidence = {}
+            evidence_records = object_items(evidence.get("records")) if isinstance(evidence, dict) else []
+            evidence_by_id = {
+                str(item.get("cardId")): item
+                for item in evidence_records
+                if isinstance(item.get("cardId"), str)
+            }
+            if set(evidence_by_id) != set(expected_ids):
+                errors.append(f"{selected} authoring evidence must cover its exact 12 registered card IDs")
+            for card_id in expected_ids:
+                item = evidence_by_id.get(card_id, {})
+                originality = item.get("originalityRecord") if isinstance(item, dict) else None
+                provenance = item.get("provenanceRecord") if isinstance(item, dict) else None
+                player_facing = originality.get("playerFacing") if isinstance(originality, dict) else None
+                routes = provenance.get("sourceRoutes") if isinstance(provenance, dict) else None
+                if item.get("revision") != 1 or item.get("batchId") != selected:
+                    errors.append(f"{card_id} authoring evidence must identify revision 1 and batch {selected}")
+                if (
+                    not isinstance(player_facing, dict)
+                    or not player_facing.get("prompt")
+                    or not player_facing.get("instruction")
+                    or player_facing.get("canonicalAnswer") in (None, "", [])
+                    or not player_facing.get("explanation")
+                ):
+                    errors.append(f"{card_id} is missing complete original player-facing question content")
+                choices = (
+                    player_facing.get("options") or player_facing.get("items")
+                    if isinstance(player_facing, dict)
+                    else None
+                )
+                if choices is not None and (not isinstance(choices, list) or len(choices) < 2):
+                    errors.append(f"{card_id} declares an incomplete options/items interaction payload")
+                if not isinstance(routes, list) or not routes:
+                    errors.append(f"{card_id} is missing permitted-source provenance routes")
+                elif any(
+                    not isinstance(route, dict)
+                    or not route.get("locator")
+                    or not route.get("retrievedAt")
+                    or not route.get("assertionMap")
+                    for route in routes
+                ):
+                    errors.append(f"{card_id} has an incomplete provenance locator or assertion map")
+        if require_release:
+            for card_id in expected_ids:
+                item = records_by_id.get(card_id, {})
+                reviews = item.get("reviews") if isinstance(item, dict) else None
+                accepted_reviews = [
+                    review for review in reviews or []
+                    if isinstance(review, dict) and review.get("decision") == "accepted" and review.get("reviewedRevision") == 1
+                ]
+                roles = {review.get("role") for review in accepted_reviews}
+                reviewers = {review.get("reviewerId") for review in accepted_reviews if review.get("reviewerId")}
+                originality = item.get("originalityRecord") if isinstance(item, dict) else None
+                provenance = item.get("provenance") if isinstance(item, dict) else None
+                release_gate = item.get("releaseGate") if isinstance(item, dict) else None
+                if not isinstance(originality, dict) or originality.get("decision") != "accepted":
+                    errors.append(f"{card_id} has no accepted current-revision originality decision")
+                if not isinstance(provenance, dict) or provenance.get("decision") != "accepted":
+                    errors.append(f"{card_id} has no accepted current-revision provenance decision")
+                if not {"factual_rights_editor", "accessibility_copy_editor"}.issubset(roles) or len(reviewers) < 2:
+                    errors.append(f"{card_id} needs two accepted revision-1 reviews by distinct required reviewers")
+                if not isinstance(release_gate, dict) or release_gate.get("decision") != "accepted" or release_gate.get("releasedRevision") != 1:
+                    errors.append(f"{card_id} has no accepted revision-1 release gate")
+                if item.get("status") != "published" or item.get("selectionEligible") is not True:
+                    errors.append(f"{card_id} must be published and selectionEligible after its release gate")
+    return errors
+
+
 def game_design_manifest_errors(workspace: Path, selected_modules: set[str], design_units: list[dict[str, object]]) -> list[str]:
     """Validate the deterministic handoff from generated G design work."""
     path = workspace / "planning" / "game-design-manifest.json"
@@ -101,6 +217,10 @@ def main() -> int:
         action="store_true",
         help="Require an accepted game-design manifest and final GQ audit. Use only after the G collection is meant to be complete.",
     )
+    parser.add_argument("--editorial-batch", help="Validate one finite-content editorial batch such as GPI-002.")
+    parser.add_argument("--require-editorial-authoring", action="store_true", help="Require complete original content and provenance for the selected editorial batch.")
+    parser.add_argument("--require-editorial-release", action="store_true", help="Require accepted independent reviews and release gates for the selected editorial batch.")
+    parser.add_argument("--require-editorial-complete", action="store_true", help="Require every registered editorial batch to be authored, reviewed, released, and selection eligible.")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     project_value = args.project
@@ -231,6 +351,18 @@ def main() -> int:
         # manifest check explicitly.
         if args.require_game_design_complete:
             errors.extend(game_design_manifest_errors(workspace, selected_modules, design_units))
+    if args.require_editorial_authoring:
+        if not args.editorial_batch:
+            errors.append("--require-editorial-authoring requires --editorial-batch")
+        else:
+            errors.extend(editorial_evidence_errors(workspace, args.editorial_batch, require_authoring=True))
+    if args.require_editorial_release:
+        if not args.editorial_batch:
+            errors.append("--require-editorial-release requires --editorial-batch")
+        else:
+            errors.extend(editorial_evidence_errors(workspace, args.editorial_batch, require_authoring=True, require_release=True))
+    if args.require_editorial_complete:
+        errors.extend(editorial_evidence_errors(workspace, require_authoring=True, require_release=True))
     shards = {item.get("id") for item in catalogue.get("expansion_queue", []) if isinstance(item, dict)}
     for kind, expected_ids in expected.items():
         if not expected_ids:
