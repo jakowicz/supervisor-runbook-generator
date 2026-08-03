@@ -23,6 +23,12 @@ thousands of runbooks for a particular product.
 | D-series | Dispatchers: expand one eligible planning chapter and create the next bounded B-series writing wave when more work remains. | More B-series authoring files, not R files or product work. D files live beside B/C files in `projects/<slug>/authoring-runbooks/`. |
 | R-series | The product-work instructions: describe one small, ordered piece of real work. | Source changes, tests, assets, documentation, or other deliverables required by that R file. |
 
+Both authoring limits are hard-validated by Supervisor: a `GB` writer can
+create no more than **five G files**, and a `B` writer can create no more than
+**five R files**. Further waves use additional small writers, so a very large
+game or application can scale without making any one model call responsible
+for an unwieldy collection.
+
 `C` means **Catalogue checkpoint** and `D` means **Dispatcher**. They are
 factory-internal coordination runbooks, so they are far less important to the
 application than the F/B/R chain: they neither define the product nor build it.

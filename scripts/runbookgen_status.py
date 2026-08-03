@@ -166,6 +166,8 @@ def main() -> None:
     print("\n== Factory stages ==")
     print(f"- {collection_progress(factory_ids, states, creation_label='stages available')}")
     print("\n== Game design ==")
+    if is_game:
+        print("- Batch limit: each GB writer creates at most 5 G design runbooks")
     if g_paths:
         print(f"- G design tasks: {collection_progress(g_ids, g_collection_states, creation_label='G files created')}")
         print(f"- GB writers: {collection_progress(gb_ids, gb_collection_states, creation_label='GB files created')}")
@@ -178,6 +180,7 @@ def main() -> None:
     else:
         print("- Not applicable for this product category.")
     print("\n== Runbook authoring ==")
+    print("- Batch limit: each B writer creates at most 5 R implementation runbooks")
     print(f"- B writers: {collection_progress(b_ids, b_collection_states, creation_label='B files created')}")
     if not b_ids:
         if is_game and not g_ids:

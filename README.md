@@ -120,6 +120,18 @@ Run `supervisor-run --project <project-name>` at any time to resume that
 project. Its SQLite task state makes accepted tasks skip safely and returns to
 the first unfinished task.
 
+For the more detailed factory view, including live F/G/B/C/D work, generated
+R-runbook counts, and the next action, run:
+
+```zsh
+scripts/runbookgen status <project-name>
+```
+
+The status view also states the hard authoring ceiling: each `GB` writer may
+create at most five G game-design runbooks, and each `B` writer may create at
+most five R implementation runbooks. Larger products automatically use more
+small writer batches rather than asking one agent to create an oversized set.
+
 ## What the runbook series mean
 
 These are this factory's names, not an industry-standard vocabulary. The letter
