@@ -23,8 +23,8 @@ Usage: runbookgen <command>
 
 Commands:
   e2e    Interactively choose an example project (or set E2E_SCENARIO), run
-         its real factory, validate generated R-series runbooks, then verify
-         resume behaviour.
+         its real factory, repair/retry bounded factory or handoff failures,
+         validate generated R-series runbooks, then verify resume behaviour.
   status [project-name]
          Show the durable E2E/factory state, accepted and active tasks, and
          generated B/R runbook counts. `--project <name>` also works.

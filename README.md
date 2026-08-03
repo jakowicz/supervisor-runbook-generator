@@ -119,6 +119,13 @@ runs once more to confirm durable resume behaviour; it does not implement or
 run the R-series product work. The
 workspace remains under `projects/` for inspection.
 
+If the factory itself stops incomplete or the E2E handoff assertions fail, the
+harness captures the terminal evidence and gives it to a bounded project-root
+Codex repair task. That task fixes the generator or Supervisor cause, runs a
+focused terminal check, and the harness retries the existing project without
+discarding accepted work. It makes at most two automatic E2E repair attempts;
+set `E2E_REPAIR_ATTEMPTS` to change that limit.
+
 ## See or resume project progress
 
 From the repository root, list every named workspace and its current phase,

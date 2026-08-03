@@ -111,16 +111,11 @@ echo "E2E scenario: $scenario ($category) · project: $project_name"
 # generated files remain available for inspection; no task commits or pushes.
 "$root/supervisor/.venv/bin/python" -c "from pathlib import Path; from supervisor.manage import _set_env_values; _set_env_values(Path('projects/$project_name/.env'), {'SUPERVISOR_AUTO_COMMIT': 'false', 'SUPERVISOR_AUTO_PUSH': 'false'})"
 
-"$supervisor_run_cmd" --project "$project_name"
+validate_factory_handoff() {
+  python3 "$root/scripts/runbookgen_validate.py" "$project_name" \
+    --require-game-design-complete --require-r-series
 
-# The regular per-task validator permits an in-progress G design manifest so
-# GD/GB/G/GC authoring can proceed. At the end of an E2E run, require the
-# completed GQ handoff as well as generated R contracts.
-python3 "$root/scripts/runbookgen_validate.py" "$project_name" \
-  --require-game-design-complete --require-r-series
-
-project_root="projects/$project_name"
-python3 - "$project_root" <<'PY'
+  python3 - "projects/$project_name" <<'PY'
 import sys
 from pathlib import Path
 from supervisor.runbooks import load_task
@@ -137,6 +132,62 @@ for path in runbooks:
         assert task.asset_ids, f'{path} needs stable asset_ids'
 print(f'E2E PASS: {len(runbooks)} valid R-series runbooks in {root}')
 PY
+}
+
+repair_factory_failure() {
+  local attempt="$1"
+  local evidence="$2"
+  local repair_id
+  repair_id="E2E$((9000 + attempt))"
+  echo "E2E REPAIR $attempt · sending captured factory failure to Codex" >&2
+  SUPERVISOR_AUTO_COMMIT=false \
+  SUPERVISOR_AUTO_PUSH=false \
+  SUPERVISOR_DATABASE_PATH="/tmp/runbookgen-e2e-repair-${project_name}-${attempt}.sqlite3" \
+  SUPERVISOR_TEST_COMMANDS='["git diff --check"]' \
+  "$supervisor_run_cmd" \
+    --task-id "$repair_id" \
+    --title "Repair runbook-generator factory E2E failure" \
+    --objective "The factory E2E for projects/$project_name stopped incomplete or failed its final assertion. Work in this repository using the terminal. Inspect the factory, Supervisor, and generated project evidence; fix the root cause rather than weakening the checks; then run the focused terminal validation that demonstrates the repair. Captured failure output follows:\n\n${evidence:0:12000}" \
+    --acceptance "The captured E2E failure has a concrete root-cause fix." \
+    --acceptance "Focused terminal validation for the fix passes." \
+    --acceptance "The factory can be retried without discarding accepted work."
+}
+
+# A factory task normally repairs its own terminal failure through Supervisor.
+# This outer loop covers failures discovered only by the E2E harness itself,
+# such as a completed collection with no R handoff. Keep it bounded so an
+# ambiguous product decision cannot spend agents indefinitely.
+max_repairs="${E2E_REPAIR_ATTEMPTS:-2}"
+for ((attempt = 0; attempt <= max_repairs; attempt++)); do
+  factory_output=""
+  factory_status=0
+  if factory_output="$("$supervisor_run_cmd" --project "$project_name" 2>&1)"; then
+    :
+  else
+    factory_status=$?
+  fi
+  printf '%s\n' "$factory_output"
+
+  validation_output=""
+  validation_status=0
+  if validation_output="$(validate_factory_handoff 2>&1)"; then
+    :
+  else
+    validation_status=$?
+  fi
+  printf '%s\n' "$validation_output"
+
+  if [[ "$factory_status" -eq 0 && "$validation_status" -eq 0 ]]; then
+    break
+  fi
+  if [[ "$attempt" -ge "$max_repairs" ]]; then
+    echo "E2E failed after $((max_repairs + 1)) factory attempts; repair evidence is above." >&2
+    exit 1
+  fi
+  repair_factory_failure "$((attempt + 1))" "$factory_output
+
+$validation_output"
+done
 
 # A second invocation must use durable state rather than regenerating accepted work.
 "$supervisor_run_cmd" --project "$project_name"
