@@ -40,3 +40,91 @@
 2026-08-03T07:49:01.752882+00:00  EVENT completion_audit · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-09-agent-completion-audit-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log
 2026-08-03T07:49:01.759197+00:00  DONE  completion_audit · pass → git_publish · Completion contract covers every acceptance criterion, documentation review, and coding-agent checks.
 2026-08-03T07:49:01.759597+00:00  START git_publish · Git publisher
+2026-08-03T07:49:36.091479+00:00  EVENT git_publish · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-10-agent-git-publish-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log
+2026-08-03T07:49:36.103591+00:00  DONE  git_publish · pass → accept · Task committed and pushed after all QA gates passed.
+2026-08-03T07:49:36.131973+00:00  SUCCESS · GC0001 accepted · report stored in SQLite and /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md
+SUCCESS — TASK ACCEPTED · all required supervisor stages passed.
+GC0001 · pass · accepted
+Run: 7253f53b-52c8-4c5c-82f5-b356de58d1b8
+Stages:
+- codex (Codex) · pass → test · Created the durable GC0001 coverage checkpoint audit; manifest and runnable GC0001 runbook remain unchanged and pending as required.
+- test (independent Flutter test worker) · repairable_failure → codex · Independent test worker failed: python3 scripts/runbookgen_validate.py
+- codex (Codex) · pass → test · GC0001 checkpoint remains accurate; the football-trivia-e2e implementation catalogue index is present and the coverage validator now passes for the active workspace.
+- test (independent Flutter test worker) · repairable_failure → codex · Independent test worker failed: python3 scripts/runbookgen_validate.py
+- codex (Codex) · pass → test · Repaired Supervisor-relative project-path resolution in the coverage validator. GC0001 audit evidence remains intact, with the manifest pending and GD0002 as the sole bounded successor.
+- test (independent Flutter test worker) · pass → browser · Configured project checks passed for GC0001.
+- browser (browser QA worker) · pass → visual_review · Browser QA not applicable to this runbook.
+- visual_review (visual QA reviewer) · pass → completion_audit · Visual review not applicable to this runbook.
+- completion_audit (completion-contract auditor) · pass → git_publish · Completion contract covers every acceptance criterion, documentation review, and coding-agent checks.
+- git_publish (Git publisher) · pass → accept · Task committed and pushed after all QA gates passed.
+Report: /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md
+Evidence: /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3
+Inspect: supervisor-reports show 7253f53b-52c8-4c5c-82f5-b356de58d1b8
+Use --output-format json only when another program needs the full raw run payload.
+COLLECTION WAVE 01 · 1 pending tasks in /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/game-design-runbooks
+BATCH START GD0002 · sequential shared-worktree mode
+BATCH 01/01 START GD0002 · /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/game-design-runbooks/GD0002.md
+2026-08-03T07:49:36.723694+00:00  RUN   gd0002-01 · 7de4bc95-aeac-43f6-be06-542c5b1b75ee · Complete QB-A editorial acceptance evidence
+2026-08-03T07:49:36.723808+00:00  LOG   /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-00-agent-supervisor-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:49:36.778572+00:00  START prepare · Git baseline guard
+2026-08-03T07:49:36.779406+00:00  EVENT prepare · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-01-agent-prepare-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:49:36.791833+00:00  DONE  prepare · pass → codex · Auto-publish disabled; no clean-worktree preflight needed.
+2026-08-03T07:49:36.792292+00:00  START codex · Codex
+2026-08-03T07:50:07.412017+00:00  WAIT  codex · Codex is still running
+2026-08-03T07:50:37.722245+00:00  WAIT  codex · Codex is still running
+2026-08-03T07:51:08.017610+00:00  WAIT  codex · Codex is still running
+2026-08-03T07:51:38.329708+00:00  WAIT  codex · Codex is still running
+2026-08-03T07:51:54.736397+00:00  EVENT codex · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:51:55.045414+00:00  DONE  codex · pass → test · Added a durable QB-A editorial acceptance register that retains concrete pending evidence reasons for each of the 48 existing revision-1 cards and keeps every record selection-ineligible.
+2026-08-03T07:51:55.046380+00:00  START test · independent Flutter test worker
+2026-08-03T07:51:55.125061+00:00  EVENT test · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-03-agent-test-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:51:55.132411+00:00  DONE  test · pass → browser · Configured project checks passed for GD0002.
+2026-08-03T07:51:55.133033+00:00  START browser · browser QA worker
+2026-08-03T07:51:55.133945+00:00  EVENT browser · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-04-agent-browser-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:51:55.140219+00:00  DONE  browser · pass → visual_review · Browser QA not applicable to this runbook.
+2026-08-03T07:51:55.140618+00:00  START visual_review · visual QA reviewer
+2026-08-03T07:51:55.141358+00:00  EVENT visual_review · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-05-agent-visual-review-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:51:55.146760+00:00  DONE  visual_review · pass → completion_audit · Visual review not applicable to this runbook.
+2026-08-03T07:51:55.147146+00:00  START completion_audit · completion-contract auditor
+2026-08-03T07:51:55.147943+00:00  EVENT completion_audit · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-06-agent-completion-audit-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:51:55.154585+00:00  DONE  completion_audit · pass → git_publish · Completion contract covers every acceptance criterion, documentation review, and coding-agent checks.
+2026-08-03T07:51:55.155003+00:00  START git_publish · Git publisher
+2026-08-03T07:51:55.155716+00:00  EVENT git_publish · full output saved to /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-07-agent-git-publish-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+2026-08-03T07:51:55.161838+00:00  DONE  git_publish · pass → accept · All validation passed; auto-commit is disabled, so no Git commit was created.
+2026-08-03T07:51:55.182957+00:00  SUCCESS · GD0002 accepted · report stored in SQLite and /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/reports/7de4bc95-aeac-43f6-be06-542c5b1b75ee.md
+SUCCESS — TASK ACCEPTED · all required supervisor stages passed.
+GD0002 · pass · accepted
+Run: 7de4bc95-aeac-43f6-be06-542c5b1b75ee
+Stages:
+- prepare (Git baseline guard) · pass → codex · Auto-publish disabled; no clean-worktree preflight needed.
+- codex (Codex) · pass → test · Added a durable QB-A editorial acceptance register that retains concrete pending evidence reasons for each of the 48 existing revision-1 cards and keeps every record selection-ineligible.
+- test (independent Flutter test worker) · pass → browser · Configured project checks passed for GD0002.
+- browser (browser QA worker) · pass → visual_review · Browser QA not applicable to this runbook.
+- visual_review (visual QA reviewer) · pass → completion_audit · Visual review not applicable to this runbook.
+- completion_audit (completion-contract auditor) · pass → git_publish · Completion contract covers every acceptance criterion, documentation review, and coding-agent checks.
+- git_publish (Git publisher) · pass → accept · All validation passed; auto-commit is disabled, so no Git commit was created.
+Report: /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/reports/7de4bc95-aeac-43f6-be06-542c5b1b75ee.md
+Evidence: /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3
+Inspect: supervisor-reports show 7de4bc95-aeac-43f6-be06-542c5b1b75ee
+Use --output-format json only when another program needs the full raw run payload.
+BATCH 01/01 DONE GD0002 · accepted
+BATCH FINAL · all requested tasks were started
+COLLECTION FINAL · /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/game-design-runbooks has no pending tasks
+Traceback (most recent call last):
+  File "/Users/simon/Dev/github/jakowicz/runbook-generator/./supervisor/.venv/bin/supervisor-run", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/simon/Dev/github/jakowicz/runbook-generator/supervisor/supervisor/cli.py", line 198, in main
+    completed = _run_collection_until_complete(
+        runbooks_directory, arguments.dry_run, arguments.continue_on_nonpass, database_path, initial_context, repo_root
+    )
+  File "/Users/simon/Dev/github/jakowicz/runbook-generator/supervisor/supervisor/cli.py", line 910, in _run_collection_until_complete
+    if pending and not _run_ready_prerequisite_collections(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        runbooks, states, database_path, dry_run, continue_on_nonpass, repo_root
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/simon/Dev/github/jakowicz/runbook-generator/supervisor/supervisor/cli.py", line 816, in _run_ready_prerequisite_collections
+    raise ValueError(f"{runbook} cannot continue: {error}")
+ValueError: /Users/simon/Dev/github/jakowicz/runbook-generator/runbooks/F006.md cannot continue: game-design manifest status is not accepted

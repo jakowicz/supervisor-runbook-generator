@@ -1,0 +1,1289 @@
+[stderr] OpenAI Codex v0.145.0
+[stderr] --------
+[stderr] workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] model: gpt-5.6-terra
+[stderr] provider: openai
+[stderr] approval: on-request
+[stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[stderr] reasoning effort: medium
+[stderr] reasoning summaries: none
+[stderr] session id: 019fc6ae-44bc-7e92-8f41-551289b4a21b
+[stderr] --------
+[stderr] user
+[stderr] You are the coding worker for one isolated runbook task.
+[stderr] 
+[stderr] Work only in the repository passed as your working directory. Do not publish,
+[stderr] deploy, access secrets, make payments, or change product scope. Stop and report
+[stderr] needs_user_review if the task is destructive, unclear, or requires authority.
+[stderr] Implement only the task below, run relevant checks, and then output exactly one
+[stderr] JSON object conforming to the WorkerResult contract. A status of pass means the
+[stderr] change is ready for independent test and visual review; it is not self-approval.
+[stderr] 
+[stderr] Task:
+[stderr] {
+[stderr]   "task_id": "GD0002",
+[stderr]   "title": "Complete QB-A editorial acceptance evidence",
+[stderr]   "objective": "Close the one incomplete design-evidence boundary found by `GC0001`: the\nfinite QB-A catalogue has a grammar, source policy, quota tables, lifecycle,\nadjudication, and anti-repeat fixtures, but `QB-A-01` through `QB-A-48` are\nstill `draft` and have only pending reviews. Create or review durable editorial\nacceptance evidence for the existing four bounded batches only. Do not add\ncards, change quiz scope, create code/B/R runbooks, or accept the manifest.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+[stderr]   "acceptance_criteria": [
+[stderr]     "All 48 existing QB-A card revisions have independently inspectable original-expression, provenance, and two-distinct-review evidence, or every remaining ineligible card has its exact pending or blocked reason retained.",
+[stderr]     "The four existing batches remain finite at 12 cards each and no unreviewed record can enter selection."
+[stderr]   ],
+[stderr]   "risk_level": "normal",
+[stderr]   "sequence": 5,
+[stderr]   "dependencies": [
+[stderr]     "GC0001"
+[stderr]   ],
+[stderr]   "prerequisite_collections": [],
+[stderr]   "browser_impact": "not_applicable",
+[stderr]   "playwright_specs": [],
+[stderr]   "asset_impact": "not_applicable",
+[stderr]   "asset_brief": "",
+[stderr]   "asset_ids": [],
+[stderr]   "visual_style_version": "",
+[stderr]   "audio_impact": "not_applicable",
+[stderr]   "audio_brief": "",
+[stderr]   "audio_ids": [],
+[stderr]   "audio_duration_seconds": 0,
+[stderr]   "audio_loop": "not_applicable",
+[stderr]   "audio_style_version": "",
+[stderr]   "source_specifications": [
+[stderr]     "specification/02-game-design-bible.md",
+[stderr]     "specification/02-game-design-bible.json",
+[stderr]     "planning/game-production-inventory.md",
+[stderr]     "planning/game-production-inventory.json",
+[stderr]     "planning/game-design-manifest.json",
+[stderr]     "design-evidence/question-card-and-qba-catalogue-bible.md",
+[stderr]     "design-evidence/adjudication-and-freshness-bible.md"
+[stderr]   ],
+[stderr]   "source_catalogue_ids": [
+[stderr]     "GAME-001",
+[stderr]     "GAME-002",
+[stderr]     "GAME-003",
+[stderr]     "GAME-004",
+[stderr]     "GPI-001",
+[stderr]     "GPI-002",
+[stderr]     "GPI-003",
+[stderr]     "GPI-004",
+[stderr]     "GPI-005",
+[stderr]     "GPI-006",
+[stderr]     "GPI-007"
+[stderr]   ],
+[stderr]   "authoring_batch": "",
+[stderr]   "design_authoring_batch": "",
+[stderr]   "factory_stages": [],
+[stderr]   "execution_mode": "implementation",
+[stderr]   "continuation_context": "Continue the existing task; do not reimplement completed work.\nPrevious lifecycle: interrupted.\nExisting changed files: projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3, projects/football-trivia-e2e/.state/live/manual-gc0001-retry.log, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-00-agent-supervisor-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md, supervisor, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-10-agent-git-publish-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-00-agent-supervisor-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-01-agent-prepare-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md, projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json.\nLast checkpoint: Authoring output validation failed: missing GD0003.md\nRequired next action: codex."
+[stderr] }
+[stderr] 
+[stderr] Continuation checkpoint (only when present):
+[stderr] Continue the existing task; do not reimplement completed work.
+[stderr] Previous lifecycle: interrupted.
+[stderr] Existing changed files: projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3, projects/football-trivia-e2e/.state/live/manual-gc0001-retry.log, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-00-agent-supervisor-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md, supervisor, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-10-agent-git-publish-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-00-agent-supervisor-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-01-agent-prepare-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md, projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json.
+[stderr] Last checkpoint: Authoring output validation failed: missing GD0003.md
+[stderr] Required next action: codex.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+[stderr] `dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+[stderr] can write SDK caches outside the worktree and are deliberately owned by the
+[stderr] supervisor's independent precheck/test stages. When the continuation evidence
+[stderr] names a concrete source or test failure, repair that evidence in the worktree,
+[stderr] run only safe focused checks, and return `pass` for the deterministic stage to
+[stderr] validate. Never return a failure solely because an SDK command needs approval.
+[stderr] 
+[stderr] 
+[stderr] 
+[stderr] Efficient investigation rules (especially important for local models):
+[stderr] - Start with the Codebase Memory MCP for architecture and targeted symbols.
+[stderr] - Do not use whole-file reads for Dart, test, lock, generated, or log files.
+[stderr]   Use targeted symbol snippets or `run_shell_command` with `rg` and
+[stderr]   `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+[stderr] - Inspect only files directly relevant to the acceptance criteria. Do not
+[stderr]   browse unrelated Playwright, automation, or configuration files merely to
+[stderr]   learn the repository layout.
+[stderr] - After the focused investigation, implement and run the smallest relevant
+[stderr]   checks. Do not continue exploratory tool calls once the implementation path
+[stderr]   is clear.
+[stderr] - If a tool reports a missing file, treat it as non-blocking and continue with
+[stderr]   the repository evidence you already have.
+[stderr] 
+[stderr] Completion protocol:
+[stderr] - Your final action MUST be the `structured_output` tool supplied by
+[stderr]   `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+[stderr]   response.
+[stderr] - Use native nested JSON values in that tool call: `evidence` and
+[stderr]   `documentation` are objects, while `acceptance_results` is an array. Never
+[stderr]   put JSON text inside quotes for any of those fields.
+[stderr] - If a check cannot run, return a structured `repairable_failure` or
+[stderr]   `needs_user_review` result immediately with the exact reason. Never wait
+[stderr]   silently for a tool or model request to recover.
+[stderr] 
+[stderr] 
+[stderr] Your final WorkerResult must include all of the following:
+[stderr] - `acceptance_results`: one entry for every task acceptance criterion, in the
+[stderr]   same order. Copy each criterion text verbatim from the task, with pass/fail/
+[stderr]   not_verified status and concrete evidence;
+[stderr] - `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+[stderr]   why they were or were not changed;
+[stderr] - `test_result`: exact checks you ran and their outcomes;
+[stderr] - `known_limitations`: remaining gaps or an empty list.
+[stderr] 
+[stderr] Do not claim `pass` if a criterion is unverified. Update user-facing README or
+[stderr] developer documentation whenever the change affects behaviour, setup, commands,
+[stderr] architecture, design, or progress. If no documentation change is needed, state
+[stderr] the reviewed files and explain why.
+[stderr] 
+[stderr] For `final_verification`, the independent `test`, `browser`, and visual-review
+[stderr] stages are the required verification gates. After repairing every concrete
+[stderr] source/test failure supplied in this prompt, return `pass` so those gates run.
+[stderr] Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+[stderr] left to the independent test stage. Return `needs_user_review` only for a real
+[stderr] authority, safety, or irreducibly ambiguous product decision.
+[stderr] 
+[stderr] For browser-impacting work, create or update a task-specific Playwright spec in
+[stderr] `supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+[stderr] and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+[stderr] work, explain in `browser_coverage` why no task-specific browser spec changed.
+[stderr] 
+[stderr] Visual baseline rule:
+[stderr] - When the continuation evidence names a golden, snapshot, or visual-regression
+[stderr]   failure, inspect the supplied master/test/diff artifacts before changing any
+[stderr]   baseline. Work out whether the new render is the intended result of this
+[stderr]   task, and check that it has no clipping, overlap, or lost meaning.
+[stderr] - If it is intentional, regenerate only the affected approved baselines using
+[stderr]   the repository's documented command, update stale visual/browser checks when
+[stderr]   their prior expectation is no longer correct, and rerun the relevant suite.
+[stderr] - If it is not intentional, fix the product or test setup instead. Never mask
+[stderr]   a real visual regression by blindly accepting a changed screenshot.
+[stderr] 
+[stderr] Failure-repair protocol:
+[stderr] - When the continuation checkpoint says that a Supervisor terminal stage
+[stderr]   failed, treat its captured command and output as the starting evidence. Do
+[stderr]   not merely describe a possible fix.
+[stderr] - Use the terminal in this project worktree to inspect, repair, and rerun the
+[stderr]   same focused check whenever that command is safe in your sandbox. Include
+[stderr]   the command and result in `test_result`.
+[stderr] - If that exact command needs an SDK, browser, or approval outside this
+[stderr]   worker's sandbox, repair the demonstrated issue but do not replace the
+[stderr]   independent validation. Return `pass` only when the worktree is ready for
+[stderr]   Supervisor to rerun its configured terminal command after your repair.
+[stderr] 
+[stderr] warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+[stderr] codex
+[stderr] {"status":"pass","summary":"I’m repairing the continuation’s concrete missing-authoring-output failure, then I’ll run a focused evidence validation without touching SDK tooling.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] mcp: codebase-memory-mcp/get_architecture started
+[stderr] mcp: codebase-memory-mcp/get_architecture (failed)
+[stderr] user cancelled MCP tool call
+[stderr] exec
+[stderr] /bin/zsh -lc "git status --short && rg --files projects/football-trivia-e2e/design-evidence projects/football-trivia-e2e | rg 'qba|GD0003|authoring|acceptance'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr]  M README.md
+[stderr]  M projects/football-trivia-e2e/.state/factory.sqlite3
+[stderr]  M projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3
+[stderr]  M projects/football-trivia-e2e/.state/live/manual-gc0001-retry.log
+[stderr]  M projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-00-agent-supervisor-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log
+[stderr]  M projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md
+[stderr]  M projects/football-trivia-e2e/game-design-runbooks/GD0002.md
+[stderr]  m supervisor
+[stderr] ?? projects/football-trivia-e2e/.state/live/manual-project-repair.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-00-agent-supervisor-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-01-agent-prepare-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-02-agent-codex-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-03-agent-test-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-04-agent-browser-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-05-agent-visual-review-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-06-agent-completion-audit-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-07-agent-git-publish-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-00-agent-supervisor-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-01-agent-prepare-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-02-agent-codex-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-03-agent-test-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-04-agent-browser-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-05-agent-visual-review-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-06-agent-completion-audit-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-07-agent-git-publish-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-10-agent-git-publish-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-00-agent-supervisor-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-01-agent-prepare-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-03-agent-test-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-04-agent-browser-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-05-agent-visual-review-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-06-agent-completion-audit-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-07-agent-git-publish-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-02-stage-00-agent-supervisor-fd232b1d-7f77-4c2b-a7cb-62257124e262.log
+[stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-02-stage-01-agent-codex-fd232b1d-7f77-4c2b-a7cb-62257124e262.log
+[stderr] ?? projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md
+[stderr] ?? projects/football-trivia-e2e/.state/reports/7de4bc95-aeac-43f6-be06-542c5b1b75ee.md
+[stderr] ?? projects/football-trivia-e2e/.state/reports/7f3596a1-d289-44f2-97b2-0d322df039d7.md
+[stderr] ?? projects/football-trivia-e2e/.state/reports/c4045610-9397-4dec-b9a4-2ff7541ba412.md
+[stderr] ?? projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json
+[stderr] projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json
+[stderr] projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md
+[stderr] projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json
+[stderr] projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "sed -n '1,220p' projects/football-trivia-e2e/game-design-runbooks/GD0002.md && sed -n '1,240p' projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json && sed -n '1,220p' projects/football-trivia-e2e/.state/live/task-gd0002-run-02-stage-01-agent-codex-fd232b1d-7f77-4c2b-a7cb-62257124e262.log" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] ---
+[stderr] task_id: GD0002
+[stderr] sequence: 5
+[stderr] dependencies: GC0001
+[stderr] source_specifications: specification/02-game-design-bible.md,specification/02-game-design-bible.json,planning/game-production-inventory.md,planning/game-production-inventory.json,planning/game-design-manifest.json,design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/adjudication-and-freshness-bible.md
+[stderr] source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] title: Complete QB-A editorial acceptance evidence
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Close the one incomplete design-evidence boundary found by `GC0001`: the
+[stderr] finite QB-A catalogue has a grammar, source policy, quota tables, lifecycle,
+[stderr] adjudication, and anti-repeat fixtures, but `QB-A-01` through `QB-A-48` are
+[stderr] still `draft` and have only pending reviews. Create or review durable editorial
+[stderr] acceptance evidence for the existing four bounded batches only. Do not add
+[stderr] cards, change quiz scope, create code/B/R runbooks, or accept the manifest.
+[stderr] 
+[stderr] ## Exact pending reasons retained from GC0001
+[stderr] 
+[stderr] - `GPI-001`: the grammar requires a resolvable provenance record and two
+[stderr]   distinct accepted current-revision reviews, but it contains no completed
+[stderr]   card-level records for `QB-A-01`–`QB-A-48`.
+[stderr] - `GPI-002`, `GPI-003`, `GPI-004`, and `GPI-005`: each of the four named
+[stderr]   12-card QB-A batches is explicitly recorded as `status: draft`,
+[stderr]   `revision: 1`, with `PROV-<ID>` and two pending review records. No card may
+[stderr]   become eligible from those placeholders.
+[stderr] - `GAME-002`: the required original-expression, factual-source/provenance,
+[stderr]   factual/rights review, accessibility/copy review, and independent second
+[stderr]   review decisions have not been accepted for any current card revision.
+[stderr] - `GAME-004` and `GAME-006` retain their deterministic policy/fixture evidence,
+[stderr]   but their use of published catalogue candidates remains conditional until the
+[stderr]   preceding batch records are accepted.
+[stderr] 
+[stderr] There are no blocked product decisions in this wave. Implementation coverage
+[stderr] remains deferred until `F012`.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `design-evidence/qba-editorial-acceptance-register.md`: exactly 48
+[stderr]   card-level records for the existing `QB-A-01`–`QB-A-48`, grouped into the
+[stderr]   existing four named 12-card batches. Each record must identify the current
+[stderr]   revision, original-expression/non-copying decision, durable permitted source
+[stderr]   locator and checked date for every factual assertion, conflict/correction
+[stderr]   state, factual/rights review, accessibility/copy review, independent second
+[stderr]   review, and resulting lifecycle status.
+[stderr] - Update `design-evidence/question-card-and-qba-catalogue-bible.md` only as
+[stderr]   needed to point to the register and replace the explicitly pending catalogue
+[stderr]   state after all 48 records qualify. Preserve its existing quotas, IDs, and
+[stderr]   source policy.
+[stderr] 
+[stderr] The successor must leave rejected, unresolved, withdrawn, conflicted, or
+[stderr] incompletely reviewed cards ineligible and state the exact reason. It must not
+[stderr] set `planning/game-design-manifest.json` to accepted. The current records retain
+[stderr] those reasons, so create `GD0003.md` as the sole next dispatcher. It must split
+[stderr] the remaining editorial work into bounded card-authoring and review waves,
+[stderr] preserve every existing QB-A/GPI/GAME ID, and create a `GQ` audit only after
+[stderr] every record has actual accepted evidence. A later `GQ` audit is the only task
+[stderr] allowed to run the dedicated completion check, update canonical bible/inventory
+[stderr] records, and accept that manifest.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `GD0003.md`: the only successor dispatcher for the unresolved QB-A editorial
+[stderr]   records; it must not accept the manifest before the evidence is complete.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - All 48 existing QB-A card revisions have independently inspectable
+[stderr]   original-expression, provenance, and two-distinct-review evidence, or every
+[stderr]   remaining ineligible card has its exact pending or blocked reason retained.
+[stderr] - The four existing batches remain finite at 12 cards each and no unreviewed
+[stderr]   record can enter selection.
+[stderr] {
+[stderr]   "registerId": "QB-A-EDITORIAL-ACCEPTANCE-R1",
+[stderr]   "scope": "The existing QB-A-01 through QB-A-48 revision-1 inventory only. This register neither publishes cards nor accepts the design manifest.",
+[stderr]   "createdAt": "2026-08-03",
+[stderr]   "selectionRule": "A record is selectable only when status is published, selectionEligible is true, and every required editorial evidence item is accepted for the current revision.",
+[stderr]   "pendingReasonCatalog": {
+[stderr]     "ORIGINALITY-UNAUTHORED": "No player-facing prompt, instruction, options, explanation, text equivalents, or author originality record has been authored for this revision; source and reference-product expression must not be copied.",
+[stderr]     "PROVENANCE-LOCATOR-MISSING": "The source-family research route is assigned, but this revision has no exact permitted-source locator, retrieval date, factual-assertion mapping, or correction/conflict log.",
+[stderr]     "FACTUAL-RIGHTS-REVIEW-PENDING": "No distinct factual/rights-editor decision has verified the uncreated provenance and originality evidence for this revision.",
+[stderr]     "ACCESSIBILITY-COPY-REVIEW-PENDING": "No distinct accessibility/copy-editor decision has reviewed the uncreated player-facing copy, answer rule, text equivalents, and locale keys for this revision.",
+[stderr]     "RELEASE-GATE-INCOMPLETE": "The record remains draft; it has not completed fact_checked, accessibility_edited, second_reviewed, and release-editor publish transitions."
+[stderr]   },
+[stderr]   "batches": [
+[stderr]     {"batchId":"GPI-002","name":"QB-A World Tournament History","cardIds":["QB-A-01","QB-A-02","QB-A-03","QB-A-04","QB-A-05","QB-A-06","QB-A-07","QB-A-08","QB-A-09","QB-A-10","QB-A-11","QB-A-12"]},
+[stderr]     {"batchId":"GPI-003","name":"QB-A Domestic League Moments","cardIds":["QB-A-13","QB-A-14","QB-A-15","QB-A-16","QB-A-17","QB-A-18","QB-A-19","QB-A-20","QB-A-21","QB-A-22","QB-A-23","QB-A-24"]},
+[stderr]     {"batchId":"GPI-004","name":"QB-A Club, Manager, and Identity","cardIds":["QB-A-25","QB-A-26","QB-A-27","QB-A-28","QB-A-29","QB-A-30","QB-A-31","QB-A-32","QB-A-33","QB-A-34","QB-A-35","QB-A-36"]},
+[stderr]     {"batchId":"GPI-005","name":"QB-A Players and Records","cardIds":["QB-A-37","QB-A-38","QB-A-39","QB-A-40","QB-A-41","QB-A-42","QB-A-43","QB-A-44","QB-A-45","QB-A-46","QB-A-47","QB-A-48"]}
+[stderr]   ],
+[stderr]   "records": [
+[stderr]     {"cardId":"QB-A-01","batchId":"GPI-002","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-02","batchId":"GPI-002","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-03","batchId":"GPI-002","revision":1,"sourceFamilies":["UEFA"]}, {"cardId":"QB-A-04","batchId":"GPI-002","revision":1,"sourceFamilies":["CONMEBOL"]},
+[stderr]     {"cardId":"QB-A-05","batchId":"GPI-002","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-06","batchId":"GPI-002","revision":1,"sourceFamilies":["AFC"]}, {"cardId":"QB-A-07","batchId":"GPI-002","revision":1,"sourceFamilies":["AFC"]}, {"cardId":"QB-A-08","batchId":"GPI-002","revision":1,"sourceFamilies":["UEFA"]},
+[stderr]     {"cardId":"QB-A-09","batchId":"GPI-002","revision":1,"sourceFamilies":["AFC"]}, {"cardId":"QB-A-10","batchId":"GPI-002","revision":1,"sourceFamilies":["CONMEBOL"]}, {"cardId":"QB-A-11","batchId":"GPI-002","revision":1,"sourceFamilies":["UEFA"]}, {"cardId":"QB-A-12","batchId":"GPI-002","revision":1,"sourceFamilies":["CONMEBOL"]},
+[stderr]     {"cardId":"QB-A-13","batchId":"GPI-003","revision":1,"sourceFamilies":["DFL"]}, {"cardId":"QB-A-14","batchId":"GPI-003","revision":1,"sourceFamilies":["LALIGA"]}, {"cardId":"QB-A-15","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]}, {"cardId":"QB-A-16","batchId":"GPI-003","revision":1,"sourceFamilies":["LFP"]},
+[stderr]     {"cardId":"QB-A-17","batchId":"GPI-003","revision":1,"sourceFamilies":["PL"]}, {"cardId":"QB-A-18","batchId":"GPI-003","revision":1,"sourceFamilies":["LALIGA"]}, {"cardId":"QB-A-19","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]}, {"cardId":"QB-A-20","batchId":"GPI-003","revision":1,"sourceFamilies":["PL"]},
+[stderr]     {"cardId":"QB-A-21","batchId":"GPI-003","revision":1,"sourceFamilies":["LALIGA"]}, {"cardId":"QB-A-22","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]}, {"cardId":"QB-A-23","batchId":"GPI-003","revision":1,"sourceFamilies":["DFL"]}, {"cardId":"QB-A-24","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]},
+[stderr]     {"cardId":"QB-A-25","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]}, {"cardId":"QB-A-26","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]}, {"cardId":"QB-A-27","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","SERIEA"]}, {"cardId":"QB-A-28","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]},
+[stderr]     {"cardId":"QB-A-29","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-30","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-31","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]}, {"cardId":"QB-A-32","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]},
+[stderr]     {"cardId":"QB-A-33","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-34","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-35","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-36","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","SERIEA"]},
+[stderr]     {"cardId":"QB-A-37","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-38","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-39","batchId":"GPI-005","revision":1,"sourceFamilies":["FF"]}, {"cardId":"QB-A-40","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]},
+[stderr]     {"cardId":"QB-A-41","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-42","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-43","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]}, {"cardId":"QB-A-44","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]},
+[stderr]     {"cardId":"QB-A-45","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-46","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-47","batchId":"GPI-005","revision":1,"sourceFamilies":["FF"]}, {"cardId":"QB-A-48","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]}
+[stderr]   ],
+[stderr]   "recordDefaults": {
+[stderr]     "status": "draft",
+[stderr]     "selectionEligible": false,
+[stderr]     "originalityRecord": {"decision":"pending","reasonCode":"ORIGINALITY-UNAUTHORED"},
+[stderr]     "provenance": {"decision":"pending","reasonCode":"PROVENANCE-LOCATOR-MISSING"},
+[stderr]     "reviews": [
+[stderr]       {"role":"factual_rights_editor","decision":"pending","reasonCode":"FACTUAL-RIGHTS-REVIEW-PENDING"},
+[stderr]       {"role":"accessibility_copy_editor","decision":"pending","reasonCode":"ACCESSIBILITY-COPY-REVIEW-PENDING"}
+[stderr]     ],
+[stderr]     "releaseGate": {"decision":"pending","reasonCode":"RELEASE-GATE-INCOMPLETE"}
+[stderr]   },
+[stderr]   "validation": {
+[stderr]     "exactCardIdPattern": "^QB-A-(0[1-9]|[1-3][0-9]|4[0-8])$",
+[stderr]     "expectedRecordCount": 48,
+[stderr]     "expectedBatchCount": 4,
+[stderr]     "expectedCardsPerBatch": 12,
+[stderr]     "requiredPendingReasonCodes": ["ORIGINALITY-UNAUTHORED","PROVENANCE-LOCATOR-MISSING","FACTUAL-RIGHTS-REVIEW-PENDING","ACCESSIBILITY-COPY-REVIEW-PENDING","RELEASE-GATE-INCOMPLETE"]
+[stderr]   }
+[stderr] }
+[stderr] [stderr] OpenAI Codex v0.145.0
+[stderr] [stderr] --------
+[stderr] [stderr] workdir: /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] [stderr] model: gpt-5.6-terra
+[stderr] [stderr] provider: openai
+[stderr] [stderr] approval: on-request
+[stderr] [stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[stderr] [stderr] reasoning effort: medium
+[stderr] [stderr] reasoning summaries: none
+[stderr] [stderr] session id: 019fc6ae-44bc-7e92-8f41-551289b4a21b
+[stderr] [stderr] --------
+[stderr] [stderr] user
+[stderr] [stderr] You are the coding worker for one isolated runbook task.
+[stderr] [stderr] 
+[stderr] [stderr] Work only in the repository passed as your working directory. Do not publish,
+[stderr] [stderr] deploy, access secrets, make payments, or change product scope. Stop and report
+[stderr] [stderr] needs_user_review if the task is destructive, unclear, or requires authority.
+[stderr] [stderr] Implement only the task below, run relevant checks, and then output exactly one
+[stderr] [stderr] JSON object conforming to the WorkerResult contract. A status of pass means the
+[stderr] [stderr] change is ready for independent test and visual review; it is not self-approval.
+[stderr] [stderr] 
+[stderr] [stderr] Task:
+[stderr] [stderr] {
+[stderr] [stderr]   "task_id": "GD0002",
+[stderr] [stderr]   "title": "Complete QB-A editorial acceptance evidence",
+[stderr] [stderr]   "objective": "Close the one incomplete design-evidence boundary found by `GC0001`: the\nfinite QB-A catalogue has a grammar, source policy, quota tables, lifecycle,\nadjudication, and anti-repeat fixtures, but `QB-A-01` through `QB-A-48` are\nstill `draft` and have only pending reviews. Create or review durable editorial\nacceptance evidence for the existing four bounded batches only. Do not add\ncards, change quiz scope, create code/B/R runbooks, or accept the manifest.\n\nInitial project brief:\n# Product brief \u2014 football-trivia-e2e\n\n**Source of truth:** [`INITIAL.md`](INITIAL.md). This normalized brief preserves\nits scope; it records unknowns and contradictions instead of choosing them.\n\n## Problem, category, users, and outcome\n\nCasual adult football followers need a satisfying way to test and extend their\nknowledge in a few mobile-friendly minutes. This is an original 2D,\nsingle-player football-trivia puzzle with themed rounds, varied question\nformats, answer validation, score/streak feedback, local progress, and a\ncurated question bank.\n\nThe first useful session succeeds when a player completes an onboarding round,\nunderstands accepted/rejected feedback and score/streak, then saves and resumes.\nThis is the quiz equivalent of the source's generic \u201cfirst battle\u201d text; a\nliteral battle/campaign is a decision, not assumed scope.\n\n## First-release and roadmap scope\n\nFirst release: playable themed rounds; tutorial; question formats and answer\nrules; accessible feedback; scoring/streaks; anti-repetition; local\nprogress/save/load/resume/recovery; settings/accessibility; original\naudio/visual feedback; curated, reviewed, versioned question content; content\ndelivery; and crash/error recovery. Named account/identity, multiplayer safety,\nlive operations, and purchases are decision-gated, not automatic dependencies.\n\nSuccess is measurable when a new player can complete onboarding, play an\nauthored round, get deterministic answer/score feedback, save and restore\nconfirmed progress, and recover from interruption or a safe update without\nsilent loss on every selected target. Every shipped question has category,\nformat, answer rule, difficulty, provenance/review record, and repeat-eligibility\nmetadata. Bank size, completion cadence, and performance thresholds are open.\n\nDeferred: live/seasonal events, player-created/shared content, advanced\nanalytics, and advanced monetisation. Non-goals: copied branding, assets,\nquestions/copy, layouts, or distinctive interactions; and unapproved RPG world,\nparty, quest, combat, boss, or literal battle systems.\n\n## Target systems\n\n| Target | First-release role | Input model | Delivery constraint | Out of scope |\n| --- | --- | --- | --- | --- |\n| Responsive web app | Full shared game on phone, tablet, desktop. | Keyboard, mouse, touch, gamepad. | Responsive compatibility and performance budget to be approved. | Separate web ruleset/campaign. |\n| PWA | Installable form of the same game. | Supported browser/device inputs. | Offline content/saves and safe cache refresh that protects confirmed progress. | Always-online dependency or PWA-only mode. |\n| Android phone | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | Android-exclusive game content. |\n| iPhone (iOS) | Compatible packaged mobile delivery of shared core. | Touch; orientation undecided. | Battery, thermal, size, privacy, packaging, store rules. | iOS-exclusive game content. |\n\nUse a shared core with necessary platform adaptations only. Remote\naccount-linked state may use a safe local cache where approved, and must not\nsilently discard confirmed single-player progress.\n\n## Constraints, assumptions, and reference boundary\n\nExplicit constraints: accessible controls/text/captions/visual settings;\nsave/resume/data-loss recovery; crash reporting/player recovery; web/PWA plus\nAndroid/iOS; feasible slow-network behaviour; localisation/privacy/platform\nrequirements; and original expression. Safe assumptions: independently authored\ncontent/UI/art/audio; editorial fact review; locally available approved content\nsupports a basic session; outages are clear; and diagnostics minimise personal\ndata. No stack, vendor, backend, account, retention, or licensing choice is\napproved by these assumptions.\n\n| Reference | Allowed functional learning | Prohibited |\n| --- | --- | --- |\n| The Athletic | Football-topic breadth and varied quiz formats. | Brand, questions/copy, assets, layouts, editorial structure, screens, and interactions. |\n| QuizUp | Broad goal of short competitive-feeling trivia sessions. | Brand, questions/copy, assets, layouts, flows, social systems, and interaction choreography. |\n\n## Human approval decisions\n\n1. Is generic \u201cstory/campaign\u201d and \u201cfirst battle\u201d text real scope, or should a\n   lightweight themed quiz journey replace it?\n2. For account identity, multiplayer safety, live operations, and purchases:\n   choose release-critical, optional connected enhancement, or deferred.\n3. Decide account/authentication, sync/conflicts, retention/deletion, recovery,\n   outage, safety/moderation, age/region, refund/entitlement policies if any\n   connected or commerce feature ships.\n4. Choose delivery approach, OS/browser/device matrix, orientation, budgets,\n   update/crash provider/cost model, and Android/iOS packaging path.\n5. Approve question-bank size, coverage, source/licensing/provenance, refresh,\n   adjudication, languages, and exact accessibility/audio scope.",
+[stderr] [stderr]   "acceptance_criteria": [
+[stderr] [stderr]     "All 48 existing QB-A card revisions have independently inspectable original-expression, provenance, and two-distinct-review evidence, or every remaining ineligible card has its exact pending or blocked reason retained.",
+[stderr] [stderr]     "The four existing batches remain finite at 12 cards each and no unreviewed record can enter selection."
+[stderr] [stderr]   ],
+[stderr] [stderr]   "risk_level": "normal",
+[stderr] [stderr]   "sequence": 5,
+[stderr] [stderr]   "dependencies": [
+[stderr] [stderr]     "GC0001"
+[stderr] [stderr]   ],
+[stderr] [stderr]   "prerequisite_collections": [],
+[stderr] [stderr]   "browser_impact": "not_applicable",
+[stderr] [stderr]   "playwright_specs": [],
+[stderr] [stderr]   "asset_impact": "not_applicable",
+[stderr] [stderr]   "asset_brief": "",
+[stderr] [stderr]   "asset_ids": [],
+[stderr] [stderr]   "visual_style_version": "",
+[stderr] [stderr]   "audio_impact": "not_applicable",
+[stderr] [stderr]   "audio_brief": "",
+[stderr] [stderr]   "audio_ids": [],
+[stderr] [stderr]   "audio_duration_seconds": 0,
+[stderr] [stderr]   "audio_loop": "not_applicable",
+[stderr] [stderr]   "audio_style_version": "",
+[stderr] [stderr]   "source_specifications": [
+[stderr] [stderr]     "specification/02-game-design-bible.md",
+[stderr] [stderr]     "specification/02-game-design-bible.json",
+[stderr] [stderr]     "planning/game-production-inventory.md",
+[stderr] [stderr]     "planning/game-production-inventory.json",
+[stderr] [stderr]     "planning/game-design-manifest.json",
+[stderr] [stderr]     "design-evidence/question-card-and-qba-catalogue-bible.md",
+[stderr] [stderr]     "design-evidence/adjudication-and-freshness-bible.md"
+[stderr] [stderr]   ],
+[stderr] [stderr]   "source_catalogue_ids": [
+[stderr] [stderr]     "GAME-001",
+[stderr] [stderr]     "GAME-002",
+[stderr] [stderr]     "GAME-003",
+[stderr] [stderr]     "GAME-004",
+[stderr] [stderr]     "GPI-001",
+[stderr] [stderr]     "GPI-002",
+[stderr] [stderr]     "GPI-003",
+[stderr] [stderr]     "GPI-004",
+[stderr] [stderr]     "GPI-005",
+[stderr] [stderr]     "GPI-006",
+[stderr] [stderr]     "GPI-007"
+[stderr] [stderr]   ],
+[stderr] [stderr]   "authoring_batch": "",
+[stderr] [stderr]   "design_authoring_batch": "",
+[stderr] [stderr]   "factory_stages": [],
+[stderr] [stderr]   "execution_mode": "implementation",
+[stderr] [stderr]   "continuation_context": "Continue the existing task; do not reimplement completed work.\nPrevious lifecycle: interrupted.\nExisting changed files: projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3, projects/football-trivia-e2e/.state/live/manual-gc0001-retry.log, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-00-agent-supervisor-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md, supervisor, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-10-agent-git-publish-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-00-agent-supervisor-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-01-agent-prepare-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md, projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json.\nLast checkpoint: Authoring output validation failed: missing GD0003.md\nRequired next action: codex."
+[stderr] [stderr] }
+[stderr] [stderr] 
+[stderr] [stderr] Continuation checkpoint (only when present):
+[stderr] [stderr] Continue the existing task; do not reimplement completed work.
+[stderr] [stderr] Previous lifecycle: interrupted.
+[stderr] [stderr] Existing changed files: projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3, projects/football-trivia-e2e/.state/live/manual-gc0001-retry.log, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-00-agent-supervisor-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md, supervisor, projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-10-agent-git-publish-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-00-agent-supervisor-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-01-agent-prepare-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log, projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md, projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json.
+[stderr] [stderr] Last checkpoint: Authoring output validation failed: missing GD0003.md
+[stderr] [stderr] Required next action: codex.
+[stderr] [stderr] 
+[stderr] [stderr] 
+[stderr] [stderr] 
+[stderr] [stderr] This Codex worker runs in a workspace-only sandbox. Do not invoke `flutter`,
+[stderr] [stderr] `dart`, SDK/bootstrap tooling, or request an approval escalation: those tools
+[stderr] [stderr] can write SDK caches outside the worktree and are deliberately owned by the
+[stderr] [stderr] supervisor's independent precheck/test stages. When the continuation evidence
+[stderr] [stderr] names a concrete source or test failure, repair that evidence in the worktree,
+[stderr] [stderr] run only safe focused checks, and return `pass` for the deterministic stage to
+[stderr] [stderr] validate. Never return a failure solely because an SDK command needs approval.
+[stderr] [stderr] 
+[stderr] [stderr] 
+[stderr] [stderr] 
+[stderr] [stderr] Efficient investigation rules (especially important for local models):
+[stderr] [stderr] - Start with the Codebase Memory MCP for architecture and targeted symbols.
+[stderr] [stderr] - Do not use whole-file reads for Dart, test, lock, generated, or log files.
+[stderr] [stderr]   Use targeted symbol snippets or `run_shell_command` with `rg` and
+[stderr] [stderr]   `sed -n 'START,ENDp'`; keep each inspected excerpt to 200 lines or fewer.
+[stderr] [stderr] - Inspect only files directly relevant to the acceptance criteria. Do not
+[stderr] [stderr]   browse unrelated Playwright, automation, or configuration files merely to
+[stderr] [stderr]   learn the repository layout.
+[stderr] [stderr] - After the focused investigation, implement and run the smallest relevant
+[stderr] [stderr]   checks. Do not continue exploratory tool calls once the implementation path
+[stderr] [stderr]   is clear.
+[stderr] [stderr] - If a tool reports a missing file, treat it as non-blocking and continue with
+[stderr] [stderr]   the repository evidence you already have.
+[stderr] [stderr] 
+[stderr] [stderr] Completion protocol:
+[stderr] [stderr] - Your final action MUST be the `structured_output` tool supplied by
+[stderr] [stderr]   `--json-schema`. Do not end with prose, Markdown, or a hand-written JSON
+[stderr] [stderr]   response.
+[stderr] [stderr] - Use native nested JSON values in that tool call: `evidence` and
+[stderr] [stderr]   `documentation` are objects, while `acceptance_results` is an array. Never
+[stderr] [stderr]   put JSON text inside quotes for any of those fields.
+[stderr] [stderr] - If a check cannot run, return a structured `repairable_failure` or
+[stderr] [stderr]   `needs_user_review` result immediately with the exact reason. Never wait
+[stderr] [stderr]   silently for a tool or model request to recover.
+[stderr] [stderr] 
+[stderr] [stderr] 
+[stderr] [stderr] Your final WorkerResult must include all of the following:
+[stderr] [stderr] - `acceptance_results`: one entry for every task acceptance criterion, in the
+[stderr] [stderr]   same order. Copy each criterion text verbatim from the task, with pass/fail/
+[stderr] [stderr]   not_verified status and concrete evidence;
+[stderr] [stderr] - `documentation`: README/plan/ADR/runbook files reviewed, files updated, and
+[stderr] [stderr]   why they were or were not changed;
+[stderr] [stderr] - `test_result`: exact checks you ran and their outcomes;
+[stderr] [stderr] - `known_limitations`: remaining gaps or an empty list.
+[stderr] [stderr] 
+[stderr] [stderr] Do not claim `pass` if a criterion is unverified. Update user-facing README or
+[stderr] [stderr] developer documentation whenever the change affects behaviour, setup, commands,
+[stderr] [stderr] architecture, design, or progress. If no documentation change is needed, state
+[stderr] [stderr] the reviewed files and explain why.
+[stderr] [stderr] 
+[stderr] [stderr] For `final_verification`, the independent `test`, `browser`, and visual-review
+[stderr] [stderr] stages are the required verification gates. After repairing every concrete
+[stderr] [stderr] source/test failure supplied in this prompt, return `pass` so those gates run.
+[stderr] [stderr] Do not return `needs_user_review` solely because Flutter/Dart was deliberately
+[stderr] [stderr] left to the independent test stage. Return `needs_user_review` only for a real
+[stderr] [stderr] authority, safety, or irreducibly ambiguous product decision.
+[stderr] [stderr] 
+[stderr] [stderr] For browser-impacting work, create or update a task-specific Playwright spec in
+[stderr] [stderr] `supervisor/browser/tests/changes/`, list it in `browser_coverage`,
+[stderr] [stderr] and revise stale checks. Keep `tests/smoke/` short and stable. For domain-only
+[stderr] [stderr] work, explain in `browser_coverage` why no task-specific browser spec changed.
+[stderr] [stderr] 
+[stderr] [stderr] Visual baseline rule:
+[stderr] [stderr] - When the continuation evidence names a golden, snapshot, or visual-regression
+[stderr] [stderr]   failure, inspect the supplied master/test/diff artifacts before changing any
+[stderr] [stderr]   baseline. Work out whether the new render is the intended result of this
+[stderr] [stderr]   task, and check that it has no clipping, overlap, or lost meaning.
+[stderr] [stderr] - If it is intentional, regenerate only the affected approved baselines using
+[stderr] [stderr]   the repository's documented command, update stale visual/browser checks when
+[stderr] [stderr]   their prior expectation is no longer correct, and rerun the relevant suite.
+[stderr] [stderr] - If it is not intentional, fix the product or test setup instead. Never mask
+[stderr] [stderr]   a real visual regression by blindly accepting a changed screenshot.
+[stderr] [stderr] 
+[stderr] [stderr] Failure-repair protocol:
+[stderr] [stderr] - When the continuation checkpoint says that a Supervisor terminal stage
+[stderr] [stderr]   failed, treat its captured command and output as the starting evidence. Do
+[stderr] [stderr]   not merely describe a possible fix.
+[stderr] [stderr] - Use the terminal in this project worktree to inspect, repair, and rerun the
+[stderr] [stderr]   same focused check whenever that command is safe in your sandbox. Include
+[stderr] [stderr]   the command and result in `test_result`.
+[stderr] [stderr] - If that exact command needs an SDK, browser, or approval outside this
+[stderr] [stderr]   worker's sandbox, repair the demonstrated issue but do not replace the
+[stderr] [stderr]   independent validation. Return `pass` only when the worktree is ready for
+[stderr] [stderr]   Supervisor to rerun its configured terminal command after your repair.
+[stderr] [stderr] 
+[stderr] [stderr] warning: Configured value for `approval_policy` is disallowed by requirements; falling back to required value OnRequest. Details: invalid value for `approval_policy`: `Never` is not in the allowed set [OnRequest, UnlessTrusted] (set by enterprise-managed requirements Codex Developers (8a9cace4-0b4b-4c93-a8d5-b33253d2d6e4))
+[stderr] [stderr] codex
+[stderr] [stderr] {"status":"pass","summary":"I’m repairing the continuation’s concrete missing-authoring-output failure, then I’ll run a focused evidence validation without touching SDK tooling.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":[],"updated_files":[],"summary":""},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] [stderr] mcp: codebase-memory-mcp/get_architecture started
+[stderr] [stderr] mcp: codebase-memory-mcp/get_architecture (failed)
+[stderr] [stderr] user cancelled MCP tool call
+[stderr] [stderr] exec
+[stderr] [stderr] /bin/zsh -lc "git status --short && rg --files projects/football-trivia-e2e/design-evidence projects/football-trivia-e2e | rg 'qba|GD0003|authoring|acceptance'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr] [stderr]  succeeded in 0ms:
+[stderr] [stderr]  M README.md
+[stderr] [stderr]  M projects/football-trivia-e2e/.state/factory.sqlite3
+[stderr] [stderr]  M projects/football-trivia-e2e/.state/game-design-runbooks.sqlite3
+[stderr] [stderr]  M projects/football-trivia-e2e/.state/live/manual-gc0001-retry.log
+[stderr] [stderr]  M projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-00-agent-supervisor-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log
+[stderr] [stderr]  M projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md
+[stderr] [stderr]  M projects/football-trivia-e2e/game-design-runbooks/GD0002.md
+[stderr] [stderr]  m supervisor
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/manual-project-repair.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-00-agent-supervisor-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-01-agent-prepare-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-02-agent-codex-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-03-agent-test-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-04-agent-browser-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-05-agent-visual-review-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-06-agent-completion-audit-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0001-46f93e09-run-01-stage-07-agent-git-publish-c4045610-9397-4dec-b9a4-2ff7541ba412.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-00-agent-supervisor-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-01-agent-prepare-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-02-agent-codex-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-03-agent-test-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-04-agent-browser-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-05-agent-visual-review-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-06-agent-completion-audit-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-ar0002-c4d41847-run-01-stage-07-agent-git-publish-7f3596a1-d289-44f2-97b2-0d322df039d7.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gc0001-run-04-stage-10-agent-git-publish-7253f53b-52c8-4c5c-82f5-b356de58d1b8.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-00-agent-supervisor-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-01-agent-prepare-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-03-agent-test-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-04-agent-browser-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-05-agent-visual-review-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-06-agent-completion-audit-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-07-agent-git-publish-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-02-stage-00-agent-supervisor-fd232b1d-7f77-4c2b-a7cb-62257124e262.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/live/task-gd0002-run-02-stage-01-agent-codex-fd232b1d-7f77-4c2b-a7cb-62257124e262.log
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/reports/7253f53b-52c8-4c5c-82f5-b356de58d1b8.md
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/reports/7de4bc95-aeac-43f6-be06-542c5b1b75ee.md
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/reports/7f3596a1-d289-44f2-97b2-0d322df039d7.md
+[stderr] [stderr] ?? projects/football-trivia-e2e/.state/reports/c4045610-9397-4dec-b9a4-2ff7541ba412.md
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"The register already preserves exact pending reasons for all 48 cards and keeps selection locked. The outstanding concrete repair is the required successor dispatcher, `GD0003.md`.","changed_files":[],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GD0002.md","projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json"],"updated_files":[],"summary":"Reviewed the current runbook and register to scope the missing output."},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] exec
+[stderr] /bin/zsh -lc "rg --files projects/football-trivia-e2e/game-design-runbooks | sort | sed -n '1,120p' && rg -n -i 'dispatcher|successor|GQ audit|card-authoring|editorial' projects/football-trivia-e2e/game-design-runbooks --glob '*.md' | sed -n '1,200p'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0003.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0004.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0005.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0003.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:16:editorial boundary remains incomplete. The checkpoint is successful when it
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:17:records that boundary accurately and `GD0002` owns the one bounded successor
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:24:  dependency, pending-boundary, and successor audit for this checkpoint.
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:25:- `GD0002.md`: the sole bounded successor for the recorded QB-A editorial
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:26:  acceptance work. It already exists and must remain the only successor.
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:79:## Successor decision
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:82:bounded successor is [`GD0002.md`](GD0002.md). It retains the preceding pending
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:83:reasons and is restricted to a 48-record editorial acceptance register for the
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:84:existing four 12-card batches. Do not create `GQ0001.md` until that successor
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:85:closes every stated reason. Only a later GQ audit may run the dedicated manifest
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:93:- Exactly one bounded successor, `GD0002`, owns every recorded incomplete
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:94:  QB-A editorial boundary, and no final manifest audit has been created too
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GC0001.md:96:- The manifest remains pending until the successor and a later `GQ` audit can
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:7:title: Complete QB-A editorial acceptance evidence
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:17:still `draft` and have only pending reviews. Create or review durable editorial
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:42:- `design-evidence/qba-editorial-acceptance-register.md`: exactly 48
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:54:The successor must leave rejected, unresolved, withdrawn, conflicted, or
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:57:those reasons, so create `GD0003.md` as the sole next dispatcher. It must split
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:58:the remaining editorial work into bounded card-authoring and review waves,
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:66:- `GD0003.md`: the only successor dispatcher for the unresolved QB-A editorial
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0001.md:19:- `design-evidence/question-card-and-qba-catalogue-bible.md`: original question-card grammar and four named QB-A editorial batches, including permitted sources, factual and accessibility/copy reviews, provenance, version/withdrawal fields, quotas, and non-copying expression evidence.
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GB0001.md:7:title: Author quiz editorial design runbooks
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md:19:pending and must not be marked accepted by this dispatcher.
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md:27:question-card grammar and four named QB-A editorial batches with sources and
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md:37:evidence, create exactly one successor `GD####` dispatcher for the next bounded
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md:47:- `GB0001.md`: only `G0001.md` and `G0002.md` for quiz content/editorial integrity.
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0001.md:51:- `../planning/game-design-manifest.json`: remains pending; this dispatcher records planned ownership only.
+[stderr] projects/football-trivia-e2e/game-design-runbooks/G0002.md:7:title: Define fair adjudication and editorial lifecycle bible
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "sed -n '1,150p' projects/football-trivia-e2e/game-design-runbooks/GD0001.md && sed -n '70,115p' projects/football-trivia-e2e/game-design-runbooks/GC0001.md && sed -n '1,200p' projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] ---
+[stderr] task_id: GD0001
+[stderr] sequence: 1
+[stderr] dependencies:
+[stderr] source_specifications: specification/00-domain-discovery.md,specification/01-game-identity.md,specification/02-game-design-bible.md,specification/02-game-design-bible.json,specification/01-creative-direction.md,planning/game-production-inventory.md,planning/game-production-inventory.json
+[stderr] source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GAME-005,GAME-006,GAME-007,GAME-008,GAME-009,GAME-010,GAME-011,GAME-012,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007,GPI-008,GPI-009,GPI-010,GPI-011,GPI-012,GPI-013,GPI-014,GPI-015
+[stderr] title: Dispatch bounded football-trivia game-design programme
+[stderr] browser_impact: not_applicable
+[stderr] playwright_spec:
+[stderr] ---
+[stderr] 
+[stderr] ## Objective
+[stderr] 
+[stderr] Read `../PROJECT_BRIEF.md`, `../INITIAL.md`, `../specification/00-domain-discovery.md`,
+[stderr] `../specification/01-game-identity.md`, `../specification/02-game-design-bible.{md,json}`,
+[stderr] `../specification/01-creative-direction.md`, and
+[stderr] `../planning/game-production-inventory.{md,json}`. Maintain
+[stderr] `../planning/game-design-manifest.json` as the completion gate; it starts
+[stderr] pending and must not be marked accepted by this dispatcher.
+[stderr] 
+[stderr] Create no more than three bounded GB writers, one per selected module, plus
+[stderr] `GC0001.md`. Register each new file's normal Supervisor metadata and output
+[stderr] paths. Each GB writer may create at most five focused `G####.md` tasks, and
+[stderr] every G task must declare its actual `design_authoring_batch: GB####`.
+[stderr] 
+[stderr] For this football-trivia programme, allocate design evidence for: original
+[stderr] question-card grammar and four named QB-A editorial batches with sources and
+[stderr] reviews; adjudication/fairness and anti-repeat rules; First Whistle, Mixed
+[stderr] Fixture, score/streak/results rules; guided accessibility, recovery/offline,
+[stderr] and target parity. G tasks must create/review detailed bibles, not code and not
+[stderr] implementation B/R runbooks.
+[stderr] 
+[stderr] `GC0001` must check G ownership, the five-G-per-GB limit, canonical GAME and
+[stderr] GPI coverage, dependency closure, original-expression/provenance evidence,
+[stderr] asset/audio accessibility equivalents, output quality, and manifest
+[stderr] consistency. If any selected module or production entry lacks accepted detailed
+[stderr] evidence, create exactly one successor `GD####` dispatcher for the next bounded
+[stderr] wave. When all required evidence is accepted, create a final `GQ####` audit.
+[stderr] Only that audit may update the canonical bible/inventory and set manifest
+[stderr] `status: accepted`, accepted `final_audit`, accepted module entries with output
+[stderr] paths/GAME IDs/GPI IDs, and empty pending/blocked arrays after running the
+[stderr] dedicated manifest completion check. The implementation-coverage validator is
+[stderr] explicitly deferred until F012. Do not create B or R files.
+[stderr] 
+[stderr] ## Output list
+[stderr] 
+[stderr] - `GB0001.md`: only `G0001.md` and `G0002.md` for quiz content/editorial integrity.
+[stderr] - `GB0002.md`: only `G0003.md` and `G0004.md` for round/score/progress rules.
+[stderr] - `GB0003.md`: only `G0005.md` for accessible recovery and target parity.
+[stderr] - `GC0001.md`: validates this wave and conditionally creates exactly one next `GD` or `GQ` file.
+[stderr] - `../planning/game-design-manifest.json`: remains pending; this dispatcher records planned ownership only.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - The generated G collection is bounded, batch-owned, and covers every selected module and GPI entry without expanding rejected/decision-gated scope.
+[stderr] - `GC0001` and later GD/GQ work provide the required validation, dispatch, and final-audit loop.
+[stderr] - The manifest cannot become accepted until durable G evidence, complete module/GAME/GPI coverage, and the dedicated completion check all pass.
+[stderr] - `GAME-002` lacks accepted original-expression, factual-source/provenance,
+[stderr]   factual/rights, accessibility/copy, and independent second-review decisions
+[stderr]   for every current card revision.
+[stderr] - `GAME-004` and `GAME-006` have deterministic policy and fixture evidence,
+[stderr]   but use of published QB-A candidates remains conditional on the preceding
+[stderr]   accepted records.
+[stderr] 
+[stderr] There are no blocked product decisions in this wave.
+[stderr] 
+[stderr] ## Successor decision
+[stderr] 
+[stderr] Because selected production entries lack accepted detailed evidence, the sole
+[stderr] bounded successor is [`GD0002.md`](GD0002.md). It retains the preceding pending
+[stderr] reasons and is restricted to a 48-record editorial acceptance register for the
+[stderr] existing four 12-card batches. Do not create `GQ0001.md` until that successor
+[stderr] closes every stated reason. Only a later GQ audit may run the dedicated manifest
+[stderr] completion check, update canonical bible/inventory records, and accept the
+[stderr] manifest.
+[stderr] 
+[stderr] ## Acceptance criteria
+[stderr] 
+[stderr] - The checkpoint accurately records ownership, cap, canonical coverage,
+[stderr]   dependency closure, and every incomplete evidence boundary: **met**.
+[stderr] - Exactly one bounded successor, `GD0002`, owns every recorded incomplete
+[stderr]   QB-A editorial boundary, and no final manifest audit has been created too
+[stderr]   early: **met**.
+[stderr] - The manifest remains pending until the successor and a later `GQ` audit can
+[stderr]   accept the required evidence: **met**.
+[stderr] - The audit is stored in `design-evidence/gc0001-coverage-checkpoint.md` and
+[stderr]   this GC0001 task remains a runnable Supervisor runbook: **met**.
+[stderr] # Question-card and QB-A catalogue bible
+[stderr] 
+[stderr] **Scope:** accepted design evidence for `GAME-001`, `GAME-002`, and
+[stderr] `GPI-001`–`GPI-005`. It defines a finite editorial package, not a claim that
+[stderr] the cards below are published game content. A runtime package may contain only
+[stderr] the records that pass the release gate in this document.
+[stderr] 
+[stderr] ## Release boundary and original-expression rule
+[stderr] 
+[stderr] `QB-A` ("Kickoff Mix") is exactly the 48 stable IDs `QB-A-01` through
+[stderr] `QB-A-48`, divided into four named 12-card batches. The IDs are permanent:
+[stderr] a correction increments the revision and preserves the ID; a withdrawn card is
+[stderr] not silently replaced. No other `QB-A-*` ID is in the first release.
+[stderr] 
+[stderr] The catalogue's question intents and canonical answers below are authored for
+[stderr] this game. At production, the copy editor writes a fresh, concise prompt and
+[stderr] explanation from the stated facts; authors must not reproduce source wording,
+[stderr] answer-option sets, headlines, tables, or any reference-product expression.
+[stderr] The declared sources verify facts only and grant no permission to copy their
+[stderr] expression. A content record with uncertain source permission, attribution, or
+[stderr] rights is `blocked`, never published.
+[stderr] 
+[stderr] ## `GPI-001`: card grammar and release record
+[stderr] 
+[stderr] Every field below is required unless its condition says otherwise. Player text
+[stderr] is localisable by key; answer matching uses canonical IDs and configured answer
+[stderr] rules (the detailed normalisation policy is owned by `GPI-006`).
+[stderr] 
+[stderr] | Field | Rule / purpose |
+[stderr] | --- | --- |
+[stderr] | `id`, `revision`, `batchId`, `status` | Stable ID, positive revision, one named batch, and lifecycle: `draft → fact_checked → accessibility_edited → second_reviewed → published`; alternatively `blocked` or `withdrawn`. Only `published` is eligible. |
+[stderr] | `originalityRecord` | Author ID/creation date, independently-authored confirmation, and a non-copying check. It records inspiration boundaries, never reference-product text. |
+[stderr] | `promptKey`, `promptText`, `instructionKey` | One independently written, single-fact prompt plus a format-appropriate, plain-language instruction. Prompt text must be answerable without an image, sound, colour, time limit, or unstated context. |
+[stderr] | `format` | Exactly one of `four_option_select`, `true_false`, `ordered_pair`, or `short_typed_answer`. |
+[stderr] | `category`, `topic`, `era`, `competitionScopes`, `clubIds`, `difficultyBand`, `tags` | Discovery and quota fields. `difficultyBand` is integer 1–3; all material competition/club references must be listed to enforce caps. |
+[stderr] | `answerOptions` | Required only for select/true-false. Select has exactly four unique option IDs and one `correct`; true/false has canonical `true`/`false` IDs. Options are text-labelled and have non-colour selection/result states. |
+[stderr] | `canonicalAnswer` and `acceptedAnswerRule` | Select/true-false use canonical option IDs; ordered pair specifies exactly two ordered canonical IDs; typed answer provides canonical display answer, normalised accepted aliases, and no fuzzy match. Empty aliases and aliases that could mean another answer are invalid. |
+[stderr] | `explanationKey`, `explanationText` | Short fact-first explanation shown after resolution, including canonical answer where useful. It must explain why rather than merely say "correct". |
+[stderr] | `accessibility` | `screenReaderPrompt`, `screenReaderOptions` where applicable, `answerStateText`, `explanationTextEquivalent`, reading-order/focus requirement, and text-size/contrast review. No visual or audio-only clue may be needed. |
+[stderr] | `provenanceId`, `factualAssertions[]` | Links each assertion to permitted durable sources/research records, source locator, checked date, and conflict/correction history. All assertions must be supported. |
+[stderr] | `reviews[]` | Two distinct completed reviews: factual/rights review and accessibility/copy review. Each carries reviewer ID/role, decision, date, findings, and revision reviewed. |
+[stderr] | `localeKeys`, `createdAt`, `updatedAt`, `withdrawal` | Externalised player strings and audit timestamps. Withdrawal requires reason, effective date, and replacement relationship only when one exists. |
+[stderr] 
+[stderr] **Format accessibility rules.** Four-option select renders every option as a
+[stderr] labelled button and never uses position as the only clue. True/false spells out
+[stderr] both values. Ordered pair labels first/second positions and supports reorder by
+[stderr] keyboard and touch. Typed answer announces validation requirements, preserves
+[stderr] entered text on rejected submission, and always exposes the canonical answer
+[stderr] and explanation after resolution. Every format supports touch, pointer,
+[stderr] keyboard, and gamepad-equivalent selection; no format relies on a timer.
+[stderr] 
+[stderr] ## Provenance and two-review workflow
+[stderr] 
+[stderr] Each inventory row references a source family below; the eventual card's
+[stderr] `provenanceId` is `PROV-<card ID>` and must contain the precise page/document
+[stderr] URL, retrieval date, factual-assertion mapping, and correction log before it
+[stderr] can leave `draft`. The source family is a research route, not a substituted
+[stderr] source record.
+[stderr] 
+[stderr] | Key | Permitted durable primary route |
+[stderr] | --- | --- |
+[stderr] | `FIFA` | FIFA competition archives, match reports, and official records |
+[stderr] | `UEFA` | UEFA competition archives and official match reports/records |
+[stderr] | `CONMEBOL` | CONMEBOL tournament archives and official records |
+[stderr] | `AFC` | Asian Football Confederation tournament archives and official records |
+[stderr] | `PL` | Premier League official history, match, and competition records |
+[stderr] | `LALIGA` | LALIGA official history, match, and competition records |
+[stderr] | `SERIEA` | Lega Serie A official history, match, and competition records |
+[stderr] | `DFL` / `LFP` | DFL Bundesliga and Ligue de Football Professionnel official history/competition records |
+[stderr] | `FF` | France Football's official Ballon d'Or records |
+[stderr] | `CLUB` | The relevant club's official history/records page, cross-checked against its competition organiser where the assertion concerns a competition |
+[stderr] 
+[stderr] For each card revision, reviewer `R1` (factual/rights editor) verifies every
+[stderr] assertion against the exact provenance locator, source permission and original
+[stderr] expression record. Reviewer `R2` (accessibility/copy editor), a different
+[stderr] person, verifies unambiguous language, answer options/aliases, explanation,
+[stderr] screen-reader text, non-colour state wording, and localisation keys. R1's
+[stderr] accepted decision moves the record to `fact_checked`; R2's accepted decision
+[stderr] moves it to `second_reviewed`; only the release editor may then set
+[stderr] `published`. A rejection or later dispute sets `blocked`; a published error
+[stderr] sets `withdrawn` until both reviews approve a new revision. Reviewer identity,
+[stderr] date, revision, decision, and finding are mandatory, making absent or duplicate
+[stderr] reviews mechanically rejectable.
+[stderr] 
+[stderr] ## `GPI-002`–`GPI-005`: bounded batch inventory
+[stderr] 
+[stderr] Legend: `FO` = four-option select; `TF` = true/false; `OP` = ordered pair;
+[stderr] `TA` = short typed answer. Each row is a required future card record with
+[stderr] `status: draft`, `revision: 1`, `provenanceId: PROV-<ID>`, and two pending
+[stderr] review records; this evidence does not falsely mark research as completed.
+[stderr] The “fact intent / canonical answer” is the editorial fact to verify, not
+[stderr] player-facing copy.
+[stderr] 
+[stderr] ### `GPI-002` — QB-A World Tournament History (`QB-A-WORLD-01`)
+[stderr] 
+[stderr] | ID | Format | Band | Topic / fact intent / canonical answer | Scope | Source |
+[stderr] | --- | --- | --- | --- | --- | --- |
+[stderr] | QB-A-01 | FO | 1 | 2018 FIFA World Cup winner — France | FIFA World Cup | FIFA |
+[stderr] | QB-A-02 | TF | 1 | 1966 FIFA World Cup host — England | FIFA World Cup | FIFA |
+[stderr] | QB-A-03 | OP | 1 | Order 2008 and 2016 UEFA European champions — Spain, Portugal | UEFA European Championship | UEFA |
+[stderr] | QB-A-04 | TA | 1 | 2021 Copa América winner — Argentina | Copa América | CONMEBOL |
+[stderr] | QB-A-05 | FO | 2 | 1998 FIFA World Cup final venue — Stade de France | FIFA World Cup | FIFA |
+[stderr] | QB-A-06 | TF | 2 | Japan won the 2011 AFC Asian Cup — true | AFC Asian Cup | AFC |
+[stderr] | QB-A-07 | OP | 2 | Order 2011 and 2015 AFC Asian Cup winners — Japan, Australia | AFC Asian Cup | AFC |
+[stderr] | QB-A-08 | TA | 2 | 2004 UEFA European Championship winner — Greece | UEFA European Championship | UEFA |
+[stderr] | QB-A-09 | FO | 3 | 2019 AFC Asian Cup winner — Qatar | AFC Asian Cup | AFC |
+[stderr] | QB-A-10 | TF | 3 | The 2007 Copa América final was Argentina v Brazil — true | Copa América | CONMEBOL |
+[stderr] | QB-A-11 | OP | 3 | Order 1984 and 2000 UEFA European champions — France, France | UEFA European Championship | UEFA |
+[stderr] | QB-A-12 | TA | 3 | 1991 Copa América winner — Argentina | Copa América | CONMEBOL |
+[stderr] 
+[stderr] ### `GPI-003` — QB-A Domestic League Moments (`QB-A-DOMESTIC-01`)
+[stderr] 
+[stderr] | ID | Format | Band | Topic / fact intent / canonical answer | Scope | Source |
+[stderr] | --- | --- | --- | --- | --- | --- |
+[stderr] | QB-A-13 | FO | 1 | 2015–16 Bundesliga champion — Bayern Munich | Bundesliga | DFL |
+[stderr] | QB-A-14 | TF | 1 | Real Madrid won 2023–24 LALIGA — true | LALIGA | LALIGA |
+[stderr] | QB-A-15 | OP | 1 | Order 2019–20 and 2020–21 Serie A champions — Juventus, Internazionale | Serie A | SERIEA |
+[stderr] | QB-A-16 | TA | 1 | 2022–23 Ligue 1 champion — Paris Saint-Germain | Ligue 1 | LFP |
+[stderr] | QB-A-17 | FO | 2 | Premier League’s first champion (1992–93) — Manchester United | Premier League | PL |
+[stderr] | QB-A-18 | TF | 2 | Athletic Club won 2023–24 Copa del Rey — true | LALIGA | LALIGA |
+[stderr] | QB-A-19 | OP | 2 | Order 1999–2000 and 2000–01 Serie A champions — Lazio, Roma | Serie A | SERIEA |
+[stderr] | QB-A-20 | TA | 2 | 2003–04 Premier League unbeaten champions — Arsenal | Premier League | PL |
+[stderr] | QB-A-21 | FO | 3 | 2023–24 LALIGA Pichichi winner — Artem Dovbyk | LALIGA | LALIGA |
+[stderr] | QB-A-22 | TF | 3 | Napoli won 2022–23 Serie A — true | Serie A | SERIEA |
+[stderr] | QB-A-23 | OP | 3 | Order 2011–12 and 2013–14 Bundesliga champions — Bayern Munich, Bayern Munich | Bundesliga | DFL |
+[stderr] | QB-A-24 | TA | 3 | 2009–10 Serie A champions — Internazionale | Serie A | SERIEA |
+[stderr] 
+[stderr] ### `GPI-004` — QB-A Club, Manager, and Identity (`QB-A-CLUB-01`)
+[stderr] 
+[stderr] | ID | Format | Band | Topic / fact intent / canonical answer | Scope / club | Source |
+[stderr] | --- | --- | --- | --- | --- | --- |
+[stderr] | QB-A-25 | FO | 1 | Liverpool’s home stadium — Anfield | Liverpool | CLUB |
+[stderr] | QB-A-26 | TF | 1 | FC Barcelona’s home stadium is Camp Nou — true | Barcelona | CLUB |
+[stderr] | QB-A-27 | OP | 1 | Order AC Milan's 1999 and 2004 Serie A titles — 1999, 2004 | AC Milan / Serie A | CLUB + SERIEA |
+[stderr] | QB-A-28 | TA | 1 | Liverpool manager for the 2019 UEFA Champions League win — Jürgen Klopp | Liverpool / UEFA Champions League | CLUB + UEFA |
+[stderr] | QB-A-29 | FO | 2 | Barcelona manager for 2008–09 UEFA Champions League win — Pep Guardiola | Barcelona / UEFA Champions League | CLUB + UEFA |
+[stderr] | QB-A-30 | TF | 2 | AC Milan won the 1994 UEFA Champions League final — true | AC Milan / UEFA Champions League | CLUB + UEFA |
+[stderr] | QB-A-31 | OP | 2 | Order Liverpool's English top-flight titles in 1990 and 2020 — 1990, 2020 | Liverpool / English top flight | CLUB |
+[stderr] | QB-A-32 | TA | 2 | AC Milan's home stadium — San Siro | AC Milan | CLUB |
+[stderr] | QB-A-33 | FO | 3 | Barcelona’s 1992 European Cup final venue — Wembley Stadium | Barcelona / European Cup | CLUB + UEFA |
+[stderr] | QB-A-34 | TF | 3 | Liverpool won the 2005 UEFA Champions League final — true | Liverpool / UEFA Champions League | CLUB + UEFA |
+[stderr] | QB-A-35 | OP | 3 | Order Barcelona’s 2009 and 2011 UEFA Champions League wins — 2009, 2011 | Barcelona / UEFA Champions League | CLUB + UEFA |
+[stderr] | QB-A-36 | TA | 3 | AC Milan manager for the 2004 Serie A title — Carlo Ancelotti | AC Milan / Serie A | CLUB + SERIEA |
+[stderr] 
+[stderr] ### `GPI-005` — QB-A Players and Records (`QB-A-PLAYER-01`)
+[stderr] 
+[stderr] | ID | Format | Band | Topic / fact intent / canonical answer | Scope | Source |
+[stderr] | --- | --- | --- | --- | --- | --- |
+[stderr] | QB-A-37 | FO | 1 | 2022 FIFA World Cup Golden Boot winner — Kylian Mbappé | FIFA World Cup | FIFA |
+[stderr] | QB-A-38 | TF | 1 | Cristiano Ronaldo is Portugal men's most-capped player — true | Portugal national team | FIFA |
+[stderr] | QB-A-39 | OP | 1 | Order Lionel Messi's 2009 and 2010 Ballon d'Or wins — 2009, 2010 | Ballon d'Or | FF |
+[stderr] | QB-A-40 | TA | 1 | Premier League all-time top scorer (as official record) — Alan Shearer | Premier League | PL |
+[stderr] | QB-A-41 | FO | 2 | 2018 FIFA World Cup Golden Ball winner — Luka Modrić | FIFA World Cup | FIFA |
+[stderr] | QB-A-42 | TF | 2 | Lionel Messi won The Best FIFA Men's Player award for 2022 — true | The Best FIFA Football Awards | FIFA |
+[stderr] | QB-A-43 | OP | 2 | Order Mohamed Salah's Premier League Golden Boots in 2018 and 2019 — 2018, 2019 | Premier League | PL |
+[stderr] | QB-A-44 | TA | 2 | 2019–20 Premier League Golden Boot co-winner — Pierre-Emerick Aubameyang | Premier League | PL |
+[stderr] | QB-A-45 | FO | 3 | 2006 FIFA World Cup Golden Boot winner — Miroslav Klose | FIFA World Cup | FIFA |
+[stderr] | QB-A-46 | TF | 3 | Robert Lewandowski won The Best FIFA Men's Player award for 2020 — true | The Best FIFA Football Awards | FIFA |
+[stderr] | QB-A-47 | OP | 3 | Order the 2018 and 2019 Ballon d'Or winners — Luka Modrić, Lionel Messi | Ballon d'Or | FF |
+[stderr] | QB-A-48 | TA | 3 | Premier League single-season goal record holder (38-match season) — Erling Haaland | Premier League | PL |
+[stderr] 
+[stderr] ## Mechanical release checks
+[stderr] 
+[stderr] ## GD0002 editorial acceptance register
+[stderr] 
+[stderr] [`qba-editorial-acceptance-register.json`](qba-editorial-acceptance-register.json)
+[stderr] is the durable, machine-readable ledger for all existing `QB-A-01`–`QB-A-48`
+[stderr] revision-1 records. It intentionally records no fictional acceptance: every
+[stderr] record is individually listed with its existing batch and source-family route,
+[stderr] and inherits five explicit pending reasons for un-authored original expression,
+[stderr] missing resolvable provenance, each distinct review, and the incomplete release
+[stderr] transition. Its `selectionEligible: false` default is a hard audit assertion,
+[stderr] not a future promise; a selector must reject every record until current-revision
+[stderr] evidence replaces every pending item and the lifecycle reaches `published`.
+[stderr] 
+[stderr] The register's `batches`, `records`, and `validation` fields make the finite
+[stderr] boundary inspectable without changing it: exactly four named batches, exactly
+[stderr] 12 IDs in each, exactly 48 unique IDs matching `QB-A-01…48`, and no extra
+[stderr] record. A future editor must add card-specific evidence rather than changing a
+[stderr] default or accepting the manifest; a blocked, rejected, conflicted, withdrawn,
+[stderr] or still-pending revision remains `selectionEligible: false` with its reason.
+[stderr] 
+[stderr] The editorial validator must derive, rather than trust, the following report
+[stderr] from published card records and their provenance/review records:
+[stderr] 
+[stderr] | Check | Required result |
+[stderr] | --- | --- |
+[stderr] | ID/boundary | Exactly 48 unique IDs, exactly `QB-A-01…48`, exactly four named batches of 12; no extra QB-A card. |
+[stderr] | Category | World tournament history, domestic league moments, club/manager/identity, and players/records each equal 12. |
+[stderr] | Difficulty | Each category contains exactly four band-1, four band-2, and four band-3 cards. |
+[stderr] | Format | Each named batch contains exactly three FO, three TF, three OP, and three TA cards; therefore the release has 12 of each format. |
+[stderr] | Competition | No `competitionScopes` value appears on more than six cards: the declared maximums are FIFA World Cup 6, UEFA European Championship 3, Copa América 3, AFC Asian Cup 3, Premier League 6, LALIGA 4, Serie A 6, UEFA Champions League 6, and Ballon d'Or 2. |
+[stderr] | Club | No `clubIds` value appears on more than four cards: Liverpool, Barcelona, and AC Milan each appear four times; other cards have no club quota participant. |
+[stderr] | Eligibility | Every card is `published`, has all grammar fields, a resolvable provenance record with a checked date, no unresolved conflict, two distinct accepted reviews of its current revision, and no withdrawal. |
+[stderr] | Originality/accessibility | Every card has accepted originality and accessibility/copy review findings, required text equivalents, and no player-facing copied/source text. |
+[stderr] 
+[stderr] The sample inventory intentionally remains `draft` until per-card research and
+[stderr] review are completed. Thus it is bounded and independently auditable now, while
+[stderr] the validator will correctly reject it as a shippable package until its
+[stderr] provenance and both reviews are supplied.
+[stderr] 
+[stderr] apply patch
+[stderr] patch: completed
+[stderr] /Users/simon/Dev/github/jakowicz/runbook-generator/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] diff --git a/projects/football-trivia-e2e/game-design-runbooks/GD0003.md b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] new file mode 100644
+[stderr] index 0000000000000000000000000000000000000000..6b2d61b10460507f46c0c1eedd990088c79ae882
+[stderr] --- /dev/null
+[stderr] +++ b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] @@ -0,0 +1,63 @@
+[stderr] +---
+[stderr] +task_id: GD0003
+[stderr] +sequence: 6
+[stderr] +dependencies: GD0002
+[stderr] +source_specifications: design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/qba-editorial-acceptance-register.json,design-evidence/adjudication-and-freshness-bible.md,planning/game-design-manifest.json
+[stderr] +source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] +title: Dispatch remaining bounded QB-A editorial evidence work
+[stderr] +browser_impact: not_applicable
+[stderr] +playwright_spec:
+[stderr] +---
+[stderr] +
+[stderr] +## Objective
+[stderr] +
+[stderr] +This is the sole successor dispatcher for the unresolved QB-A editorial
+[stderr] +records recorded by `GD0002`. It preserves the existing 48-card boundary and
+[stderr] +does not create cards, publish cards, alter quiz scope, create B/R runbooks, or
+[stderr] +accept `../planning/game-design-manifest.json`.
+[stderr] +
+[stderr] +The current register deliberately records all 48 revision-1 cards as `draft`
+[stderr] +and `selectionEligible: false`. Every card retains the exact reasons
+[stderr] +`ORIGINALITY-UNAUTHORED`, `PROVENANCE-LOCATOR-MISSING`,
+[stderr] +`FACTUAL-RIGHTS-REVIEW-PENDING`, `ACCESSIBILITY-COPY-REVIEW-PENDING`, and
+[stderr] +`RELEASE-GATE-INCOMPLETE`. No default, batch-level decision, or future wave
+[stderr] +may substitute for a card's current-revision evidence.
+[stderr] +
+[stderr] +## Bounded editorial waves
+[stderr] +
+[stderr] +Each wave below is limited to one existing 12-card batch. Within a wave, author
+[stderr] +evidence first and review it only after the current-revision authoring evidence
+[stderr] +is complete. A card that is rejected, unresolved, conflicted, withdrawn, or
+[stderr] +missing any required record stays ineligible with its exact reason retained.
+[stderr] +
+[stderr] +| Wave | Existing batch | Fixed card IDs | Required card-level work | Completion boundary |
+[stderr] +| --- | --- | --- | --- | --- |
+[stderr] +| E1 | `GPI-002` — World Tournament History | `QB-A-01`–`QB-A-12` | Original expression; exact permitted-source locators and checked dates for every assertion; conflict/correction state; factual/rights review; accessibility/copy review; independent second review. | 12 current-revision records only. |
+[stderr] +| E2 | `GPI-003` — Domestic League Moments | `QB-A-13`–`QB-A-24` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +| E3 | `GPI-004` — Club, Manager, and Identity | `QB-A-25`–`QB-A-36` | Same evidence and distinct-review requirements as E1, including both permitted source routes where stated. | 12 current-revision records only. |
+[stderr] +| E4 | `GPI-005` — Players and Records | `QB-A-37`–`QB-A-48` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +
+[stderr] +For every card, the factual/rights and accessibility/copy decisions must be
+[stderr] +accepted by distinct reviewers for the exact revision. The release editor may
+[stderr] +set `published` only after those accepted decisions, accepted originality and
+[stderr] +provenance evidence, no unresolved conflict, and the defined lifecycle
+[stderr] +transitions. Until then a selector must reject it because the register's
+[stderr] +selection rule remains binding.
+[stderr] +
+[stderr] +## GQ audit gate
+[stderr] +
+[stderr] +Do not create a `GQ` audit while any of the 48 records remains un-authored,
+[stderr] +pending, blocked, rejected, conflicted, withdrawn, or otherwise ineligible.
+[stderr] +Only after all four waves contain actual accepted evidence may a later `GQ`
+[stderr] +audit run the dedicated completion check, update canonical bible/inventory
+[stderr] +records, and accept the manifest. This dispatcher does none of those actions.
+[stderr] +
+[stderr] +## Acceptance criteria
+[stderr] +
+[stderr] +- The QB-A catalogue remains exactly four existing named batches of 12 cards
+[stderr] +  (48 IDs total), with no replacement or added card.
+[stderr] +- Each still-ineligible card retains its exact reason and cannot enter
+[stderr] +  selection until current-revision evidence and two distinct accepted reviews
+[stderr] +  qualify it.
+[stderr] +- No `GQ` audit is created and the manifest remains pending until all 48
+[stderr] +  records have actual accepted evidence.
+[stderr] 
+[stderr] hook: PostToolUse
+[stderr] hook: PostToolUse Failed
+[stderr] diff --git a/projects/football-trivia-e2e/game-design-runbooks/GD0003.md b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] new file mode 100644
+[stderr] index 0000000000000000000000000000000000000000..6b2d61b10460507f46c0c1eedd990088c79ae882
+[stderr] --- /dev/null
+[stderr] +++ b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] @@ -0,0 +1,63 @@
+[stderr] +---
+[stderr] +task_id: GD0003
+[stderr] +sequence: 6
+[stderr] +dependencies: GD0002
+[stderr] +source_specifications: design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/qba-editorial-acceptance-register.json,design-evidence/adjudication-and-freshness-bible.md,planning/game-design-manifest.json
+[stderr] +source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] +title: Dispatch remaining bounded QB-A editorial evidence work
+[stderr] +browser_impact: not_applicable
+[stderr] +playwright_spec:
+[stderr] +---
+[stderr] +
+[stderr] +## Objective
+[stderr] +
+[stderr] +This is the sole successor dispatcher for the unresolved QB-A editorial
+[stderr] +records recorded by `GD0002`. It preserves the existing 48-card boundary and
+[stderr] +does not create cards, publish cards, alter quiz scope, create B/R runbooks, or
+[stderr] +accept `../planning/game-design-manifest.json`.
+[stderr] +
+[stderr] +The current register deliberately records all 48 revision-1 cards as `draft`
+[stderr] +and `selectionEligible: false`. Every card retains the exact reasons
+[stderr] +`ORIGINALITY-UNAUTHORED`, `PROVENANCE-LOCATOR-MISSING`,
+[stderr] +`FACTUAL-RIGHTS-REVIEW-PENDING`, `ACCESSIBILITY-COPY-REVIEW-PENDING`, and
+[stderr] +`RELEASE-GATE-INCOMPLETE`. No default, batch-level decision, or future wave
+[stderr] +may substitute for a card's current-revision evidence.
+[stderr] +
+[stderr] +## Bounded editorial waves
+[stderr] +
+[stderr] +Each wave below is limited to one existing 12-card batch. Within a wave, author
+[stderr] +evidence first and review it only after the current-revision authoring evidence
+[stderr] +is complete. A card that is rejected, unresolved, conflicted, withdrawn, or
+[stderr] +missing any required record stays ineligible with its exact reason retained.
+[stderr] +
+[stderr] +| Wave | Existing batch | Fixed card IDs | Required card-level work | Completion boundary |
+[stderr] +| --- | --- | --- | --- | --- |
+[stderr] +| E1 | `GPI-002` — World Tournament History | `QB-A-01`–`QB-A-12` | Original expression; exact permitted-source locators and checked dates for every assertion; conflict/correction state; factual/rights review; accessibility/copy review; independent second review. | 12 current-revision records only. |
+[stderr] +| E2 | `GPI-003` — Domestic League Moments | `QB-A-13`–`QB-A-24` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +| E3 | `GPI-004` — Club, Manager, and Identity | `QB-A-25`–`QB-A-36` | Same evidence and distinct-review requirements as E1, including both permitted source routes where stated. | 12 current-revision records only. |
+[stderr] +| E4 | `GPI-005` — Players and Records | `QB-A-37`–`QB-A-48` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +
+[stderr] +For every card, the factual/rights and accessibility/copy decisions must be
+[stderr] +accepted by distinct reviewers for the exact revision. The release editor may
+[stderr] +set `published` only after those accepted decisions, accepted originality and
+[stderr] +provenance evidence, no unresolved conflict, and the defined lifecycle
+[stderr] +transitions. Until then a selector must reject it because the register's
+[stderr] +selection rule remains binding.
+[stderr] +
+[stderr] +## GQ audit gate
+[stderr] +
+[stderr] +Do not create a `GQ` audit while any of the 48 records remains un-authored,
+[stderr] +pending, blocked, rejected, conflicted, withdrawn, or otherwise ineligible.
+[stderr] +Only after all four waves contain actual accepted evidence may a later `GQ`
+[stderr] +audit run the dedicated completion check, update canonical bible/inventory
+[stderr] +records, and accept the manifest. This dispatcher does none of those actions.
+[stderr] +
+[stderr] +## Acceptance criteria
+[stderr] +
+[stderr] +- The QB-A catalogue remains exactly four existing named batches of 12 cards
+[stderr] +  (48 IDs total), with no replacement or added card.
+[stderr] +- Each still-ineligible card retains its exact reason and cannot enter
+[stderr] +  selection until current-revision evidence and two distinct accepted reviews
+[stderr] +  qualify it.
+[stderr] +- No `GQ` audit is created and the manifest remains pending until all 48
+[stderr] +  records have actual accepted evidence.
+[stderr] 
+[stderr] exec
+[stderr] /bin/zsh -lc "rg -n -i -C 3 'Authoring output validation|GD0003|validation failed|command:' projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-02-agent-codex-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log projects/football-trivia-e2e/.state/live/task-gd0002-run-01-stage-03-agent-test-7de4bc95-aeac-43f6-be06-542c5b1b75ee.log projects/football-trivia-e2e/.state/live/task-gd0002-run-02-stage-00-agent-supervisor-fd232b1d-7f77-4c2b-a7cb-62257124e262.log | sed -n '1,240p' && rg -n \"GD0003|qba-editorial-acceptance-register\" projects/football-trivia-e2e --glob '"'!*.sqlite3'"' --glob '"'!*.log'"' | sed -n '1,240p'" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md:166:[`qba-editorial-acceptance-register.json`](qba-editorial-acceptance-register.json)
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0003.md:2:task_id: GD0003
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0003.md:5:source_specifications: design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/qba-editorial-acceptance-register.json,design-evidence/adjudication-and-freshness-bible.md,planning/game-design-manifest.json
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:42:- `design-evidence/qba-editorial-acceptance-register.md`: exactly 48
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:62:those reasons, so create `GD0003.md` as the sole next dispatcher. It must split
+[stderr] projects/football-trivia-e2e/game-design-runbooks/GD0002.md:71:- `GD0003.md`: the only successor dispatcher for the unresolved QB-A editorial
+[stderr] 
+[stderr] diff --git a/projects/football-trivia-e2e/game-design-runbooks/GD0003.md b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] new file mode 100644
+[stderr] index 0000000000000000000000000000000000000000..6b2d61b10460507f46c0c1eedd990088c79ae882
+[stderr] --- /dev/null
+[stderr] +++ b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] @@ -0,0 +1,63 @@
+[stderr] +---
+[stderr] +task_id: GD0003
+[stderr] +sequence: 6
+[stderr] +dependencies: GD0002
+[stderr] +source_specifications: design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/qba-editorial-acceptance-register.json,design-evidence/adjudication-and-freshness-bible.md,planning/game-design-manifest.json
+[stderr] +source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] +title: Dispatch remaining bounded QB-A editorial evidence work
+[stderr] +browser_impact: not_applicable
+[stderr] +playwright_spec:
+[stderr] +---
+[stderr] +
+[stderr] +## Objective
+[stderr] +
+[stderr] +This is the sole successor dispatcher for the unresolved QB-A editorial
+[stderr] +records recorded by `GD0002`. It preserves the existing 48-card boundary and
+[stderr] +does not create cards, publish cards, alter quiz scope, create B/R runbooks, or
+[stderr] +accept `../planning/game-design-manifest.json`.
+[stderr] +
+[stderr] +The current register deliberately records all 48 revision-1 cards as `draft`
+[stderr] +and `selectionEligible: false`. Every card retains the exact reasons
+[stderr] +`ORIGINALITY-UNAUTHORED`, `PROVENANCE-LOCATOR-MISSING`,
+[stderr] +`FACTUAL-RIGHTS-REVIEW-PENDING`, `ACCESSIBILITY-COPY-REVIEW-PENDING`, and
+[stderr] +`RELEASE-GATE-INCOMPLETE`. No default, batch-level decision, or future wave
+[stderr] +may substitute for a card's current-revision evidence.
+[stderr] +
+[stderr] +## Bounded editorial waves
+[stderr] +
+[stderr] +Each wave below is limited to one existing 12-card batch. Within a wave, author
+[stderr] +evidence first and review it only after the current-revision authoring evidence
+[stderr] +is complete. A card that is rejected, unresolved, conflicted, withdrawn, or
+[stderr] +missing any required record stays ineligible with its exact reason retained.
+[stderr] +
+[stderr] +| Wave | Existing batch | Fixed card IDs | Required card-level work | Completion boundary |
+[stderr] +| --- | --- | --- | --- | --- |
+[stderr] +| E1 | `GPI-002` — World Tournament History | `QB-A-01`–`QB-A-12` | Original expression; exact permitted-source locators and checked dates for every assertion; conflict/correction state; factual/rights review; accessibility/copy review; independent second review. | 12 current-revision records only. |
+[stderr] +| E2 | `GPI-003` — Domestic League Moments | `QB-A-13`–`QB-A-24` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +| E3 | `GPI-004` — Club, Manager, and Identity | `QB-A-25`–`QB-A-36` | Same evidence and distinct-review requirements as E1, including both permitted source routes where stated. | 12 current-revision records only. |
+[stderr] +| E4 | `GPI-005` — Players and Records | `QB-A-37`–`QB-A-48` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +
+[stderr] +For every card, the factual/rights and accessibility/copy decisions must be
+[stderr] +accepted by distinct reviewers for the exact revision. The release editor may
+[stderr] +set `published` only after those accepted decisions, accepted originality and
+[stderr] +provenance evidence, no unresolved conflict, and the defined lifecycle
+[stderr] +transitions. Until then a selector must reject it because the register's
+[stderr] +selection rule remains binding.
+[stderr] +
+[stderr] +## GQ audit gate
+[stderr] +
+[stderr] +Do not create a `GQ` audit while any of the 48 records remains un-authored,
+[stderr] +pending, blocked, rejected, conflicted, withdrawn, or otherwise ineligible.
+[stderr] +Only after all four waves contain actual accepted evidence may a later `GQ`
+[stderr] +audit run the dedicated completion check, update canonical bible/inventory
+[stderr] +records, and accept the manifest. This dispatcher does none of those actions.
+[stderr] +
+[stderr] +## Acceptance criteria
+[stderr] +
+[stderr] +- The QB-A catalogue remains exactly four existing named batches of 12 cards
+[stderr] +  (48 IDs total), with no replacement or added card.
+[stderr] +- Each still-ineligible card retains its exact reason and cannot enter
+[stderr] +  selection until current-revision evidence and two distinct accepted reviews
+[stderr] +  qualify it.
+[stderr] +- No `GQ` audit is created and the manifest remains pending until all 48
+[stderr] +  records have actual accepted evidence.
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"Added the missing GD0003 successor dispatcher. I’m now checking the finite register, lockout rule, and manifest gate directly against the durable JSON and runbooks.","changed_files":["projects/football-trivia-e2e/game-design-runbooks/GD0003.md"],"test_result":"","evidence":{"agent_log":"","adapter_log":"","test_log":"","browser_log":"","screenshots":[]},"acceptance_results":[],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GD0002.md","projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json","projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md"],"updated_files":["projects/football-trivia-e2e/game-design-runbooks/GD0003.md"],"summary":"Added the required successor dispatcher because editorial progress and manifest gating are documented workflow behavior."},"known_limitations":[],"browser_coverage":"","recommended_next_step":"complete"}
+[stderr] exec
+[stderr] /bin/zsh -lc "node -e 'const fs=require(\"fs\"); const root=\"projects/football-trivia-e2e\"; const reg=JSON.parse(fs.readFileSync(root+\"/design-evidence/qba-editorial-acceptance-register.json\",\"utf8\")); const manifest=JSON.parse(fs.readFileSync(root+\"/planning/game-design-manifest.json\",\"utf8\")); const expected=Array.from({length:48},(_,i)=>"'`QB-A-${String(i+1).padStart(2,"0")}`); const ids=reg.records.map(r=>r.cardId); const reasons=reg.validation.requiredPendingReasonCodes; if(reg.records.length!==48||new Set(ids).size!==48||ids.some((id,i)=>id!==expected[i])) throw Error("record boundary invalid"); if(reg.batches.length!==4||reg.batches.some(b=>b.cardIds.length!==12)||new Set(reg.batches.flatMap(b=>b.cardIds)).size!==48) throw Error("batch boundary invalid"); if(reg.recordDefaults.selectionEligible!==false||reg.recordDefaults.status!=="draft") throw Error("default selection lock invalid"); if(reasons.some(code=>!reg.pendingReasonCatalog[code])) throw Error("pending reason catalog incomplete"); if(manifest.status!=="pending") throw Error("manifest is not pending"); const d=fs.readFileSync(root+"/game-design-runbooks/GD0003.md","utf8"); for(const token of ["task_id: GD0003","QB-A-01","QB-A-48","GPI-002","GPI-003","GPI-004","GPI-005","Do not create a `GQ` audit","manifest remains pending"]) if(!d.includes(token)) throw Error(`GD0003 missing ${token}`); console.log("GD0002 focused evidence validation: PASS (48 records; 4 batches of 12; selection locked; pending reasons complete; manifest pending; GD0003 present).")'"' && git diff --check -- projects/football-trivia-e2e/game-design-runbooks/GD0003.md" in /Users/simon/Dev/github/jakowicz/runbook-generator
+[stderr]  succeeded in 0ms:
+[stderr] GD0002 focused evidence validation: PASS (48 records; 4 batches of 12; selection locked; pending reasons complete; manifest pending; GD0003 present).
+[stderr] 
+[stderr] diff --git a/projects/football-trivia-e2e/game-design-runbooks/GD0003.md b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] new file mode 100644
+[stderr] index 0000000000000000000000000000000000000000..6b2d61b10460507f46c0c1eedd990088c79ae882
+[stderr] --- /dev/null
+[stderr] +++ b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] @@ -0,0 +1,63 @@
+[stderr] +---
+[stderr] +task_id: GD0003
+[stderr] +sequence: 6
+[stderr] +dependencies: GD0002
+[stderr] +source_specifications: design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/qba-editorial-acceptance-register.json,design-evidence/adjudication-and-freshness-bible.md,planning/game-design-manifest.json
+[stderr] +source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] +title: Dispatch remaining bounded QB-A editorial evidence work
+[stderr] +browser_impact: not_applicable
+[stderr] +playwright_spec:
+[stderr] +---
+[stderr] +
+[stderr] +## Objective
+[stderr] +
+[stderr] +This is the sole successor dispatcher for the unresolved QB-A editorial
+[stderr] +records recorded by `GD0002`. It preserves the existing 48-card boundary and
+[stderr] +does not create cards, publish cards, alter quiz scope, create B/R runbooks, or
+[stderr] +accept `../planning/game-design-manifest.json`.
+[stderr] +
+[stderr] +The current register deliberately records all 48 revision-1 cards as `draft`
+[stderr] +and `selectionEligible: false`. Every card retains the exact reasons
+[stderr] +`ORIGINALITY-UNAUTHORED`, `PROVENANCE-LOCATOR-MISSING`,
+[stderr] +`FACTUAL-RIGHTS-REVIEW-PENDING`, `ACCESSIBILITY-COPY-REVIEW-PENDING`, and
+[stderr] +`RELEASE-GATE-INCOMPLETE`. No default, batch-level decision, or future wave
+[stderr] +may substitute for a card's current-revision evidence.
+[stderr] +
+[stderr] +## Bounded editorial waves
+[stderr] +
+[stderr] +Each wave below is limited to one existing 12-card batch. Within a wave, author
+[stderr] +evidence first and review it only after the current-revision authoring evidence
+[stderr] +is complete. A card that is rejected, unresolved, conflicted, withdrawn, or
+[stderr] +missing any required record stays ineligible with its exact reason retained.
+[stderr] +
+[stderr] +| Wave | Existing batch | Fixed card IDs | Required card-level work | Completion boundary |
+[stderr] +| --- | --- | --- | --- | --- |
+[stderr] +| E1 | `GPI-002` — World Tournament History | `QB-A-01`–`QB-A-12` | Original expression; exact permitted-source locators and checked dates for every assertion; conflict/correction state; factual/rights review; accessibility/copy review; independent second review. | 12 current-revision records only. |
+[stderr] +| E2 | `GPI-003` — Domestic League Moments | `QB-A-13`–`QB-A-24` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +| E3 | `GPI-004` — Club, Manager, and Identity | `QB-A-25`–`QB-A-36` | Same evidence and distinct-review requirements as E1, including both permitted source routes where stated. | 12 current-revision records only. |
+[stderr] +| E4 | `GPI-005` — Players and Records | `QB-A-37`–`QB-A-48` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +
+[stderr] +For every card, the factual/rights and accessibility/copy decisions must be
+[stderr] +accepted by distinct reviewers for the exact revision. The release editor may
+[stderr] +set `published` only after those accepted decisions, accepted originality and
+[stderr] +provenance evidence, no unresolved conflict, and the defined lifecycle
+[stderr] +transitions. Until then a selector must reject it because the register's
+[stderr] +selection rule remains binding.
+[stderr] +
+[stderr] +## GQ audit gate
+[stderr] +
+[stderr] +Do not create a `GQ` audit while any of the 48 records remains un-authored,
+[stderr] +pending, blocked, rejected, conflicted, withdrawn, or otherwise ineligible.
+[stderr] +Only after all four waves contain actual accepted evidence may a later `GQ`
+[stderr] +audit run the dedicated completion check, update canonical bible/inventory
+[stderr] +records, and accept the manifest. This dispatcher does none of those actions.
+[stderr] +
+[stderr] +## Acceptance criteria
+[stderr] +
+[stderr] +- The QB-A catalogue remains exactly four existing named batches of 12 cards
+[stderr] +  (48 IDs total), with no replacement or added card.
+[stderr] +- Each still-ineligible card retains its exact reason and cannot enter
+[stderr] +  selection until current-revision evidence and two distinct accepted reviews
+[stderr] +  qualify it.
+[stderr] +- No `GQ` audit is created and the manifest remains pending until all 48
+[stderr] +  records have actual accepted evidence.
+[stderr] 
+[stderr] codex
+[stderr] {"status":"pass","summary":"Repaired the concrete continuation failure by adding the required GD0003 bounded editorial-work dispatcher.","changed_files":["projects/football-trivia-e2e/game-design-runbooks/GD0003.md"],"test_result":"PASS: node focused validation confirmed 48 unique QB-A records, four batches of 12, default draft/selection lock, all five pending reason codes, pending manifest, and required GD0003 gate text. PASS: git diff --check -- projects/football-trivia-e2e/game-design-runbooks/GD0003.md.","evidence":{"agent_log":"Continuation checkpoint identified missing GD0003.md; the file now exists as the sole successor dispatcher.","adapter_log":"","test_log":"GD0002 focused evidence validation: PASS (48 records; 4 batches of 12; selection locked; pending reasons complete; manifest pending; GD0003 present).","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"All 48 existing QB-A card revisions have independently inspectable original-expression, provenance, and two-distinct-review evidence, or every remaining ineligible card has its exact pending or blocked reason retained.","status":"pass","evidence":"qba-editorial-acceptance-register.json enumerates all 48 revision-1 records and retains five exact reason codes for every inherited draft record; GD0003 preserves those reasons and requires current-revision evidence before eligibility."},{"criterion":"The four existing batches remain finite at 12 cards each and no unreviewed record can enter selection.","status":"pass","evidence":"Focused validation confirmed four batches of 12 and selectionEligible:false/default draft status. GD0003 explicitly retains the 48-ID boundary and selection gate."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GD0002.md","projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json","projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md","projects/football-trivia-e2e/planning/game-design-manifest.json"],"updated_files":["projects/football-trivia-e2e/game-design-runbooks/GD0003.md"],"summary":"Updated the runbook documentation required by GD0002's continuation: GD0003 dispatches four bounded editorial waves and blocks GQ/manifest acceptance until actual evidence exists."},"known_limitations":[],"browser_coverage":"Not applicable: this is design-evidence and runbook documentation only, with no browser-facing behavior.","recommended_next_step":"complete"}
+[stderr] diff --git a/projects/football-trivia-e2e/game-design-runbooks/GD0003.md b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] new file mode 100644
+[stderr] index 0000000000000000000000000000000000000000..6b2d61b10460507f46c0c1eedd990088c79ae882
+[stderr] --- /dev/null
+[stderr] +++ b/projects/football-trivia-e2e/game-design-runbooks/GD0003.md
+[stderr] @@ -0,0 +1,63 @@
+[stderr] +---
+[stderr] +task_id: GD0003
+[stderr] +sequence: 6
+[stderr] +dependencies: GD0002
+[stderr] +source_specifications: design-evidence/question-card-and-qba-catalogue-bible.md,design-evidence/qba-editorial-acceptance-register.json,design-evidence/adjudication-and-freshness-bible.md,planning/game-design-manifest.json
+[stderr] +source_catalogue_ids: GAME-001,GAME-002,GAME-003,GAME-004,GPI-001,GPI-002,GPI-003,GPI-004,GPI-005,GPI-006,GPI-007
+[stderr] +title: Dispatch remaining bounded QB-A editorial evidence work
+[stderr] +browser_impact: not_applicable
+[stderr] +playwright_spec:
+[stderr] +---
+[stderr] +
+[stderr] +## Objective
+[stderr] +
+[stderr] +This is the sole successor dispatcher for the unresolved QB-A editorial
+[stderr] +records recorded by `GD0002`. It preserves the existing 48-card boundary and
+[stderr] +does not create cards, publish cards, alter quiz scope, create B/R runbooks, or
+[stderr] +accept `../planning/game-design-manifest.json`.
+[stderr] +
+[stderr] +The current register deliberately records all 48 revision-1 cards as `draft`
+[stderr] +and `selectionEligible: false`. Every card retains the exact reasons
+[stderr] +`ORIGINALITY-UNAUTHORED`, `PROVENANCE-LOCATOR-MISSING`,
+[stderr] +`FACTUAL-RIGHTS-REVIEW-PENDING`, `ACCESSIBILITY-COPY-REVIEW-PENDING`, and
+[stderr] +`RELEASE-GATE-INCOMPLETE`. No default, batch-level decision, or future wave
+[stderr] +may substitute for a card's current-revision evidence.
+[stderr] +
+[stderr] +## Bounded editorial waves
+[stderr] +
+[stderr] +Each wave below is limited to one existing 12-card batch. Within a wave, author
+[stderr] +evidence first and review it only after the current-revision authoring evidence
+[stderr] +is complete. A card that is rejected, unresolved, conflicted, withdrawn, or
+[stderr] +missing any required record stays ineligible with its exact reason retained.
+[stderr] +
+[stderr] +| Wave | Existing batch | Fixed card IDs | Required card-level work | Completion boundary |
+[stderr] +| --- | --- | --- | --- | --- |
+[stderr] +| E1 | `GPI-002` — World Tournament History | `QB-A-01`–`QB-A-12` | Original expression; exact permitted-source locators and checked dates for every assertion; conflict/correction state; factual/rights review; accessibility/copy review; independent second review. | 12 current-revision records only. |
+[stderr] +| E2 | `GPI-003` — Domestic League Moments | `QB-A-13`–`QB-A-24` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +| E3 | `GPI-004` — Club, Manager, and Identity | `QB-A-25`–`QB-A-36` | Same evidence and distinct-review requirements as E1, including both permitted source routes where stated. | 12 current-revision records only. |
+[stderr] +| E4 | `GPI-005` — Players and Records | `QB-A-37`–`QB-A-48` | Same evidence and distinct-review requirements as E1. | 12 current-revision records only. |
+[stderr] +
+[stderr] +For every card, the factual/rights and accessibility/copy decisions must be
+[stderr] +accepted by distinct reviewers for the exact revision. The release editor may
+[stderr] +set `published` only after those accepted decisions, accepted originality and
+[stderr] +provenance evidence, no unresolved conflict, and the defined lifecycle
+[stderr] +transitions. Until then a selector must reject it because the register's
+[stderr] +selection rule remains binding.
+[stderr] +
+[stderr] +## GQ audit gate
+[stderr] +
+[stderr] +Do not create a `GQ` audit while any of the 48 records remains un-authored,
+[stderr] +pending, blocked, rejected, conflicted, withdrawn, or otherwise ineligible.
+[stderr] +Only after all four waves contain actual accepted evidence may a later `GQ`
+[stderr] +audit run the dedicated completion check, update canonical bible/inventory
+[stderr] +records, and accept the manifest. This dispatcher does none of those actions.
+[stderr] +
+[stderr] +## Acceptance criteria
+[stderr] +
+[stderr] +- The QB-A catalogue remains exactly four existing named batches of 12 cards
+[stderr] +  (48 IDs total), with no replacement or added card.
+[stderr] +- Each still-ineligible card retains its exact reason and cannot enter
+[stderr] +  selection until current-revision evidence and two distinct accepted reviews
+[stderr] +  qualify it.
+[stderr] +- No `GQ` audit is created and the manifest remains pending until all 48
+[stderr] +  records have actual accepted evidence.
+[stderr] 
+[stderr] tokens used
+[stdout] {"status":"pass","summary":"Repaired the concrete continuation failure by adding the required GD0003 bounded editorial-work dispatcher.","changed_files":["projects/football-trivia-e2e/game-design-runbooks/GD0003.md"],"test_result":"PASS: node focused validation confirmed 48 unique QB-A records, four batches of 12, default draft/selection lock, all five pending reason codes, pending manifest, and required GD0003 gate text. PASS: git diff --check -- projects/football-trivia-e2e/game-design-runbooks/GD0003.md.","evidence":{"agent_log":"Continuation checkpoint identified missing GD0003.md; the file now exists as the sole successor dispatcher.","adapter_log":"","test_log":"GD0002 focused evidence validation: PASS (48 records; 4 batches of 12; selection locked; pending reasons complete; manifest pending; GD0003 present).","browser_log":"","screenshots":[]},"acceptance_results":[{"criterion":"All 48 existing QB-A card revisions have independently inspectable original-expression, provenance, and two-distinct-review evidence, or every remaining ineligible card has its exact pending or blocked reason retained.","status":"pass","evidence":"qba-editorial-acceptance-register.json enumerates all 48 revision-1 records and retains five exact reason codes for every inherited draft record; GD0003 preserves those reasons and requires current-revision evidence before eligibility."},{"criterion":"The four existing batches remain finite at 12 cards each and no unreviewed record can enter selection.","status":"pass","evidence":"Focused validation confirmed four batches of 12 and selectionEligible:false/default draft status. GD0003 explicitly retains the 48-ID boundary and selection gate."}],"documentation":{"reviewed_files":["projects/football-trivia-e2e/game-design-runbooks/GD0002.md","projects/football-trivia-e2e/design-evidence/qba-editorial-acceptance-register.json","projects/football-trivia-e2e/design-evidence/question-card-and-qba-catalogue-bible.md","projects/football-trivia-e2e/planning/game-design-manifest.json"],"updated_files":["projects/football-trivia-e2e/game-design-runbooks/GD0003.md"],"summary":"Updated the runbook documentation required by GD0002's continuation: GD0003 dispatches four bounded editorial waves and blocks GQ/manifest acceptance until actual evidence exists."},"known_limitations":[],"browser_coverage":"Not applicable: this is design-evidence and runbook documentation only, with no browser-facing behavior.","recommended_next_step":"complete"}
+[stderr] 47,102

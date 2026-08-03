@@ -161,6 +161,25 @@ player-facing copy.
 
 ## Mechanical release checks
 
+## GD0002 editorial acceptance register
+
+[`qba-editorial-acceptance-register.json`](qba-editorial-acceptance-register.json)
+is the durable, machine-readable ledger for all existing `QB-A-01`–`QB-A-48`
+revision-1 records. It intentionally records no fictional acceptance: every
+record is individually listed with its existing batch and source-family route,
+and inherits five explicit pending reasons for un-authored original expression,
+missing resolvable provenance, each distinct review, and the incomplete release
+transition. Its `selectionEligible: false` default is a hard audit assertion,
+not a future promise; a selector must reject every record until current-revision
+evidence replaces every pending item and the lifecycle reaches `published`.
+
+The register's `batches`, `records`, and `validation` fields make the finite
+boundary inspectable without changing it: exactly four named batches, exactly
+12 IDs in each, exactly 48 unique IDs matching `QB-A-01…48`, and no extra
+record. A future editor must add card-specific evidence rather than changing a
+default or accepting the manifest; a blocked, rejected, conflicted, withdrawn,
+or still-pending revision remains `selectionEligible: false` with its reason.
+
 The editorial validator must derive, rather than trust, the following report
 from published card records and their provenance/review records:
 

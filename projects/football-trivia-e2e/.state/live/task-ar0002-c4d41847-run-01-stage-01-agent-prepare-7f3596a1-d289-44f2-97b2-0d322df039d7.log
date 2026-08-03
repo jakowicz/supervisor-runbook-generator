@@ -1,0 +1,4 @@
+Task: AR0002-c4d41847 — Repair project collection failure
+Stage: prepare
+Status: pass
+Summary: Auto-publish disabled; no clean-worktree preflight needed.

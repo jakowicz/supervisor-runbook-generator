@@ -62,7 +62,9 @@ supervisor-run --project <project-name>
 
 `--project` reads that project's `INITIAL.md` and runs the reusable F-series.
 For games, it follows the F005-created game-design collection and will not
-continue at F006 until the final game-design audit is accepted. F014 then
+continue at F006 until the final game-design audit is accepted. An accepted GD
+dispatcher is reopened if a continuation it promised is missing, so an
+incomplete manifest cannot be mistaken for a finished prerequisite. F014 then
 creates the bootstrap implementation-authoring controls, which dynamically
 dispatch B-series authors. It keeps the factory's durable task history in
 `projects/<project-name>/.state/`, its
@@ -201,7 +203,7 @@ or manage while building the product.
 | `IMP-0001`, `IMP-0002`, … | **Implementation catalogue record** | The F-series planning stages and later D dispatchers | `projects/<slug>/planning/implementation-catalogue-index.json` and the authoring manifest/ledger | **Planning and traceability records, not runnable runbooks.** Each record captures a needed piece of work, its requirements, dependencies, ownership, verification, and asset assessment before it is allocated to a B writer. |
 | `C0001`, `C0002`, … | **Catalogue checkpoint** | F014 creates the bootstrap checkpoint; later D dispatchers create further checkpoints when needed | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A C task validates the catalogue, manifest, IDs, dependency coverage, and batch limits before another writing wave proceeds. It creates no product code and normally creates no R files. |
 | `GC0001`, `GC0002`, … | **Game-design checkpoint** | A GD dispatcher; games only | `projects/<slug>/game-design-runbooks/` | **Game-design coordination only.** A GC task checks the selected design modules, design-unit coverage, ownership, and evidence before another GB/G wave proceeds. It creates no product code. |
-| `GD0001`, `GD0002`, … | **Game-design dispatcher** | F005 creates `GD0001`; each earlier GD dispatcher creates at most one successor; games only | `projects/<slug>/game-design-runbooks/` | **Game-design coordination only.** A GD task selects the next game-design area, allocates bounded GB batches, and leaves one successor only if more game-design work remains. GB batches then write the G game-design runbooks. It does not build the product. |
+| `GD0001`, `GD0002`, … | **Game-design dispatcher** | F005 creates `GD0001`; each earlier GD dispatcher creates at most one successor; games only | `projects/<slug>/game-design-runbooks/` | **Game-design coordination only.** A GD task selects the next game-design area, allocates bounded GB batches, and leaves one successor only if more game-design work remains. Supervisor reopens an accepted GD that promised a missing continuation, preventing an incomplete manifest from ending the child collection. GB batches then write the G game-design runbooks. It does not build the product. |
 | `GQ0001` | **Final game-design audit** | The final GD dispatcher; games only | `projects/<slug>/game-design-runbooks/` | **Game-design completion gate.** It proves every selected design module and `GAME-*` design unit has accepted, canonical evidence before Supervisor may continue to F006. |
 | `D0001`, `D0002`, … | **Implementation-runbook dispatcher** | F014 creates `D0001`; each earlier D dispatcher creates at most one successor | `projects/<slug>/authoring-runbooks/` | **Authoring coordination only.** A D task expands one eligible implementation-planning chapter, allocates the next bounded B batches, and leaves one successor dispatcher only if more catalogue work remains. B batches then write the R implementation runbooks. It does not build the product or write R implementation files itself. |
 

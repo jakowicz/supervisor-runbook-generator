@@ -1,0 +1,4 @@
+Task: AR0001-46f93e09 — Repair project collection failure
+Stage: prepare
+Status: pass
+Summary: Auto-publish disabled; no clean-worktree preflight needed.

@@ -1,0 +1,51 @@
+{
+  "registerId": "QB-A-EDITORIAL-ACCEPTANCE-R1",
+  "scope": "The existing QB-A-01 through QB-A-48 revision-1 inventory only. This register neither publishes cards nor accepts the design manifest.",
+  "createdAt": "2026-08-03",
+  "selectionRule": "A record is selectable only when status is published, selectionEligible is true, and every required editorial evidence item is accepted for the current revision.",
+  "pendingReasonCatalog": {
+    "ORIGINALITY-UNAUTHORED": "No player-facing prompt, instruction, options, explanation, text equivalents, or author originality record has been authored for this revision; source and reference-product expression must not be copied.",
+    "PROVENANCE-LOCATOR-MISSING": "The source-family research route is assigned, but this revision has no exact permitted-source locator, retrieval date, factual-assertion mapping, or correction/conflict log.",
+    "FACTUAL-RIGHTS-REVIEW-PENDING": "No distinct factual/rights-editor decision has verified the uncreated provenance and originality evidence for this revision.",
+    "ACCESSIBILITY-COPY-REVIEW-PENDING": "No distinct accessibility/copy-editor decision has reviewed the uncreated player-facing copy, answer rule, text equivalents, and locale keys for this revision.",
+    "RELEASE-GATE-INCOMPLETE": "The record remains draft; it has not completed fact_checked, accessibility_edited, second_reviewed, and release-editor publish transitions."
+  },
+  "batches": [
+    {"batchId":"GPI-002","name":"QB-A World Tournament History","cardIds":["QB-A-01","QB-A-02","QB-A-03","QB-A-04","QB-A-05","QB-A-06","QB-A-07","QB-A-08","QB-A-09","QB-A-10","QB-A-11","QB-A-12"]},
+    {"batchId":"GPI-003","name":"QB-A Domestic League Moments","cardIds":["QB-A-13","QB-A-14","QB-A-15","QB-A-16","QB-A-17","QB-A-18","QB-A-19","QB-A-20","QB-A-21","QB-A-22","QB-A-23","QB-A-24"]},
+    {"batchId":"GPI-004","name":"QB-A Club, Manager, and Identity","cardIds":["QB-A-25","QB-A-26","QB-A-27","QB-A-28","QB-A-29","QB-A-30","QB-A-31","QB-A-32","QB-A-33","QB-A-34","QB-A-35","QB-A-36"]},
+    {"batchId":"GPI-005","name":"QB-A Players and Records","cardIds":["QB-A-37","QB-A-38","QB-A-39","QB-A-40","QB-A-41","QB-A-42","QB-A-43","QB-A-44","QB-A-45","QB-A-46","QB-A-47","QB-A-48"]}
+  ],
+  "records": [
+    {"cardId":"QB-A-01","batchId":"GPI-002","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-02","batchId":"GPI-002","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-03","batchId":"GPI-002","revision":1,"sourceFamilies":["UEFA"]}, {"cardId":"QB-A-04","batchId":"GPI-002","revision":1,"sourceFamilies":["CONMEBOL"]},
+    {"cardId":"QB-A-05","batchId":"GPI-002","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-06","batchId":"GPI-002","revision":1,"sourceFamilies":["AFC"]}, {"cardId":"QB-A-07","batchId":"GPI-002","revision":1,"sourceFamilies":["AFC"]}, {"cardId":"QB-A-08","batchId":"GPI-002","revision":1,"sourceFamilies":["UEFA"]},
+    {"cardId":"QB-A-09","batchId":"GPI-002","revision":1,"sourceFamilies":["AFC"]}, {"cardId":"QB-A-10","batchId":"GPI-002","revision":1,"sourceFamilies":["CONMEBOL"]}, {"cardId":"QB-A-11","batchId":"GPI-002","revision":1,"sourceFamilies":["UEFA"]}, {"cardId":"QB-A-12","batchId":"GPI-002","revision":1,"sourceFamilies":["CONMEBOL"]},
+    {"cardId":"QB-A-13","batchId":"GPI-003","revision":1,"sourceFamilies":["DFL"]}, {"cardId":"QB-A-14","batchId":"GPI-003","revision":1,"sourceFamilies":["LALIGA"]}, {"cardId":"QB-A-15","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]}, {"cardId":"QB-A-16","batchId":"GPI-003","revision":1,"sourceFamilies":["LFP"]},
+    {"cardId":"QB-A-17","batchId":"GPI-003","revision":1,"sourceFamilies":["PL"]}, {"cardId":"QB-A-18","batchId":"GPI-003","revision":1,"sourceFamilies":["LALIGA"]}, {"cardId":"QB-A-19","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]}, {"cardId":"QB-A-20","batchId":"GPI-003","revision":1,"sourceFamilies":["PL"]},
+    {"cardId":"QB-A-21","batchId":"GPI-003","revision":1,"sourceFamilies":["LALIGA"]}, {"cardId":"QB-A-22","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]}, {"cardId":"QB-A-23","batchId":"GPI-003","revision":1,"sourceFamilies":["DFL"]}, {"cardId":"QB-A-24","batchId":"GPI-003","revision":1,"sourceFamilies":["SERIEA"]},
+    {"cardId":"QB-A-25","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]}, {"cardId":"QB-A-26","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]}, {"cardId":"QB-A-27","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","SERIEA"]}, {"cardId":"QB-A-28","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]},
+    {"cardId":"QB-A-29","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-30","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-31","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]}, {"cardId":"QB-A-32","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB"]},
+    {"cardId":"QB-A-33","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-34","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-35","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","UEFA"]}, {"cardId":"QB-A-36","batchId":"GPI-004","revision":1,"sourceFamilies":["CLUB","SERIEA"]},
+    {"cardId":"QB-A-37","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-38","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-39","batchId":"GPI-005","revision":1,"sourceFamilies":["FF"]}, {"cardId":"QB-A-40","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]},
+    {"cardId":"QB-A-41","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-42","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-43","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]}, {"cardId":"QB-A-44","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]},
+    {"cardId":"QB-A-45","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-46","batchId":"GPI-005","revision":1,"sourceFamilies":["FIFA"]}, {"cardId":"QB-A-47","batchId":"GPI-005","revision":1,"sourceFamilies":["FF"]}, {"cardId":"QB-A-48","batchId":"GPI-005","revision":1,"sourceFamilies":["PL"]}
+  ],
+  "recordDefaults": {
+    "status": "draft",
+    "selectionEligible": false,
+    "originalityRecord": {"decision":"pending","reasonCode":"ORIGINALITY-UNAUTHORED"},
+    "provenance": {"decision":"pending","reasonCode":"PROVENANCE-LOCATOR-MISSING"},
+    "reviews": [
+      {"role":"factual_rights_editor","decision":"pending","reasonCode":"FACTUAL-RIGHTS-REVIEW-PENDING"},
+      {"role":"accessibility_copy_editor","decision":"pending","reasonCode":"ACCESSIBILITY-COPY-REVIEW-PENDING"}
+    ],
+    "releaseGate": {"decision":"pending","reasonCode":"RELEASE-GATE-INCOMPLETE"}
+  },
+  "validation": {
+    "exactCardIdPattern": "^QB-A-(0[1-9]|[1-3][0-9]|4[0-8])$",
+    "expectedRecordCount": 48,
+    "expectedBatchCount": 4,
+    "expectedCardsPerBatch": 12,
+    "requiredPendingReasonCodes": ["ORIGINALITY-UNAUTHORED","PROVENANCE-LOCATOR-MISSING","FACTUAL-RIGHTS-REVIEW-PENDING","ACCESSIBILITY-COPY-REVIEW-PENDING","RELEASE-GATE-INCOMPLETE"]
+  }
+}

@@ -1,0 +1,16 @@
+Task: GD0002 — Complete QB-A editorial acceptance evidence
+Stage: test
+Status: pass
+Summary: Configured project checks passed for GD0002.
+
+===== Test output =====
+$ git diff --check
+
+$ python3 scripts/runbookgen_validate.py
+Creative coverage gate — football-trivia-e2e
+game: 12 declared
+assets: 12 declared
+audio: 9 declared
+narrative: 0 declared
+PASS: every declared creative item has an owned implementation route.
+
