@@ -133,8 +133,8 @@ feature or a required technology. In normal use, you only need to care about
 | --- | --- | --- | --- | --- |
 | `INITIAL.md` | Source brief | You or `supervisor initial` | `projects/<project-name>/` | The concise source brief: what is being made, for whom, where it will run, constraints, references, and desired outcome. It gives every later stage its context. |
 | `F001`–`F016` | **Factory** | This repository | `runbooks/` | **Factory runbooks.** They analyse the brief and create the game-design programme (when needed), then the implementation-authoring plan. They do not build the requested product. |
-| `G0001`, `G0002`, … | **Game design** | GB design-runbook writers, for games only | `projects/<slug>/game-design-runbooks/` | **Actual game-specific design work.** G files create and review detailed original game bibles—such as story, world, characters, bosses, question banks, scoring, or fairness—before implementation runbooks are authored. GB writers create at most seven G files each; GC checkpoints, GD dispatchers, and a final GQ audit scale and verify that work. |
-| `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than seven R files. |
+| `G0001`, `G0002`, … | **Game design** | GB design-runbook writers, for games only | `projects/<slug>/game-design-runbooks/` | **Actual game-specific design work.** G files create and review detailed original game bibles—such as story, world, characters, bosses, question banks, scoring, or fairness—before implementation runbooks are authored. GB writers create at most five G files each; GC checkpoints, GD dispatchers, and a final GQ audit scale and verify that work. |
+| `B0001`, `B0002`, … | **Bounded authoring batch** | The F-series and later B dispatcher files | `projects/<slug>/authoring-runbooks/` | **Runbook-writing tasks.** A B task writes the next small set of R files. “Bounded” means it has a hard limit: one B task may write no more than five R files. |
 | `R0001`, `R0002`, … | **Real product-work runbook** | B-series runbook-writing tasks | `projects/<slug>/runbooks/` | **Product-work runbooks.** Each R file gives detailed instructions and success checks for one small piece of building, testing, reviewing, documenting, or original-asset work. Every R file explicitly declares asset metadata and provenance links to its canonical specification, catalogue records, B batch, and originating F stages. |
 
 ### Internal planning and coordination
@@ -230,7 +230,7 @@ An R file records that mapping in `requirement_ids` and `source_catalogue_ids`.
 
 The hierarchy stops there: F creates the plan and the B files, B writes R files,
 and R files describe the real implementation or verification work. For example,
-a B file for an RPG's combat area might write up to seven R files: basic combat,
+a B file for an RPG's combat area might write up to five R files: basic combat,
 damage calculation, enemies, abilities, battle UI, balancing, and tests. For a
 large product, more B files are created for the next areas instead of making one
 agent write thousands of R files at once. The factory automatically finds later
@@ -258,7 +258,7 @@ available for targeted lookup.
 | `F005`–`F010` | The canonical `specification/` chapters and earlier planning outputs | These stages translate established decisions into dependencies, delivery areas, authoring contracts, and a safe handoff. |
 | `F011`–`F013` | The canonical specification plus the delivery/contract planning outputs | These stages create the traceability system, implementation catalogue, dependency graph, and small B-series batches. |
 | `F014`–`F016` | The catalogue, authoring manifest, quality gate, and canonical specification | These stages create B writers, validate their intended R contracts, register the B child collection, and publish the R handoff for a separate implementation supervisor. |
-| A B-series writer | Its own F013 context packet: only the assigned catalogue records, relevant specification sections, target constraints, templates, and reserved IDs | It writes no more than seven R files without needing a huge prompt or unrelated product context. |
+| A B-series writer | Its own F013 context packet: only the assigned catalogue records, relevant specification sections, target constraints, templates, and reserved IDs | It writes no more than five R files without needing a huge prompt or unrelated product context. |
 | A C checkpoint or D dispatcher | The authoring manifest, catalogue, ledger, and only the relevant canonical specification chapter | It validates and schedules the authoring process; it is not product implementation context. |
 | An R-series task | Its own objective, dependencies, acceptance criteria, and provenance metadata | It performs one small piece of product work. It can open the linked canonical files when it needs more detail. |
 
@@ -327,7 +327,7 @@ need kernel, hardware, security, installation, and system-management work.
 | `F011` | Builds the canonical specification and requirements-traceability system, so every planned area can be traced back to the brief, a constraint, or a justified dependency. | Canonical specification and traceability records. |
 | `F012` | Builds the full implementation catalogue and its dependency graph, including foundations, features, content, assets, quality, operations, and release work as applicable. | The complete checklist from which R-series tasks will be written. |
 | `F013` | Divides that checklist into small, dependency-safe authoring batches that can scale from a handful to thousands of R files. | Batch plan and B-series dispatch strategy. |
-| `F014` | Creates and registers the first B-series runbook writers. **It does not create R files directly.** Each B file writes at most seven detailed R-series product-work runbooks; later dispatcher B files create more B files when needed. | `authoring-runbooks/B….md` files. |
+| `F014` | Creates and registers the first B-series runbook writers. **It does not create R files directly.** Each B file writes at most five detailed R-series product-work runbooks; later dispatcher B files create more B files when needed. | `authoring-runbooks/B….md` files. |
 | `F015` | Checks that the B batches and their intended R contracts cover the catalogue, obey dependency ordering, and include `asset_impact` plus stable `asset_ids` wherever an R task needs assets. | Validated authoring batches and implementation-contract rules. |
 | `F016` | Publishes the project-scoped handoff: records how factory authoring resumes and hands the generated R collection to a separate implementation supervisor. | Handoff documentation, registered B collection, and R implementation handoff. |
 

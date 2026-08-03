@@ -18,7 +18,7 @@ thousands of runbooks for a particular product.
 | --- | --- | --- |
 | F-series | The factory: understand the brief, identify the required domains, and design a complete delivery plan. | A workspace in `projects/<slug>/`, including its specification, work checklist, and B-series files. |
 | G-series | Game-design work: `G` tasks create/review original game-specific bibles; `GB` writers create G files in bounded batches; `GC`, `GD`, and `GQ` check, dispatch, and audit them. | Detailed game bibles and a completed game-design manifest in `projects/<slug>/`. |
-| B-series | The runbook writers: write the next small set of implementation instructions. “Bounded” means one B file may write no more than seven R files. | Up to seven R-series files per B task; extra B files are created when more areas need coverage. |
+| B-series | The runbook writers: write the next small set of implementation instructions. “Bounded” means one B file may write no more than five R files. | Up to five R-series files per B task; extra B files are created when more areas need coverage. |
 | C-series | Catalogue checkpoints: validate the authoring catalogue, allocations, dependencies, and limits before the next writing wave. | No product work. C files are internal coordination files in `projects/<slug>/authoring-runbooks/`. |
 | D-series | Dispatchers: expand one eligible planning chapter and create the next bounded B-series writing wave when more work remains. | More B-series authoring files, not R files or product work. D files live beside B/C files in `projects/<slug>/authoring-runbooks/`. |
 | R-series | The product-work instructions: describe one small, ordered piece of real work. | Source changes, tests, assets, documentation, or other deliverables required by that R file. |
@@ -33,7 +33,7 @@ layer, before R-series product work is run.
 
 For games, `F005` creates a project-scoped `game-design-runbooks/` collection.
 `GD0001` selects the detailed design work from the game's actual design signals,
-then allocates `GB` writers. Each GB file writes at most seven detailed `G`
+then allocates `GB` writers. Each GB file writes at most five detailed `G`
 design tasks; `GC` checkpoints validate them, later `GD` files dispatch further
 waves, and `GQ` performs the final design audit. Supervisor treats this as a
 prerequisite collection: it completes G work before F006 can create
@@ -105,7 +105,7 @@ production and validation work.
 `F001`–`F004` understand the brief and domains, `F005`–`F010` make the delivery
 map, `F011`–`F013` create and check the specification and work checklist, and
 `F014` creates the first B-series runbook-writing files. When Supervisor runs
-those B files, each one writes up to seven R-series product-work runbooks. If
+those B files, each one writes up to five R-series product-work runbooks. If
 more R files are required, B dispatcher files create more B files. `F015`–`F016`
 establish quality and handoff material.
 
