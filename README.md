@@ -167,6 +167,17 @@ R-runbook counts, and the next action, run:
 scripts/runbookgen status <project-name>
 ```
 
+For a continuously refreshing view, use the built-in atomic display rather
+than wrapping the command with the operating system's `watch` utility:
+
+```bash
+scripts/runbookgen watch <project-name>
+```
+
+It redraws one complete snapshot every two seconds, preventing partial old and
+new status lines from being overlaid in terminals such as iTerm. Set
+`RUNBOOKGEN_WATCH_SECONDS` to change the refresh interval.
+
 The status view also states the hard authoring ceiling: each `GB` writer may
 create at most five G game-design runbooks, and each `B` writer may create at
 most five R implementation runbooks. Larger products automatically use more

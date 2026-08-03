@@ -13,6 +13,15 @@ case "$command" in
     shift
     exec python3 "$root/scripts/runbookgen_status.py" "$@"
     ;;
+  watch)
+    shift
+    interval="${RUNBOOKGEN_WATCH_SECONDS:-2}"
+    while true; do
+      frame="$(python3 "$root/scripts/runbookgen_status.py" "$@")"
+      printf '\033[H\033[2J%s\n' "$frame"
+      sleep "$interval"
+    done
+    ;;
   validate)
     shift
     exec python3 "$root/scripts/runbookgen_validate.py" "$@"
@@ -28,6 +37,10 @@ Commands:
   status [project-name]
          Show the durable E2E/factory state, accepted and active tasks, and
          generated B/R runbook counts. `--project <name>` also works.
+  watch [project-name]
+         Show the same status as one clean, atomic frame refreshed every two
+         seconds. Prefer this to wrapping `status` in the external `watch`
+         command. Set RUNBOOKGEN_WATCH_SECONDS to change the interval.
   validate [project-name] [--require-r-series]
          Deterministically validate narrative, visual, and audio coverage.
          Use --require-r-series only once all generated R contracts should

@@ -4,10 +4,13 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
+import io
 import json
 import os
 import re
 import sqlite3
+import sys
 from pathlib import Path
 
 
@@ -120,8 +123,9 @@ def main() -> None:
         raise SystemExit(f"No factory state yet: {database}\nRun: supervisor-run --project {project_name}")
 
     states = load_states(database)
-    pending = [row for row in states if row["status"] != "accepted"]
     factory_ids = [path.stem for path in sorted((root / "runbooks").glob("F*.md"))]
+    factory_states = states_for(factory_ids, states)
+    pending = [row for row in factory_states if row["status"] != "accepted"]
     recorded_ids = {row["task_id"] for row in states}
     unstarted = [task_id for task_id in factory_ids if task_id not in recorded_ids]
     initial = workspace / "INITIAL.md"
@@ -146,8 +150,11 @@ def main() -> None:
     g_control_states = states_for(g_control_ids, g_states)
     b_collection_states = states_for(b_ids, b_states)
     control_states = states_for(control_ids, b_states)
+    recovery_states = [row for row in states if re.fullmatch(r"AR[0-9A-Z-]+", row["task_id"])]
     active_collections = [
-        ("factory", row) for row in states if process_is_running(row["active_pid"])
+        ("Factory stage", row) for row in factory_states if process_is_running(row["active_pid"])
+    ] + [
+        ("Project recovery", row) for row in recovery_states if process_is_running(row["active_pid"])
     ] + [
         ("GB design authoring", row) for row in gb_collection_states if process_is_running(row["active_pid"])
     ] + [
@@ -164,7 +171,7 @@ def main() -> None:
     print(f"Workspace: {workspace}")
     print(f"State: {database}")
     print("\n== Factory stages ==")
-    print(f"- {collection_progress(factory_ids, states, creation_label='stages available')}")
+    print(f"- {collection_progress(factory_ids, factory_states, creation_label='stages available')}")
     print("\n== Game-design runbook authoring ==")
     if is_game:
         print("- GB writers create the G game-design runbooks, in batches of at most 5")
@@ -228,4 +235,14 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    # Build the complete status frame before writing it. This prevents terminal
+    # refresh tools from displaying half of a new snapshot over half of the
+    # previous one when task state changes during rendering.
+    frame = io.StringIO()
+    with contextlib.redirect_stdout(frame):
+        main()
+    output = frame.getvalue().encode("utf-8")
+    try:
+        os.write(sys.stdout.fileno(), output)
+    except (AttributeError, io.UnsupportedOperation):
+        sys.stdout.write(output.decode("utf-8"))
