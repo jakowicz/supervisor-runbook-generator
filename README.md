@@ -128,10 +128,12 @@ set `E2E_REPAIR_ATTEMPTS` to change that limit.
 
 ### Visible repair terminals
 
-On macOS, each automatic E2E repair opens a visible iTerm2 tab (or falls back
-to Terminal.app) and waits for that repair command to finish before retrying
-the same project. This makes Codex's diagnosis and its terminal verification
-easy to inspect. To use the same behaviour for a manual resume:
+On macOS, each automatic E2E repair opens a visible, caffeinated iTerm2 tab
+(or falls back to Terminal.app) and waits for that repair command to finish
+before retrying the same project. Every E2E factory attempt, including retries,
+is also wrapped in Caffeinate by default. This makes Codex's diagnosis and its
+terminal verification easy to inspect. To use the same behaviour for a manual
+resume:
 
 ```zsh
 supervisor/scripts/open-visible-terminal.sh --cwd "$PWD" --wait -- \
@@ -140,6 +142,8 @@ supervisor/scripts/open-visible-terminal.sh --cwd "$PWD" --wait -- \
 
 Set `RUNBOOKGEN_VISIBLE_REPAIR_TERMINAL=false` only for a headless or CI run;
 the repair still occurs, but in the calling shell rather than a visible tab.
+Set `RUNBOOKGEN_CAFFEINATE=false` only when you deliberately do not want the
+macOS idle-sleep guard.
 
 ## See or resume project progress
 

@@ -111,6 +111,14 @@ echo "E2E scenario: $scenario ($category) · project: $project_name"
 # generated files remain available for inspection; no task commits or pushes.
 "$root/supervisor/.venv/bin/python" -c "from pathlib import Path; from supervisor.manage import _set_env_values; _set_env_values(Path('projects/$project_name/.env'), {'SUPERVISOR_AUTO_COMMIT': 'false', 'SUPERVISOR_AUTO_PUSH': 'false'})"
 
+run_factory_with_power_guard() {
+  if [[ "${RUNBOOKGEN_CAFFEINATE:-true}" == "true" && "$(uname)" == "Darwin" && -x /usr/bin/caffeinate ]]; then
+    /usr/bin/caffeinate -dims "$@"
+  else
+    "$@"
+  fi
+}
+
 validate_factory_handoff() {
   python3 "$root/scripts/runbookgen_validate.py" "$project_name" \
     --require-game-design-complete --require-r-series
@@ -159,9 +167,9 @@ repair_factory_failure() {
   # makes its Codex work, terminal checks, and final result inspectable.  CI or
   # a headless session can explicitly opt out with this variable.
   if [[ "${RUNBOOKGEN_VISIBLE_REPAIR_TERMINAL:-true}" == "true" ]]; then
-    "$root/supervisor/scripts/open-visible-terminal.sh" --cwd "$root" --wait -- "${repair_command[@]}"
+    "$root/supervisor/scripts/open-visible-terminal.sh" --cwd "$root" --wait --caffeinate -- "${repair_command[@]}"
   else
-    "${repair_command[@]}"
+    run_factory_with_power_guard "${repair_command[@]}"
   fi
 }
 
@@ -173,7 +181,7 @@ max_repairs="${E2E_REPAIR_ATTEMPTS:-2}"
 for ((attempt = 0; attempt <= max_repairs; attempt++)); do
   factory_output=""
   factory_status=0
-  if factory_output="$("$supervisor_run_cmd" --project "$project_name" 2>&1)"; then
+  if factory_output="$(run_factory_with_power_guard "$supervisor_run_cmd" --project "$project_name" 2>&1)"; then
     :
   else
     factory_status=$?
@@ -202,4 +210,4 @@ $validation_output"
 done
 
 # A second invocation must use durable state rather than regenerating accepted work.
-"$supervisor_run_cmd" --project "$project_name"
+run_factory_with_power_guard "$supervisor_run_cmd" --project "$project_name"
